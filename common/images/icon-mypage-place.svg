@@ -1,0 +1,7 @@
+<svg id="location" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <rect id="area" width="20" height="20" fill="none"/>
+  <g id="그룹_5855" data-name="그룹 5855" transform="translate(2.8 0.999)">
+    <path id="패스_14717" data-name="패스 14717" d="M860,418.091c-1.478,5-6.827,8.537-6.827,8.537s-7.2-4.767-7.2-11.043a7.2,7.2,0,0,1,14.4,0A8.823,8.823,0,0,1,860,418.091Z" transform="translate(-845.974 -408.628)" fill="none" stroke="#222" stroke-linejoin="round" stroke-width="1.5"/>
+    <circle id="타원_1309" data-name="타원 1309" cx="1.5" cy="1.5" r="1.5" transform="translate(5.7 5.95)" fill="#222"/>
+  </g>
+</svg>

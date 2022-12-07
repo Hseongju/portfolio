@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_720" data-name="사각형 720" width="18" height="20" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="icon_Tabbar_cart" data-name="icon / Tabbar / cart" transform="translate(-1470 -286)">
+    <rect id="Icon_basket_outline_background" data-name="Icon_basket_outline background" width="24" height="24" transform="translate(1470 286)" fill="#f0f" opacity="0"/>
+    <g id="그룹_1500" data-name="그룹 1500" transform="translate(1473 288)">
+      <g id="그룹_1499" data-name="그룹 1499" clip-path="url(#clip-path)">
+        <path id="패스_13866" data-name="패스 13866" d="M17,19H1L2,6H16Z" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <path id="패스_13867" data-name="패스 13867" d="M9,1H9A4,4,0,0,0,5,5V6h8V5A4,4,0,0,0,9,1Z" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg id="search_24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Rectangle" fill="#f8f8f8" stroke="#979797" stroke-miterlimit="10" stroke-width="1" opacity="0">
+    <rect width="24" height="24" stroke="none"/>
+    <rect x="0.5" y="0.5" width="23" height="23" fill="none"/>
+  </g>
+  <path id="Path_2" data-name="Path 2" d="M0,0,2.9,2.567" transform="translate(16.919 15.729) rotate(0.261)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+  <g id="Oval" transform="translate(4 4)" fill="none" stroke="#222" stroke-miterlimit="10" stroke-width="1.5">
+    <circle cx="7.5" cy="7.5" r="7.5" stroke="none"/>
+    <circle cx="7.5" cy="7.5" r="6.75" fill="none"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg id="icon-info-resume-m" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <rect id="area" width="20" height="20" fill="none"/>
+  <g id="그룹_5902" data-name="그룹 5902" transform="translate(2 1)">
+    <g id="사각형_2571" data-name="사각형 2571" fill="none" stroke="#222" stroke-linejoin="round" stroke-width="1.5">
+      <rect width="16" height="18" rx="2" stroke="none"/>
+      <rect x="0.75" y="0.75" width="14.5" height="16.5" rx="1.25" fill="none"/>
+    </g>
+    <g id="Icon_mypage" transform="translate(4.267 4.938)">
+      <circle id="타원_20" data-name="타원 20" cx="2" cy="2" r="2" transform="translate(1.735 -0.188)" fill="#222"/>
+      <path id="패스_34" data-name="패스 34" d="M1,15.5V14.429A1.5,1.5,0,0,1,2.556,13H6.444A1.5,1.5,0,0,1,8,14.429V15.5" transform="translate(-0.766 -7.188)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>

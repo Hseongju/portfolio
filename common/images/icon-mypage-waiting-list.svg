@@ -1,0 +1,11 @@
+<svg id="people" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <rect id="guidiebox" width="32" height="32" fill="#f0f" opacity="0"/>
+  <g id="Icon_mypage" transform="translate(2.293 5.057)">
+    <circle id="타원_20" data-name="타원 20" cx="4.5" cy="4.5" r="4.5" transform="translate(5.206 0.943)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="패스_34" data-name="패스 34" d="M1,20V17a4.24,4.24,0,0,1,4.444-4H16.556A4.24,4.24,0,0,1,21,17v3" transform="translate(-0.792 0.943)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+  <g id="Icon_mypage-2" data-name="Icon_mypage" transform="translate(10.293 5.057)">
+    <path id="패스_34-2" data-name="패스 34" d="M15.473,13h1.083A4.24,4.24,0,0,1,21,17v3" transform="translate(-1.526 0.943)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="패스_14730" data-name="패스 14730" d="M450.865,813.531a4.5,4.5,0,1,1,.044,8.449" transform="translate(-442.724 -812.305)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>

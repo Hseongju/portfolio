@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="back_32wh" transform="translate(32 32) rotate(180)">
+    <rect id="container" width="32" height="32" fill="#111" opacity="0.004"/>
+    <g id="arrow_back" transform="translate(7.646 146.514) rotate(-135)">
+      <path id="합치기_10" data-name="합치기 10" d="M6833.186,17783.283a1,1,0,0,1,0-1.414l14.974-14.969h-9.586a1,1,0,0,1,0-2h12a1,1,0,0,1,1,1c0,.031,0,.063,0,.092v11.908a1,1,0,1,1-2,0v-9.582l-14.969,14.965a.986.986,0,0,1-.706.295A1,1,0,0,1,6833.186,17783.283Z" transform="translate(-6756 -17675.898)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

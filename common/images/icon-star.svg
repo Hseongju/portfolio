@@ -1,0 +1,10 @@
+<svg id="icon-star" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_2341" data-name="사각형 2341" width="16" height="16" transform="translate(0 -0.782)" fill="#fff" opacity="0.34"/>
+    </clipPath>
+  </defs>
+  <g id="Icon_star_13" data-name="Icon/star_13" transform="translate(0 0.782)" clip-path="url(#clip-path)">
+    <path id="star" d="M7.948,1.557a1,1,0,0,1,1.745,0L11.454,4.7a1,1,0,0,0,.7.5l3.592.625a1,1,0,0,1,.537,1.691L13.809,10a1,1,0,0,0-.282.846l.487,3.445a1,1,0,0,1-1.41,1.047L9.24,13.779a1,1,0,0,0-.84,0L5.036,15.335a1,1,0,0,1-1.41-1.047l.487-3.445A1,1,0,0,0,3.831,10L1.356,7.513a1,1,0,0,1,.537-1.691L5.485,5.2a1,1,0,0,0,.7-.5Z" transform="translate(-0.82 -1.203)" fill="#9e896e"/>
+  </g>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="ico_checked" transform="translate(-0.354 -0.354)">
+    <rect id="container" width="20" height="20" transform="translate(0.354 0.354)" fill="#fff" opacity="0"/>
+    <rect id="사각형_2370" data-name="사각형 2370" width="2" height="8" rx="1" transform="translate(2.354 10.011) rotate(-45)" fill="#222"/>
+    <rect id="사각형_2371" data-name="사각형 2371" width="2" height="14" rx="1" transform="translate(16.502 4.354) rotate(45)" fill="#222"/>
+  </g>
+</svg>
