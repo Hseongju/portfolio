@@ -1274,11 +1274,11 @@ function repositioningTopBtn(){
 var typoMotion = (function(){
   return {
     incision : function (cls) {
-        var arrTxt = $(cls).text().trim().split("");
-        $(cls).text("");
-        for(var i=0; i<arrTxt.length; i++) {
-          $(cls).append("<span>" + arrTxt[i] + "</span>");
-        }
+      var arrTxt = $(cls).text().trim().split("");
+      $(cls).text("");
+      for(var i=0; i<arrTxt.length; i++) {
+        $(cls).append("<span>" + arrTxt[i] + "</span>");
+      }
     }
   }
 })();
