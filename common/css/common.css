@@ -83,8 +83,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
 body {height: 100%;}
 body.stop_scroll {overflow: hidden; height: 100%; min-height: 100%; touch-action: none;}
 body.lock {position: fixed; width: 100%;}
-#wrap {overflow: hidden; position: relative; width: 100%; background: #f7f2ef;}
-#wrap.bright {background: #fdfaf7;}
+#wrap {overflow: hidden; position: relative; width: 100%; background: #eff4f7;}
 
 .inner{margin:0 auto; width:1280px;}
 
@@ -106,6 +105,17 @@ body.lock {position: fixed; width: 100%;}
     top:25px;
   }
 }
+
+/* section */
+section{padding:120px 0;}
+section .big_title{text-align:center; font-size:80px; font-family: "Pretendard_ExtraBold", sans-serif;}
+section .sub_tit{margin-top:24px; text-align:center; font-size:24px; font-family: "Pretendard_Medium", sans-serif;}
+section .tools_list{display:flex; align-items: center; justify-content: center; margin-top:80px;}
+section .tools_list .tools{display:flex; flex-wrap:wrap; justify-content: center; padding:70px 0; margin-right:30px; width:calc(100% - 90px); width:-webkit-calc(100% - 90px); border:2px solid #131635; background:#fff; border-radius:50%; transition:box-shadow 0.5s ease;}
+section .tools_list .tools:hover{box-shadow: 0 20px 40px 0 rgba(0, 0, 0, .2)}
+section .tools_list .tools:last-child{margin-right:0;}
+section .tools_list .tools .icon img{width:100px;}
+section .tools_list .tools .txt{display:block; width:100%; margin-top:24px; text-align: center; font-size:24px; font-family: "Pretendard_Bold", sans-serif;}
 
 /* footer */
 footer{padding:50px 0; text-align:center; background:#131635}
