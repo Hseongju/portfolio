@@ -8,7 +8,7 @@
   --sal: env(safe-area-inset-left);
 }
 html {width: 100%; height: 100%; font-size: 10px;}
-body {position: relative; font-family: "Pretendard_Regular", "맑은 고딕", "Malgun Gothic", sans-serif; font-weight: 400; font-size: 18px; color: #000; line-height: 1.3; height: 100%; -webkit-text-size-adjust: 100%; -moz-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-overflow-scrolling: touch; -webkit-print-color-adjust: exact !important;}
+body {position: relative; font-family: "Pretendard_Regular", "맑은 고딕", "Malgun Gothic", sans-serif; font-weight: 400; font-size: 16px; color: #000; line-height: 1.3; height: 100%; -webkit-text-size-adjust: 100%; -moz-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-overflow-scrolling: touch; -webkit-print-color-adjust: exact !important;}
 body, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p, form, fieldset, table, tr, th, td {margin: 0; padding: 0; font-weight: normal;}
 ul, ol, li {list-style: none;}
 img, fieldset {border: none; vertical-align: top;}
@@ -88,7 +88,16 @@ body.lock {position: fixed; width: 100%;}
 
 .inner{margin:0 auto; width:1280px;}
 
+/* visual */
+.visual_div{position:relative; width:100%; height:100vh;}
+.visual_div .bg{position:absolute; top:0; left:0; width:100%; height:100%;}
+.visual_div .bg:after{display:block; content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5)}
+.visual_div .bg img{width:100%; height:100%;}
+.visual_div .visual_tit{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:90%; text-align: center; font-size:160px; letter-spacing:2px; color:#fff; font-family: "Pretendard_ExtraBold", sans-serif;}
+.visual_div .visual_tit .typo_motion{opacity:0;}
+.visual_div .visual_tit .typo_motion span{position:relative; left:80px; letter-spacing: 3px; opacity:0;}
+
 /* footer */
-footer{padding:50px 0; text-align:center;}
-footer p{font-family: "Pretendard_Medium", "맑은 고딕", "Malgun Gothic", sans-serif;}
+footer{padding:50px 0; text-align:center; background:#131635}
+footer p{font-family: "Pretendard_Medium", sans-serif; color:#fff;}
 footer .copyright{margin-top:5px;}

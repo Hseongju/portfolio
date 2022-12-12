@@ -1,9 +1,0 @@
-<svg id="history" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-  <rect id="사각형_2550" data-name="사각형 2550" width="32" height="32" fill="#fff" opacity="0"/>
-  <g id="그룹_5873" data-name="그룹 5873" transform="translate(-452.57 -860.414)">
-    <rect id="사각형_2552" data-name="사각형 2552" width="22" height="24" rx="3" transform="translate(457.571 864.414)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-    <line id="선_17" data-name="선 17" x2="12" transform="translate(462.569 871.414)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-    <line id="선_18" data-name="선 18" x2="12" transform="translate(462.569 876.32)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-    <line id="선_19" data-name="선 19" x2="5" transform="translate(462.568 881.32)" fill="none" stroke="#222" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-  </g>
-</svg>
