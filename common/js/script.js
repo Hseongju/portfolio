@@ -65,10 +65,15 @@ var commonScript = (function(){
       
       $(".typo_motion").css("opacity", 1);
 
-      typoMotion.incision(".typo_motion");
-      $(".typo_motion span").each(function(q){
-        arrTit.push($(".typo_motion span").eq(q));
+      $(".typo_motion").each(function(){
+        typoMotion.incision($(this));
+        $(this).find("span").each(function(q){
+          arrTit.push($(this));
+        })
       });
+
+      console.log(arrTit)
+      
       $(".typo_motion").css("opacity", 1);
       TweenMax.staggerTo(arrTit, 1.1, {left:0, opacity:1, ease:Power3.easeInOut}, 0.07);
 
