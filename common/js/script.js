@@ -71,11 +71,21 @@ var commonScript = (function(){
           arrTit.push($(this));
         })
       });
-
-      console.log(arrTit)
       
       $(".typo_motion").css("opacity", 1);
       TweenMax.staggerTo(arrTit, 1.1, {left:0, opacity:1, ease:Power3.easeInOut}, 0.07);
+
+      // 탭
+      $(".tab_btn_area .btn").each(function(q){
+        $(this).on("click", function(){
+          if(!$(this).hasClass("on")){
+            $(".tab_btn_area .btn").removeClass("on");
+            $(this).addClass("on");
+            $(".tab_con_area .tab_con").removeClass("on");
+            $(".tab_con_area .tab_con").eq(q).addClass("on");
+          }
+        });
+      });
 
     },
     scrollFn: function(){
