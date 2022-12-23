@@ -92,7 +92,6 @@ body.lock {position: fixed; width: 100%;}
 .visual_area .visual_div{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:1280px; z-index:2;}
 .visual_area .visual_div .visual_tit{overflow:hidden; height:120px;}
 .visual_area .visual_div .visual_tit span{height:120px; font-size:120px; color:#fff; font-family: "Pretendard_ExtraBold", sans-serif; letter-spacing: 1px; line-height:1; opacity:0; }
-
 .visual_area .visual_div .control_area{position:relative; margin-top:80px; opacity:0; transition:opacity 0.7s ease;}
 .visual_area.active .visual_div .control_area{opacity:1; transition-delay:0.4s}
 .visual_area .visual_div .slide_num{color:#fff; font-size:12px;}
@@ -131,7 +130,7 @@ section .tools_list .tools:last-child{margin-right:0;}
 section .tools_list .tools .icon{display:block; text-align:center;}
 section .tools_list .tools .icon img{width:100px;}
 section .tools_list .tools .txt{display:inline-block; position:relative; margin-top:24px; text-align: center; font-size:24px; font-family: "Pretendard_Bold", sans-serif; z-index:2;}
-section .tools_list .tools .txt:after{display:block; content:""; position:absolute; top:0; left:0; width:0; height:100%; opacity:0.5; transform: skew(-15deg); transition:width 0.4s ease; z-index:-1;}
+section .tools_list .tools .txt:after{display:block; content:""; position:absolute; top:0; left:0; width:0; height:100%; opacity:0.5; transform: skew(-15deg); transition:width 0.5s ease; z-index:-1;}
 section .tools_list .tools:nth-child(1) .txt:after{background:#d8f3fc}
 section .tools_list .tools:nth-child(2) .txt:after{background:#ff61f6}
 section .tools_list .tools:nth-child(3) .txt:after{background:#fbb936}
@@ -149,6 +148,26 @@ section .tab_btn_area{display:flex; width:100%; border-bottom:2px solid #c1e3e6;
 section .tab_btn_area .btn{position:relative; padding:10px 20px; font-size:24px;}
 section .tab_btn_area .btn.on{font-family: "Pretendard_Bold", sans-serif;}
 section .tab_btn_area .btn.on:after{display:block; content:""; position:absolute; bottom:-2px; left:0; width:100%; height:2px; background:#131635;}
+section .tab_con_area{margin-top:60px;}
+section .tab_con_area .list_w{display:flex; flex-wrap:wrap;}
+section .tab_con_area .list_w .list{position:relative; top:0; margin:40px 30px 0 0; width:calc((100% - 60px) / 3); width:-webkit-calc((100% - 60px) / 3); height:375px; border:1px solid #131635; transition:top 0.5s ease, box-shadow 0.5s ease;}
+section .tab_con_area .list_w .list:nth-child(3n){margin-right:0;}
+section .tab_con_area .list_w .list:nth-child(1), section .tab_con_area .list_w .list:nth-child(2), section .tab_con_area .list_w .list:nth-child(3){margin-top:0;}
+section .tab_con_area .list_w .list .img_area{overflow:hidden; position:relative; padding-top:56%;}
+section .tab_con_area .list_w .list .img_area img{position:absolute; top:50%; left:50%; transform: translate(-50%, -50%); height:100%;}
+section .tab_con_area .list_w .list .txt_div{position:absolute; bottom:0; left:0; padding:20px; width:100%; height:150px; background:#fff; border-top:1px solid #131635; transition:height 0.5s ease;}
+section .tab_con_area .list_w .list .txt_div .tit{margin-top:15px; font-size:20px; font-family: "Pretendard_Medium", sans-serif;}
+section .tab_con_area .list_w .list .txt_div .tit span{position:relative; z-index:1;}
+section .tab_con_area .list_w .list .txt_div .tit span:after{display:block; content:""; position:absolute; top:0; left:0; width:0; height:100%; transform: skew(-15deg); transition:width 0.5s ease; z-index:-1; opacity:0.3;  background:#75c8cc}
+section .tab_con_area .list_w .list .txt_div .view{position:absolute; bottom:0; left:20px; opacity:0; transition:bottom 0.5s ease, opacity 0.5s ease;}
+section .tab_con_area .list_w .list:hover{top:-10px; box-shadow: 0 20px 40px 0 rgba(0, 0, 0, .2)}
+section .tab_con_area .list_w .list:hover .txt_div{height:180px;}
+section .tab_con_area .list_w .list:hover .txt_div .view{bottom:30px; opacity:1;}
+section .tab_con_area .list_w .list:hover .txt_div .tit span:after{width:100%;}
+section .label_div{display:flex; flex-wrap:wrap}
+section .label_div .label{margin-right:5px; padding:4px 4px 2px; color:#fff; font-size:12px; font-family: "Pretendard_Medium", sans-serif; background:#75c8cc}
+section .label_div .label.pc{background:#5690c7}
+section .label_div .label.mobile{background:#1d75c7}
 
 /* footer */
 footer{padding:50px 0; text-align:center; background:#131635}
