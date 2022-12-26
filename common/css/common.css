@@ -178,10 +178,15 @@ section .tab_con_area .list_wrap .list .txt_div .tit{margin-top:15px; font-size:
 section .tab_con_area .list_wrap .list .txt_div .tit span{position:relative; z-index:1;}
 section .tab_con_area .list_wrap .list .txt_div .tit span:after{display:block; content:""; position:absolute; top:0; left:0; width:0; height:100%; transform: skew(-15deg); transition:width 0.5s ease; z-index:-1; opacity:0.3;  background:#75c8cc}
 section .tab_con_area .list_wrap .list .txt_div .view{position:absolute; bottom:0; left:20px; opacity:0; transition:bottom 0.5s ease, opacity 0.5s ease;}
-section .tab_con_area .list_wrap .list:hover .list_w{top:-10px; box-shadow: 0 20px 40px 0 rgba(0, 0, 0, .2)}
+section .tab_con_area .list_wrap .list:hover .list_w{top:-10px; box-shadow: 0 20px 80px 0 rgba(0, 0, 0, .2)}
 section .tab_con_area .list_wrap .list:hover .txt_div{height:180px;}
 section .tab_con_area .list_wrap .list:hover .txt_div .view{bottom:30px; opacity:1;}
 section .tab_con_area .list_wrap .list:hover .txt_div .tit span:after{width:100%;}
+section .tab_con_area .list_wrap .list_pop{position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); z-index:3;}
+section .tab_con_area .list_wrap .list_pop .pop_wrap{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:1000px; background:#fff; border-radius:10px;}
+section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_head{padding:20px 70px 20px 40px;;}
+section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_head .title{font-size:24px; font-family: "Pretendard_Medium", sans-serif;}
+section .tab_con_area .list_wrap .list_pop .pop_wrap .btn_close{position:absolute; top:23px; right:40px; width:24px; height:24px; background:url("/common/images/btn-layer-popup-close-x.svg") no-repeat center center/cover}
 section .label_div{display:flex; flex-wrap:wrap}
 section .label_div .label{margin-right:5px; padding:4px 4px 2px; color:#fff; font-size:12px; font-family: "Pretendard_Medium", sans-serif; background:#75c8cc}
 section .label_div .label.pc{background:#5690c7}
