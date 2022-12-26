@@ -83,6 +83,10 @@ var commonScript = (function(){
             $(this).addClass("on");
             $(".tab_con_area .tab_con").removeClass("on");
             $(".tab_con_area .tab_con").eq(q).addClass("on");
+            $(".tab_con_area .tab_con .list_w").removeClass("active");
+            setTimeout(function(){
+              $(".tab_con_area .tab_con").eq(q).find(".list_w").addClass("active");
+            },10)
           }
         });
       });
