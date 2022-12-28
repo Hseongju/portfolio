@@ -190,9 +190,9 @@ section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding{padd
 section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area{overflow-y:auto; padding-right:20px; height:100%;}
 section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area::-webkit-scrollbar {margin: 4px 0; width: 4px; border-radius: 4px; background: #ccc; background-position: center 0;}
 section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area::-webkit-scrollbar-thumb {border-radius: 3px; -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0); box-shadow: inset 0 0 0 rgba(0, 0, 0, 0); background-color: #979797;}
+section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .view_site{display:inline-block;margin-bottom:20px;}
 section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .view_site span{padding-right:25px; font-size:22px; font-family: "Pretendard_Bold", sans-serif; background: url("/common/images/icon-right-arrow.png") no-repeat right 5px top 7px/15px; transition:background 0.3s ease;}
 section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .view_site:hover span{background: url("/common/images/icon-right-arrow.png") no-repeat right 0px top 7px/15px;}
-section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .con_txt{margin-top:20px;}
 section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .con_txt .txt{font-size:18px;}
 section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .img{overflow:hidden; margin-top:30px; border:1px solid #ccc}
 section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .img img{width:100%;}
