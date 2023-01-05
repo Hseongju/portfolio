@@ -54,7 +54,7 @@ var commonScript = (function(){
               lazyLoading();
               setTimeout(function(){
                 popupResize();
-              },100)
+              },150)
             }
           }
         });
