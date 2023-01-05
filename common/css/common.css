@@ -198,7 +198,7 @@ section .tab_con_area .list_wrap .list_div .list:hover .txt_div .tit span:after{
 section .tab_con_area .list_wrap .txt_list_div{margin:100px 50px 0 0; width:calc((100% - 100px) / 3); width:-webkit-calc((100% - 100px) / 3);}
 section .tab_con_area .list_wrap .txt_list_div:nth-child(3n){margin-right:0;}
 section .tab_con_area .list_wrap .txt_list_div .list{display:block;}
-section .tab_con_area .list_wrap .txt_list_div .list .list_w{overflow:hidden; position:relative; top:0; padding:70px 120px 70px 50px; background:url("/common/images/icon-url-link.svg") no-repeat right 50px center; border:1px solid #fff; border-radius:20px; transition:top 0.4s ease, border 0.4s ease;}
+section .tab_con_area .list_wrap .txt_list_div .list .list_w{overflow:hidden; position:relative; top:0; padding:70px 120px 70px 50px; background:url("https://raw.githack.com/Hseongju/portfolio/main/common/images/icon-url-link.svg") no-repeat right 50px center; border:1px solid #fff; border-radius:20px; transition:top 0.4s ease, border 0.4s ease;}
 section .tab_con_area .list_wrap .txt_list_div:nth-child(1) .list{transition-delay:0.1s}
 section .tab_con_area .list_wrap .txt_list_div:nth-child(2) .list{transition-delay:0.2s}
 section .tab_con_area .list_wrap .txt_list_div:nth-child(3) .list{transition-delay:0.3s}
@@ -219,13 +219,13 @@ section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scr
 section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area::-webkit-scrollbar {margin: 4px 0; width: 4px; border-radius: 4px; background: #ccc; background-position: center 0;}
 section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area::-webkit-scrollbar-thumb {border-radius: 3px; -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0); box-shadow: inset 0 0 0 rgba(0, 0, 0, 0); background-color: #979797;}
 section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .view_site{display:inline-block;margin-bottom:20px;}
-section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .view_site span{padding-right:25px; font-size:22px; font-family: "Pretendard_Bold", sans-serif; background: url("/common/images/icon-right-arrow.png") no-repeat right 5px top 7px/15px; transition:background 0.3s ease;}
-section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .view_site:hover span{background: url("/common/images/icon-right-arrow.png") no-repeat right 0px top 7px/15px;}
+section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .view_site span{padding-right:25px; font-size:22px; font-family: "Pretendard_Bold", sans-serif; background: url("https://raw.githack.com/Hseongju/portfolio/main/common/images/icon-right-arrow.png") no-repeat right 5px top 7px/15px; transition:background 0.3s ease;}
+section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .view_site:hover span{background: url("https://raw.githack.com/Hseongju/portfolio/main/common/images/icon-right-arrow.png") no-repeat right 0px top 7px/15px;}
 section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .con_txt .txt{font-size:18px;}
 section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .con_txt .txt + .txt{margin-top:10px;}
 section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .img{overflow:hidden; margin-top:30px; border:1px solid #ccc}
 section .tab_con_area .list_wrap .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .img img{width:100%;}
-section .tab_con_area .list_wrap .list_pop .pop_wrap .btn_close{position:absolute; top:33px; right:40px; width:24px; height:24px; background:url("/common/images/btn-layer-popup-close-x.svg") no-repeat center center/cover}
+section .tab_con_area .list_wrap .list_pop .pop_wrap .btn_close{position:absolute; top:33px; right:40px; width:24px; height:24px; background:url("https://raw.githack.com/Hseongju/portfolio/main/common/images/btn-layer-popup-close-x.svg") no-repeat center center/cover}
 section .label_div{display:flex; flex-wrap:wrap}
 section .label_div .label{margin-right:5px; padding:5px 20px 4px; color:#fff; font-size:16px; font-family: "Pretendard_Regular", sans-serif; background:#06A4AB; border-radius:15px;}
 section .label_div .label.pc{background:#569CC7}
