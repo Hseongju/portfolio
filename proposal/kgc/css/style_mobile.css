@@ -1,0 +1,52 @@
+/*
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,500,700);
+*/
+
+*{margin:0; padding:0;}
+html{width:100%; height:100%}
+body{position:relative; font-size:13px; font-family:"Noto Sans KR", "Noto Sans KR", "Malgun Gothic"; color:#555; -webkit-text-size-adjust:none; line-height:18px; letter-spacing:-1px; height:100%}
+body.main{background:none;}
+body,div,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,p,form,fieldset,table,tr,th,td{margin:0; padding:0}
+ul,ol,li{list-style:none}
+img, fieldset{border:none; vertical-align:top}
+legend, caption{display:none}
+textarea, button{vertical-align:middle}
+input, select{vertical-align:middle; background:#fff; border:1px solid #d7d7d7; font-family:"Montserrat", "Noto Sans KR", "Malgun Gothic"; color:#555; border-radius:0; font-size:14px}
+input,option{padding:3px 10px; height:24px;}`
+input[type="radio"],input[type="checkbox"] {border:0}
+select{padding:3px; height:32px;}
+textarea{padding:10px; vertical-align:middle; background:#fff; border:1px solid #d7d7d7; font-family:"Montserrat", "Noto Sans KR", "Malgun Gothic"; color:#555; line-height:24px; font-size:14px}
+.checkbox{padding:0; border:0; height:auto;}
+a{text-decoration:none; color:#666666; vertical-align:middle;}
+a:hover, a:focus, a:active{text-decoration:none;}
+table{border-collapse:collapse; width:100%;}
+
+
+#mobileWrap{position:relative; width:824px; height:100%; margin:0 auto;}
+#mobileWrap .phone{position:absolute; top:150px; left:0; z-index:10;}
+#mobileWrap .phone .top{display:block; position:absolute; bottom:59px; left:358px; width:109px; height:51px; z-index:10;}
+#mobileWrap .btBox a{display:block; padding-bottom:10px;}
+#mobileWrap .btBox{position:absolute; top:150px; right:-10px; z-index:100; display:block}
+#mobileWrap .contents{position:absolute; top:428px; left:126px; width:750px; height:1334px; overflow:hidden; z-index:10;}
+#mobileWrap .contents .hamburger{position:absolute; top:0; right:0; z-index:10}
+#mobileWrap .contents .fixTextArea{position:absolute; top:164px; width:100%; left:0; z-index:5; text-align:center; width:100%}
+#mobileWrap .contents .fixTextArea .tit{opacity:0}
+#mobileWrap .contents .fixTextArea .tit img:nth-child(2){display:none}
+#mobileWrap .contents .fixTextArea .tit.on img:nth-child(1){display:none}
+#mobileWrap .contents .fixTextArea .tit.on img:nth-child(2){display:inline}
+#mobileWrap .contents .fixTextArea .tit.on2 img:nth-child(1){display:none}
+#mobileWrap .contents .fixTextArea .tit.on2 img:nth-child(2){display:none}
+#mobileWrap .contents .fixTextArea .txt{position:absolute; top:160px; left:0; width:100%; opacity:0;}
+#mobileWrap .contents .fixTextArea .btn{position:absolute; top:250px; left:0; width:100%; opacity:0}
+#mobileWrap .contents .scrollArea{display:block; position:relative; width:800px; height:100%; overflow-y:auto; overflow-x:hidden;}
+#mobileWrap .contents .scrollArea .logo{position:absolute; top:0; left:0; width:320px; height:110px}
+#mobileWrap .contents .scrollArea .btn{position:absolute; top:425px; right:25px; width:150px; height:480px;}
+#mobileWrap .contents .scrollArea .leelDiv{position:relative; width:750px}
+#mobileWrap .contents .scrollArea .leelDiv .one{height:2100px; background:url('../images/m_leel_bg1.jpg') no-repeat center; background-attachment:fixed; background-size:cover}
+#mobileWrap .contents .scrollArea .leelDiv .two{height:1000px; background:url('../images/m_leel_bg2.jpg') no-repeat center; background-attachment:fixed; background-size:cover}
+#mobileWrap .contents .scrollArea .leelDiv .img1{position:absolute; top:335px; right:70px; margin-top:400px; transition:margin-top 0.5s ease}
+#mobileWrap .contents .scrollArea .leelDiv .img2{position:absolute; top:900px; left:145px; width:700px; height:800px; background:rgba(139, 35, 50, 0.5); z-index:1; margin-top:400px; transition:margin-top 0.5s ease}
+#mobileWrap .contents .scrollArea .leelDiv .img3{position:absolute; top:1780px; left:258px; margin-top:400px; transition:margin-top 0.5s ease}
+
+

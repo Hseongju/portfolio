@@ -54,7 +54,7 @@ var commonScript = (function(){
               lazyLoading();
               setTimeout(function(){
                 popupResize();
-              },150)
+              },50)
             }
           }
         });
@@ -80,6 +80,7 @@ var commonScript = (function(){
       $(".tab_btn_area .btn").each(function(q){
         $(this).on("click", function(){
           if(!$(this).hasClass("on")){
+            lazyLoading();
             $(".tab_btn_area .btn").removeClass("on");
             $(this).addClass("on");
             $(".tab_con_area .tab_con").removeClass("on");
