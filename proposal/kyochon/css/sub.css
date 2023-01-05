@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+.header.type2{position: relative; top:0; background:#fff; box-shadow: 0px 1px 20px 1px rgba(0, 0, 0, 0.1); width:100%; height:170px; z-index: 100; transition: top 0.4s cubic-bezier(0.075, 0.82, 0.165, 1); transition-property: top;}
+.header.type2 h1{position:absolute; top:60px; left:50px}
+.header.type2 h1 a {display:block; width:180px; height:51px; background:url("../images/logo-blk.png") no-repeat 0 0;}
+.header.type2 .util{position:absolute; top:80px; right:60px; width:123px; height:15px; background:url("../images/util-blk.png") no-repeat 0 0;}
+
+#wrap.sub1 .menubt{top:520px; transform:none; opacity: 1; left:60px}
+
+#wrap.sub1 .sub_vis {position:relative; /*margin-top:170px;*/ height:500px; background: #fff;}
+#wrap.sub1 .sub_vis .bg_div {margin:0 auto; height:100%; overflow:hidden; background: #fff;}
+#wrap.sub1 .sub_vis .bg_div .bg.t1 {position:relative; margin:0 auto; height:100%; background:url("../images/sub1-vis-bg.png") no-repeat 0 -400px;  background-attachment:fixed;}
+#wrap.sub1 .sub_vis .bg_div .bg.t1:after {content:""; display:block; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4);}
+/* #wrap.sub1 .sub_vis .bg_div .txt_div.t1 .txt1{position:absolute; top:254px; left:321px; margin:0 auto; width:236px; height:64px; background:url("../images/sub1-vis-txt1.png") no-repeat calc(50% - 480px) 430px; background-attachment:fixed;} */
+#wrap.sub1 .sub_vis .bg_div .txt_div.t1 .txt1{position:absolute; top:0; left:0; margin:0 auto; width:100%; height:100%; background:url("../images/sub1-vis-txt1.png") no-repeat calc(50% - 480px) 430px; background-attachment:fixed;}
+/* #wrap.sub1 .sub_vis .bg_div .txt_div.t1 .txt2{position:absolute; top:362px; left:321px; margin:0 auto; width:555px; height:17px; background:url("../images/sub1-vis-txt2.png") no-repeat calc(50% - 480px) 430px;  background-attachment:fixed;} */
+#wrap.sub1 .sub_vis .bg_div .txt_div.t1 .txt2{position:absolute; top:0; left:0; margin:0 auto; width:100%; height:100%; background:url("../images/sub1-vis-txt2.png") no-repeat calc(50% - 350px) 540px;  background-attachment:fixed;}
+
+#wrap.sub1 .sub_con {position:relative;}
+#wrap.sub1 .sub_con .section {position:relative; z-index:1; background:#fff;}
+
+#wrap.sub1 .sub_con .section .sec_inner {width:1277px; margin:0 auto;}
+
+/* sec.one */
+#wrap.sub1 .sub_con .section.one {padding:200px 0;}
+#wrap.sub1 .sub_con .section.one .sec_inner .txt_div{text-align: center; }
+#wrap.sub1 .sub_con .section.one .sec_inner .txt_div .txt1 {position: relative; top:30px; opacity: 0; transition:all.4s ease-in-out;}
+#wrap.sub1 .sub_con .section.one .sec_inner .txt_div .txt1.active{top:0; opacity: 1;}
+#wrap.sub1 .sub_con .section.one .sec_inner .txt_div .txt2{position: relative; margin-top:36px; top: 20px; opacity: 0; transition:all 0.4s ease-in-out; }
+#wrap.sub1 .sub_con .section.one .sec_inner .txt_div .txt2.active{top:0; opacity: 1; transition-delay: 0.2s;}
+
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div{display: block; margin-top: 166px;  height:1003px; position: relative;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div .img_div{position: relative;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div .img_div > p{position: absolute;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div .img_div > p.img1{top:100px; left:0; z-index:1; opacity: 0; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div .img_div > p.img2{top:753px; left:435px; z-index:2; opacity: 0; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div .img_div > p.img3{top:973px; left:296px; z-index:3; opacity: 0; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div .txt_div{position: absolute; top:109px; right:0; text-align: left;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div .txt_div .tit{position: relative; top:30px; opacity: 0; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div .txt_div .clkTxt{margin-top: 71px;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div .txt_div .clkTxt .list:not(:first-child){display: none;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div .txt_div .clkTxt .tit{position: relative; top:30px; opacity: 0; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div .txt_div .clkTxt .txt{position: relative; top:30px; margin-top: 40px; opacity: 0; transition-property: top, opacity; transition:0.4s ease-out;}
+
+/* sec.one active */
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div.active .img_div > p.img1{top:0; opacity: 1;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div.active .img_div > p.img2{top:703px; opacity: 1; transition-delay: 0.2s;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div.active .img_div > p.img3{top:953px; opacity: 1; transition-delay: 0.4s;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div.active .txt_div .tit{top:0; opacity: 1; transition-delay: 0.6s;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div.active .txt_div .clkTxt .tit{top:0; opacity: 1; transition-delay: 0.8s;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div.active .txt_div .clkTxt .txt{top:0; opacity: 1; transition-delay: 1.0s;}
+/* #wrap.sub1 .sub_con .section.one .sec_inner .rolling_div.active .txt_div .clkTxt .list.active{display: block;} */
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div.active .clkTxt .list.active .tit{top:30px; opacity: 0; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div.active .clkTxt .list.active .txt{top:30px; opacity: 0; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div.active .clkTxt .list.active .tit.on{top:0; opacity: 1;}
+#wrap.sub1 .sub_con .section.one .sec_inner .rolling_div.active .clkTxt .list.active .txt.on{top:0; opacity: 1;transition-delay: 0.2s;}
+
+/* sec.two */
+#wrap.sub1 .sub_con .section.two{position: relative; width:100%; height:100vh; background: url("../images/sub1-sec2-bg1.png")no-repeat; background-position:0 0; transition:background-position 2s cubic-bezier(0.075, 0.82, 0.165, 1);}
+#wrap.sub1 .sub_con .section.two.sec_inner{height:100%;}
+#wrap.sub1 .sub_con .section.two .tit{position: relative; padding-top: 130px; top:50px; opacity: 0; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.two .cirCont{position: absolute; top:40%; transform: translate(0, -50%);}
+#wrap.sub1 .sub_con .section.two .cirCont .cir{position: absolute;}
+#wrap.sub1 .sub_con .section.two .cirCont .cir.fir{top:80px; left:50px; opacity: 0; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.two .cirCont .cir.sec{top:40px; left:410px; opacity: 0; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.two .cirCont .cir.thr{top:80px; left:860px; opacity: 0; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.two .dimd{position: absolute; top:0; left:0; background:#000; width:100%; height:100%; z-index: 9; opacity: 0;}
+
+/* sec.two active*/
+#wrap.sub1 .sub_con .section.two .tit.active{top:0; opacity: 1;}
+#wrap.sub1 .sub_con .section.two .cirCont.active .cir.fir{top:40px; opacity: 1;}
+#wrap.sub1 .sub_con .section.two .cirCont.active .cir.sec{top:0; opacity: 1; transition-delay: 0.2s;}
+#wrap.sub1 .sub_con .section.two .cirCont.active .cir.thr{top:40px; opacity: 1; transition-delay: 0.4s;}
+
+/* sec.thr */
+#wrap.sub1 .sub_con .section.thr{background:#fff; padding: 0 0 200px;}
+#wrap.sub1 .sub_con .section.thr .list1{display:flex; flex-wrap: nowrap; justify-content: left; align-items:flex-start; padding-top: 200px; height: 1800px;}
+#wrap.sub1 .sub_con .section.thr .list1 .tit{position: absolute; top:260px; left: 325px;}
+#wrap.sub1 .sub_con .section.thr .list1 .txtCont{position: absolute; top:200px; right:160px; width:50%; display:flex; flex-wrap: wrap; justify-content: left;}
+#wrap.sub1 .sub_con .section.thr .list1 .txtCont .txtBox{width:400px; height:400px; padding: 67px 0 0 60px; background: #fff; position:relative; opacity: 0; top:50px; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.thr .list1 .txtCont .txtBox.bgRed{background: #800020;}
+#wrap.sub1 .sub_con .section.thr .list2{padding-top: 206px;}
+#wrap.sub1 .sub_con .section.thr .list2 .tit{position:relative; opacity: 0; top:50px; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.thr .list2 .txtCont{padding-top: 140px;}
+#wrap.sub1 .sub_con .section.thr .list2 .txtCont li{display: inline-block; position:relative; opacity: 0; top:50px; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.thr .list2 .txtCont li:not(:last-child){margin-right: 79px;}
+
+/* sec.thr active */
+#wrap.sub1 .sub_con .section.thr .list1 .tit.fixed{position:fixed; }
+#wrap.sub1 .sub_con .section.thr .list1 .tit.bottom{top:1000px }
+#wrap.sub1 .sub_con .section.thr .list1 .txtCont .txtBox.active{top:0; opacity: 1;}
+#wrap.sub1 .sub_con .section.thr .list1 .txtCont .txtBox.active:nth-child(2n){transition-delay: 0.2s;}
+#wrap.sub1 .sub_con .section.thr .list2 .tit.active{top:0; opacity: 1;}
+#wrap.sub1 .sub_con .section.thr .list2 .txtCont.active li{top:0; opacity: 1;}
+#wrap.sub1 .sub_con .section.thr .list2 .txtCont.active li:nth-child(2){transition-delay: 0.2s;}
+#wrap.sub1 .sub_con .section.thr .list2 .txtCont.active li:nth-child(3){transition-delay: 0.4s;}
+#wrap.sub1 .sub_con .section.thr .list2 .txtCont.active li:nth-child(4){transition-delay: 0.6s;}
+
+/* sec.fou */
+#wrap.sub1 .sub_con .section.fou{position: relative;}
+#wrap.sub1 .sub_con .section.fou .secCont1{position: relative; width:100%; height:100%;background: #000 url("../images/sub1-sec4-bg.png")no-repeat 0 0; background-attachment:inherit; }
+#wrap.sub1 .sub_con .section.fou .secCont1 .txtInfo{}
+#wrap.sub1 .sub_con .section.fou .secCont1 .txtInfo .titCont{width:1277px; margin:0 auto;}
+#wrap.sub1 .sub_con .section.fou .secCont1 .txtInfo .titCont .tit{position: relative; padding-top: 306px; opacity: 0; top:50px; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.fou .secCont1 .txtInfo .titCont .txt{position: relative; padding-top: 80px; opacity: 0; top:50px; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.fou .secCont1 .txtCont{position: relative; margin : 292px auto 0; width:1600px; height:440px; background: url("../images/sub1-sec4-redbg.png")no-repeat 0 0/100% 100%; padding: 103px 0 0 162px; opacity: 0; transition-property: opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.fou .secCont1 .txtCont .tit{position:relative; opacity: 0; top:50px; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.fou .secCont1 .txtCont .txt{margin-top: 50px; position:relative; opacity: 0; top:50px; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.fou .secCont1 .txtCont .btn{display: inline-block; position: absolute; top:150px; right:160px; opacity: 0; transition-property: top, opacity; transition:0.4s ease-out;}
+
+#wrap.sub1 .sub_con .section.fou .secCont2{position: relative; background: #000; width:100%; height:557px;}
+#wrap.sub1 .sub_con .section.fou .secCont2 .info{position: absolute; top:50%; left:50%; transform: translate(-50%, -50%); text-align: center;}
+#wrap.sub1 .sub_con .section.fou .secCont2 .info .txt{position:relative; opacity: 0; top:50px; transition-property: top, opacity; transition:0.4s ease-out;}
+#wrap.sub1 .sub_con .section.fou .secCont2 .info .btn{position:relative; opacity: 0; top:50px; transition-property: top, opacity; transition:0.4s ease-out; display:inline-block; margin-top: 70px;}
+
+/* sec.fou active */
+#wrap.sub1 .sub_con .section.fou .secCont2 .info.active .txt{top:0; opacity: 1;}
+#wrap.sub1 .sub_con .section.fou .secCont2 .info.active .btn{top:0; opacity: 1; transition-delay: 0.2s;}
+#wrap.sub1 .sub_con .section.fou .secCont1 .txtInfo .titCont.active .tit{top:0; opacity: 1;}
+#wrap.sub1 .sub_con .section.fou .secCont1 .txtInfo .titCont.active .txt{top:0; opacity: 1; transition-delay: 0.2s;}
+#wrap.sub1 .sub_con .section.fou .secCont1 .txtCont.active{opacity: 1;}
+#wrap.sub1 .sub_con .section.fou .secCont1 .txtCont.active .tit{top:0; opacity: 1; transition-delay: 0.2s;}
+#wrap.sub1 .sub_con .section.fou .secCont1 .txtCont.active .txt{top:0; opacity: 1; transition-delay: 0.4s;}
+#wrap.sub1 .sub_con .section.fou .secCont1 .txtCont.active .btn{top:100px; opacity: 1; transition-delay: 0.6s;}
+
+.footer{position: relative;}
+
+
+
+
+
+

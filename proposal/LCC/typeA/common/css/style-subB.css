@@ -1,0 +1,45 @@
+@import url(./reset.css);
+body {background-color: #222;}
+header {border-bottom: 1px solid #ddd; z-index: 10 !important;}
+
+main {position: relative; z-index: 2;}
+main .fake-section {position: absolute; top: 0; left: 0; z-index: 1; width: 100%; height: 4442px; background-color: #fff;}
+main .fake-section .bg2 {position: absolute; bottom: 0; left: 0; z-index: 1; width: 100%; height: 834px; background-color: #f7f7f7;}
+main .fake-section .bg2::after {content: ""; position: absolute; bottom: -14px; left: 0; z-index: 1; display: block; width: 100%; height: 16px; border-radius: 0 0 16px 16px; background-color: #f7f7f7;}
+
+main .section1 {position: relative; z-index: 2; display: flex; width: 100%;}
+main .section1 .left-rayout {width: calc(100% - 522px);  border-right: 1px solid #ddd;}
+main .section1 .left-rayout .flower-class {margin: 200px auto 0 auto; padding-left: 320px; width: 1070px;}
+main .section1 .left-rayout .flower-class .title-box .title {margin-top: 62px;}
+main .section1 .left-rayout .flower-class .title-box .text-box img {width: 100%;}
+main .section1 .left-rayout .flower-class .img-box {margin-top: 30px;}
+main .section1 .left-rayout .flower-class .text-box {margin-top: 70px;}
+
+main .section1 .left-rayout .flower-list-wrap {position: relative;}
+main .section1 .left-rayout .flower-list-wrap .class-info-list {width: 1070px; margin: 200px auto 0 auto;}
+main .section1 .left-rayout .flower-list-wrap .class-info-list.list4::after {content: ""; display: block; clear: both;}
+main .section1 .left-rayout .flower-list-wrap .class-info-list.list4 .rolling-arrow {display: block; margin-top: 20px; float: right;}
+main .section1 .left-rayout .flower-list-wrap .class-info-list .list-box {display: flex; justify-content: space-between;}
+main .section1 .left-rayout .flower-list-wrap .btn-wrap {width: 100%; text-align: center;}
+main .section1 .left-rayout .flower-list-wrap .btn-list {display: inline-block; margin: 100px 0 160px 0;}
+main .section1 .left-rayout .flower-list-wrap .btn-list img {display: inline-block;}
+
+main .section1 .right-rayout {position: relative; top: 0; right: 0; width: 522px; height: 100vh;}
+main .section1 .right-rayout .inner {position: relative; top: 80px; padding: 64px 60px 155px 60px; width: 100%;}
+main .section1 .right-rayout .inner .title-box .title {display: flex; justify-content: space-between;}
+main .section1 .right-rayout .inner .title-box .sub-title {margin-top: 40px;}
+main .section1 .right-rayout .inner .content {margin-top: 14px;}
+main .section1 .right-rayout .inner .content .text-box {margin-top: 40px;}
+main .section1 .right-rayout .btn-area {position: absolute; bottom: 0; left: 0; display: flex;}
+main .section1 .right-rayout .btn-area .hide-txt {position: absolute; bottom: 98px; right: 35px;}
+
+main .section2 {position: relative; z-index: 2; width: 100%; padding: 160px 400px 200px 400px;}
+main .section2 .banner-list-wrap {width: 1120px; margin: 0 auto;}
+main .section2 .banner-list-wrap .content {margin-top: 50px; display: flex;}
+main .section2 .banner-list-wrap .content .banner-list {width: 25%; margin-right: 38px;}
+main .section2 .banner-list-wrap .content .banner-list:last-child {margin-right: 0;}
+main .fake-footer {height: 800px; background-color: transparent;}
+main .fake-footer a {display: block; width: 100%; height: 100%;}
+
+footer {position: fixed; bottom: 0; left: 0; display: flex; align-items: center; justify-content: center; padding: 126px 100px 200px 100px; width: 100%; height: 800px; background-color: #222;}
+footer a img {width: 100;}

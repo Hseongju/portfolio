@@ -1,0 +1,158 @@
+@import url(./reset.css);
+body {height: 100%; background: #222;}
+header {position: fixed; top: 0; left: 0; width: 100%; height: 100px; border-bottom: 1px solid #ddd; z-index: 10;}
+.wrap {position: relative; width: 100%;}
+main {position: relative; padding-bottom: 260px; width: 100%; overflow: hidden; z-index: 1;}
+
+main .main-wrap {position: relative; padding-top: 180px; width: 1721px; margin: 0 auto;}
+main .main-title {margin-top: 92px; margin-bottom: 120px; width: 100%; text-align: center;}
+
+main .cate-area {position: absolute; z-index: 0; top: 368px; width: 100%;}
+main .cate-area .cate-icon {display: flex; justify-content: space-between; margin: 0 auto; width: 80px;}
+main .cate-area .cate-icon .icon-grid a {position: relative; display: block;}
+main .cate-area .cate-icon .icon-calendar a {position: relative; display: block;}
+main .cate-area .cate-icon img.on {position: absolute; top: 0; left: 0; opacity: 0;}
+main .cate-area .cate-sort {position: absolute; top: 0; right: 0;}
+
+main .section {position: relative; height: 2480px;}
+
+main .left-side {position: absolute; z-index: 1; float: left; margin-top: -100px; width: 272px; height: calc(100% - 100px);}
+main .left-side .left-area {margin-top: -25px; overflow-x: hidden; overflow-y: hidden;}
+main .left-side .left-area .left-wrap {position: relative; width: 300px; height: calc(100vh - 300px); overflow-y: auto;}
+main .section .left-side .total-filter {position: relative; height: 84px;}
+main .section .left-side .total-filter .total {position: absolute; top: 0;}
+main .section .left-side .total-filter .filter-btn {position: absolute; top: 52px; z-index: 10;}
+main .section .left-side .total-filter .filter-btn .on {position: absolute; top: 0; left: 0; opacity: 0;}
+main .section .left-side .filter-wrap {padding-bottom: 100px; margin-top: 40px;}
+
+main .section .fake-left {float: left; width: 272px; height: 100%;}
+main .section .right-side {float: right; width: 1370px; height: 100%; overflow: hidden;}
+main .section .right-side .grid-area {height: 100%; /* height: 2480px;*/overflow: hidden;}
+main .section .right-side {transition: .5s;}
+main .section .right-side .grid-area ul {width: 100%; height: 100%; overflow: hidden;}
+main .section .right-side .grid-area ul li {position: absolute; transition: .5s;}
+main .section .right-side .grid-area ul li:nth-child(1) {top: 0; left: calc((313px) + 39px);}
+main .section .right-side .grid-area ul li:nth-child(2) {top: 0; left: calc((313px) * 2 + (39px) * 2);}
+main .section .right-side .grid-area ul li:nth-child(3) {top: 0; left: calc((313px) * 3 + (39px) * 3);}
+main .section .right-side .grid-area ul li:nth-child(4) {top: 0; left: calc((313px) * 4 + (39px) * 4);}
+main .section .right-side .grid-area ul li:nth-child(5) {top: calc((530px) + (120px)); left: calc((313px) + 39px);}
+main .section .right-side .grid-area ul li:nth-child(6) {top: calc((530px) + (120px)); left: calc((313px) * 2 + (39px) * 2);}
+main .section .right-side .grid-area ul li:nth-child(7) {top: calc((530px) + (120px)); left: calc((313px) * 3 + (39px) * 3);}
+main .section .right-side .grid-area ul li:nth-child(8) {top: calc((530px) + (120px)); left: calc((313px) * 4 + (39px) * 4);}
+main .section .right-side .grid-area ul li:nth-child(9) {top: calc((530px) * 2 + (120px) * 2); left:calc((313px) + 39px);}
+main .section .right-side .grid-area ul li:nth-child(10) {top: calc((530px) * 2 + (120px) * 2); left:calc((313px) * 2 + (39px) * 2);}
+main .section .right-side .grid-area ul li:nth-child(11) {top: calc((530px) * 2 + (120px) * 2); left:calc((313px) * 3 + (39px) * 3);}
+main .section .right-side .grid-area ul li:nth-child(12) {top: calc((530px) * 2 + (120px) * 2); left:calc((313px) * 4 + (39px) * 4);}
+main .section .right-side .grid-area ul li:nth-child(13) {top: calc((530px) * 3 + (120px) * 3); left:calc((313px) + (39px));}
+main .section .right-side .grid-area ul li:nth-child(14) {top: calc((530px) * 3 + (120px) * 3); left:calc((313px) * 2 + (39px) * 2);}
+main .section .right-side .grid-area ul li:nth-child(15) {top: calc((530px) * 3 + (120px) * 3); left:calc((313px) * 3 + (39px) * 3);}
+main .section .right-side .grid-area ul li:nth-child(16) {top: calc((530px) * 3 + (120px) * 3); left:calc((313px) * 4 + (39px) * 4);}
+main .section .right-side .grid-area ul li:nth-child(17) {top: calc((530px) * 4 + (120px) * 4); left:calc((313px) + (39px));}
+main .section .right-side .grid-area ul li:nth-child(18) {top: calc((530px) * 4 + (120px) * 4); left:calc((313px) * 2 + (39px) * 2); transition-delay: .1s;}
+main .section .right-side .grid-area ul li:nth-child(19) {top: calc((530px) * 4 + (120px) * 4); left:calc((313px) * 3 + (39px) * 3); transition-delay: .12s;}
+main .section .right-side .grid-area ul li:nth-child(20) {top: calc((530px) * 4 + (120px) * 4); left:calc((313px) * 4 + (39px) * 4); transition-delay: .15s;}
+main .section .right-side .grid-area ul li:nth-child(n + 17) {display: none;}
+
+main .scroll-motion {transform: translateY(30%); opacity: 0; /* transition: .5s; */ transition-timing-function: ease;}
+main .scroll-motion.active {transform: translateY(0); opacity: 1;}
+
+main .section.active .left-side .total-filter .filter-btn img {opacity: 0;}
+main .section.active .left-side .total-filter .filter-btn .on{opacity: 1;}
+main .section.active .right-side .grid-area ul li:nth-child(1) {top: 0; left: 0;}
+main .section.active .right-side .grid-area ul li:nth-child(2) {top: 0; left: calc((313px) + (39px));}
+main .section.active .right-side .grid-area ul li:nth-child(3) {top: 0; left: calc((313px) * 2 + (39px) * 2);}
+main .section.active .right-side .grid-area ul li:nth-child(4) {top: 0; left: calc((313px) * 3 + (39px) * 3);}
+main .section.active .right-side .grid-area ul li:nth-child(5) {top: 0; left: calc((313px) * 4 + (39px) * 4);}
+main .section.active .right-side .grid-area ul li:nth-child(6) {top: calc((530px) + (120px)); left:0;}
+main .section.active .right-side .grid-area ul li:nth-child(7) {top: calc((530px) + (120px)); left: calc((313px) + (39px));}
+main .section.active .right-side .grid-area ul li:nth-child(8) {top: calc((530px) + (120px)); left: calc((313px) * 2 + (39px) * 2);}
+main .section.active .right-side .grid-area ul li:nth-child(9) {top: calc((530px) + (120px)); left: calc((313px) * 3 + (39px) * 3);}
+main .section.active .right-side .grid-area ul li:nth-child(10) {top: calc((530px) + (120px)); left: calc((313px) * 4 + (39px) * 4);}
+main .section.active .right-side .grid-area ul li:nth-child(11) {top: calc((530px) * 2 + (120px) * 2); left: 0;}
+main .section.active .right-side .grid-area ul li:nth-child(12) {top: calc((530px) * 2 + (120px) * 2); left: calc((313px) + (39px));}
+main .section.active .right-side .grid-area ul li:nth-child(13) {top: calc((530px) * 2 + (120px) * 2); left: calc((313px) * 2 + (39px) * 2);}
+main .section.active .right-side .grid-area ul li:nth-child(14) {top: calc((530px) * 2 + (120px) * 2); left: calc((313px) * 3 + (39px) * 3);}
+main .section.active .right-side .grid-area ul li:nth-child(15) {top: calc((530px) * 2 + (120px) * 2); left: calc((313px) * 4 + (39px) * 4);}
+main .section.active .right-side .grid-area ul li:nth-child(16) {top: calc((530px) * 3 + (120px) * 3); left:0;}
+main .section.active .right-side .grid-area ul li:nth-child(17) {top: calc((530px) * 3 + (120px) * 3); left:calc((313px) + (39px));}
+main .section.active .right-side .grid-area ul li:nth-child(18) {top: calc((530px) * 3 + (120px) * 3); left:calc((313px) * 2 + (39px) * 2);}
+main .section.active .right-side .grid-area ul li:nth-child(19) {top: calc((530px) * 3 + (120px) * 3); left:calc((313px) * 3 + (39px) * 3);}
+main .section.active .right-side .grid-area ul li:nth-child(20) {top: calc((530px) * 3 + (120px) * 3); left:calc((313px) * 4 + (39px) * 4);}
+main .section.active .right-side .grid-area ul li:nth-child(n + 17) {display: block;}
+main .section .right-side .grid-area ul li:nth-child(4n) {margin-right: 0;}
+
+/* li 트랜지션 효과 */
+main .section .right-side .grid-area.default ul li:nth-child(2) {transition-delay: .1s;}
+main .section .right-side .grid-area.default ul li:nth-child(3) {transition-delay: .2s;}
+main .section .right-side .grid-area.default ul li:nth-child(4) {transition-delay: .3s;}
+main .section .right-side .grid-area.default ul li:nth-child(5) {}
+main .section .right-side .grid-area.default ul li:nth-child(6) {transition-delay: .1s;}
+main .section .right-side .grid-area.default ul li:nth-child(7) {transition-delay: .2s;}
+main .section .right-side .grid-area.default ul li:nth-child(8) {transition-delay: .3s;}
+main .section .right-side .grid-area.default ul li:nth-child(9) {}
+main .section .right-side .grid-area.default ul li:nth-child(10) {transition-delay: .1s;}
+main .section .right-side .grid-area.default ul li:nth-child(11) {transition-delay: .2s;}
+main .section .right-side .grid-area.default ul li:nth-child(12) {transition-delay: .3s;}
+main .section .right-side .grid-area.default ul li:nth-child(13) {}
+main .section .right-side .grid-area.default ul li:nth-child(14) {transition-delay: .1s;}
+main .section .right-side .grid-area.default ul li:nth-child(15) {transition-delay: .2s;}
+main .section .right-side .grid-area.default ul li:nth-child(16) {transition-delay: .3s;}
+main .section .right-side .grid-area.default ul li:nth-child(17) {}
+main .section .right-side .grid-area.default ul li:nth-child(18) {transition-delay: .1s;}
+main .section .right-side .grid-area.default ul li:nth-child(19) {transition-delay: .2s;}
+main .section .right-side .grid-area.default ul li:nth-child(20) {transition-delay: .3s;}
+
+main .section .right-side .grid-area.long ul li:nth-child(11) {}
+main .section .right-side .grid-area.long ul li:nth-child(12) {transition-delay: .1s;}
+main .section .right-side .grid-area.long ul li:nth-child(13) {transition-delay: .2s;}
+main .section .right-side .grid-area.long ul li:nth-child(14) {transition-delay: .3s;}
+main .section .right-side .grid-area.long ul li:nth-child(15) {transition-delay: .4s;}
+main .section .right-side .grid-area.long ul li:nth-child(16) {}
+main .section .right-side .grid-area.long ul li:nth-child(17) {transition-delay: .1s;}
+main .section .right-side .grid-area.long ul li:nth-child(18) {transition-delay: .2s;}
+main .section .right-side .grid-area.long ul li:nth-child(19) {transition-delay: .3s;}
+main .section .right-side .grid-area.long ul li:nth-child(20) {transition-delay: .4s;}
+
+main .section.active {margin-top: 0;}
+main .section.active .fake-left {display: none;}
+main .section.active .left-side .left-wrap {overflow-y: hidden;}
+main .section.active .right-side {width: 100%;}
+main .section.active .right-side .grid-area ul li:nth-child(4n) {margin-right: 37px;}
+main .section.active .right-side .grid-area ul li:nth-child(5n) {margin-right: 0;}
+
+main .section .right-side .calendar-area {display: none; opacity: 0; transition: .3s;}
+main .calendar-area {display: none;}
+
+main.calendar-active .cate-area .cate-icon img {opacity: 0;}
+main.calendar-active .cate-area .cate-icon img.on {opacity: 1;}
+
+main.calendar-active .calendar-area {display: block;}
+
+main.calendar-active .left-side .left-area .filter-wrap {display: none;}
+main.calendar-active .section .left-side {height: 84px;}
+main.calendar-active .section .left-side .left-area {height: 84px;}
+main.calendar-active .section .left-side .left-area .left-wrap {height: 84px;}
+main.calendar-active .section .left-side .total-filter .filter-btn img {opacity: 0;}
+main.calendar-active .section .left-side .total-filter .filter-btn .on {opacity: 1; pointer-events: none;}
+
+main.calendar-active .section {height: 2208px;}
+main.calendar-active .section .filter-btn a {pointer-events: none;}
+main.calendar-active .section .fake-left {display: none;}
+main.calendar-active .right-side {display: none;}
+main.calendar-active .right-side .calendar-area {width: 100%;}
+main.calendar-active .right-side .grid-area {display: none; opacity: 0;}
+main.calendar-active .right-side .calendar-area {display: block; opacity: 1;}
+main .calendar-click {position: absolute; top: 0; left: 0; display: block; width: 160px; height: 60px;}
+main.calendar-active img.calendar-img-on {position: absolute; top: 70px; left: 0; opacity: 0; transition: .2s ease;}
+main.calendar-active img.calendar-img-on.active {opacity: 1;}
+main.calendar-active .calendar-list {display: flex; flex-wrap: wrap; margin-top: 63px;}
+main.calendar-active .calendar-list li {margin-top: 20px;}
+main.calendar-active .calendar-list li:nth-child(1), main.calendar-active .calendar-list li:nth-child(2) {margin-top: 0;}
+main.calendar-active .calendar-list li:nth-child(2n) {margin-left: 20px;}
+main .pagination {margin-top: 120px; width: 100%; text-align: center;}
+
+.fake-footer {width: 100%; height: 800px;}
+
+.main-bg {position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; background: #fff;}
+
+footer {position: fixed; bottom: 0; padding-top: 116px; width: 100%; height: 800px; text-align: center; background: #222;}

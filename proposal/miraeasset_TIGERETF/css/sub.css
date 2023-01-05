@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+@font-face {font-family: "GeneralSans-Extralight"; font-weight: normal; src: url("../fonts/GeneralSans-Extralight.eot"); src: url("../fonts/GeneralSans-Extralight.eot?#iefix") format("embedded-opentype"), url("../fonts/GeneralSans-Extralight.woff") format("woff"), url("../fonts/GeneralSans-Extralight.otf") format("opentype"), url("../fonts/GeneralSans-Extralight.ttf") format("truetype"); src: local("?"), url("../fonts/GeneralSans-Extralight.woff") format("woff");}
+@font-face {font-family: "GeneralSans-Light"; font-weight: normal; src: url("../fonts/GeneralSans-Light.eot"); src: url("../fonts/GeneralSans-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/GeneralSans-Light.woff") format("woff"), url("../fonts/GeneralSans-Light.otf") format("opentype"), url("../fonts/GeneralSans-Light.ttf") format("truetype"); src: local("?"), url("../fonts/GeneralSans-Light.woff") format("woff");}
+@font-face {font-family: "GeneralSans-Regular"; font-weight: normal; src: url("../fonts/GeneralSans-Regular.eot"); src: url("../fonts/GeneralSans-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/GeneralSans-Regular.woff") format("woff"), url("../fonts/GeneralSans-Regular.otf") format("opentype"), url("../fonts/GeneralSans-Regular.ttf") format("truetype"); src: local("?"), url("../fonts/GeneralSans-Regular.woff") format("woff");}
+@font-face {font-family: "GeneralSans-Medium"; font-weight: normal; src: url("../fonts/GeneralSans-Medium.eot"); src: url("../fonts/GeneralSans-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/GeneralSans-Medium.woff") format("woff"), url("../fonts/GeneralSans-Medium.otf") format("opentype"), url("../fonts/GeneralSans-Medium.ttf") format("truetype"); src: local("?"), url("../fonts/GeneralSans-Medium.woff") format("woff");}
+@font-face {font-family: "GeneralSans-Semibold"; font-weight: normal; src: url("../fonts/GeneralSans-Semibold.eot"); src: url("../fonts/GeneralSans-Semibold.eot?#iefix") format("embedded-opentype"), url("../fonts/GeneralSans-Semibold.woff") format("woff"), url("../fonts/GeneralSans-Semibold.otf") format("opentype"), url("../fonts/GeneralSans-Semibold.ttf") format("truetype"); src: local("?"), url("../fonts/GeneralSans-Semibold.woff") format("woff");}
+@font-face {font-family: "GeneralSans-Bold"; font-weight: normal; src: url("../fonts/GeneralSans-Bold.eot"); src: url("../fonts/GeneralSans-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/GeneralSans-Bold.woff") format("woff"), url("../fonts/GeneralSans-Bold.otf") format("opentype"), url("../fonts/GeneralSans-Bold.ttf") format("truetype"); src: local("?"), url("../fonts/GeneralSans-Bold.woff") format("woff");}
+
+body {background: #fff !important;}
+.sub1 {overflow: hidden; background: #001c3a;}
+
+/* sub1 헤더 */
+.sub1 .header {position: fixed; top: -120px; left: 0; width: 100%; height: 120px; z-index: 12;}
+.sub1 .header .logo {position: absolute; top: 50px; left: 80px; width: 155px; height: 20px; background: url("../images/gnb-logo.png") no-repeat center center;}
+.sub1 .header .one_d {position: absolute; top: 45px; left: 470px; width: 615px; height: 27px; background: url("../images/gnb-white.png") no-repeat center center;}
+.sub1 .header .all_menu {position: absolute; top: 37px; right: 80px; width: 187px; height: 46px; background: url("../images/gnb-all-menu.png") no-repeat center center;}
+
+.sub1 .header.on {background: #fff;}
+.sub1 .header.on .one_d {position: absolute; top: 45px; left: 470px; width: 615px; height: 27px; background: url("../images/gnb-black.png") no-repeat center center;}
+.sub1 .header.on .all_menu {position: absolute; top: 37px; right: 80px; width: 187px; height: 46px; background: url("../images/gnb-all-menu-on.png") no-repeat center center;}
+
+/* 비주얼 */
+.sub1 .visual_area {padding-bottom: 400px;}
+.sub1 .visual_area .img {width: 100%; height: 100vh; opacity: .2; transform-origin: 50% 100%;}
+.sub1 .visual_area .img img {width: 100%; height: 100%; transform: scale(1.2); transform-origin: center;}
+.sub1 .visual_div {position: absolute; top: 0; left: 0; width: 100%; height: 100vh;}
+.sub1 .visual_div .txt_div {position: absolute; top: 50%; left: 0; width: 100%; transform: translateY(-50%); text-align: center;}
+.sub1 .visual_div .txt_div p {position: relative; top: 50px; opacity: 0;}
+.sub1 .visual_div .txt_div p img {transition: opacity .6s ease; opacity: 0;}
+.sub1 .visual_div .txt_div p:nth-child(2) img {transition-delay: .2s;}
+.sub1 .visual_div .txt_div p:nth-child(3) img {transition-delay: .4s;}
+.sub1 .visual_div .txt_div p:nth-child(2) {margin-top: 20px;}
+.sub1 .visual_div .txt_div p:nth-child(3) {margin-top: 80px;}
+.sub1 .visual_div .txt_div p.on img {opacity: 1;}
+.sub1 .visual_div .btn_div {position: absolute; top: 350px; right: 0; opacity: 0;}
+.sub1 .visual_div .btn_div img {transition: opacity .6s ease; opacity: 0; transition-delay: .6s;}
+.sub1 .visual_div .btn_div.on img {opacity: 1;}
+.sub1 .visual_div .scroll {position: fixed; bottom: 45px; left: 50%; transform: translateX(-50%);}
+.sub1 .visual_div .scroll img {position: relative;}
+.sub1 .trigger_txt_area {position: absolute; top: 100vh; left: 0; width: 100%; height: 100vh;}
+.sub1 .trigger_txt_area .cross_txt {position: absolute; top: -100px; left: 0; width: 100%;}
+.sub1 .cross_txt p {text-align: center;}
+.sub1 .cross_txt p:nth-child(1) span {position: relative; right: 100px; opacity: 0; transition: right 1s ease, opacity 1s ease;}
+.sub1 .cross_txt p:nth-child(1).on span {right: 0; opacity: 1;}
+.sub1 .cross_txt p:nth-child(2) {position: relative; top: -74px;}
+.sub1 .cross_txt p:nth-child(2) span {position: relative; left: 100px; opacity: 0; transition: left 1s ease, opacity 1s ease;}
+.sub1 .cross_txt p:nth-child(2).on span {left: 0; opacity: 1;}
+.sub1 .trigger_txt_area .info_txt {position: absolute; top: 500px; left: 340px; width: 1274px;}
+.sub1 .trigger_txt_area .info_txt p {position: absolute; top: 50px; opacity: 0; transition: top 1s ease, opacity 1s ease;}
+.sub1 .trigger_txt_area .info_txt p:nth-child(1) {left: 0;}
+.sub1 .trigger_txt_area .info_txt p:nth-child(2) {right: 0; top: 200px;}
+.sub1 .trigger_txt_area .info_txt p.on:nth-child(1) {top: 0; opacity: 1;}
+.sub1 .trigger_txt_area .info_txt p.on:nth-child(2) {top: 150px; opacity: 1; transition-delay: .2s;}
+
+/* lnb */
+.lnb_area {position: absolute; bottom: -120px; left: 0; width: 100%; height: 80px; z-index: 10;}
+.lnb_area .lnb_div {position: relative; margin: 0 auto; width: 1760px; height: 100%;}
+.lnb_area .lnb_div .lnb_menu {position: absolute; top: 50%; left: 0; transform: translateY(-50%);}
+.lnb_area .lnb_div .lnb_menu a {display: block; float: left; position: relative; margin-right: 60px; color: #fff;}
+.lnb_area .lnb_div .lnb_menu a:last-child {margin-right: 0;}
+.lnb_area .lnb_div .lnb_menu a:after {transition: width .4s ease;}
+.lnb_area .lnb_div .lnb_btn_area {position: absolute; top: 50%; right: 0; transform: translateY(-50%);}
+.lnb_area .lnb_div .lnb_btn_area .icon_div {position: relative; top: 12px;}
+.lnb_area .lnb_div .lnb_btn_area .lnb_btn {margin-left: 60px;}
+.lnb_area.on {display: none;}
+
+.fixed_lnb_area {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 80px; z-index: 10; background: rgba(0, 0, 0, .9); border-bottom: 1px solid rgba(112, 112, 112, .2);}
+.fixed_lnb_area .lnb_div {position: relative; margin: 0 auto; width: 1760px; height: 100%;}
+.fixed_lnb_area .lnb_div .lnb_menu {position: absolute; top: 50%; left: 0; transform: translateY(-50%);}
+.fixed_lnb_area .lnb_div .lnb_menu a {display: block; float: left; position: relative; margin-right: 60px; color: #fff;}
+.fixed_lnb_area .lnb_div .lnb_menu a:last-child {margin-right: 0;}
+.fixed_lnb_area .lnb_div .lnb_menu a:after {transition: width .4s ease;}
+.fixed_lnb_area .lnb_div .lnb_btn_area {position: absolute; top: 50%; right: 0; transform: translateY(-50%);}
+.fixed_lnb_area .lnb_div .lnb_btn_area .icon_div {position: relative; top: 12px;}
+.fixed_lnb_area .lnb_div .lnb_btn_area .lnb_btn {margin-left: 60px;}
+.fixed_lnb_area .lnb_div .lnb_menu a.on:after {display: block; content: ""; position: absolute; bottom: -25px; left: 0; width: 100%; height: 2px; background: #fff;}
+
+/* 반도체 산업 투자 section */
+.industry_sec .tit_area {overflow: hidden;}
+.industry_sec .tit_area .why {float: left; position: relative; left: 100px; margin-left: -55px; opacity: 0; transition: left 1.5s ease, opacity 1.5s ease;}
+.industry_sec .tit_area .why.active {left: 0; opacity: 1;}
+.industry_sec .tit_area .txt {float: left; position: relative; top: 120px; margin-left: 190px; opacity: 0; transition: top 1s ease, opacity 1s ease; transition-delay: .2s;}
+.industry_sec .tit_area .txt.active {top: 70px; opacity: 1;}
+.industry_sec .industry_list {margin: 84px auto 0; padding-bottom: 100px; width: 1280px;}
+.industry_sec .industry_list .list_div:nth-child(1) {margin-left: 20px;}
+.industry_sec .industry_list .list_div:nth-child(2) {text-align: right; margin-top: -290px;}
+.industry_sec .industry_list .list_div:nth-child(3) {margin: -100px 0 0 280px;}
+.industry_sec .industry_list .list {display: inline-block; position: relative; top: 50px; text-align: left; opacity: 0; transition: top 1s ease, opacity 1s ease;}
+.industry_sec .industry_list .list.active {top: 0; opacity: 1;}
+.industry_sec .industry_list .list .count {margin-bottom: 40px; font-size: 300px; font-family: "GeneralSans-Medium"; color: #043b72; letter-spacing: -15px;}
+.industry_sec .bg_area {position: relative; width: 100%; height: 100vh; text-align: center;}
+.industry_sec .mask_div {overflow: hidden; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3;}
+.industry_sec .mask_div .mask {width: 100%; height: 100%;}
+.industry_sec .mask_div .mask img {width: 100%; height: 100%; transform: scale(1.5); transition: transform .8s ease;}
+.industry_sec .mask_div .mask.on img {transform: scale(10); transform-origin: center center;}
+/* .industry_sec .bg_area .bg_div {overflow: hidden; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: inline-block; width: 460px; height: 460px; border-radius: 50%; transform-origin: center;} */
+.industry_sec .bg_area .bg {overflow: hidden; position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 100%; height: 100vh;}
+.industry_sec .bg_area .bg.on {top: 0; transform: translateY(0);}
+.industry_sec .bg_area .bg:nth-child(2) {z-index: 2;}
+.industry_sec .bg_area .bg:nth-child(3) {z-index: 1;}
+.industry_sec .bg_area .bg .fixed_img {position: relative; top: 0; left: 0; width: 100%; height: 100vh;}
+.industry_sec .bg_area .bg:nth-child(2) .fixed_img {background: url("../images/sub-industry-bg1.png") no-repeat center center/cover #000;}
+.industry_sec .bg_area .bg:nth-child(3) .fixed_img {background: url("../images/sub-industry-bg2.png") no-repeat center center/cover #000;}
+.industry_sec .bg_area .bg .txt {position: absolute; top: 0; left: 0; width: 100%; height: 100vh; text-align: center;}
+.industry_sec .bg_area .bg .txt span {display: inline-block; position: relative; top: 50%; transform: translateY(-50%); margin-top: 50px; opacity: 0; transition: margin 1s ease, opacity 1s ease;}
+.industry_sec .bg_area .bg .txt.active span {margin-top: 0; opacity: 1;}
+.white_bg {padding: 200px 0;}
+.white_bg_txt {position: relative; top: 50px; text-align: center; opacity: 0; transition: top 1s ease, opacity 1s ease;}
+.white_bg_txt.active {top: 0; opacity: 1;}
+
+/* 최근 이슈 돌아보기 section */
+.issue_sec {background: #f4f4f4;}
+.issue_sec .inner {margin: 0 auto; padding: 160px 0; width: 1240px;}
+.issue_sec .inner .issue_list {display: flex; justify-content: space-between; margin-top: 60px; padding-bottom: 120px; border-bottom: 1px solid #e5e6e5;}
+.issue_sec .inner .info_txt {margin-top: 120px;}
+.issue_sec .info_list {overflow: hidden; height: 260px;}
+.issue_sec .info_list > a {display: block; float: left; position: relative; width: calc(100% / 3); width: -webkit-calc(100% / 3); height: 100%; background: #000; border-right: 1px solid rgba(112, 112, 112, .2);}
+.issue_sec .info_list > a .bg {position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity .4s ease;}
+.issue_sec .info_list > a:hover .bg {opacity: 1; transition: opacity .4s ease;}
+.issue_sec .info_list > a:last-child {border-right: none;}
+.issue_sec .info_list > a .txt {position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 100%; text-align: center; z-index: 2;}
+
+.footer {position: relative;}
+.footer img {width: 100%;}

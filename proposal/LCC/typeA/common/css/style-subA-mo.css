@@ -1,0 +1,46 @@
+#mobileWrap .content {background: #222; z-index: 10;}
+
+#mobileWrap .content .scroll.active {overflow-y: hidden;}
+
+header .nav {top: -1px;}
+header .nav .ci {opacity: 1;}
+
+main {position: relative; z-index: 1; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; overflow: hidden;}
+
+.filter-img {position: absolute; top: 0; left: -100%; padding-top: 48px; width: 100%; height: 100vh; text-align: center; border-top-left-radius: 50px; border-top-right-radius:50px; background: #fff; transition: .3s; z-index: 11; overflow: hidden;}
+.filter-img a.close-btn {position: absolute; top: 44px; right: 35px; width: 32px; height: 32px;}
+
+.filter-img.filter-active {left: 0;}
+
+main .main-title {padding-top: 140px; text-align: center; background: #fff;}
+main .total {margin-top: -1px; padding: 0 16px; padding-top: 32px; width: 100%; background: #fff;}
+
+main .cate-area {display: flex; justify-content: space-between; align-items: center; padding: 10px 16px 16px 16px; margin-top: -1px; width: 100%; background: #fff;}
+main .cate-area a.filter {display: block;}
+main .cate-area .cate-icon {display: flex; position: absolute; left: 50%; transform: translateX(-50%); width: 72px;}
+main .cate-area .cate-icon .cate-grid {position: relative;}
+main .cate-area .cate-icon .cate-calendar {position: relative;}
+main .cate-area .cate-icon img.on {position: absolute; top: 0; left: 0; opacity: 0;}
+main .cate-area .cate-icon .cate-grid {margin-right: 8px;}
+
+main .section {position: relative; padding-bottom: 200px; margin-top: -1px; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; background: #fff;}
+main .section .before-filter {padding: 0 16px;}
+main .section .after-filter {display: none; padding: 0 16px;}
+main .section .calendar {display: none;}
+
+main.after .after-filter {display: block;}
+main.after .before-filter {display: none;}
+
+main.calendar-active .cate-icon img {opacity: 0;}
+main.calendar-active .cate-icon img.on {opacity: 1;}
+main.calendar-active .calendar {position: relative; display: block;}
+main.calendar-active .calendar .link{position: absolute; top: 100px; left: 0; width: 100%; height: 230px; background: rgba(0,0,0,0.);}
+main.calendar-active .after-filter {display: none;}
+main.calendar-active .before-filter {display: none;}
+
+main .section .more-btn {margin-top: 40px; text-align: center;}
+.fake-footer {position: relative; z-index: -1; width: 100%; height: 640px;}
+.fake-footer a {display: block; width: 100%; height: 100%;}
+footer {position: fixed; bottom: 77px; display: block; padding-top: 57px; padding-left: 16px; height: 558px; border-bottom-left-radius: 50px; border-bottom-right-radius: 50px; text-align: center; overflow: hidden;}
+
+#controler{position: absolute; bottom: 8px; bottom: 0; left: 0; z-index: 10; display: flex; justify-content: space-between; padding: 12px 35px; width: 372px; height: 82px; border-radius: 0 0 42px 42px; background: #fff;}

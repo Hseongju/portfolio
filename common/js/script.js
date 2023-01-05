@@ -45,16 +45,17 @@ var commonScript = (function(){
       }
     },
     commonFn: function(){
-
       $("section .tab_con_area .list_wrap .list").each(function(){
         $(this).on("click", function(){
-          if(!$(this).hasClass("no_click")){
-            $("body").addClass("stop_scroll")
-            $(this).siblings(".list_pop").fadeIn()
-            lazyLoading();
-            setTimeout(function(){
-              popupResize();
-            },20)
+          if($(this).siblings(".list_pop").size() > 0){
+            if(!$(this).hasClass("no_click")){
+              $("body").addClass("stop_scroll")
+              $(this).siblings(".list_pop").fadeIn()
+              lazyLoading();
+              setTimeout(function(){
+                popupResize();
+              },30)
+            }
           }
         });
       });
@@ -264,7 +265,7 @@ var commonScript = (function(){
     },
     swiperFn: function(){
       if($(".visual_area .swiper-slide").length > 1){
-        var progressBarMotion = gsap.to($(".visual_area .progress_bar .bar"), 5, {width:"100%", ease:"none", onComplete:function(){
+        var progressBarMotion = gsap.to($(".visual_area .progress_bar .bar"), 5, {height:"100%", ease:"none", onComplete:function(){
           visualSwiper.slideNext();
         }});
         
@@ -273,7 +274,7 @@ var commonScript = (function(){
         var currentNum = 0;
         var totalNum = $(".bg_img .swiper-slide").length;
         
-        $(".control_area .total_num").text(totalNum);
+        $(".control_area .total_num").text("0" + totalNum);
 
         var visualSwiper = new Swiper(".visual_area .bg_img.swiper-container", {
           effect:"fade",
@@ -287,7 +288,7 @@ var commonScript = (function(){
                 currentNum = 1;
               }
               
-              $(".control_area .current_num").text(currentNum);
+              $(".control_area .current_num").text("0" + currentNum);
   
               $(".visual_area .swiper-slide").removeClass("on");
               $(".visual_area .swiper-slide-active").addClass("on");

@@ -1,0 +1,92 @@
+.skip{font-size:0; line-height:0; color:transparent;}
+.img_wrap{display:inline-block; position:relative;}
+.img_wrap a{display:block; position:absolute;/*  border:1px solid red; */}
+.inner_wrap{position:relative; margin:0 auto; width:1160px;}
+
+
+/* #header{height:120px; padding-top:30px; box-sizing:border-box; text-align:center; background-color:#fff;}
+#header .img_wrap{width:1920px;}
+#header .logo{top:0; left:154px; width:181px; height:69px;}
+#header .gnb{top:0; left:958px; width:399px; height:57px;}
+#header .util{top:0; left:1607px; width:168px; height:57px;} */
+
+div.hover_view,
+img.hover_view{display:none;}
+.on img.defalut_view,.on div.defalut_view {display:none;}
+.on img.hover_view,.on div.hover_view{display:block;}
+
+#header{position:fixed; top:0; height:120px; border-bottom:1px solid #D8D8D6; background-color:#fff; transition:top 0.5s linear;}
+#header.hide{top:-120px;}
+#header.on{border-bottom:#041E42;}
+#header h1{top:35px;}
+#header .gnb a img{top:53px;}
+.two_depth{top:120px;}
+#header .util {top:50px;}
+#header .util a{display:inline-block; vertical-align:middle;}
+#container{padding-top:120px; background-color:#fff;}
+
+.sub_title{padding-top:100px; text-align:center;}
+.tab{padding:90px 0 40px; border-bottom:1px solid #000; text-align:center;}
+.click_group{padding-top:40px;}
+.click_group .group{padding-left:55px;}
+.click_group .group.place{background:url(../images/typeB-srch-tit1.png) no-repeat left 3px;}
+.click_group .group.ctrg{margin-top:30px; background:url(../images/typeB-srch-tit2.png) no-repeat left 3px;}
+.click_group .group:after{content:''; display:table; clear:both;}
+.click_group .group a{display:block; float:left; margin-left:10px; width:141px; height:42px; border:1px solid #F1F1F1; border-radius:30px; font-size:16px; color:#000; text-align:center; line-height:42px;}
+.click_group .group a.on{border-color:#041E42; background-color:#041E42; color:#fff;}
+.click_group .group a:nth-child(n + 8){margin-top:10px;}
+
+
+.srch_area{margin-top:40px; padding-top:40px; height:110px; box-sizing:border-box; background-color:#f9f9f9;}
+.srch_area .img_wrap{display:block; margin:0 auto; width:376px; height:48px;}
+.srch_area .img_wrap input{position:absolute; top:0; left:0; width:calc(100% - 48px); height:45px; border:none; font-size:15px; color:#000;  background-color:transparent; outline:none;}
+.srch_area .img_wrap a{display:block; position:absolute; top:0; right:0; width:48px; height:48px;}
+
+.srch_rslt{position:relative; margin-top:40px;}
+.srch_rslt:after{content:''; display:table; clear:both;}
+.srch_rslt > div{display:inline-block; vertical-align:middle;}
+.srch_rslt a.close{display:block; position:absolute; right:0; top:3px;}
+.srch_rslt a.close .open_img{display:none;}
+.srch_rslt a.close.on .close_img{display:none;}
+.srch_rslt a.close.on .open_img{display:block;}
+.srch_rslt .click_view{max-width:calc(100% - 500px); vertical-align:top;}
+.srch_rslt .click_view span{display:inline-block; margin-top:10px; margin-left:20px; padding-right:20px; font-size:15px; color:#000; background:url(../images/typeB-srch-delete.png) no-repeat right center;}
+.srch_rslt .btn_group{margin-left:25px; opacity:0;}
+.srch_rslt.active .btn_group{opacity:1;}
+
+.list{margin-top:90px; padding:100px 0 140px; background-color:#F9F9F9;}
+.list ul{display:flex; justify-content:space-between; flex-wrap:wrap;}
+.list ul li{width:360px;}
+
+.list .rslt_after{display:none;}
+.list.rslt .rslt_before{display:none;}
+.list.rslt .rslt_after{display:block;}
+
+.list ul li:hover{}
+.list ul li:nth-child(n + 4){margin-top:40px;}
+.list ul li a{display:block; overflow:hidden; position:relative; box-shadow:0 0 0 rgba(0,0,0,0); transition:all 0.2s linear;}
+.list ul li a:hover{box-shadow:0 0 20px rgba(0,0,0,0.15);}
+.list ul li a .hover{position:absolute; top:0; left:0;  opacity:0; transition:all 0.2s linear;}
+.list ul li a:hover .hover{display:block; opacity:1;}
+.list .more{margin-top:100px; text-align:center;}
+.list .more a{display:inline-block; overflow:hidden; position:relative;}
+.list .more a .hover{position:absolute; top:0; left:0;  opacity:0; transition:all 0.2s linear;}
+.list .more a:hover .hover{display:block; top:0; left:0; opacity:1;}
+
+/*
+<div class="list">
+		<div class="inner">
+		<ul>
+			<li><a href="javascript:"><img src="./images/typeB-list1.png" alt=""><img src="./images/typeB-list1-hover.png.png" alt=""></a></li>
+			<li><img src="./images/typeB-list2.png" alt=""></li>
+			<li><img src="./images/typeB-list3.png" alt=""></li>
+			<li><img src="./images/typeB-list4.png" alt=""></li>
+			<li><img src="./images/typeB-list5.png" alt=""></li>
+			<li><img src="./images/typeB-list6.png" alt=""></li>
+			<li><img src="./images/typeB-list7.png" alt=""></li>
+			<li><img src="./images/typeB-list8.png" alt=""></li>
+			<li><img src="./images/typeB-list9.png" alt=""></li>
+		</ul>
+		</div>
+	</div>
+*/

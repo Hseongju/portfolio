@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <g id="Icon_Main_Popup_Close" data-name="Icon / Main / Popup_Close" transform="translate(-928 7.888)">
+    <rect id="guidebox" width="64" height="64" transform="translate(928 -7.888)" fill="#f0f" opacity="0"/>
+    <g id="마름모" transform="translate(960.112 -6.887) rotate(45)" fill="#fff" stroke="#222" stroke-width="2">
+      <rect width="44" height="44" rx="4" stroke="none"/>
+      <rect x="1" y="1" width="42" height="42" rx="3" fill="none"/>
+    </g>
+    <path id="패스_29" data-name="패스 29" d="M-13078.406-19950.879l6,6,5.5-5.5.5-.5" transform="translate(14032.906 19972.492)" fill="none" stroke="#222" stroke-width="2"/>
+  </g>
+</svg>

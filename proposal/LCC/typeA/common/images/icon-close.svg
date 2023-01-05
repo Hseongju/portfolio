@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="icon_GNB_Close" data-name="icon / GNB / Close" transform="translate(-1788 -33)">
+    <rect id="guidebox" width="32" height="32" transform="translate(1788 33)" fill="#f0f" opacity="0"/>
+    <g id="icon" transform="translate(560.199 -1257.44) rotate(45)">
+      <rect id="사각형_7" data-name="사각형 7" width="22" height="2" transform="translate(1792 43)" fill="#222"/>
+      <rect id="사각형_8" data-name="사각형 8" width="22" height="2" transform="translate(1804 33) rotate(90)" fill="#222"/>
+    </g>
+  </g>
+</svg>

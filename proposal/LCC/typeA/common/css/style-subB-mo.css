@@ -1,0 +1,43 @@
+
+#mobileWrap .content {background-color: #222;}
+header .nav .ci {opacity: 1 !important;}
+
+main {position: relative; z-index: 1;}
+main .flower-class-sec {position: relative; padding: 128px 0 80px 0; background-color: #fff;}
+main .flower-class-sec .flower-class .title-box .icon-box {text-align: right;}
+main .flower-class-sec .flower-class .title-box .icon-box a {display: inline-block; width: 28px; height: 28px;}
+main .flower-class-sec .flower-class .title-box .icon-box a.share {background: url("../images/sub2-ico-share.png") no-repeat 0 / 28px;}
+main .flower-class-sec .flower-class .title-box .icon-box a.like {background: url("../images/sub2-ico-like.png") no-repeat 0 / 28px;}
+main .flower-class-sec .flower-class .title-box .title {margin-top: 30px;}
+main .flower-class-sec .flower-class .img-box {margin-top: 24px;}
+main .flower-class-sec .flower-class .text-box {margin-top: 30px;}
+
+main .course-sec {position: relative; background-color: #fff;}
+main .course-sec .course .course-tab {position: sticky; top: 44px; left: 0; z-index: 10; padding: 0 16px; width: 100%; border-bottom: 1px solid #ddd; background-color: #fff; z-index: 2; transition: top .33s;}
+main .course-sec .course .course-tab.slide-down {top: 88px; transition: top .33s;}
+main .course-sec .course .course-tab .swiper-wrapper .swiper-slide {width: auto; pointer-events: none;}
+main .course-sec .course .course-tab .swiper-wrapper .swiper-slide a {position: relative; display: inline-block; padding: 20px 0;}
+main .course-sec .course .course-tab .swiper-wrapper .swiper-slide a::after {content: ""; position: absolute; bottom: -5px; left: 0; display: block; width: 100%; height: 2px;}
+main .course-sec .course .course-tab .swiper-wrapper .swiper-slide.active a::after {background-color: #000;}
+main .course-sec .course .course-tab .swiper-wrapper .swiper-slide a .on {display: none;}
+main .course-sec .course .course-tab .swiper-wrapper .swiper-slide.active a .on {display: block;}
+main .course-sec .course .course-tab .swiper-wrapper .swiper-slide.active a .off {display: none;}
+main .course-sec .course .inner {padding: 80px 0;}
+main .course-sec .course .inner .course-list {padding-top: 80px;}
+main .course-sec .course .inner .course-list:first-child {padding-top: 0;}
+main .course-sec .course .inner .course-btn-wrap {margin-top: 80px; display: flex; justify-content: center;}
+
+main .grey-sec {position: relative; background-color: #f7f7f7;}
+main .grey-sec::after {content: ""; position: absolute; bottom: -15px; left: 0; display: block; width: 100%; height: 16px; border-radius: 0 0 16px 16px; background-color: #f7f7f7;}
+main .grey-sec .inner {position: relative; padding: 80px 0 100px 0;}
+main .grey-sec .inner .banner-list {margin-top: 40px;}
+main .fake-footer {height: 712px;}
+main .fake-footer a {display: block; width: 100%; height: 100%;}
+
+footer {position: fixed; bottom: 154px; left: 0; padding: 70px 0 60px 16px; display: block; width: 100%; height: 557px; text-align: center;}
+footer a {display: block; width: 100%;}
+/* footer a img {width: 100%;} */
+
+#btn-wrap {position: absolute; bottom: 82px; padding: 0; z-index: 10;}
+#btn-wrap .speech-bubble {position: absolute; bottom: 92px; right: 8px; padding: 0; z-index: 10;}
+#controler {bottom: 0; padding: 0;}

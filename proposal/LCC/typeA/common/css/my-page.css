@@ -1,0 +1,22 @@
+@import url(./reset.css);
+
+.inner {margin: 0 auto; width: 1600px;}
+header {z-index: 10; border-bottom: 1px solid #ddd;}
+
+main {position: relative; background-color: #222;}
+main .my-course {position: relative; z-index: 1; padding: 160px 0 180px 0;}
+main .my-course .inner {display: flex;}
+main .my-course .inner .left-layout {height: auto;}
+main .my-course .inner .left-layout a {display: block;}
+main .my-course .inner .right-layout {margin-left: 220px; width: 1080px;}
+main .my-course .inner .right-layout .content {margin-top: 100px;}
+main .my-course .inner .right-layout .my-recommend {position: relative;}
+main .my-course .inner .right-layout .my-wish {position: relative;}
+main .my-course .inner .right-layout .arrow-left {position: absolute; top: 145px; left: -32px;}
+main .my-course .inner .right-layout .arrow-right {position: absolute; top: 145px; right: -32px;}
+
+main .fake-footer {height: 800px; background-color: #fff;}
+main .fake-section {position: absolute; top: 0; left: 0; z-index: 1; width: 100%; height: 2362px; background-color: #fff;}
+main .fake-section::after {content: ""; position: absolute; bottom: -14px; left: 0; z-index: 1; display: block; width: 100%; height: 16px; border-radius: 0 0 16px 16px; background-color: #fff;}
+
+footer {position: fixed; bottom: 0; left: 0; display: flex; align-items: center; justify-content: center; padding: 126px 100px 200px 100px; width: 100%; height: 800px; background-color: #222;}

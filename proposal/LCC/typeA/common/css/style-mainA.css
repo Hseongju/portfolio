@@ -1,0 +1,139 @@
+@import url(./reset.css);
+body.lock{overflow: hidden;}
+.d-flex{display: flex; flex-wrap: wrap;}
+.d-flex.left{justify-content: left;}
+.d-flex.right{justify-content: right;}
+.dimd{position: fixed; top: 0; left: 0; z-index: 3; display: none; width: 100%; height: 100vh; background: rgba(0,0,0,.7);}
+.main-visual{position: relative; z-index: 2; width: 100%; height: 100vh;}
+.main-visual .visual{position: absolute; top: 0; left: 50%; transform: translate(-50%, 0); width: 100%; height: 100%;}
+.main-visual .visual:nth-child(1){background: url(../images/main-visual1.jpg) no-repeat center center / cover; /* transition: all 1.4s ease; */}
+.main-visual .visual:nth-child(2){top: 100px; width: calc(100% - 200px); height: calc(100% - 140px); border-radius: 16px; opacity: 0; background: url(../images/main-visual2.jpg) no-repeat center center / cover;}
+.main-visual .visual:nth-child(3){top: 100px; width: calc(100% - 200px); height: calc(100% - 140px); border-radius: 16px; opacity: 0; background: url(../images/main-visual3.jpg) no-repeat center center / cover;}
+.main-visual .visual.active{z-index: 1;}
+/* .main-visual .visual.move{top: 100px; width: calc(100% - 200px); height: calc(100% - 140px); border-radius: 16px;} */
+.main-visual .visual .txt{position: absolute; bottom: 196px; left: 210px; transform: translateY(60px); opacity: 0;}
+.main-visual .float-sticker{position: absolute; bottom: 80px; left: 140px; z-index: 1;}
+.main-visual .float-sticker .step1{opacity: 1;}
+.main-visual .float-sticker .step2{position: absolute; bottom: 0; left: 0; opacity: 0;}
+.main-visual .indicator{position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 1; display: flex; align-items: center; opacity: 0;}
+.main-visual .indicator .line{position: relative; width: 300px; height: 1px; background: rgba(255,255,255,0.3);;}
+.main-visual .indicator .line:after{content: ""; position: absolute; top: 0; left: 0; width: 100px; height: 1px; background: #fff; transition: width 0.8s ease;}
+.main-visual .indicator .line.step1:after{width: 100px;}
+.main-visual .indicator .line.step2:after{width: 200px;}
+.main-visual .indicator .line.step3:after{width: 300px;}
+.main-visual .indicator .btn-play{margin-left: 30px;}
+.main-visual .btn-box{position: absolute; bottom: 40px; right: 140px; z-index: 1; display: flex; opacity: 0;}
+.main-visual .btn-box .b1{display: block; transform: rotate(-180deg);}
+ 
+.inner{position: relative; margin: 0 auto; width: calc(100% - 200px);}
+.section2{position: relative; z-index: 1; padding-top: 240px; background: #fff;}
+.section2 .tit{margin-bottom: 120px;}
+.section2 .bg{position: relative; width: 100%; height: 100vh; background: url(../images/bg-section2.jpg) no-repeat 0 0 / cover;}
+.section2 .bg .left{position: absolute; top: 0; left: 0; width: 30%; height: 100%; background: #fff;}
+.section2 .bg .right{position: absolute; top: 0; right: 0; width: 30%; height: 100%; background: #fff;}
+.section2 .list-wrap{position: relative; padding-top: 120px; background: #fff;}
+.section2 .list-box{margin-top: 100px;}
+.section2 .list-box .moving-box{position: relative; display: flex; height: 740px;}
+.section2 .list-box .list{margin-left: 40px;}
+.section2 .list-box .list:nth-child(1){margin-left: 0;}
+.section2 .list-box .list .img-area{position: relative; overflow: hidden; border-radius: 12px 12px 12px 0; height: 520px; transition: height 1.3s ease;}
+.section2 .list-box .list .img-area .label{position: absolute; bottom: 0; left: 0;}
+.section2 .list-box .list .img-area .img{width: 100%; transition: all 0.5s ease;}
+.section2 .list-box .list .txt-area{margin-top: 24px;}
+.section2 .list-box.even .list:nth-child(even) .img-area{height: 390px;}
+.section2 .list-box.odd .list:nth-child(odd) .img-area{height: 390px;}
+/* .section2 .list-box.odd .list .img-area img{transform: translateX(-5%); width: 105%;} */
+.section2 .list-box .bar{position: relative; margin-top: 100px; width: 100%; height: 1px; background: #eee;}
+.section2 .list-box .bar span{position: absolute; top: 0; left: 0; display: block; width: 200px; height: 1px; background: #000;}
+.section2 .btn-box{position: relative; z-index: 1; width: 100%;}
+.section2 .btn-box a:nth-child(1){position: absolute; top: 163px; left: -32px;}
+.section2 .btn-box a:nth-child(2){position: absolute; top: 163px; right: -32px;}
+
+.section3{position: relative; z-index: 1; padding-top: 400px; background: #fff;}
+.section3 .tit{margin-bottom: 120px;}
+.section3 .half-wrap{display: flex;}
+.section3 .half-wrap .img-area{position: relative; overflow: hidden; width: 50%; height: 100vh; border-radius: 0 16px 16px 0; background: url(../images/section3-bg.jpg) no-repeat 0 0 / cover;}
+.section3 .half-wrap .img-area img{position: absolute; top: 100px; left: 100px;}
+.section3 .half-wrap .flow-area{display: flex; justify-content: center; width: 50%;}
+
+.section4{position: relative; z-index: 1; padding-top: 400px; background: #fff;}
+.section4 .tit{padding-bottom: 120px;}
+.section4 .bg{position: relative; width: 100%; height: 620px; background: url(../images/section4-bg.jpg) no-repeat center center / cover; background-attachment: fixed;}
+.section4 .bg:before{content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.2);}
+.section4 .moving-box{position: relative; display: flex;}
+.section4 .flow-area{margin-top: 100px;}
+.section4 .flow-area .list{margin-left: 40px;}
+.section4 .flow-area .list:nth-child(1){margin-left: 0;}
+.section4 .flow-area .list .img-area{position: relative; overflow: hidden; border-radius: 12px 12px 12px 0;}
+.section4 .flow-area .list .img-area .sticker{position: absolute; bottom: 0; left: 0;}
+.section4 .flow-area .list .txt-area{margin-top: 24px;}
+.section4 .btn-box{position: relative; z-index: 1; width: 100%;}
+.section4 .btn-box a:nth-child(1){position: absolute; top: 163px; left: -32px;}
+.section4 .btn-box a:nth-child(2){position: absolute; top: 163px; right: -32px;}
+
+.section5{position: relative; z-index: 1; padding-top: 400px; background: #fff;}
+.section5 .inner{width: 1480px;}
+.section5 .event-wrap{display: flex; justify-content: center;}
+.section5 .event-wrap .btn-arrow{position: absolute; top: 310px; left: 0;}
+.section5 .event-wrap .btn-arrow:nth-of-type(2){left: auto; right: 0;}
+.section5 .event-wrap .poster-area{position: relative; width: 530px; height: 706px; overflow: hidden; border-radius: 16px;}
+.section5 .event-wrap .poster-area .img{position: absolute; top: 0; left: 530px;}
+.section5 .event-wrap .poster-area .img:nth-child(1){left: 0;}
+.section5 .event-wrap .control-area{position: relative; margin-left: 20px; width: 530px; height: 706px; overflow: hidden; border-radius: 16px;}
+.section5 .event-wrap .control-area .img{position: absolute; top: 230px; left: 550px; width: 150px; height: 200px;}
+.section5 .event-wrap .control-area .img:nth-of-type(1){left: 190px;}
+
+.section6{position: relative; z-index: 1; padding-top: 400px; padding-bottom: 200px; background: #fff;}
+.section6 .line{display: block; margin-bottom: 80px; width: 0%; height: 1px; background: #222; transition: width 1.6s ease;}
+.section6 .line.active{width: 100%;}
+.section6 .list-box .list{position: relative; margin-right: 80px; top: 60px; opacity: 0;}
+.section6 .list-box.active .list:nth-child(1){top: 0; opacity: 1; transition: all 0.6s ease; transition-delay: 0.2s;}
+.section6 .list-box.active .list:nth-child(2){top: 0; opacity: 1; transition: all 0.6s ease; transition-delay: 0.3s;}
+.section6 .list-box.active .list:nth-child(3){top: 0; opacity: 1; transition: all 0.6s ease; transition-delay: 0.4s;}
+.section6 .list-box.active .list:nth-child(4){top: 0; opacity: 1; transition: all 0.6s ease; transition-delay: 0.5s;}
+
+.footer-effect{position: relative; z-index: 1; overflow: hidden; border-radius: 0 0 16px 16px; background: #fff;}
+footer{position: fixed; bottom: 0; left: 0; display: none; width: 100%; height: 800px; background: url(../images/footer.jpg) no-repeat center 0 #222;}
+
+.category-wrap{position: fixed; bottom: -100vh; left: 0; z-index: 5; display: flex; justify-content: center; width: 100%; height:calc(100vh - 100px); border-radius: 16px 16px 0 0; background: #F5F2F0;}
+.category-wrap .btn-close{position: absolute; top: -32px; left: 50%; transform: translateX(-50%);}
+.category-wrap .tit{position: absolute; top: 130px; left: 50%; transform: translateX(-50%);}
+.category-wrap .scroll-box{margin-top: 260px; width: 260px; height: calc(100vh - 260px); overflow-y: auto;}
+.category-wrap .scroll-box {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.category-wrap .scroll-box::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+.popup-search{position: fixed; top: -100vh; left: 0; z-index: 5; display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh; background: #fff;}
+.popup-search .logo{position: absolute; top: 38px; left: 100px;}
+.popup-search .btn-close{position: absolute; top: 34px; right: 100px;}
+
+.popup-mypage{position: fixed; top: -100vh; right: 0; z-index: 2; width: 510px; height: calc(100vh - 100px); background: #fff;}
+.popup-mypage .btn-close{position: absolute; top: 60px; right: 60px;}
+.popup-mypage .ele1{position: absolute; top: 40px; left: 60px;}
+.popup-mypage .ele2{position: absolute; bottom: 0; left: 60px;}
+
+.popup-agency{position: fixed; top: 100px; left: -100%; z-index: 5; width: 50%; height: calc(100vh - 100px); background: #fff;}
+.popup-agency .ele1{position: absolute; top: 0; left: 100px; height: calc(100% - 80px);}
+.popup-agency .ele1 .tit{margin-top: 50px;}
+.popup-agency .ele1 .scroll{margin-top: 40px; height: calc(100% - 200px); overflow-y: auto;}
+.popup-agency .ele1 .scroll{
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.popup-agency .ele1 .scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+.popup-agency .ele1 .btns{position: absolute; bottom: 0; right: 0;}
+
+/* .popup-agency .ele1 img{width: 100%;} */
+.popup-agency .ele2{position: absolute; bottom: 78px; right: 120px;}
+
+.popup-lecture{position: fixed; top: 100px; right: -100%; z-index: 5; width: 50%; height: calc(100vh - 100px); background: #fff;}
+.popup-lecture .ele1{position: absolute; top: 50px; left: 60px;}
+.popup-lecture .ele1 img{width: 100%;}
+.popup-lecture .ele2{position: absolute; top: 50px; left: 60px; opacity: 0;}
+.popup-lecture .ele2 img{width: 100%;}
