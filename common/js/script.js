@@ -98,160 +98,8 @@ var commonScript = (function(){
       $(window).on("scroll", function(){
         _isScrollTop =  $(window).scrollTop();
         
-        if(window.innerWidth > 1024){
-          if(_isScrollTop > _this_scroll) { // down
-            if(_isScrollTop > 0){
-              if($("header").size() > 0){
-                if($(window).scrollTop() > 50){
-                  if(!$("header").hasClass("mouse_hover")){
-                    $("header").addClass("hide");
-                  }
-                }
-              }
-
-              if($(".fix_box_area").size() > 0) {
-                $(".fixed_content_area .fix_box_area").removeClass("pd_top");
-              }
-            }
-          }
-
-          if(_isScrollTop < _this_scroll) { // up
-            $("header").removeClass("hide");
-            $("header").addClass("up_scroll");
-            
-            if($(".fix_box_area").size() > 0) {
-              $(".fixed_content_area .fix_box_area").addClass("pd_top");
-            }
-          }
-        }else{
-          if($("body").hasClass("ios")){
-            if(_isScrollTop > _this_scroll) { // down
-              $(".m_navi_bar").addClass("scroll_down");
-              // console.log("모바일");
-            }else{
-              $(".m_navi_bar").removeClass("scroll_down");
-            }
-
-            if(_isScrollTop == 0){
-              $(".m_navi_bar").removeClass("scroll_down");
-            }
-          }
-
-          if(_isScrollTop > _this_scroll) { // down
-            $(".page_title_area").addClass("up");
-            $(".fixed_mobile.fixed").removeClass("move");
-            
-            if(_isScrollTop < _filterTop) {
-              $(".fixed_mobile").removeClass("move");
-            }
-          } else { // up
-            $(".page_title_area").removeClass("up");
-            $(".page_title_area").addClass("fixed");
-            $(".fixed_mobile.fixed").addClass("move");
-          }
-          
-          if(_isScrollTop == 0){
-            $(".page_title_area").removeClass("up");
-            $(".page_title_area").removeClass("fixed");
-            $(".fixed_mobile").removeClass("fixed move");
-            if($(".filter_bar_area").next(".white_inner").size() <= 0) {
-              $(".filter_bar_area").next().not(".no_srch_area").css("padding-top", 0);
-            }
-          }
-        }
-        
-        _this_scroll = _isScrollTop;
-
-        if(_isScrollTop == 0){
-          $("header").removeClass("up_scroll");
-        }
-
-        if(_isScrollTop <= 100) {
-          if($(".fix_box_area").size() > 0) {
-            $(".fixed_content_area .fix_box_area").removeClass("pd_top");
-          }
-        }
-
-        // 필터영역 sticky
-        if($(".fixed_mobile_w").size() > 0) {
-          _filterTop = $(".fixed_mobile_w").offset().top;
-        }
-
-        if($(".fixed_mobile").size() > 0) {
-          $(".filter_bar_area").each(function(q) {
-            if(window.innerWidth <= 1024) { // mobile            
-              if(_isScrollTop > _filterTop) {
-                $(this).find(".fixed_mobile").addClass("fixed");
-
-                if($(this).find(".fixed_mobile").hasClass("fixed")) {
-                  if($(this).next(".white_inner").size() <= 0) {
-                    $(this).next().not(".no_srch_area").css("padding-top", $(this).find(".fixed_mobile").height());
-                  }
-                }
-              // } else {
-              //   $(this).find(".fixed_mobile").removeClass("fixed");
-  
-              //   if($(this).next(".white_inner").size() <= 0) {
-              //     $(this).next().not(".no_srch_area").css("padding-top", 0);
-              //   }
-              }
-
-              if(_isScrollTop + 60 < _filterTop) {
-                if($(this).find(".fixed_mobile").hasClass("move")) {
-                  $(this).find(".fixed_mobile").removeClass("fixed");
-  
-                  if($(this).next(".white_inner").size() <= 0) {
-                    $(this).next().not(".no_srch_area").css("padding-top", 0);
-                  }
-                }
-              }
-            } else { // pc
-              $(this).find(".fixed_mobile").removeClass("fixed");
-              
-              if($(this).next(".white_inner").size() <= 0) {
-                $(this).next().not(".no_srch_area").css("padding-top", 0);
-              }
-            }
-          });
-        }
-
-        // 이용안내 - 강사/제휴 신청안내
-        if($(".page_title_area .txt_wrap .txt").size() > 0) {
-          if(window.innerWidth <= 1024) {
-            $(".divide_area .inner .box").each(function() {
-              if(_isScrollTop <= $(".page_title_area .txt_wrap .txt").offset().top) {
-                $(".divide_area .inner .box.left").addClass("active");
-                $(".divide_area .inner .box.right").removeClass("active");
-              } else {
-                $(".divide_area .inner .box.left").removeClass("active");
-                $(".divide_area .inner .box.right").addClass("active");
-              }
-            });
-          }
-        }
-
-        // 앵커 이동 공통 기능
-        if($(".anchor_func_area").size() > 0) {
-          if(window.innerWidth <= 1024) {
-            $(".anchor_func_area .anchor_con").each(function(q) {
-              if(_isScrollTop > $(this).offset().top - $( ".anchor_btn_area").innerHeight() - $(".page_title_area.fixed").innerHeight() - 1) {
-                $(".anchor_btn_area .anchor_btn").removeClass("on");
-                $(".anchor_btn_area .anchor_btn").eq(q).addClass("on")
-              }
-            });
-          }
-        }
-
         // 탑버튼
         repositioningTopBtn();
-
-        // if($(".class_gate_w").size() > 0){
-        //   if($(window).scrollTop() + window.innerHeight > $("footer").offset().top) {
-        //     $(".class_gate_w .btn_wrap").addClass("no_fixed");
-        //   }else {
-        //     $(".class_gate_w .btn_wrap").removeClass("no_fixed");
-        //   }
-        // }
       });
       $(window).scroll();
 
@@ -503,6 +351,7 @@ var typoMotion = (function(){
 
 function popupResize(){
   lazyLoading();
+  $(".list_pop:visible").find(".pop_wrap, .pop_cont").css("height", "")
   $(".list_pop:visible").find(".pop_cont").height($(".list_pop:visible").find(".pop_wrap").height() - $(".list_pop:visible").find(".pop_head").innerHeight())
   $(".list_pop:visible").find(".pop_wrap").height(Math.ceil($(".list_pop:visible").find(".pop_cont").height() + $(".list_pop:visible").find(".pop_head").innerHeight())); // 소수점 버림
   $(".list_pop:visible").find(".pop_wrap").css({"margin-left": $(".list_pop:visible").find(".pop_wrap").width()*-0.5, "margin-top": $(".list_pop:visible").find(".pop_wrap").height()*-0.5}); // 중앙정렬
