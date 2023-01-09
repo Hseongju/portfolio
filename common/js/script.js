@@ -45,22 +45,6 @@ var commonScript = (function(){
       }
     },
     commonFn: function(){
-      $("section .tab_con_area .list_wrap .list").each(function(){
-        $(this).on("click", function(){
-          if($(this).siblings(".list_pop").size() > 0){
-            if(!$(this).hasClass("no_click")){
-              $("body").addClass("stop_scroll")
-              $(this).siblings(".list_pop").fadeIn()
-              lazyLoading();
-              setTimeout(function(){
-                popupResize();
-              },50)
-            }
-          }
-        });
-      });
-
-
       // 비주얼 타이포 모션 스크립트
       var arrTit = [];
       
@@ -92,6 +76,11 @@ var commonScript = (function(){
           }
         });
       });
+
+      $(".btn_top").on("click", function(){
+        gsap.to($("html, body"), 1, {scrollTop:0, ease:Power3.easeOut})
+        repositioningTopBtn();
+      })
 
     },
     scrollFn: function(){
@@ -176,9 +165,37 @@ var commonScript = (function(){
       }).resize();
     },
     popupFn:function(){
+      // 팝업
+      $("section .tab_con_area .list_wrap .list").each(function(){
+        $(this).on("click", function(){
+          if(!$(this).hasClass("no_click")){
+            $(this).find(".label").each(function(){
+              if($(this).hasClass("no_show")){
+                if($(this).text() == "진행중"){
+                  $(".list_pop .con_txt").append("<p class='txt'>현재 <span class='red_txt'>진행중</span>으로 사이트 확인이 <span class='red_txt'>불가</span>합니다.</p>")
+                }else if($(this).text() == "내부망"){
+                  $(".list_pop .con_txt").append("<p class='txt'><span class='red_txt'>내부망</span>으로 인하여 사이트 확인이 <span class='red_txt'>불가</span>합니다.</p>")
+                }
+                $(".list_pop .view_site").hide();
+              }
+            });
+            $("body").addClass("stop_scroll");
+            $(".list_pop .pop_wrap .pop_head .title").text($(this).find(".tit span").text());
+            $(".list_pop .view_site").attr("href", $(this).data("url"))
+            $(".list_pop .img img").attr("src", $(this).data("src"))
+            $(".list_pop .pop_wrap .pop_cont .for_padding .scroll_area .con_txt .role span").text($(this).data("role"))
+            $(".list_pop").fadeIn();
+            popupResize();
+          }
+        });
+      });
+
       // 팝업 닫기
       $(".list_pop .pop_wrap .btn_close").on("click", function(){
-        $(this).parents(".list_pop").fadeOut();
+        $(this).parents(".list_pop").fadeOut(300, function(){
+          $(".list_pop .view_site").show();
+          $(".list_pop .con_txt .txt:nth-child(2)").remove();
+        });
         $("body").removeClass("stop_scroll");
       });
       
@@ -238,104 +255,28 @@ function scrollMotionTrigger(){
 }
 
 function repositioningTopBtn(){
-  if($(".btn_top").length) {
-    if($(window).scrollTop() > 0){
-      $(".btn_top").fadeIn();
-      if($(".review_write").size() > 0){
-        if(window.innerWidth <= 1024){
-          $(".review_write").fadeIn()
-        }
-        $(".review_write").addClass("move")
-      }
-    }else{
-      $(".btn_top").fadeOut()
-      if($(".review_write").size() > 0){
-        if(window.innerWidth <= 1024){
-          $(".review_write").fadeOut()
-        }else{
-          $(".review_write").removeAttr("style")
-        }
-        $(".review_write").removeClass("move")
-      }
-    }
-
-    // var topBtnPositionGap = 0;
-    var navigationGap = 0;
-    _paybarH = $(".payment_bar").innerHeight();
-    _fixedBtnH = $(".course_popup .fixed_btn_area").outerHeight(true);
-    var safetyChar = getComputedStyle(document.documentElement).getPropertyValue("--sab")
-    var safetyNum = parseInt(safetyChar.split("p"));
-    // console.log(safetyChar, safetyNum);
-    var topBtnGap = 40;
-
-    
-
-    if(window.innerWidth <= 1024){
-      if($(".payment_bar").size() > 0 || $(".course_popup .fixed_btn_area").size() > 0 || $(".view_con_w").size() > 0 || $(".desc_con").size() > 0){
-        navigationGap = 0;
-      } else {
-        navigationGap = 64 + safetyNum;
-      }
-    }
-
-    if($(window).scrollTop() + window.innerHeight > $("footer").offset().top + navigationGap) {
-      // 푸터에 붙었을 때,
-      if(window.innerWidth > 1024){
-        if($(".payment_bar").size() > 0){
-          $(".btn_top").css("bottom", $(window).scrollTop() + window.innerHeight - $("footer").offset().top + _paybarH + 20);
-          $(".payment_bar").css("bottom", $(window).scrollTop() + window.innerHeight - $("footer").offset().top)
-        } else {
-          $(".btn_top").css("bottom", $(window).scrollTop() + window.innerHeight - $("footer").offset().top + 40);
-          $(".review_write").css("bottom", $(window).scrollTop() + window.innerHeight - $("footer").offset().top + 40);
-        }
-      } else {
-        if($(".payment_bar").size() > 0){
-          $(".page_cont_area").css({"padding-bottom": $(".payment_bar").innerHeight() + $(".btn_top").innerHeight() + topBtnGap});
-          $(".btn_top").addClass("no_fixed");
-          $(".payment_bar").addClass("no_fixed");
-          $(".btn_top").css("bottom", $("footer").innerHeight() + _paybarH + 20);
-          $(".payment_bar").css("bottom", $("footer").innerHeight())
-        } else {
-          $(".btn_top").addClass("no_fixed");
-          $(".btn_top").css("bottom", $("footer").innerHeight() + 20);
-          $(".review_write").css("bottom", $(window).scrollTop() + window.innerHeight - $("footer").offset().top + 78);
-        }
-      }
-    }else {
-      // 스크롤 할 때,
-      $(".payment_bar").css("bottom", 0);
-      $(".payment_bar").removeClass("no_fixed");
-      $(".btn_top").removeClass("no_fixed");
-      
-      if(window.innerWidth > 1024){
-        if($(".payment_bar").size() > 0){
-          $(".btn_top").css("bottom", _paybarH + 20);
-        } else {
-          $(".btn_top").css("bottom", 40);
-          $(".review_write").css("bottom", 40);
-        }
-      }else{
-        if($(".payment_bar").size() > 0){
-          $(".page_cont_area").css({"padding-bottom": $(".payment_bar").innerHeight() + $(".btn_top").innerHeight() + topBtnGap});
-          $(".btn_top").css("bottom", _paybarH + 20);
-        } else {
-          $(".btn_top").css("bottom", 16 + navigationGap);
-          $(".review_write.move").css("bottom", 74 + navigationGap);
-        }
-      }
-    }
-    
-    if($(".course_popup .fixed_btn_area").size() > 0) {
-      if(window.innerWidth <= 1024) {
-        if($(window).scrollTop() + window.innerHeight > $("footer").offset().top + _fixedBtnH) {
-          $(".btn_top").addClass("no_fixed");
-        } else {
-          $(".btn_top").removeClass("no_fixed");
-          $(".btn_top").css("bottom", _fixedBtnH + 15);
-        }
-      }
-    }
+  if($(window).scrollTop() > 0){
+    $(".btn_top").fadeIn();
+  }else{
+    $(".btn_top").fadeOut()
   }
+
+  var bottomGap = 40;
+  var pathLength = 160;
+
+  if($(window).scrollTop() + window.innerHeight > $("footer").offset().top) {// 푸터에 붙었을 때,
+    $(".btn_top").css("bottom", $(window).scrollTop() + window.innerHeight - $("footer").offset().top + bottomGap);
+  }else {
+    // 스크롤 할 때,
+    $(".btn_top").css("bottom", "");
+  }
+
+  
+  document.getElementById("top_svg_circle").setAttribute("r", 25);
+  document.getElementById("top_svg_circle").setAttribute("cx", 26);
+  document.getElementById("top_svg_circle").setAttribute("cy", 26);
+
+  $(".svg_circle").css("stroke-dasharray", pathLength + Math.floor(($(window).scrollTop() / ($(document).height() - window.innerHeight)) * pathLength));
 }
 
 var typoMotion = (function(){
