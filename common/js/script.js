@@ -1,17 +1,7 @@
-var _this_scroll = 0;       // 스크롤 up & down 체크위한 변수
-var _isScrollTop;          // scrollTop 변수
-var _pageScrollOffset;            // dimd 시 scrollTop 값 기억
+var _isScrollTop;           // scrollTop 변수
 var _device = '';           // 접속 device 체크 위한 변수
 var _deviceCondition = '';  // 해상도 따른 device 체크 위한 변수
 var _browser = '';          // browser 체크 위한 변수
-var _barWidthArr = [];
-var _thrTotalWidth = 0;
-var _newsDetailSwiper; // 코오롱 뉴스 상세 리스트
-var _viewConTitHeight; // view 페이지 title 높이값
-var _isMotionOnce = false; // resize 안에서 모션 한번만 작동하기 위한 변수
-var _mGnbAccordion; // mobile header accordion 변수
-var _headerHeightArr = [];  // header
-var _headerMaxHeight = 0;   // header
 
 var commonScript = (function(){
   return {
@@ -107,7 +97,7 @@ var commonScript = (function(){
           visualSwiper.slideNext();
         }});
         
-        var thisSlide, imgMoving;
+        var thisSlide;
         
         var currentNum = 0;
         var totalNum = $(".bg_img .swiper-slide").length;
