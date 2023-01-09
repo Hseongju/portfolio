@@ -243,7 +243,7 @@ footer .copyright{margin-top:15px;}
 .typo_motion span{position:relative; left:80px; opacity:0;}
 
 /* 탑버튼 */
-.btn_top{position:fixed; bottom:40px; right:60px; justify-content: center; width:50px; height:50px; border-radius:50%; background:rgba(0,0,0,1); z-index:10;}
+.btn_top{display:none; position:fixed; bottom:40px; right:60px; justify-content: center; width:50px; height:50px; border-radius:50%; background:rgba(0,0,0,1); z-index:10;}
 .btn_top span{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:#fff; font-size:14px; font-family: "Pretendard_Medium", sans-serif;}
 .btn_top svg {position: relative; left: -1px; top: -1px; width: 52px; height: 52px; transform: rotate(-90deg); opacity: 1;}
 .btn_top .svg_circle {stroke-dashoffset: 163; stroke-dasharray: 210;}
