@@ -229,8 +229,8 @@ section .label_div .label.no_show{background:#8A0606}
 .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .view_site:hover span{background: url("https://raw.githack.com/Hseongju/portfolio/main/common/images/icon-right-arrow.png") no-repeat right 0px top 7px/15px;}
 .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .con_txt .txt{font-size:18px;}
 .list_pop .pop_wrap .pop_cont .for_padding .scroll_area .con_txt .txt + .txt{margin-top:10px;}
-.list_pop .pop_wrap .pop_cont .for_padding .scroll_area .img{overflow:hidden; margin-top:30px; border:1px solid #ccc}
-.list_pop .pop_wrap .pop_cont .for_padding .scroll_area .img img{width:100%;}
+.list_pop .pop_wrap .pop_cont .for_padding .scroll_area .img{overflow:hidden; margin-top:30px;}
+.list_pop .pop_wrap .pop_cont .for_padding .scroll_area .img img{width:100%; border:1px solid #ccc}
 .list_pop .pop_wrap .btn_close{position:absolute; top:33px; right:40px; width:24px; height:24px; background:url("https://raw.githack.com/Hseongju/portfolio/main/common/images/btn-layer-popup-close-x.svg") no-repeat center center/cover}
 
 /* footer */
