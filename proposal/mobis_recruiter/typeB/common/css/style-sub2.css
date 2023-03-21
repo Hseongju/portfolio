@@ -1,0 +1,67 @@
+@import url(./reset.css);
+
+header {position: absolute; top: 0; left: 0; z-index: 10; width: 100%;}
+header img {width: 100%;}
+
+.sec1 {position: relative; top: 0; left: 0; width: 100%; height: 1670px;}
+.sec1 .copy {position: absolute; top: 360px; z-index: 3; width: 1436px; left: 50%; transform: translateX(-50%); height: 287px; overflow: hidden;}
+.sec1 .copy p {overflow: hidden;}
+.sec1 .copy p:nth-of-type(2) {margin: 27px 0;}
+.sec1 .copy p img {opacity: 0; transform: translateY(100px); animation: copyAni 1.4s; animation-fill-mode: forwards;}
+.sec1 .copy p:nth-of-type(2) img {animation-delay: .3s;}
+.sec1 .copy p:nth-of-type(3) img {animation-delay: .6s;}
+
+@keyframes copyAni {
+	0% {transform: translateY(100px); opacity: 0;}
+	100% {transform: translateY(0); opacity: 1;}
+}
+
+
+.sec1 .work_wrap {width: 100%; height: 100vh; z-index: 1; top: 800px; z-index: 1; position: absolute;width: 1436px; left: 50%; transform: translateX(-50%); z-index: 3;}
+/* .sec1 .work {background: #000;} */
+.sec1 .work .tit {overflow: hidden; height: 42px;}
+.sec1 .work .tit img {opacity: 0; transform: translateY(100px);}
+.sec1 .work .card {position: relative; margin-top: 13px;}
+.sec1 .work .card span {width: 1436px; height: 708px; background: #000; border-radius: 16px; display: block; position: absolute; opacity: 0;}
+.sec1 .work .card .txt {position: absolute; top: 70px; left: 70px; overflow: hidden;}
+.sec1 .work .card .txt img {opacity: 0; transform: translateY(100px);}
+.sec1 .work .card2 {position: absolute; top: 110px; left: 0; transform: translateY(650px);}
+
+
+.sec1 .work_wrap .box {width: 1500px; height: 800px; background: #fff; position: absolute; top: 765px; left: -10px;}
+
+
+@media all and (min-width: 1921px) {
+}
+
+.sec1 .bg {width: 100%; height: 1080px; background: #000; position: absolute; top: 0;}
+.sec1 .bg span {position: absolute; top: -100px; right: 50px; opacity: 0; transform: scale(.8); z-index: 2; background: url("../images/sub2-gp1.svg"); width: 896px; height: 896px; border-radius: 50%; backdrop-filter: blur(5px); }
+
+@keyframes rotate {
+	100% {transform: rotate(360deg);}
+}
+
+
+.sec1 .bg img {position: absolute; top: 350px; right: 90px; z-index: 1; opacity: 0;}
+
+.sec2 {width: 1436px; margin: 280px auto 0; z-index: 50; position: relative;}
+.sec2 p {margin-bottom: 40px;}
+.sec2 div {cursor: pointer;}
+
+.sec3 {width: 1436px; margin: 200px auto 0;}
+
+.sec4 {background: #F3F0ED; padding: 100px 0 160px; margin-top: 200px;}
+.sec4 .tit {width: 1436px; margin: 0 auto;}
+.sec4 ul {display: flex; width: 1436px; margin: 50px auto 0;}
+.sec4 ul li {position: relative; overflow: hidden; border-radius: 10px;}
+.sec4 ul li + li {margin-left: 16px;}
+.sec4 ul li p:nth-of-type(1) {position: absolute; top: 32px; left: 32px; z-index: 1;}
+.sec4 ul li p:nth-of-type(2) {transition: all .4s;}
+.sec4 ul li:hover p:nth-of-type(2) {transform: scale(1.1);}
+
+footer {position: relative; background-color: #d50720;}
+footer .btn_top{position:absolute; top:24px; right:24px;}
+footer .inner {display: block; padding: 120px 0; margin:0 auto; width:1760px;}
+
+
+

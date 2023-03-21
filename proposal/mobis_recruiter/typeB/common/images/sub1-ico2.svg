@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="121" viewBox="0 0 120 121">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_198" data-name="사각형 198" width="113.313" height="120" fill="none" stroke="#707070" stroke-width="2"/>
+    </clipPath>
+  </defs>
+  <g id="icon" transform="translate(40.543 42.055)">
+    <rect id="bounding_box" data-name="bounding box" width="120" height="120" transform="translate(-40.543 -41.055)" fill="#e8e8e8" opacity="0"/>
+    <g id="그룹_124" data-name="그룹 124" transform="translate(-39.199 -42.055)" clip-path="url(#clip-path)">
+      <path id="패스_215" data-name="패스 215" d="M80.1,102.705A46.562,46.562,0,1,1,47.267,23.113V69.219h.012v.457Zm25.583-34.371.006.457a46.416,46.416,0,0,1-13.742,33.026L59.13,68.792l0-.457ZM62.995.72a46.562,46.562,0,0,1,46.557,46.105H62.979V.72Zm-18.877,22.5L.829,66.511m46.438-29.8L2.288,81.694M47.267,53.357,7.218,93.407M47.435,69.832l-32.92,32.92M55.729,78.178,23.938,109.972M64.025,86.527,35.753,114.8M72.318,94.873,51.111,116.083" transform="translate(1.521 1.522)" fill="none" stroke="#231815" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

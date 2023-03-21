@@ -1,0 +1,36 @@
+@import url(./reset.css);
+@import url(./fonts.css);
+
+.inner {margin: 0 auto; width: 1760px;}
+.page_title_area {padding: 348px 0 160px;}
+.page_title_area .tit {overflow: hidden;}
+.page_title_area .tit span {display: block; font-size: 120px; line-height: 120px; color: #000; font-family: "GeneralSans_Semibold", sans-serif; transform: translateY(100%); opacity: 0;}
+.flex_div {display: flex; justify-content: space-between; transform: translateY(60px); opacity: 0;}
+.content_area {padding-bottom: 240px;}
+
+/* header */
+header {position: fixed; left: 0; top: -168px; padding: 60px 0 0; width: 100%; background: #fff;/*  border: 1px solid red;  */z-index: 10;}
+header .inner {padding-bottom: 60px; display: flex; justify-content: space-between; align-items: center;}
+header .logo {display: inline-block;}
+header .gnb a {display: flex;}
+header .gnb .txt {font-size: 18px; letter-spacing: -0.32px; line-height: 27px; font-family: "NotoSans_Bold", sans-serif; color: #1a1a1a;}
+header .gnb .txt:not(:first-child) {margin-left: 40px;}
+header .util_area {display: flex;}
+header .util_area a {display: block;}
+header .util_area a + a {margin-left: 8px;}
+header .depth2 {position: absolute; top: 168px; left: 50%; transform: translateX(-50%); width: 100%; text-align: center; background: #fff; border-top: 1px solid #ddd; display: none;}
+
+/* list_area */
+.list_area {padding-top: 120px; display: flex; flex-wrap: wrap;}
+.list_area .list {margin: 0 40px 120px 0; display: block; width: 410px; transform: translateY(80px); opacity: 0;}
+.list_area .list:nth-child(4n) {margin-right: 0;}
+.list_area .list .img_txt_box {display: inline-block;}
+.list_area .list .img_txt_box .img {border-radius: 40px; overflow: hidden; transition: border-radius .28s ease-out;}
+.list_area .list .img_txt_box:hover .img {border-radius: 50%;}
+.list_area .list .img_txt_box .txt {margin-top: 40px;}
+
+.btn_area {text-align: center;}
+.btn_area .btn_more {display: inline-block;}
+
+footer {background-color: #1a1a1a;}
+footer a {display: block; padding: 80px;}

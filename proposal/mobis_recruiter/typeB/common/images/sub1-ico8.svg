@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <g id="icon" transform="translate(42.543 42.055)">
+    <rect id="bounding_box" data-name="bounding box" width="120" height="120" transform="translate(-42.543 -42.055)" fill="#e8e8e8" opacity="0"/>
+    <g id="그룹_145" data-name="그룹 145" transform="translate(-41.338 -21.449)">
+      <g id="그룹_146" data-name="그룹 146">
+        <line id="선_34" data-name="선 34" y1="29.317" transform="translate(32.064 46.724)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <line id="선_35" data-name="선 35" y1="29.317" transform="translate(68.711 46.724)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <line id="선_36" data-name="선 36" x2="36.646" transform="translate(32.064 76.041)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <line id="선_37" data-name="선 37" x2="36.646" transform="translate(32.064 46.724)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <line id="선_38" data-name="선 38" y1="43.975" x2="43.975" transform="translate(68.712 2.748)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <line id="선_39" data-name="선 39" y1="43.975" x2="43.975" transform="translate(32.065 2.748)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <line id="선_40" data-name="선 40" y1="43.975" x2="43.975" transform="translate(68.712 32.065)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <line id="선_41" data-name="선 41" x1="29.317" transform="translate(2.748 76.041)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <line id="선_42" data-name="선 42" x1="29.317" transform="translate(2.748 54.053)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <line id="선_43" data-name="선 43" y1="21.988" transform="translate(2.748 54.053)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <line id="선_44" data-name="선 44" y1="43.975" x2="43.975" transform="translate(2.748 10.078)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <line id="선_45" data-name="선 45" y1="29.317" transform="translate(112.687 2.748)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <line id="선_46" data-name="선 46" x2="36.646" transform="translate(76.041 2.748)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+        <line id="선_47" data-name="선 47" x2="21.988" transform="translate(46.724 10.078)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+</svg>

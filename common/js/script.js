@@ -158,7 +158,7 @@ var commonScript = (function(){
       // 팝업
       $("section .tab_con_area .list_wrap .list").each(function(){
         $(this).on("click", function(){
-          if(!$(this).hasClass("no_click")){
+          if(!$(this).hasClass("no_click") && !$(this).hasClass("proposal")){
             $(this).find(".label").each(function(){
               if($(this).hasClass("no_show")){
                 if($(this).text() == "진행중"){
