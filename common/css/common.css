@@ -216,7 +216,7 @@ section .label_div .label.mobile {background: #316bc6;}
 section .label_div .label.no_show {background: #8a0606;}
 
 /* 팝업 */
-.list_pop {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, .4); z-index: 3;}
+.list_pop {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, .4); z-index: 10;}
 .list_pop .pop_wrap {position: absolute; top: 50%; left: 50%; /*  transform:translate(-50%, -50%); */ width: 1000px; max-height: 80vh; min-height: 80vh; background: #fff; border-radius: 10px;}
 .list_pop .pop_wrap .pop_head {padding: 30px 40px 0 40px;}
 .list_pop .pop_wrap .pop_head .title {padding: 0 30px 20px 0; font-size: 24px; font-family: "Pretendard_Medium", sans-serif; border-bottom: 1px solid #ccc;}
