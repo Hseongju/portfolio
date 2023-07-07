@@ -174,6 +174,7 @@ var commonScript = (function(){
             $(".list_pop .view_site").attr("href", $(this).data("url"))
             $(".list_pop .img img").attr("src", $(this).data("src"))
             $(".list_pop .pop_wrap .pop_cont .for_padding .scroll_area .con_txt .role span").text($(this).data("role"))
+            $(".list_pop .pop_wrap .pop_cont .for_padding .scroll_area .con_txt .contribution span").text($(this).data("contribution"))
             $(".list_pop").fadeIn();
             popupResize();
           }
