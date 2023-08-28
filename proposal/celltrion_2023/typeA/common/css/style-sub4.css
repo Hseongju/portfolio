@@ -1,0 +1,24 @@
+@charset "UTF-8";
+@import url(./reset.css);
+@import url(./fonts.css);
+
+.sub-inner {width: 1380px;}
+.sub-inner2 {width: 1196px;}
+.key-tit {margin: 190px 0 40px 82px; font-size: 50px; font-weight: 700; color: #231f20;}
+.map-area {position: relative; width: 100%;}
+.map-area > img {width: 100%; max-width: 100%; object-fit: cover;}
+/* .map-area {position: relative; width: 100%; height: 80vh; background: url(../images/sub2-network-map2.png) top 68% right no-repeat; background-size: 200%;} */
+/* .map-area.active {background-image: url(../images/sub2-network-map2-click.png);} */
+.map-area .sub-inner2 {position: absolute; top: -10px; left: 50%; transform: translateX(-50%);}
+.map-area .sub-inner2 figure {margin: 0 -40px; padding-top: 50px;}
+.map-area .select-left img {position: absolute; left: -15px; top: 140px; opacity: 0;}
+.map-area .select-right img {position: absolute; right: 65px; top: 140px; opacity: 0;}
+.map-area .select-left.active img {opacity: 1;}
+.map-area .select-right.active img {opacity: 1;}
+.map-area .side-pop {position: absolute; top: 0; right: -480px; padding: 50px 0 0; width: 480px; height: 100%; text-align: center; background-color: #f8f8f8; transition: left 10s, right .5s;}
+.map-area .side-pop.on {right: 0;}
+/* .map-area .btn-pin {position: absolute; left: 50%; top: 20%; width: 30px; height: 50px; background-color: #ccc} */
+.map-area .btn-left {position: absolute; left: -10px; top: 80px; width: 150px; height: 50px;}
+.map-area .btn-right {position: absolute; right: 70px; top: 80px; width: 200px; height: 50px;}
+.map-area .btn-popup {position: absolute; right: 0; top: 80px; width: 50px; height: 50px;}
+.map-area .btn-close {position: absolute; top: 47px; left: calc(50% + 190px); width: 30px; height: 30px; transform: translateX(-50%);}

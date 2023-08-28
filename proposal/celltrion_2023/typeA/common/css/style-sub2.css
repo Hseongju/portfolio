@@ -1,0 +1,159 @@
+@charset "UTF-8";
+@import url(./reset.css);
+@import url(./fonts.css);
+
+header.sub {width: 100%; background: rgba(255, 255, 255, 1); height: 91px; transition-duration: 0.5s; transition-property: background;}
+header.sub .inner {background-color: #fff; border-radius: 4px;}
+header.sub.up-scroll {background: rgba(255, 255, 255, 0);}
+header.sub.hover {background: rgba(255, 255, 255, 0);}
+header.sub.hover .inner {border-radius: 4px 4px 0 0; background-color: #fff;}
+
+
+.datail_area {position: relative; padding: 700vh 0 0;}
+
+.datail_area .top-con {position: fixed; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden;}
+
+.detail-keyv {position: fixed; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden;}
+.detail-keyv .img {position: absolute; top: 0; left: 0; width: 100%; height: 100vh;}
+.detail-keyv .dimd {position: absolute; top: 0; left: 0; width: 100%; height: 100vh; background: #000; opacity: 0;}
+.detail-keyv .img1 {position: absolute; top: 0; left: 0; width: 100%; height: 100vh;}
+.detail-keyv .img2 {position: absolute; top: 0; left: 0; width: 100%; height: 100vh;}
+.detail-keyv .contents {position: absolute; top: 0; left: 0; width: 100%; height: 160vh;}
+.detail-keyv .contents .copy {position: absolute; top: 0; left: 0; width: 100%; height: 100vh; opacity: 0;}
+.detail-keyv .contents .txt {position: absolute; bottom: 65vh; left: 50%; transform: translate(-50%, 0); width: 1216px;}
+.detail-keyv .contents .txt1 {position: relative; transform: translate(0, 100px); opacity: 0;}
+.detail-keyv .contents .txt2 {position: relative; transform: translate(0, 100px); opacity: 0; margin-top: 24px;}
+.detail-keyv .contents .info {position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 0); width: 1216px;}
+
+.sticky-util {position: fixed; bottom: -62px; left: 0; width: 100%; height: 62px; z-index: 90;}
+.sticky-util .inner {position: absolute; bottom: 0; left: 0; width: 100%; height: 60px; background: rgba(0, 0, 0, 1);}
+.sticky-util .inner .txt {position: absolute; top: 16px; left: 44px;}
+.sticky-util .inner .btns {position: absolute; top: 18px; right: 44px;}
+.sticky-util .gage {position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: rgba(0, 0, 0, 0);}
+.sticky-util .gage > span {position: absolute; top: 0; left: 0; width: 0; height: 2px; background: #EF4023;}
+
+.d-con1 {position: fixed; top: 100%; left: 0; width: 100%; height: 100vh; background: #F6F6F6;}
+.d-con1 .inner {position: relative; width: 1216px; height: 100vh; margin: auto;}
+.d-con1 .inner .d-tit {position: absolute; top: 140px; left: 0;}
+.d-con1 .inner .d-tit .txt1 {position: relative; transform: translate(0, 0);}
+.d-con1 .inner .d-tit .txt2 {position: relative; transform: translate(0, 0); margin-top: 24px;}
+.d-con1 .inner .d-con {position: relative; width: 1216px; height: 100vh; margin: auto;}
+.d-con1 .inner .d-con .tab {position: absolute; top: 50%; left: 0; transform: translate(0, -50%);}
+.d-con1 .inner .d-con .product {position: absolute; bottom: 0; right: -140px; padding: 0;}
+.d-con1 .inner .d-con .product .img {bottom: 0; left: 0;}
+.d-con1 .inner .d-con .product > a {display: block; position: absolute; top: 0; left: 0; width: 61px; height: 61px; border-radius: 50%;}
+.d-con1 .inner .d-con .product > a::before {content: ""; display: block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 61px; height: 61px; border-radius: 50%; background: rgba(35, 31, 32, 0.3); animation-duration: 1.3s; animation-name: bigB; animation-delay: 0s; animation-iteration-count: infinite;}
+@-webkit-keyframes bigB {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  90% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
+.d-con1 .inner .d-con .product > a > span {display: block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); width: 27px; height: 27px; border-radius: 50%; background: #2EC7C6; animation-duration: 1.3s; animation-name: smallB; animation-iteration-count: infinite;}
+@-webkit-keyframes smallB {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  90% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
+/* .d-con1 .inner .d-con .product > a:hover {animation-duration: 1s; animation-name: bigB; animation-delay: 0.1s; animation-iteration-count: infinite; &:hover {
+  animation-play-state: paused;
+}}
+.d-con1 .inner .d-con .product > a:hover > span {animation-duration: 1s; animation-name: smallB; animation-iteration-count: infinite; &:hover {
+  animation-play-state: paused;
+}} */
+
+.d-con1 .inner .d-con .product > a:nth-child(2) {top: 155px; left: 280px;}
+.d-con1 .inner .d-con .product > a:nth-child(3) {top: 278px; left: 268px;}
+.d-con1 .inner .d-con .product > a:nth-child(4) {top: -24px; left: 615px;}
+.d-con1 .inner .d-con .product > a:nth-child(5) {top: 228px; left: 568px;}
+.d-con1 .inner .d-con .product > a:nth-child(6) {top: 458px; left: 668px;}
+.d-con1 .popup {position: absolute; top: 0; right: -644px; width: 644px; height: 100vh;}
+.d-con1 .popup .img {position: relative; width: 100%; height: 50vh; overflow: hidden;}
+.d-con1 .popup .img > img {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%; object-fit: cover;}
+.d-con1 .popup .txt {position: relative; width: 100%; height: 50vh; background: #fff;}
+.d-con1 .popup .txt > img {position: absolute; top: 44px; left: 44px;}
+.d-con1 .popup a {position: absolute; bottom: 104px; right: 44px; transform: rotate(0); transition-duration: 0.5s; transition-property: transform;}
+.d-con1 .popup a:hover {transform: rotate(270deg);}
+
+.d-con2 {position: fixed; top: 100%; left: 0; width: 100%; height: 100vh; background: #F6F6F6; overflow: hidden;}
+.d-con2 .inner {position: relative; width: 1216px; height: 100vh; margin: auto;}
+.d-con2 .inner .d-tit {position: absolute; top: 140px; left: 0; z-index: 1;}
+.d-con2 .inner .d-tit .txt2 {position: relative; transform: translate(0, 0); margin-top: 24px;}
+.d-con2 .inner .d-con {position: relative; width: 1216px; height: 100vh; margin: auto;}
+.d-con2 .inner .d-con .toggle {position: absolute; top: 452px; left: 0; z-index: 1;}
+.d-con2 .inner .d-con .product {position: absolute; top: -50px; right: -350px;}
+.d-con2 .draginfo {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+
+.detail-con {position: relative;}
+
+.d-con3 {position: relative; width: 100%; padding: 140px 0 0; background: #fff;}
+.d-con3 .d-tit {position: relative; width: 1216px; height: 170px; margin: auto;}
+.d-con3 .d-tit .txt1 {position: absolute; top: 0; left: 0; transform: translate(0, 100px); opacity: 0; transition-duration: 0.8s; transition-property: transform opacity;}
+.d-con3 .d-tit .txt2 {position: absolute; top: 0; right: -152px; transform: translate(0, 100px); opacity: 0; transition-duration: 0.8s; transition-property: transform opacity; transition-delay: 0.1s;}
+.d-con3 .d-con {position: relative; margin-top: 70px; transform: translate(0, 100px); opacity: 0; transition-duration: 0.8s; transition-property: transform opacity; transition-delay: 0.2s;}
+.d-con3.active .d-tit .txt1 {transform: translate(0, 0); opacity: 1;}
+.d-con3.active .d-tit .txt2 {transform: translate(0, 0); opacity: 1;}
+.d-con3.active .d-con {transform: translate(0, 0); opacity: 1;}
+
+.d-con3 .d-con .swiper-container {overflow: visible; height: 760px;}
+.d-con3 .d-con .swiper-slide {position: relative; width: 1524px; height: 720px;}
+.d-con3 .d-con .swiper-pagination-bullet {width: 10px; height: 10px; background: #B3B4B0; opacity: 1; margin: 0 8px; transition-property: background; transition-duration: 0.5s;}
+.d-con3 .d-con .swiper-pagination-bullet-active {background: #000;}
+.d-con3 .d-con .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {bottom: 0; width: 100%; text-align: center;}
+
+.d-con4 {position: relative; width: 100%; padding: 200px 0; background: #fff;}
+.d-con4 .inner {position: relative; width: 1216px; margin: auto;}
+.d-con4 .d-tit .txt1 {position: relative; transform: translate(0, 100px); opacity: 0; transition-duration: 0.8s; transition-property: transform opacity;}
+.d-con4.active .d-tit .txt1 {transform: translate(0, 0); opacity: 1;}
+
+.d-con4 .d-con {margin-top: 100px;}
+.d-con4 .d-con ul {display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;}
+.d-con4 .d-con ul li {margin-bottom: 70px; position: relative; transform: translate(0, 100px); opacity: 0; transition-duration: 0.8s; transition-property: transform opacity;}
+.d-con4 .d-con ul li:nth-child(1) {transition-delay: 0.1s;}
+.d-con4 .d-con ul li:nth-child(2) {transition-delay: 0.2s;}
+.d-con4 .d-con ul li:nth-child(3) {transition-delay: 0.3s;}
+.d-con4 .d-con ul li:nth-child(4) {transition-delay: 0.4s;}
+.d-con4 .d-con ul li:nth-child(5) {transition-delay: 0.5s;}
+.d-con4 .d-con ul li:nth-child(6) {transition-delay: 0.6s;}
+.d-con4.active .d-con ul li {transform: translate(0, 0); opacity: 1;}
+.d-con4 .d-con ul li .txt1 {margin-top: 20px;}
+.d-con4 .d-con ul li .txt2 {margin-top: 10px;}
+
+.d-con5 {position: relative; width: 100%; background: #fff;}
+.d-con5 ul {position: relative; width: 1216px; margin: auto;}
+.d-con5 ul li {position: relative; background: #F8F8F8; margin-bottom: 16px; transform: translate(0, 100px); opacity: 0; transition-duration: 0.8s; transition-property: transform opacity;}
+.d-con5 ul li:nth-child(2) {transition-delay: 0.1s;}
+.d-con5.active ul li {transform: translate(0, 0); opacity: 1;}
+.d-con5 ul li:last-child {margin-bottom: 0;}
+.d-con5 ul li > a {display: block; padding: 40px 60px; text-align: center;}
+.d-con5 ul li > a > p {display: inline-block; position: relative; padding-right: 50px;}
+.d-con5 ul li > a > p > span {position: absolute; top: 50%; right: 0; transform: translate(0, -50%);}
+.d-con5 ul li .accor-down {padding: 20px 60px 60px;}
+.d-con5 ul li .accor-down.type1 {display: grid; grid-template-columns: 1fr 1fr 1fr;}
+.d-con5 ul li .accor-down.type1 dt {margin-bottom: 32px;}
+.d-con5 ul li .accor-down.type1 dd > a {display: block; margin-bottom: 16px;}
+.d-con5 ul li .accor-down.type1 dd > a:last-child {margin-bottom: 0;}
+.d-con5 ul li .accor-down.type2 dl {padding: 40px 0; border-bottom: 1px solid #DCDCD7;}
+.d-con5 ul li .accor-down.type2 dl:first-child {padding: 0 0 40px;}
+.d-con5 ul li .accor-down.type2 dl:last-child {padding: 40px 0 0; border: 0;}
+.d-con5 ul li .accor-down.type2 dt {margin-bottom: 20px;}
+
+.d-con6 {position: relative; width: 100%; padding: 100px 0 200px; background: #fff;}
+.d-con6 .inner {position: relative; width: 1216px; margin: auto;}
+.d-con6 .inner .tab {text-align: center; position: relative; transform: translate(0, 100px); opacity: 0; transition-duration: 0.8s; transition-property: transform opacity;}
+.d-con6 .inner .list {display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; position: relative; margin-top: 43px; transform: translate(0, 100px); opacity: 0; transition-duration: 0.8s; transition-property: transform opacity; transition-delay: 0.1s;}
+.d-con6.active .inner .tab {transform: translate(0, 0); opacity: 1;}
+.d-con6.active .inner .list {transform: translate(0, 0); opacity: 1;}
+
+footer {position: relative; z-index: 100;}

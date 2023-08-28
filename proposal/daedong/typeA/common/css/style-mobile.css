@@ -1,0 +1,39 @@
+@import url(./reset.css);
+@import url(./fonts.css);
+
+#mobileWrap{position:relative; overflow:hidden; top:50%; left:50%; width:372px; height:812px; font-family: "Pretendard", "맑은 고딕", "Malgun Gothic", sans-serif; transform:translate(-50%, -50%);}
+#mobileWrap .content {z-index:1;overflow:hidden;position:absolute;width:370px;height:812px;background:#fff;border:7px solid black;box-sizing:border-box;border-radius:50px;}
+#mobileWrap .content > .scroll{display:block; overflow-x:hidden; overflow-y:auto; position:relative; margin-left:-2px; width:382px; height:100%;}
+#mobileWrap .content .scrollDiv {display: block;}
+
+img {width: 100%;}
+a {display: block;}
+header {z-index: 123456; position: absolute; top: 0; padding-top: 4px; transition: top 1.2s ease; overflow: hidden;}
+header.on-scroll {background-color: #fff;}
+/* header .inner {display: flex; justify-content: center;}
+header img {width: calc(100% - 10px); object-fit: cover;} */
+/* header.on {top: 5px;} */
+header.up-scroll {top: -55px;}
+/* header a {display: block; width: 100%;} */
+
+.inner {width: 330px; margin: 0 auto; margin-left: 15px;}
+
+.keyvisual {position: relative; margin-top: 100px; overflow: hidden;}
+.keyvisual .title-wrap {margin-bottom: 10px;}
+.keyvisual .title-wrap > h2 {height: 33px; overflow: hidden;}
+.keyvisual h2 > span {display: block; font-family: "Pretendard_Bold"; font-size: 25px; line-height: 38px; color: #231f20; white-space: nowrap;}
+.keyvisual h2 > span:nth-child(2) span {display: inline-block; transform: translateY(100%);}
+.keyvisual .slider-wrap {position: relative; overflow: hidden;}
+.keyvisual .slider-wrap .slider a {height: 100%;}
+.keyvisual .slider-wrap .slider:first-child {z-index: 1; position: relative;}
+.keyvisual .slider-wrap .slider:nth-child(2) {position: absolute; top: 0; bottom: 0; right: 0; width: 0;}
+.keyvisual .slider-wrap .slider:nth-child(2) a {transform: scale(1.2);}
+.keyvisual .slider-wrap .slider img {height: 100%; object-fit: cover;}
+.keyvisual .scroll-bar {z-index: 10; position: absolute; left: 20px; right: 20px; bottom: 10px;}
+.list-tab {margin: 30px auto 120px; margin-left: 14px;}
+.list-tab img {display: block; width: 348px;}
+.digital-area {margin-top: 120px; margin-bottom: 120px;}
+.customer-area img {width: auto;}
+.car-area {margin-right: 5px;}
+.news-area {margin-top: 120px; margin-bottom: 120px;} 
+footer a {width: 365px;}

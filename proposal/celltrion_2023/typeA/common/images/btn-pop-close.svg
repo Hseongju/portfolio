@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="btn_close" transform="translate(-1848 -14)">
+    <rect id="container" width="40" height="40" transform="translate(1848 14)" fill="#999" opacity="0.004"/>
+    <line id="선_9" data-name="선 9" x2="20" y2="20" transform="translate(1858 24)" fill="none" stroke="#262c27" stroke-width="1.5"/>
+    <line id="선_10" data-name="선 10" x1="20" y2="20" transform="translate(1858 24)" fill="none" stroke="#262c27" stroke-width="1.5"/>
+  </g>
+</svg>

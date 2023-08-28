@@ -1,0 +1,103 @@
+@import url(./reset.css);
+@import url(./fonts.css);
+
+#mobileWrap{position:relative; overflow:hidden; top:50%; left:50%; width:393px; height:812px; font-family: "Pretendard", "맑은 고딕", "Malgun Gothic", sans-serif; transform:translate(-50%, -50%);}
+#mobileWrap .content {z-index:1;overflow:hidden;position:absolute;width:393px;height:812px;background:#fff;border:7px solid black;box-sizing:border-box;border-radius:50px;}
+#mobileWrap .content > .scroll {display:block; overflow-x:hidden; overflow-y:auto; position:relative; margin-left:0; width:397px; height:100%;}
+#mobileWrap .content .scrollDiv {display: block;}
+
+a {display: block;}
+header {z-index: 123456; position: relative; top: -60px; width: 380px; /*transition: top 1.2s ease;*/ overflow: hidden; background-color: #fff;}
+header img {width: 100%;}
+#mobileWrap .content > .scroll.scl-lock {padding-right: 16px; overflow: hidden;}
+
+.kv-area {position: relative; top: -60px; width: 100%; height: 812px; overflow: hidden;}
+.kv-area .tit-wrap {position: relative; padding-top: 294px; text-align: center; z-index: 1;}
+.kv-area .tit-wrap .tit1 {position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: 187px; height: 0; overflow: hidden;}
+.kv-area .tit-wrap .tit1 img {position: absolute; left: 0; bottom: 0; width: 187px; height: 54px;}
+.kv-area .tit-wrap .tit2 {position: absolute; left: 50%; bottom: -66px; transform: translateX(-50%); width: 187px; height: 0; overflow: hidden;}
+.kv-area .tit-wrap .tit2 img {position: absolute; left: 0; bottom: 0; width: 187px; height: 54px;}
+.kv-area .tit-wrap .txt-wrap {display: flex; position: absolute; bottom: -25px; right: 16px;}
+.kv-area .tit-wrap .txt-wrap .txt1 {position: relative; top: 20px; opacity: 0;}
+.kv-area .tit-wrap .txt-wrap .txt2 {position: relative; top: 40px; opacity: 0;}
+.kv-area .kv-img {position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); /*padding: 0 16px;*/ width: 346px; height: 480px; overflow: hidden;}
+.kv-area .kv-img .img {width: 100%; height: 100%; transition: 1s ease;}
+.kv-area .kv-img .img:nth-child(1) {position: relative; z-index: 1;} 
+.kv-area .kv-img .img:nth-child(2) {position: absolute; top: 0; left: 0;}
+
+.kv-area .kv-img.on .img:nth-child(1) {width: 0;}
+
+.kv-area .kv-img img {position: absolute; width: 100%; bottom: 0; left: 50%; transform: translateX(-50%); height: 480px; object-fit: cover;}
+.kv-area .mask {position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: 348px; height: 480px; overflow: hidden; transition: height 1.4s ease;}
+.kv-area .mask:before {display: block; content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 240px; background-color: #fff; z-index: 1; transition: height 1.4s ease;}
+.kv-area .mask:after {content: ""; position: absolute; top: 50%; left: 0; width: 100%; height: 240px; background-color: #fff; z-index: 1; transition: height 1.4s ease;}
+.kv-area .mask.active:before {height: 0;}
+.kv-area .mask.active:after {height: 0;}
+.kv-area .dimd {position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: 346px; height: 480px; overflow: hidden; background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, .4)); z-index: 1; opacity: 0;}
+.kv-area .controller {position: absolute; bottom: 370px; left: 36px; opacity: 0; z-index: 2;}
+.kv-area .controller .btn-wrap {display: flex; position: absolute; right: 0; bottom: 24px;}
+.kv-area .controller .btn-wrap .btn-prev {margin-right: 6px;}
+.kv-area .controller .btn-wrap .btn-prev .on {display: none; position: relative; left: 0; top: 0;}
+.kv-area .controller .btn-wrap.on .btn-prev .on {display: block;}
+.kv-area .controller .btn-wrap.on .btn-prev .def {display: none;}
+.kv-area .controller .indicator {position: relative; width: 310px; height: 1px; background-color: rgba(255, 255, 255, .2); z-index: 2;}
+.kv-area .controller .indicator .drag {position: absolute; top: 0; left: 0; width: 85px; height: 1px; background-color: #fff;}
+.kv-area .bot-txt-wrap {position: absolute; left: 36px; bottom: 150px; z-index: 2;}
+
+.kv-area .bot-txt-wrap .tit {position: relative; top: 30px; opacity: 0;}
+.kv-area .bot-txt-wrap .txt {position: relative; top: 30px; margin-top: 24px; opacity: 0;}
+
+.kv-area .bot-txt-wrap .fir {position: relative;}
+.kv-area .bot-txt-wrap .sec {position: absolute; left: 0; top: 0; opacity: 0;}
+.kv-area .bot-txt-wrap .sec .tit {position: relative; left: 100px;}
+.kv-area .bot-txt-wrap .sec .txt {position: relative; left: 150px;}
+
+.con-img {position: relative; padding-top: 60px; width: 380px;}
+.con-img img {width: 100%;}
+.con-img2 {padding-top: 140px;}
+.con-img2 img {width: 381px;}
+.fixed-menu {position: absolute; bottom: -71px; width: 100%; box-shadow: 0 -10px 10px rgba(0, 0, 0, .04); z-index: 10;}
+.fixed-menu img {width: 100%;}
+
+.edu-list {position: relative; padding-top: 120px;}
+.edu-list .edu-tit {padding: 0 36px;}
+.edu-list .edu-swiper {padding: 0 36px; margin-top: 60px;}
+.edu-list .edu-swiper .swiper-slide {width: 302px;}
+.online-list {position: relative; padding-top: 120px;}
+.online-list .online-tit {padding: 0 36px;}
+.online-list .online-swiper {padding: 0 36px; margin-top: 60px;}
+.online-list .online-swiper .swiper-slide {width: 302px;}
+
+footer {position: relative; padding: 60px 36px 122px; background-color: #fff;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

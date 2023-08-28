@@ -1,0 +1,6 @@
+<svg id="ico" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <path id="패스_180" data-name="패스 180" d="M0,0H40V40H0Z" fill="none"/>
+  <path id="패스_181" data-name="패스 181" d="M5,10H28.333" transform="translate(3.333 6.667)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <path id="패스_182" data-name="패스 182" d="M5,14H28.333" transform="translate(3.333 9.333)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <path id="패스_183" data-name="패스 183" d="M5,28.333,28.333,5" transform="translate(3.333 3.333)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+</svg>
