@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <g id="Icon" transform="translate(-972 -2752)">
+    <rect id="Guidebox" width="64" height="64" transform="translate(972 2752)" fill="#ccc" opacity="0"/>
+    <g id="타원_3" data-name="타원 3" transform="translate(972 2752)" fill="none" stroke="#acacac" stroke-width="2">
+      <circle cx="32" cy="32" r="32" stroke="none"/>
+      <circle cx="32" cy="32" r="31" fill="none"/>
+    </g>
+    <g id="사각형_49" data-name="사각형 49" transform="translate(982 2762)" fill="none" stroke="#acacac" stroke-width="2">
+      <rect width="44" height="44" stroke="none"/>
+      <rect x="1" y="1" width="42" height="42" fill="none"/>
+    </g>
+    <circle id="타원_4" data-name="타원 4" cx="6" cy="6" r="6" transform="translate(1012 2764)" fill="#e54e2b"/>
+  </g>
+</svg>

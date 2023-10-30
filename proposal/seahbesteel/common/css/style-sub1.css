@@ -1,0 +1,98 @@
+@charset "UTF-8";
+@import url(./reset.css);
+@import url(./fonts.css);
+
+/* common */
+img {width: 100%; object-fit: cover;}
+.inner {width: 1800px; margin: 0 auto;}
+.sub_inner {width: 1420px; margin: 0 auto;}
+.s_inner {width: 1400px; margin: 0 auto;}
+.tit_wrap img {width: auto;}
+
+header {position: absolute; top: -130px;}
+
+/* mainVisual */
+.main_area .main_txt {z-index: 1; position: relative; margin: 300px 0 98px;}
+.main_area .main_txt img {transform: translateY(-250px); opacity: 0;}
+.main_area .main_ig_wrap {position: relative;} 
+.main_area .main_ig_wrap img {transform: scale(1.2); transition: transform 1s;} 
+.main_area .main_ig_wrap.active img {transform: scale(1);} 
+.main_area .main_ig_wrap.on img {transform: scale(1) translateY(-100px);} 
+.main_area .horizontal_blind {width: 0; transition: all 1s; background-color: #fff;}
+.main_area .vertical_blind {height: 0; transition: all 1s; background-color: #fff;}
+.main_area .main_ig_wrap.active .left_blind {position: absolute; left: 0; width: calc(50% - 900px); top: -200px; height: 100vh;}
+.main_area .main_ig_wrap.active .right_blind {position: absolute; right: 0; width: calc(50% - 900px); top: -200px; height: 100vh;}
+.main_area .main_ig_wrap.active .top_blind {position: absolute; top: -100px; left: 0; right: 0; height: 99px; background-color: #fff;}
+.main_area .main_ig_wrap.active .bott_blind {position: absolute; left: 0; right: 0; bottom: -51px; height: 146px; background-color: #fff;}
+
+/* 경영관리 */
+.sc_management {padding-top: 145px;}
+.sc_management .tit_wrap {width: 793px; margin: 0 246px 250px auto;}
+.sc_management .tit_wrap .sub_wrap:nth-child(2) {margin: 80px 0 54px;}
+.video_area {position: relative; height: 100vh;}
+.video_area .video_wrap {z-index: -1; position: absolute; left: 0; top: 0; width: 100%; height: 100vh;}
+.video_area .inner {display: flex;}
+.video_area .video_wrap video {width: 100%; height: 100%; object-fit: cover;}
+.video_area .video_tit {flex-shrink: 0; width: 347px; padding-top: 200px; margin-left: 306px;}
+.video_area .txt_wrap {width: 540px; margin: 0 200px 0 auto; padding-top: 607px; overflow: hidden;}
+
+/* 핵심가치 */
+.sc_customer {padding-top: 240px; padding-bottom: 300px;}
+.sc_customer .tit_wrap {margin-left: 605px; margin-bottom: 155px;}
+.sc_customer .tit_wrap .sub_wrap + .sub_wrap {margin-top: 80px;} 
+.sc_customer .text_box {display: grid; gap: 20px; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr);}
+.sc_customer .text_box .sub_wrap {transform: translateY(150px); opacity: 0;}
+.sc_customer .text_box .sub_wrap:first-child {grid-column-start: 2; grid-column-end: 3; grid-row-start: 1; grid-row-end: 2;}
+.sc_customer .text_box .sub_wrap:nth-child(2) {grid-column-start: 3; grid-column-end: 4; grid-row-start: 1; grid-row-end: 2;}
+.sc_customer .text_box .sub_wrap:nth-child(3) {grid-column-start: 1; grid-column-end: 2; grid-row-start: 2; grid-row-end: 3;}
+.sc_customer .text_box .sub_wrap:nth-child(4) {grid-column-start: 2; grid-column-end: 3; grid-row-start: 2; grid-row-end: 3;}
+.sc_customer .text_box .sub_wrap:nth-child(5) {grid-column-start: 3; grid-column-end: 4; grid-row-start: 3; grid-row-end: 4;}
+
+/* 사업소개 */
+.sc_companyintro {position: relative; padding-bottom: 180px;}
+.sc_companyintro .tit_wrap {width: 520px; margin: 0 auto 120px;}
+.sc_companyintro .tit_wrap .sub_wrap:first-child {width: 71px; margin: 0 auto 80px;}
+.sc_companyintro .companySwiper {overflow: hidden;}
+.sc_companyintro .companySwiper .swiper-slide {position: relative;}
+.sc_companyintro .companySwiper .swiper-slide .slide_text {width: 560px; position: absolute; top: 200px; right: 98px;}
+.sc_companyintro .companySwiper .swiper-slide .slide_desc {margin: 44px 0 80px;}
+.sc_companyintro .companySwiper .swiper-slide .slide_btn {width: 120px;}
+.sc_companyintro .companySwiper .swiper-slide .slide_text > div {position: relative; top: 100px; opacity: 0; transition: top .8s, opacity .8s;}
+.sc_companyintro .companySwiper .swiper-slide .slide_text > div:nth-child(2) {transition-delay: .3s;}
+.sc_companyintro .companySwiper .swiper-slide .slide_text > div:nth-child(3) {transition-delay: .6s;}
+.sc_companyintro .companySwiper .swiper-slide.on .slide_text > div {top: 0; opacity: 1;}
+
+.sc_companyintro .swiper-button-prev {left: -60px;}
+.sc_companyintro .swiper-button-next {right: -60px;}
+.sc_companyintro .swiper-button-next,.sc_companyintro .swiper-button-prev {width: 113px; height: 113px; transform: translateY(-50%);}
+.sc_companyintro .swiper-button-next:after,.sc_companyintro .swiper-button-prev:after {font-size: 0;}
+.sc_companyintro .swiper-button-next.swiper-button-disabled,.sc_companyintro .swiper-button-prev.swiper-button-disabled {opacity: 1;}
+
+/* 2023비전 */
+.sc_vision {padding: 180px 0 320px;}
+.sc_vision .tit_wrap {margin-bottom: 160px;}
+.sc_vision .tit_wrap .sub_wrap + .sub_wrap {margin-top: 80px;}
+/* .sc_vision .text_wrap + .text_wrap {margin-top: 80px;} */
+.sc_vision .text_wrap:first-child {margin-bottom: 10px;}
+.sc_vision .graph_wrap {position: relative; margin: 10px 0 80px;}
+.sc_vision .graph_wrap .sub_wrap:nth-child(2n+1) {position: absolute; top: 0;}
+.sc_vision .graph_wrap .sub_wrap:nth-child(1) {left: calc(50% - 260px);}
+.sc_vision .graph_wrap .sub_wrap:nth-child(2) {position: relative; z-index: 1; transform: translateX(calc(50% - 260px));}
+.sc_vision .graph_wrap .sub_wrap:nth-child(3) {right: calc(50% - 260px);}
+.sc_vision .text_wrap img, .sc_vision .graph_wrap img {width: auto;}
+/* .sc_vision .sec_graph_wrap {display: flex; justify-content: space-between; margin-top: 30px;} */
+.sc_vision .sec_graph_wrap .sub_wrap {margin-top: 30px; transform: translateY(150px); opacity: 0;}
+
+/* 히스토리 */
+.sc_road {padding-top: 200px; padding-bottom: 300px; background-color: #f7f7f7;}
+.sc_road .tit_wrap {margin-bottom: 120px;}
+.sc_road .tit_wrap .sub_wrap:nth-child(2) {margin: 30px 0 62px;}
+.sc_road .sub_inner > div {margin-left: 265px;}
+.sc_road .sub_inner .text_wrap {display: flex; flex-wrap: wrap; justify-content: space-between; width: 888px;}
+.sc_road .sub_inner .text_wrap > div {width: 418px;}
+.sc_road .sub_inner .text_wrap > div:nth-child(2n) {margin-top: 146px;}
+.sc_road .text_wrap img {width: auto;}
+
+/* 공통 스크롤 모션 */
+.scroll_motion {transform: translateY(150px); opacity: 0; transition: transform 1s, opacity 1s; transition-delay: .15s;}
+.scroll_motion.active {transform: translateY(0); opacity: 1;}

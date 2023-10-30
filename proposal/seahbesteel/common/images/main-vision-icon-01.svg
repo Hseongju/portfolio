@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_45" data-name="사각형 45" width="62.631" height="64" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Icon" transform="translate(-972 -2752)">
+    <rect id="guidebox" width="64" height="64" transform="translate(972 2752)" fill="#ccc" opacity="0"/>
+    <g id="그룹_6" data-name="그룹 6" transform="translate(973 2752)">
+      <g id="그룹_5" data-name="그룹 5" clip-path="url(#clip-path)">
+        <path id="패스_17" data-name="패스 17" d="M36,4a4,4,0,1,1-4-4,4,4,0,0,1,4,4" fill="#acacac"/>
+        <path id="패스_18" data-name="패스 18" d="M18.778,7a4,4,0,1,1-5.587-.885A4,4,0,0,1,18.778,7" fill="#acacac"/>
+        <path id="패스_19" data-name="패스 19" d="M6.607,19.543a4,4,0,1,1-5.04,2.568,4,4,0,0,1,5.04-2.568" fill="#acacac"/>
+        <path id="패스_20" data-name="패스 20" d="M4.134,36.848a4,4,0,1,1-2.568,5.04,4,4,0,0,1,2.568-5.04" fill="#acacac"/>
+        <path id="패스_21" data-name="패스 21" d="M12.306,52.3a4,4,0,1,1,.885,5.587,4,4,0,0,1-.885-5.587" fill="#acacac"/>
+        <path id="패스_22" data-name="패스 22" d="M28,60a4,4,0,1,1,4,4,4,4,0,0,1-4-4" fill="#acacac"/>
+        <path id="패스_23" data-name="패스 23" d="M45.222,57a4,4,0,1,1,5.587.885A4,4,0,0,1,45.222,57" fill="#acacac"/>
+        <path id="패스_24" data-name="패스 24" d="M57.394,44.457a4,4,0,1,1,5.039-2.568,4,4,0,0,1-5.039,2.568" fill="#acacac"/>
+        <path id="패스_25" data-name="패스 25" d="M59.866,27.152a4,4,0,1,1,2.568-5.04,4,4,0,0,1-2.568,5.04" fill="#acacac"/>
+        <path id="패스_26" data-name="패스 26" d="M51.694,11.7a4,4,0,1,1-.885-5.587,4,4,0,0,1,.885,5.587" fill="#e54e2b"/>
+      </g>
+    </g>
+  </g>
+</svg>

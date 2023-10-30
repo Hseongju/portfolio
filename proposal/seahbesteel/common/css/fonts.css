@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+/* font settings - Start */
+/* @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css'); */
+
+/* Acumin-Pro */
+@font-face {
+  font-family: "Acumin-Black";
+  src: url(../fonts/Acumin Pro Black.eot);
+  src: url(../fonts/Acumin Pro Black.eot?#iefix) format("embedded-opentype"), url(../fonts/Acumin Pro Black.woff2) format("woff2"), url(../fonts/Acumin Pro Black.woff) format("woff"), url(../fonts/Acumin Pro Black.ttf) format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Acumin-Bold";
+  src: url(../fonts/Acumin Pro Bold.eot);
+  src: url(../fonts/Acumin Pro Bold.eot?#iefix) format("embedded-opentype"), url(../fonts/Acumin Pro Bold.woff2) format("woff2"), url(../fonts/Acumin Pro Bold.woff) format("woff"), url(../fonts/Acumin Pro Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Acumin-SemiBold";
+  src: url(../fonts/Acumin Pro Semibold.eot);
+  src: url(../fonts/Acumin Pro Semibold.eot?#iefix) format("embedded-opentype"), url(../fonts/Acumin Pro Semibold.woff2) format("woff2"), url(../fonts/Acumin Pro Semibold.woff) format("woff"), url(../fonts/Acumin Pro Semibold.ttf) format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Acumin-Medium";
+  src: url(../fonts/Acumin Pro Medium.eot);
+  src: url(../fonts/Acumin Pro Medium.eot?#iefix) format("embedded-opentype"), url(../fonts/Acumin Pro Medium.woff2) format("woff2"), url(../fonts/Acumin Pro Medium.woff) format("woff"), url(../fonts/Acumin Pro Medium.ttf) format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Acumin-Regular";
+  src: url(../fonts/Acumin Pro Regular.eot);
+  src: url(../fonts/Acumin Pro Regular.eot?#iefix) format("embedded-opentype"), url(../fonts/Acumin Pro Regular.woff2) format("woff2"), url(../fonts/Acumin Pro Regular.woff) format("woff"), url(../fonts/Acumin Pro Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+
+
+
+/* NanumSquare */
+
+@font-face {
+  font-family: "NanumSquare-ExtraBold";
+  src: url(../fonts/NanumSquare-ExtraBold.eot);
+  src: url(../fonts/NanumSquare-ExtraBold.eot?#iefix) format("embedded-opentype"), url(../fonts/NanumSquare-ExtraBold.woff2) format("woff2"), url(../fonts/NanumSquare-ExtraBold.woff) format("woff"), url(../fonts/NanumSquare-ExtraBold.ttf) format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NanumSquare-Bold";
+  src: url(../fonts/NanumSquare-Bold.eot);
+  src: url(../fonts/NanumSquare-Bold.eot?#iefix) format("embedded-opentype"), url(../fonts/NanumSquare-Bold.woff2) format("woff2"), url(../fonts/NanumSquare-Bold.woff) format("woff"), url(../fonts/NanumSquare-Bold.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NanumSquare-Regular";
+  src: url(../fonts/NanumSquare-Regular.eot);
+  src: url(../fonts/NanumSquare-Regular.eot?#iefix) format("embedded-opentype"), url(../fonts/NanumSquare-Regular.woff2) format("woff2"), url(../fonts/NanumSquare-Regular.woff) format("woff"), url(../fonts/NanumSquare-Regular.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NanumSquare-Light";
+  src: url(../fonts/NanumSquare-Light.eot);
+  src: url(../fonts/NanumSquare-Light.eot?#iefix) format("embedded-opentype"), url(../fonts/NanumSquare-Light.woff2) format("woff2"), url(../fonts/NanumSquare-Light.woff) format("woff"), url(../fonts/NanumSquare-Light.ttf) format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+
+/* font settings - End */

@@ -1,0 +1,15 @@
+@import url(./reset.css);
+@import url(./fonts.css);
+
+#mobileWrap{position:relative; overflow:hidden; top:50%; left:50%; width:372px; height:812px; font-family: "Pretendard", "맑은 고딕", "Malgun Gothic", sans-serif; transform:translate(-50%, -50%);}
+#mobileWrap .content {z-index:1;overflow:hidden;position:absolute;width:370px;height:812px;background:#fff;border:7px solid black;box-sizing:border-box;border-radius:50px;}
+#mobileWrap .content > .scroll{display:block; overflow-x:hidden; overflow-y:auto; position:relative; margin-left:-2px; width:382px; height:100%;}
+#mobileWrap .content .scrollDiv {display: block;}
+
+header {z-index: 1; position: absolute; left: 16px; right: 16px; top: 40px; width: 330px;}
+header a {display: block; width: 100%; margin: 0 auto;}
+header img {width: 100%; object-fit: cover;}
+
+section .ig_wrap img {display: block; margin-left: -8px;}
+footer a {display: block;}
+footer img {display: block; margin-left: -8px;}

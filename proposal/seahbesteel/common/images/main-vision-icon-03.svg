@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <g id="Icon" transform="translate(-972 -2744)">
+    <rect id="Guidebox" width="64" height="64" transform="translate(972 2744)" fill="#ccc" opacity="0"/>
+    <g id="사각형_46" data-name="사각형 46" transform="translate(972 2744)" fill="none" stroke="#acacac" stroke-width="2">
+      <rect width="34" height="34" stroke="none"/>
+      <rect x="1" y="1" width="32" height="32" fill="none"/>
+    </g>
+    <g id="사각형_47" data-name="사각형 47" transform="translate(972 2776)" fill="none" stroke="#acacac" stroke-width="2">
+      <rect width="34" height="32" stroke="none"/>
+      <rect x="1" y="1" width="32" height="30" fill="none"/>
+    </g>
+    <g id="사각형_48" data-name="사각형 48" transform="translate(1004 2776)" fill="none" stroke="#acacac" stroke-width="2">
+      <rect width="32" height="32" stroke="none"/>
+      <rect x="1" y="1" width="30" height="30" fill="none"/>
+    </g>
+    <circle id="타원_2" data-name="타원 2" cx="6" cy="6" r="6" transform="translate(1014 2755)" fill="#e54e2b"/>
+  </g>
+</svg>
