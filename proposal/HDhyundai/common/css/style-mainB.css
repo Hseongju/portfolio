@@ -1,0 +1,208 @@
+@import url(./reset.css);
+@import url(./fonts.css);
+
+#wrap {width: 100%; background-color: #F0F0F0;}
+
+.intro {position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 99;}
+.intro video {display:block; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width: auto; height: auto; max-width: 115%; min-height: 115%; object-fit: cover;}
+
+header {position: absolute; top: -120px; left: 0; width: 100%; height: 120px; z-index: 100; background: rgba(255,255,255,0); transition-duration: 0.5s; transition-property: background;}
+header h1 {position: absolute; top: 46px; left: 60px;}
+header .gnb {display: flex; position: absolute; top: 48px; left: 344px;}
+header .gnb a {display: block; text-align: center; padding: 0 20px 47px; transition-duration: 0.5s; transition-property: width;}
+header .gnb a:nth-child(1) {width: 107px;}
+header .gnb a:nth-child(2) {width: 127px;}
+header .gnb a:nth-child(3) {width: 75px;}
+header .gnb a:nth-child(4) {width: 107px;}
+header .gnb a:nth-child(5) {width: 107px;}
+header .gnb a:nth-child(6) {width: 90px;}
+header .util {display: block; position: absolute; top: 48px; right: 180px;}
+.gnb-two {position: absolute; top: 120px; left: 0; width: 100%; height: 0; overflow: hidden; background-color: #fff; z-index: 10; transition-duration: 0.5s; transition-property: height;}
+.gnb-two::before {content: ""; display: block; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background-color: #ccc; opacity: 0; z-index: 10; transition-duration: 0.5s; transition-property: opacity;}
+.gnb-two::after {content: ""; display: block; position: absolute; top: 0; left: 437px; width: 192px; height: 3px; background-color: #00AD1D; opacity: 0; z-index: 10; transition-duration: 0.5s; transition-property: left, opacity;}
+.gnb-two .inner {display: flex; position: absolute; top: 0; left: 344px;}
+.gnb-two .inner a {display: block; text-align: center; transition-duration: 0.5s; transition-property: width;}
+.gnb-two .inner a:nth-child(1) {width: 107px;}
+.gnb-two .inner a:nth-child(2) {width: 127px;}
+.gnb-two .inner a:nth-child(3) {width: 75px;}
+.gnb-two .inner a:nth-child(4) {width: 107px;}
+.gnb-two .inner a:nth-child(5) {width: 107px;}
+.gnb-two .inner a:nth-child(6) {width: 90px;}
+
+header.hover {background-color: rgba(255,255,255,1);}
+header.hover .gnb a {width: 192px;}
+.gnb-two.hover {height: 364px;}
+.gnb-two.hover::before {opacity: 1;}
+.gnb-two.hover::after {left: 537px; opacity: 1;}
+.gnb-two.hover .inner a {width: 192px;}
+
+
+nav {position: fixed; top: -120px; right: 60px; z-index: 100;}
+
+.sitemap {position: fixed; top: 0; left: 100%; width: 100%; height: 100vh; overflow-y: scroll; overflow-x: hidden; background-color: #002554; z-index: 100;}
+.sitemap h2 {position: absolute; top: 45px; left: 60px;}
+.sitemap .xbt {position: absolute; top: 30px; right: 60px;}
+.sitemap > div {position: relative; width: 100%; padding: 160px 0; text-align: center;}
+
+#mainWrap {position: relative; width: 100%; padding-top: 550vh;}
+
+.main-top-con {position: fixed; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden;}
+.main-top-con .visual-area {position: relative;}
+.main-top-con .movies {position: absolute; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden;}
+.main-top-con .movies > p {position: absolute; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden; opacity: 0; overflow: hidden;}
+.main-top-con .movies > p:nth-child(1) {opacity: 1;}
+.main-top-con .movies > p:nth-child(1) video {display:block; position:absolute; top:0; right:-12%; width: 100%; height: 100%;}
+.main-top-con .movies > p:nth-child(2) video {display:block; position:absolute; top:0; right:-12%; width: 100%; height: 100%;}
+.main-top-con .movies > p:nth-child(3) video {display:block; position:absolute; top:20%; right:-12%; width: 90%; height: 90%;}
+.main-top-con .masks {position: absolute; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden;}
+.main-top-con .masks > p {position: absolute; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden; opacity: 0;}
+.main-top-con .masks > p:nth-child(1) {opacity: 1; background: url('../images/main-kv-bg-1.png') no-repeat center center; background-size: cover;}
+.main-top-con .masks > p:nth-child(2) {opacity: 0; background: url('../images/main-kv-bg-2.png') no-repeat center center; background-size: cover;}
+.main-top-con .masks > p:nth-child(3) {opacity: 0; background: url('../images/main-kv-bg-3.png') no-repeat center center; background-size: cover;}
+.main-top-con .txt-area {position: relative; top: 0; left: 0; width: 1190px; height: 100vh; margin: auto;}
+.main-top-con .txt-area .inner {position: absolute; top: 50%; left: 0; transform: translate(0, -50%);}
+.main-top-con .txt-area .inner .txt1 {position: relative; margin-bottom: 40px; transform: translate(0, 100px); opacity: 0;}
+.main-top-con .txt-area .inner .txt2 {position: relative; transform: translate(0, 100px); opacity: 0;}
+
+.main-btns-con {position: fixed; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden; z-index: 10;}
+.main-btns-con .btns {position: absolute; top: 50%; right: 19%; transform: translate(0, -50%); width: 22%; height: 50vh; overflow: hidden; z-index: 10;}
+.main-btns-con .btns > a {display: block; position: absolute; top: 0; left: 0; width: 30px; height: 30px;}
+.main-btns-con .btns > a:nth-child(1) {top: 0; right: 30%; left: auto; width: 40%; height: 25%;}
+.main-btns-con .btns > a:nth-child(2) {top: 50%; left: auto; right: 0; transform: translate(0, -50%) rotate(30deg); width: 60%; height: 40%; z-index: 1;}
+.main-btns-con .btns > a:nth-child(3) {bottom: 0; top: auto; left: 14%; width: 40%; height: 50%;}
+
+.scroll-down {position: fixed; bottom: 0; left: 56px;}
+
+.main-con1 {position: fixed; top: 0; left: 0; width: 100%; height: 100vh;}
+.main-con1 .part1 {position: absolute; top: 0; left: 0; width: 100%; height: 100vh; z-index: 2;}
+.main-con1 .part2 {position: absolute; top: 0; left: 100%; width: 100%; height: 100vh; z-index: 1;}
+.main-con1 .part3 {position: absolute; top: 0; left: 200%; width: 100%; height: 100vh;}
+.main-con1 .movie {position: absolute; top: calc(100% - 252px); left: 50%; transform: translate(-50%, 0); width: 1190px; height: 100vh; overflow: hidden;}
+.main-con1 .movie video {display:block; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width: auto; height: auto; max-width: 120%; min-height: 120%; object-fit: cover;}
+.main-con1 .movie .bg2 {display:block; position:absolute; top:0; left:0; width: 100%; height: 100vh; background: url('../images/main-con1-img2.jpg') no-repeat center center; background-size: cover; transform: scale(2);}
+.main-con1 .movie .bg3 {display:block; position:absolute; top:0; left:0; width: 100%; height: 100vh; background: url('../images/main-con1-img3.jpg') no-repeat center center; background-size: cover; transform: scale(2);}
+.main-con1 .movie .dimd {display:block; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width: 100%; height: 100%; background: rgba(0,0,0,0.2);}
+.main-con1 .txt {position: absolute; top: 0; left: 0; width: 100%; height: 100vh;}
+.main-con1 .txt .inner {position: absolute; top:50%; left:50%; transform:translate(-50%, -50%); width: 1190px;}
+.main-con1 .txt .inner .txt1 {position: relative; margin-bottom: 58px; transform: translate(0, 100px); opacity: 0;}
+.main-con1 .txt .inner .txt2 {position: relative; margin-bottom: 29px; transform: translate(0, 100px); opacity: 0;}
+.main-con1 .txt .inner .txt3 {position: relative; transform: translate(0, 100px); opacity: 0;}
+.main-con1 .gage {position: fixed; top: 50%; right: 60px; transform: translate(0, -50%); width: 3px; height: 480px; background: rgba(255,255,255,0.5); opacity: 0;}
+.main-con1 .gage span {display: block; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: #00E600;}
+
+.main-con2 {position: fixed; top: 100%; left: 0; width: 100%; height: 100vh; overflow: hidden;}
+.main-con2 .pack {position: absolute; top: 0; left: 0; width: 100%; height: 100vh; overflow: hidden;}
+.main-con2 .bg {position: absolute; top: 0; left: 0; width: 100%; height: 1340px; background: url('../images/main-con2-bg.jpg') no-repeat center center; background-size: cover;}
+.main-con2 .txt {position: relative; width: 1190px; height: 100vh; margin: auto;}
+.main-con2 .txt .inner {position: absolute; top: 50%; left: 0; transform: translate(0, -50%);}
+.main-con2 .txt .inner .txt1 {position: relative; margin-bottom: 125px; transform: translate(0, 100px); opacity: 0;}
+.main-con2 .txt .inner .txt2 {position: relative; margin-bottom: 64px; transform: translate(0, 100px); opacity: 0;}
+.main-con2 .txt .inner .txt3 {position: relative; transform: translate(0, 100px); opacity: 0;}
+
+.main-con3 {position: fixed; top: 100%; left: 0; width: 100%; height: 100vh; overflow: hidden;}
+.main-con3 .ininner {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%; overflow: hidden;}
+.main-con3 .ininner .inner {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.5); width: 200%; height: 200%; overflow: hidden; background: #000000;}
+.main-con3 .inner .video {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100vh; overflow: hidden;}
+.main-con3 .inner .txt {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; opacity: 0;}
+.main-con3 .inner .video video {display:block; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width: auto; height: auto; max-width: 120%; min-height: 120%; object-fit: cover;}
+.main-con3 .inner .txt {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(2); z-index: 1; opacity: 0;}
+.main-con3 .inner .txt img {position: relative; transform: scale(2);}
+.main-con3 .inner .img {position: absolute; width: 100%; height: 100vh; overflow: hidden;}
+.main-con3 .inner .img img {display:block; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width: auto; height: auto; max-width: 120%; min-height: 120%; object-fit: cover;}
+.main-con3 .inner .img.one {top: -40px; left: -61%;}
+.main-con3 .inner .img.two {bottom: -40px; left: -61%;}
+.main-con3 .inner .img.thr {top: -30%; left: 50%; transform: translate(-50%, 0);}
+.main-con3 .inner .img.fou {bottom: -30%; left: 50%; transform: translate(-50%, 0);}
+.main-con3 .inner .img.fiv {top: -40px; right: -61%;}
+.main-con3 .inner .img.six {bottom: -40px; right: -61%;}
+
+.section-bot {position: fixed; top: 100%; left: 0; width: 100%; height: 10211px;}
+
+.main-con4 {position: relative; width: 100%; height: 150vh; overflow: hidden; background-color: #F0F0F0;}
+.main-con4 .bg {position: absolute; top: 0; left: 0; width: 100%; height: 1338px; background: url('../images/main-con4-bg.png') no-repeat 0 0;}
+.main-con4 .txt {position: relative; width: 100%; height: 150vh; margin: auto;}
+.main-con4 .txt .inner {position: absolute; top: 50%; left: 50%; transform: translate(0, -50%); width: 50%;}
+.main-con4 .txt .inner .txt1 {position: relative; margin-bottom: 125px; transform: translate(0, 100px); opacity: 0; transition-duration: 0.5s; transition-property: transform, opacity; transition-delay: 0.5s;}
+.main-con4 .txt .inner .txt2 {position: relative; margin-bottom: 64px; transform: translate(0, 100px); opacity: 0; transition-duration: 0.5s; transition-property: transform, opacity; transition-delay: 0.6s;}
+.main-con4 .txt .inner .txt3 {position: relative; transform: translate(0, 100px); opacity: 0; transition-duration: 0.5s; transition-property: transform, opacity; transition-delay: 0.7s;}
+.main-con4.active .txt .inner .txt1 {transform: translate(0, 0); opacity: 1;}
+.main-con4.active .txt .inner .txt2 {transform: translate(0, 0); opacity: 1;}
+.main-con4.active .txt .inner .txt3 {transform: translate(0, 0); opacity: 1;}
+
+.main-con5 {position: relative; width: 100%; height: 3858px; background-color: #F0F0F0;}
+.main-con5 .inner {position: relative; display: flex; width: 1800px; height: 3858px; margin: auto; background-color: #F0F0F0;}
+.main-con5 .left {position: relative; width: 432px;}
+.main-con5 .left li {position: absolute; top: 0; left: 0; width: 432px; height: 115px; overflow: hidden;}
+.main-con5 .left li:nth-child(2) {top: 1316px;}
+.main-con5 .left li.last {top: 2632px; width: 432px; height: 115px !important; max-height: 115px !important; background-color: #fff; border-radius: 16px; transition-duration: 0.5s; transition-property: height, max-height;}
+.main-con5 .left li a {display: block; position: relative; width: 432px; height: 115px;}
+.main-con5 .left li.last a > img {position: absolute; top: 42px; left: 60px;}
+.main-con5 .left li p {position: absolute; top: 50%; right: 60px; transform: translate(0, -50%) rotate(0deg); width: 32px; height: 32px; transition-duration: 0.5s; transition-property: transform;}
+.main-con5 .left li > div {position: absolute; top: 117px; left: 60px;}
+.main-con5 .right {position: relative; margin-left: 24px;}
+.main-con5 .right li {margin-bottom: 60px;}
+.main-con5 .left li.last.active {height: 339px !important; max-height: 339px !important;}
+.main-con5 .left li.last.active p {transform: translate(0, -50%) rotate(180deg);}
+
+.main-con6 {position: relative; width: 100%; padding: 380px 0 0; background-color: #F0F0F0;}
+.main-con6 .inner {position: relative; width: 1680px; margin: auto;}
+.main-con6 .img {position: relative; transform: translate(0, 100px); opacity: 0; transition-duration: 0.5s; transition-property: transform, opacity; transition-delay: 0.4s;}
+.main-con6 .txt {position: absolute; top: 50%; left: 1004px; transform: translate(0, -50%);}
+.main-con6 .txt .txt1 {position: relative; margin-bottom: 62px; transform: translate(0, 100px); opacity: 0; transition-duration: 0.5s; transition-property: transform, opacity; transition-delay: 0.5s;}
+.main-con6 .txt .txt2 {position: relative; margin-bottom: 34px; transform: translate(0, 100px); opacity: 0; transition-duration: 0.5s; transition-property: transform, opacity; transition-delay: 0.6s;}
+.main-con6 .txt .txt3 {position: relative; margin-bottom: 81px; transform: translate(0, 100px); opacity: 0; transition-duration: 0.5s; transition-property: transform, opacity; transition-delay: 0.7s;}
+.main-con6 .txt a {display: block; position: relative; transform: translate(0, 100px); opacity: 0; transition-duration: 0.5s; transition-property: transform, opacity; transition-delay: 0.8s;}
+.main-con6.active .img {transform: translate(0, 0); opacity: 1;}
+.main-con6.active .txt .txt1 {transform: translate(0, 0); opacity: 1;}
+.main-con6.active .txt .txt2 {transform: translate(0, 0); opacity: 1;}
+.main-con6.active .txt .txt3 {transform: translate(0, 0); opacity: 1;}
+.main-con6.active .txt a {transform: translate(0, 0); opacity: 1;}
+
+.main-con7 {position: relative; width: 100%; padding: 240px 0 0; background-color: #F0F0F0; }
+.main-con7 .inner {position: relative; width: 1680px; margin: auto;}
+.main-con7 .tit {position: relative; margin-bottom: 80px; transform: translate(0, 100px); opacity: 0; transition-duration: 0.5s; transition-property: transform, opacity; transition-delay: 0.5s;}
+.main-con7 .list {position: relative; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #000; padding-top: 114px; transform: translate(0, 100px); opacity: 0; transition-duration: 0.5s; transition-property: transform, opacity; transition-delay: 0.6s;}
+.main-con7 .list > a {margin-bottom: 234px;}
+.main-con7.active .tit {transform: translate(0, 0); opacity: 1;}
+.main-con7.active .list {transform: translate(0, 0); opacity: 1;}
+
+.main-con8 {display: flex; justify-content: space-between; position: relative; width: 100%; padding: 6px 0 240px; background-color: #F0F0F0;}
+.main-con8 .inner {display: flex; justify-content: space-between; position: relative; width: 1680px; margin: auto;}
+.main-con8 .inner > a {display: block; position: relative; transform: translate(0, 100px); opacity: 0; transition-duration: 0.5s; transition-property: transform, opacity;}
+.main-con8 .inner > a:nth-child(1) {transition-delay: 0.1s;}
+.main-con8 .inner > a:nth-child(2) {transition-delay: 0.2s;}
+.main-con8 .inner > a:nth-child(3) {transition-delay: 0.3s;}
+.main-con8.active .inner > a {transform: translate(0, 0); opacity: 1;}
+
+.main-con9 {position: relative; width: 100%; height: 880px; overflow: hidden;}
+.main-con9 .bg-area {position: absolute; top: 0; left: 0; width: 100%; height: 880px;}
+.main-con9 .bg-area .img {position: absolute; top: 0; left: 0; width: 100%; height: 880px; background: url('../images/ESG-1.jpg') no-repeat right center; transform: scale(1.2); background-size: 50% auto}
+.main-con9 .bg-area .mask {position: absolute; top: 0; left: 0; width: 100%; height: 880px; background: url('../images/ESG-Mask.png') no-repeat right center; background-size: cover;}
+.main-con9 .inner {position: relative; width: 1190px; height: 880px; margin: auto;}
+.main-con9 .inner .left {position: absolute; top: 50%; left: 0; transform: translate(0, -50%);}
+.main-con9 .inner .left .txt1 {position: relative; margin-bottom: 63px; transform: translate(0, 100px); opacity: 0; transition-duration: 0.5s; transition-property: transform, opacity;}
+.main-con9 .inner .left .txt2 {position: relative; margin-bottom: 39px; transform: translate(0, 100px); opacity: 0; transition-duration: 0.5s; transition-property: transform, opacity; transition-delay: 0.1s;}
+.main-con9 .inner .left .txt3 {position: relative; margin-bottom: 80px; transform: translate(0, 100px); opacity: 0; transition-duration: 0.5s; transition-property: transform, opacity; transition-delay: 0.2s;}
+.main-con9 .inner .left a {display: block; position: relative; transform: translate(0, 100px); opacity: 0; transition-duration: 0.5s; transition-property: transform, opacity; transition-delay: 0.3s;}
+.main-con9.active .inner .left .txt1 {transform: translate(0, 0); opacity: 1;}
+.main-con9.active .inner .left .txt2 {transform: translate(0, 0); opacity: 1;}
+.main-con9.active .inner .left .txt3 {transform: translate(0, 0); opacity: 1;}
+.main-con9.active .inner .left a {transform: translate(0, 0); opacity: 1;}
+
+
+
+footer{position: relative; background:#002554; z-index: 101;}
+footer a{display:block; padding:120px 0 160px;}
+footer .inner{margin:0 auto; width:1681px;}
+footer .motion-area .inner{position:relative; margin:0 auto; padding:120px 0; width:1680px; height:634px;}
+footer .motion-area .inner .logo{position:absolute; top:50%; left:-188px; transform:translateY(-50%); opacity:0; transition:left 1s ease, opacity 1s ease;}
+footer .motion-area .inner .motion-txt{position:absolute; top:calc(50% + 5px); left:531px; transform:translateY(-50%); width:618px; height:256px; transition:width 1s ease;}
+footer .motion-area .inner .motion-txt .left{position:absolute; top:0; left:0; width:53px; height:256px; background:#fff;}
+footer .motion-area .inner .motion-txt .left:after{display:block; content:""; position:absolute; top:50%; left:53px; transform:translateY(-50%); width:486px; height:53px; background:#fff; transition:width 1s ease;}
+footer .motion-area .inner .motion-txt .right{position:absolute; top:0; right:0; margin-left:27px; width:53px; height:256px; background:#fff;}
+footer .motion-area .inner .motion-txt .right:after{display:block; content:""; position:absolute; top:calc(50% - 4px); left:-27px; transform:translateY(-50%); width:27px; height:61px; background:url("../images/img-footer-logo-path.svg") no-repeat center center/cover;}
+footer .motion-area .inner .txt{position:absolute; top:50%; right:-308px; transform:translateY(-50%); opacity:0; transition:right 1s ease, opacity 1s ease;}
+footer .motion-area.active .inner .logo{left:92px; opacity:1;}
+footer .motion-area.active .inner .motion-txt{width:219px;}
+footer .motion-area.active .inner .motion-txt .left:after{width:86px;}
+footer .motion-area.active .inner .txt{right:92px; opacity:1;}

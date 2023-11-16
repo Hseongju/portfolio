@@ -1,0 +1,38 @@
+@import url(./reset.css);
+#mobileWrap {position: relative; overflow: hidden; top: 50%; left: 50%; width: 384px; height: 772px; font-family: 'noto_bold', '맑은 고딕', 'Malgun Gothic', sans-serif; border-radius: 50px; transform: translate(-50%, -50%);}
+#mobileWrap .content {z-index: 9999; overflow: hidden; position: absolute; width: 384px; height: 772px; background:#fff; border: 7px solid black; box-sizing: border-box; border-radius:50px;}
+#mobileWrap .content .scroll {display: block; overflow-x: hidden; overflow-y: auto; position: relative; margin-left:-2px; width: 394px; height: 100%;}
+#mobileWrap .content .scrollDiv {display: block;}
+
+/* common */
+header {
+  position: absolute;
+  top: 0;
+  padding: 0 12px 0 20px;
+  width: 100%;
+  height: 54px;
+  background:#fff;
+  overflow: hidden;
+  z-index: 20;
+}
+
+header a {display:block; padding-top: 17px; width: 100%; height: 100%;}
+
+header a img {position: relative; width: 324px;}
+
+header a img.blk {display: none; position: absolute; top: 20px; left: 20px;}
+
+header.up-scroll {top: -54px; background-color: #fff;}
+
+header.up-scroll a img.blk {display: block;}
+
+.visual-area{padding:101px 0 30px; margin-left:15px;}
+
+.quick-area{padding-bottom:100px}
+
+.media-area{padding:121px 0;}
+.media-area img{margin-left: 15px;}
+
+footer a {display: block;}
+footer img {display: block; margin-left: -8px;}
+

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="btn-cloes" transform="translate(4 0)">
+    <rect id="container" width="32" height="32" transform="translate(-4 0)" fill="#484848" opacity="0"/>
+    <line id="선_23" data-name="선 23" x2="21" y2="21" transform="translate(1.5 5.5)" fill="none" stroke="#2f3633" stroke-width="1.5"/>
+    <line id="선_24" data-name="선 24" x1="21" y2="21" transform="translate(1.5 5.5)" fill="none" stroke="#2f3633" stroke-width="1.5"/>
+  </g>
+</svg>

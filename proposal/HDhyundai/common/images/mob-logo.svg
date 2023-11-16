@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="91.083" height="24" viewBox="0 0 91.083 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="사각형_3" data-name="사각형 3" width="91.083" height="24" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="_CI_Dark_" data-name="+CI(Dark)" transform="translate(0)">
+    <path id="패스_2" data-name="패스 2" d="M0,71.527H13.857l-6.928-12Z" transform="translate(0 -47.527)" fill="#008233"/>
+    <path id="패스_3" data-name="패스 3" d="M0,0,20.785,12,13.856,0Z" transform="translate(0 0)" fill="#00e600"/>
+    <path id="패스_4" data-name="패스 4" d="M13.856,24l6.928-12L0,0Z" transform="translate(0 0)" fill="#00ad1d"/>
+    <g id="그룹_2" data-name="그룹 2" transform="translate(0)" clip-path="url(#clip-path)">
+      <path id="패스_5" data-name="패스 5" d="M306.789,72.153h-2.773v5.255h12.749V75.114h-9.976Z" transform="translate(-242.73 -57.608)" fill="#003087"/>
+      <path id="패스_6" data-name="패스 6" d="M391.325,20.831v5.6h-1.387v-5.6h-2.679l0,9.493a13.374,13.374,0,0,1-5.045,1.381V23.62h3.672V21.328h-6.464V34.44a21.1,21.1,0,0,0,7.837-1.663l0,3.616h2.679v-7.38h1.387v7.418h2.7v-15.6Z" transform="translate(-302.939 -16.632)" fill="#003087"/>
+      <path id="패스_7" data-name="패스 7" d="M295.8,24.1a1.732,1.732,0,0,1,1.711-1.843,1.7,1.7,0,0,1,1.711,1.843,1.715,1.715,0,1,1-3.422,0m5.928.124a3.469,3.469,0,0,0-.76-2.2h1.55v2.292h1.908v.97h-1.908v2.371h1.908v1.957h2.754V18.35h-2.754V22h-1.879V19.727H298.9l-.834-2h-2.941l.87,2h-3.652v2.294h1.626a3.465,3.465,0,0,0-.764,2.2c0,2.313,1.818,3.8,4.254,3.8s4.272-1.485,4.272-3.8" transform="translate(-233.413 -14.151)" fill="#003087"/>
+      <path id="패스_8" data-name="패스 8" d="M219.05,33.781h-1.986V23.489h1.986c3.036,0,4.449,1.68,4.449,5.022,0,3.437-1.413,5.27-4.449,5.27m.1-12.946H213.57v15.6h5.576c5.117,0,7.752-2.673,7.752-7.924,0-5.194-2.635-7.676-7.752-7.676" transform="translate(-170.517 -16.635)" fill="#003087"/>
+      <path id="패스_9" data-name="패스 9" d="M142.7,20.835v8.851l-1.616-2.8h-4.762V20.835h-3.456v15.6h3.456V29.9H142.7v6.53h3.475v-15.6Z" transform="translate(-106.084 -16.635)" fill="#003087"/>
+    </g>
+  </g>
+</svg>
