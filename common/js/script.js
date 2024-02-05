@@ -165,6 +165,8 @@ var commonScript = (function(){
                   $(".list_pop .con_txt").append("<p class='txt'>현재 <span class='red_txt'>진행중</span>으로 사이트 확인이 <span class='red_txt'>불가</span>합니다.</p>")
                 }else if($(this).text() == "내부망"){
                   $(".list_pop .con_txt").append("<p class='txt'><span class='red_txt'>내부망</span>으로 인하여 사이트 확인이 <span class='red_txt'>불가</span>합니다.</p>")
+                }else if($(this).text() == "미오픈"){
+                  $(".list_pop .con_txt").append("<p class='txt'><span class='red_txt'>미오픈</span>으로 인하여 사이트 확인이 <span class='red_txt'>불가</span>합니다.</p>")
                 }
                 $(".list_pop .view_site").hide();
               }
