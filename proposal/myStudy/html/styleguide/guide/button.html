@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>퍼블리싱 스타일 가이드</title>
+  <link rel="stylesheet" href="/common/css/swiper.css" />
+  <link rel="stylesheet" href="/common/css/style.css" />
+  <link rel="stylesheet" href="../assets/styles/shCore.css"/>
+	<link rel="Stylesheet" href="../assets/styles/shCoreEclipse.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="/common/css/fonts.css" />
+  <link rel="stylesheet" href="/common/css/common.css" />
+  <script src="../assets/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script src="../assets/scripts/shCore.js"></script>
+	<script src="../assets/scripts/shBrushJScript.js"></script>
+	<script src="../assets/scripts/shBrushXml.js"></script>
+	<script src="../assets/scripts/shBrushCss.js"></script>
+  <script type="text/javascript" src="/common/js/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript" src="/common/js/gsap.min.js"></script>
+  <script type="text/javascript" src="/common/js/ScrollTrigger.min.js"></script>
+  <script type="text/javascript" src="/common/js/Draggable.min.js"></script>
+  <script type="text/javascript" src="/common/js/script.js"></script>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+  <script type="text/javascript" src="/common/js/swiper.min.js"></script>
+  <style>
+    .content-area {width: 1133rem; box-sizing: border-box;}
+    @media all and (max-width: 1023px) {
+      .content-area {width: 100%;}
+    }
+    .ex-box ~ .ex-box {margin-top: 20px;} 
+    .ex-box > p {margin-bottom: 10px;}
+    .exs ~ .exs {margin-top: 40px;}
+    .ex ~ .ex {margin-top: 40px;}
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <header>
+      <h1>KAP 가이드</h1>
+      <div class="btn-wrap">
+        <a href="/html/worklist.html">작업현황판  <i class="fas fa-angle-right"></i></a>
+      </div>
+    </header>
+    <div id="contents">
+      <aside>
+        <a href="/html/styleguide/guide-intro.html">기본 정책 <i class="fas fa-angle-right"></i></a>
+        <a href="/html/styleguide/guide-markup.html">마크업 규칙 <i class="fas fa-angle-right"></i></a>
+        <a href="/html/styleguide/guide-css.html">CSS 규칙 <i class="fas fa-angle-right"></i></a>
+        <a href="/html/styleguide/guide-naming.html">네이밍 규칙 <i class="fas fa-angle-right"></i></a>
+        <a href="javascript:" class="active">스타일 가이드 <i class="fas fa-angle-right"></i></a>
+        <ul class="guide-list">
+          <li><a href="/html/styleguide/guide/form.html">FORM</a></li>
+          <li><a href="/html/styleguide/guide/typography.html">TYPOGRAPHY</a></li>
+          <li><a href="/html/styleguide/guide/button.html" class="active">BUTTON</a></li>
+          <li><a href="/html/styleguide/guide/popup.html">POPUP</a></li>
+          <li><a href="/html/styleguide/guide/navigation.html">NAVIGATION</a></li>
+          <li><a href="/html/styleguide/guide/tab.html">TAB</a></li>
+          <li><a href="/html/styleguide/guide/table.html">TABLE</a></li>
+          <li><a href="/html/styleguide/guide/list.html">LIST</a></li>
+          <li><a href="/html/styleguide/guide/layout.html">LAYOUT</a></li>
+          <li><a href="/html/styleguide/guide/label.html">LABEL</a></li>
+        </ul>
+      </aside>
+      <!-- 가이드 Start -->
+      <div class="content-area">
+        <h2>버튼 가이드</h2>
+        <br/>
+        <section>
+          <div class="ex-box">
+            <h3>info</h3>
+            <div class="exs">
+              <h4>basic (horizontal)</h4>
+              <p class="info">기본 btn-wrap은 space-between 형태입니다.</p>
+              <div class="ex">
+                <div class="btn-wrap" style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <a class="btn-solid small black-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small gray-bg" href="javascript:"><span>button</span></a>
+                </div>
+              </div>
+              <script type="syntaxhighlighter" class="brush: xml;">
+                <div class="btn-wrap" style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <a class="btn-solid small black-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small gray-bg" href="javascript:"><span>button</span></a>
+                </div>
+              </script>
+              <script type="syntaxhighlighter" class="brush: css;">
+                .btn-wrap {display: flex; justify-content: space-between;}
+                @media all and (max-width: 1023px) {
+                  .btn-wrap {flex-wrap: wrap;}
+                }
+              </script>
+            </div>
+            <div class="exs">
+              <h4>transform (center, right, left)</h4>
+              <p class="info">기본 btn-group에 align-center, align-left, align-right 클래스를 추가해야합니다.</p>
+              <div class="ex">
+                <div class="btn-wrap align-center" style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <a class="btn-solid small black-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small gray-bg" href="javascript:"><span>button</span></a>
+                </div>
+                <div class="btn-wrap align-left" style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <a class="btn-solid small black-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small gray-bg" href="javascript:"><span>button</span></a>
+                </div>
+                <div class="btn-wrap align-right" style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <a class="btn-solid small black-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small gray-bg" href="javascript:"><span>button</span></a>
+                </div>
+              </div>
+              <script type="syntaxhighlighter" class="brush: xml;">
+                <div class="btn-wrap align-center" style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <a class="btn-solid small black-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small gray-bg" href="javascript:"><span>button</span></a>
+                </div>
+                <div class="btn-wrap align-left" style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <a class="btn-solid small black-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small gray-bg" href="javascript:"><span>button</span></a>
+                </div>
+                <div class="btn-wrap align-right" style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <a class="btn-solid small black-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small gray-bg" href="javascript:"><span>button</span></a>
+                </div>
+              </script>
+              <script type="syntaxhighlighter" class="brush: css;">
+                .btn-wrap.center {justify-content: center;}
+                .align-left {justify-content: flex-start;}
+                .align-right {justify-content: flex-end;}
+                .align-center {justify-content: center;}
+              </script>
+            </div>
+            <div class="exs">
+              <h4>transform (layout)</h4>
+              <p class="info">btn-set 클래스로 감싸줘야합니다.</p>
+              <div class="ex">
+                <div class="btn-wrap" style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <div class="btn-set">
+                    <a class="btn-solid small gray-bg" href="javascript:"><span>취소</span></a>
+                    <a class="btn-solid small gray-bg" href="javascript:"><span>이전</span></a>
+                  </div>
+                  <div class="btn-set">
+                    <a class="btn-solid small black-bg" href="javascript:"><span>다음</span></a>
+                  </div>
+                </div>
+              </div>
+              <script type="syntaxhighlighter" class="brush: xml;">
+                <div class="btn-wrap" style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <div class="btn-set">
+                    <a class="btn-solid small gray-bg" href="javascript:"><span>취소</span></a>
+                    <a class="btn-solid small gray-bg" href="javascript:"><span>이전</span></a>
+                  </div>
+                  <div class="btn-set">
+                    <a class="btn-solid small black-bg" href="javascript:"><span>다음</span></a>
+                  </div>
+                </div>
+              </script>
+              <script type="syntaxhighlighter" class="brush: css;">
+                .btn-wrap .btn-set {display: flex; column-gap: 8rem;}
+
+                @media all and (max-width: 1023px) {
+                  .btn-wrap .btn-set {flex-wrap: wrap; row-gap: 8rem;}
+                }
+              </script>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="ex-box">
+            <h3>primary button</h3>
+            <p class="info">
+              강력한 시선의 환기 또는 해당 페이지의 키액션 등에 사용하는 버튼입니다.
+              <br/>버튼 크기는 small과 large가 있습니다. 일반적으로는 small 버튼을 사용하지만, 버튼의 크기가 강조되어야할 경우엔 large 버튼을 사용합니다.
+            </p>
+            <div class="exs">
+              <h4>solid small</h4>
+              <div class="ex">
+                <p>* 밝은 배경</p>
+                <div class="btn-wrap" style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <a class="btn-solid small black-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small disabled" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small black-line" href="javascript:"><span>button</span><span class="item-count">(n/n)</span></a>
+                </div>
+                <br/>
+                <p>* 어두운 배경</p>
+                <div class="btn-wrap" style="padding: 20px; background-color: rgb(64, 100, 112);">
+                  <a class="btn-solid small gray-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small white-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small disabled" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small gray-line" href="javascript:"><span>button</span><span class="item-count">(n/n)</span></a>
+                </div>
+              </div>
+              <script type="syntaxhighlighter" class="brush: xml;">
+                <div class="btn-wrap" style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <a class="btn-solid small black-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small disabled" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small black-line" href="javascript:"><span>button</span><span class="item-count">(n/n)</span></a>
+                </div>
+                <br/>
+                <div class="btn-wrap" style="padding: 20px; background-color: rgb(64, 100, 112);">
+                  <a class="btn-solid small gray-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small white-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small disabled" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid small gray-line" href="javascript:"><span>button</span><span class="item-count">(n/n)</span></a>
+                </div>
+              </script>
+            </div>
+            <div class="exs">
+              <h4>solid large</h4>
+              <div class="ex">
+                <p>* 밝은 배경</p>
+                <div class="btn-wrap" style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <a class="btn-solid large black-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid large disabled" href="javascript:"><span>button</span></a>
+                </div>
+                <br/>
+                <p>* 어두운 배경</p>
+                <div class="btn-wrap" style="padding: 20px; background-color: rgb(64, 100, 112);">
+                  <a class="btn-solid large gray-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid large white-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid large disabled" href="javascript:"><span>button</span></a>
+                </div>
+              </div>
+              <script type="syntaxhighlighter" class="brush: xml;">
+                <div class="btn-wrap" style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <a class="btn-solid large black-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid large disabled" href="javascript:"><span>button</span></a>
+                </div>
+                <div class="btn-wrap" style="padding: 20px; background-color: rgb(64, 100, 112);">
+                  <a class="btn-solid large gray-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid large white-bg" href="javascript:"><span>button</span></a>
+                  <a class="btn-solid large disabled" href="javascript:"><span>button</span></a>
+                </div>
+              </script>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="ex-box">
+            <h3>secondary button</h3>
+            <p class="info">가장 기본이 되는 버튼입니다. 일반적인 상황에 사용합니다.</p>
+            <div class="exs">
+              <h4>combination</h4>
+              <div class="ex">
+                <p>* 밝은 배경</p>
+                <div class="btn-wrap" style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <a class="btn-text-icon black-circle" href="javascript:"><span>button</span></a>
+                  <a class="btn-text-icon black-arrow" href="javascript:" title="링크 이동"><span>button</span></a>
+                </div>
+                <br/>
+                <p>* 어두운 배경</p>
+                <div class="btn-wrap" style="padding: 20px; background-color: rgb(64, 100, 112);">
+                  <a class="btn-text-icon white-circle" href="javascript:"><span>button</span></a>
+                  <a class="btn-text-icon gray-arrow" href="javascript:" title="링크 이동"><span>button</span></a>
+                </div>
+              </div>
+              <script type="syntaxhighlighter" class="brush: xml;">
+                <div class="btn-wrap" style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <a class="btn-text-icon black-circle" href="javascript:"><span>button</span></a>
+                  <a class="btn-text-icon black-arrow" href="javascript:" title="링크 이동"><span>button</span></a>
+                </div>
+                <div class="btn-wrap" style="padding: 20px; background-color: rgb(64, 100, 112);">
+                  <a class="btn-text-icon white-circle" href="javascript:"><span>button</span></a>
+                  <a class="btn-text-icon gray-arrow" href="javascript:" title="링크 이동"><span>button</span></a>
+                </div>
+              </script>
+            </div>
+            <div class="exs">
+              <h4>icon combination</h4>
+              <div class="ex">
+                <div class="btn-wrap">
+                  <button class="btn-solid small gray-bg icon apply-cancel" type="button"><span>신청취소</span></button>
+                  <button class="btn-solid small gray-bg icon btn-print" type="button" onclick="printFn()"><span>수료증 출력</span></button>
+                  <button class="btn-solid small gray-bg icon transfer" type="button"><span>교육양도</span></button>
+                  <button class="btn-solid small gray-bg icon taking" type="button"><span>수강하기</span></button>
+                  <button class="btn-solid small gray-bg icon checkout" type="button"><span>퇴실하기</span></button>
+                  <button class="btn-solid small gray-bg icon attendance" type="button"><span>출석하기</span></button>
+                  <button class="btn-solid small gray-bg icon evaluation" type="button"><span>평가하기</span></button>
+                </div>
+              </div>
+              <script type="syntaxhighlighter" class="brush: xml;">
+                <div class="btn-wrap">
+                  <button class="btn-solid small gray-bg icon apply-cancel" type="button"><span>신청취소</span></button>
+                  <button class="btn-solid small gray-bg icon btn-print" type="button" onclick="printFn()"><span>수료증 출력</span></button>
+                  <button class="btn-solid small gray-bg icon transfer" type="button"><span>교육양도</span></button>
+                  <button class="btn-solid small gray-bg icon taking" type="button"><span>수강하기</span></button>
+                  <button class="btn-solid small gray-bg icon checkout" type="button"><span>퇴실하기</span></button>
+                  <button class="btn-solid small gray-bg icon attendance" type="button"><span>출석하기</span></button>
+                  <button class="btn-solid small gray-bg icon evaluation" type="button"><span>평가하기</span></button>
+                </div>
+              </script>
+              <script type="syntaxhighlighter" class="brush: css;">
+                /* 회색 배경 Icon 버튼 */
+                .btn-solid.icon.transfer::after {background-image: url("/common/images/icon-edutransfer.svg");} /* 교육양도 */
+                .btn-solid.icon.taking::after {background-image: url("/common/images/icon-taking.svg");} /* 수강하기 */
+                .btn-solid.icon.checkout::after {background-image: url("/common/images/icon-checkout.svg");} /* 퇴실하기 */
+                .btn-solid.icon.btn-print::after {background-image: url("/common/images/icon-print.svg");} /* 수료증 출력 */
+                .btn-solid.icon.apply-cancel::after {background-image: url("/common/images/icon-apply-cancel.svg");} /* 신청취소 */
+                .btn-solid.icon.attendance::after {background-image: url("/common/images/icon-attendance.svg");} /* 출석하기 */
+                .btn-solid.icon.evaluation::after {background-image: url("/common/images/icon-evaluation.svg");} /* 평가하기 */
+              </script>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="ex-box">
+            <h3>download botton</h3>
+            <p class="info">서브페이지에서 활용되는 다운로드 버튼입니다. 파일의 이름이 길어질 경우 버튼의 길이가 수직으로 길어지며, 파일이 여러개일 경우 아래 방향으로 추가됩니다. </p>
+            <div class="exs">
+              <h4>bg download</h4>
+              <div class="ex">
+                <div class="btn-wrap">
+                  <a class="btn-text-icon download-bg" href="javascript:" title="파일 다운로드" download=""><span>다운로드.pdf</span></a>
+                </div>
+              </div>
+              <script type="syntaxhighlighter" class="brush: xml;">
+                <div class="btn-wrap">
+                  <a class="btn-text-icon download-bg" href="javascript:" title="파일 다운로드" download=""><span>다운로드.pdf</span></a>
+                </div>
+              </script>
+            </div>
+            <div class="exs">
+              <h4>no-bg download</h4>
+              <div class="ex">
+                <div class="btn-wrap">
+                  <a class="btn-text-icon download" href="javascript:" download=""><span>다운로드</span></a>
+                </div>
+              </div>
+              <script type="syntaxhighlighter" class="brush: xml;">
+                <div class="btn-wrap">
+                  <a class="btn-text-icon download" href="javascript:" download=""><span>다운로드</span></a>
+                </div>
+              </script>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="ex-box">
+            <h3>icon button</h3>
+            <p class="info">해당 페이지 내부에서 슬라이드 이동 발생 시 사용되는 방향 버튼입니다.</p>
+            <div class="exs">
+              <h4>arrow large</h4>
+              <div class="ex">
+                <p>* 밝은 배경</p>
+                <div style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <div>
+                    <div class="swiper-button-next circle-arr"></div>
+                    <div class="swiper-button-prev circle-arr"></div>
+                  </div>
+                  <div class="btn-wrap">
+                    <a class="btn-icon line-arrow prev" href="javascript:"></a>
+                    <a class="btn-icon line-arrow next" href="javascript:"></a>
+                  </div>
+                  <div class="btn-wrap">
+                    <a class="btn-icon play" href="javascript:"></a>
+                    <a class="btn-icon stop" href="javascript:"></a>
+                  </div>
+                </div>
+                <p>* 어두운 배경</p>
+                <div style="padding: 20px; background-color: rgb(64, 100, 112);">
+                  <div>
+                    <div class="swiper-button-next circle-arr-gray"></div>
+                    <div class="swiper-button-prev circle-arr-gray"></div>
+                  </div>
+                  <div class="btn-wrap">
+                    <a class="btn-icon line-arrow-gray prev" href="javascript:"></a>
+                    <a class="btn-icon line-arrow-gray next" href="javascript:"></a>
+                  </div>
+                  <div class="btn-wrap">
+                    <a class="btn-icon play-gray" href="javascript:"></a>
+                    <a class="btn-icon stop-gray" href="javascript:"></a>
+                  </div>
+                </div>
+              </div>
+              <script type="syntaxhighlighter" class="brush: xml;">
+                <div style="padding: 20px; background-color: rgb(224, 232, 235);">
+                  <div>
+                    <div class="swiper-button-next circle-arr"></div>
+                    <div class="swiper-button-prev circle-arr"></div>
+                  </div>
+                  <div class="btn-wrap">
+                    <a class="btn-icon line-arrow prev" href="javascript:"></a>
+                    <a class="btn-icon line-arrow next" href="javascript:"></a>
+                  </div>
+                  <div class="btn-wrap">
+                    <a class="btn-icon play" href="javascript:"></a>
+                    <a class="btn-icon stop" href="javascript:"></a>
+                  </div>
+                </div>
+                <div style="padding: 20px; background-color: rgb(64, 100, 112);">
+                  <div>
+                    <div class="swiper-button-next circle-arr-gray"></div>
+                    <div class="swiper-button-prev circle-arr-gray"></div>
+                  </div>
+                  <div class="btn-wrap">
+                    <a class="btn-icon line-arrow-gray prev" href="javascript:"></a>
+                    <a class="btn-icon line-arrow-gray next" href="javascript:"></a>
+                  </div>
+                  <div class="btn-wrap">
+                    <a class="btn-icon play-gray" href="javascript:"></a>
+                    <a class="btn-icon stop-gray" href="javascript:"></a>
+                  </div>
+                </div>
+              </script>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="ex-box">
+            <h3>tool tip</h3>
+            <p class="info">
+              화면의 특정 요소에 대한 안내가 필요한 경우 마우스를 클릭 했을 때 상황에 맞는 도움말이나 정보를 표시합니다.<br/>
+              아이콘을 클릭했을 때, 툴팁이 활성화됩니다.
+            </p>
+            <div class="exs">
+              <h4>basic</h4>
+              <div class="ex">
+                <div class="group">
+                  <p class="f-head">신청단계</p>
+                  <div class="status-info-w">
+                    <p class="box-label bigger arr"><span>사전심사결과탈락</span></p>
+                  </div>
+                  <div class="tooltip-wrap">
+                    <button class="tooltip-btn btn-icon" type="button" title="툴팁 보기"></button>
+                    <div class="tooltip-box">
+                      <p class="txt f-caption2">basic 기본 텍스트입니다.</p>
+                      <button class="btn-close" title="툴팁 닫기" type="button"></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ex">
+                <h4>maximum</h4>
+                <p class="info">pc화면에서 영역의 가로값 507이 최대값으로 합니다.</p>
+                <div class="group">
+                  <p class="f-head">신청단계</p>
+                  <div class="status-info-w">
+                    <p class="box-label bigger arr"><span>사전심사결과탈락</span></p>
+                  </div>
+                  <div class="tooltip-wrap">
+                    <button class="tooltip-btn btn-icon" type="button" title="툴팁 보기"></button>
+                    <div class="tooltip-box">
+                      <p class="txt f-caption2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem consectetur obcaecati cum veritatis accusamus blanditiis inventore magnam non possimus consequuntur distinctio, error, ipsa deserunt voluptatem est. Vel, eligendi? Amet, suscipit omnis. Ipsum ratione iste quisquam neque quae doloremque natus vitae.</p>
+                      <button class="btn-close" title="툴팁 닫기" type="button"></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ex">
+                <h4>minimum</h4>
+                <p class="info">pc화면에서 100을 최소값으로 합니다.</p>
+                <div class="group">
+                  <p class="f-head">신청단계</p>
+                  <div class="status-info-w">
+                    <p class="box-label bigger arr"><span>사전심사결과탈락</span></p>
+                  </div>
+                  <div class="tooltip-wrap">
+                    <button class="tooltip-btn btn-icon" type="button" title="툴팁 보기"></button>
+                    <div class="tooltip-box">
+                      <p class="txt f-caption2">mini</p>
+                      <button class="btn-close" title="툴팁 닫기" type="button"></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <script type="syntaxhighlighter" class="brush: xml;">
+                <div class="tooltip-wrap">
+                  <button class="tooltip-btn btn-icon" type="button" title="툴팁 보기"></button>
+                  <div class="tooltip-box">
+                    <p class="txt f-caption2">탈락사유가 노출됩니다.</p>
+                    <button class="btn-close" title="툴팁 닫기" type="button"></button>
+                  </div>
+                </div>
+              </script>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

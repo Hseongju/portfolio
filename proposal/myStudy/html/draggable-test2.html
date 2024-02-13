@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="cache-control" content="max-age=43200"/>
+	<title>Image Sequence Animation</title>
+	<!-- <link rel="shortcut icon" href="../common/images/favicon.ico" /> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="keywords" content="KAP"/>
+	<meta name="description" content="KAP"/>
+	<meta property="og:site_name" content="KAP" id="og-sitename-value"/>
+	<meta property="og:type" content="website" id="og-type-value"/>
+	<meta property="og:url" content="URL" id="og-url-value"/>
+	<meta property="og:title" content="NOTICE | KAP" id="og-title-value"/>
+	<meta property="og:description" content="KAP 홈페이지에 방문하신 것을 환영합니다." id="og-description-value"/>
+	<meta property="og:image" content="img URL" id="og-image-value"/>
+	<!-- <meta name="twitter:url" content="URL" id="twitter-url-value"/>
+	<meta name="twitter:title" content="Main" id="twitter-title-value"/>
+	<meta name="twitter:image" content="img URL" />
+	<meta name="twitter:description" content="KAP 홈페이지에 방문하신 것을 환영합니다." id="twitter-discription-value"/> -->
+	<link rel="stylesheet" href="../common/css/swiper.css" />
+	<link rel="stylesheet" href="../common/css/zoomist.css" />
+	<link rel="stylesheet" href="../common/css/fonts.css" />
+	<link rel="stylesheet" href="../common/css/common.css" />
+	<link rel="stylesheet" href="../common/css/main.css" />
+	<link rel="stylesheet" href="../common/css/style.css" />
+	<script type="text/javascript" src="../common/js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="../common/js/gsap.min.js"></script>
+	<script type="text/javascript" src="../common/js/ScrollTrigger.min.js"></script>
+	<script type="text/javascript" src="../common/js/zoomist.js"></script>
+	<script type="text/javascript" src="../common/js/swiper.min.js"></script>
+	<script type="text/javascript" src="../common/js/bezier-easing.min.js"></script>
+	<script type="text/javascript" src="../common/js/script.js"></script>
+	<script type="text/javascript" src="../common/js/draggable-canvas.js"></script>
+	<script type="text/javascript" src="../common/js/Draggable.min.js"></script>
+	<style>
+		body{overflow:hidden;}
+		.draggable-test{overflow:hidden; position:relative; margin:200px auto 0;/*  padding:0 30px; */ width:942px; height:520px; border:1px solid black}
+		.draggable-test .img{position:relative;}
+		.draggable-test .img > img{position:absolute; top:0; left:0;}
+		/* .draggable-test img{width:500px} */
+		.bar-div{position:relative; margin:50px auto 0; width:440px; height:10px; background:#eee}
+		.bar-div .bar{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:100%; height:10px; background:#888;}
+		.bar-div .circle{position:absolute; top:50%; left:0; transform:translate(0, -50%); width:25px; height:25px; background:#111; border-radius:50%;}
+		.transparent-div{position:absolute; top:0; right:0; width:200%; height:100%; z-index: 1;}
+		.zoomist-wrapper{background:#fff;}
+		.zoomist-zoomer{display:flex; top:10px; right:10px; width:50px; opacity:0; transition:opacity 0.3s ease;}
+		.zoomist-zoomer > *{width:20px; height:20px;}
+		.zoomist-zoomer > *:first-child{margin-right:10px;}
+		.zoomist-container:hover .zoomist-zoomer{opacity:1;}
+	</style>
+	</head>
+	<body>
+    <div class="draggable-test">
+			<canvas id="sequenceCanvas" width="900" height="515" data-seq-path-prefix="../common/images/" data-seq-length="60"></canvas>
+		</div>
+		
+		<div class="bar-div">
+			<div class="bar"></div>
+			<div class="circle"></div>
+		</div>
+
+		
+		
+		<script>
+			
+			document.addEventListener('DOMContentLoaded', function () {
+				const canvas = document.getElementById('sequenceCanvas');
+				const sequence = new Sequence(canvas);
+				let isDragging = false;
+				let startX, currentX;
+				let initialFrame;  // 저장된 현재 재생 중인 프레임
+
+				function updateSequence() {
+					if (isDragging) {
+						const progress = (currentX - startX) / canvas.width;
+						sequence.update(progress);
+						requestAnimationFrame(updateSequence);
+					}
+				}
+				
+				Draggable.create(".circle", {
+					type: "x",
+					bounds: $(".bar-div"),
+					inertia: true,
+					onDragEnd: function (e) {
+						if (isDragging) {
+							isDragging = false;
+							updateSequence()
+						}
+					},
+					onDragStart: function (e) {
+						isDragging = true;
+						startX = e.clientX;
+						currentX = startX;
+
+						// 저장된 현재 재생 중인 프레임 갱신
+						// initialFrame = sequence.getCurrentFrame();
+
+						if (isDragging) {
+							updateSequence();
+						}
+					},
+					onDrag:function(e){
+						if (isDragging) {
+							currentX = -(this.endX * 2.15);
+							startX = this.maxX;
+
+							updateSequence();
+						}
+					}
+				});
+			});
+			
+		</script>
+	</body>
+
+</html>

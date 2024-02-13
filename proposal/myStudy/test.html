@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="cache-control" content="max-age=43200"/>
+	<title>KAP</title>
+	<link rel="shortcut icon" href="/common/images/favicon.ico" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="keywords" content="KAP"/>
+	<meta name="description" content="KAP"/>
+	<meta property="og:site_name" content="KAP" id="og-sitename-value"/>
+	<meta property="og:type" content="website" id="og-type-value"/>
+	<meta property="og:url" content="URL" id="og-url-value"/>
+	<meta property="og:title" content="NOTICE | KAP" id="og-title-value"/>
+	<meta property="og:description" content="KAP 홈페이지에 방문하신 것을 환영합니다." id="og-description-value"/>
+	<meta property="og:image" content="img URL" id="og-image-value"/>
+	<!-- <meta name="twitter:url" content="URL" id="twitter-url-value"/>
+	<meta name="twitter:title" content="Main" id="twitter-title-value"/>
+	<meta name="twitter:image" content="img URL" />
+	<meta name="twitter:description" content="KAP 홈페이지에 방문하신 것을 환영합니다." id="twitter-discription-value"/> -->
+	<link rel="stylesheet" href="/common/css/swiper.css" />
+	<link rel="stylesheet" href="/common/css/zoomist.css" />
+	<link rel="stylesheet" href="/common/css/fonts.css" />
+	<link rel="stylesheet" href="/common/css/common.css" />
+	<link rel="stylesheet" href="/common/css/main.css" />
+	<link rel="stylesheet" href="/common/css/style.css" />
+	<script type="text/javascript" src="/common/js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="/common/js/gsap.min.js"></script>
+	<script type="text/javascript" src="/common/js/ScrollTrigger.min.js"></script>
+	<script type="text/javascript" src="/common/js/Draggable.min.js"></script>
+	<script type="text/javascript" src="/common/js/zoomist.js"></script>
+	<script type="text/javascript" src="/common/js/swiper.min.js"></script>
+	<script type="text/javascript" src="/common/js/bezier-easing.min.js"></script>
+	<!-- <script type="text/javascript" src="/common/js/script.js"></script> -->
+	<style>
+		body{overflow:hidden;}
+		.draggable-test{overflow:hidden; position:relative; margin:200px auto 0;/*  padding:0 30px; */ width:942px; height:520px; border:1px solid black}
+		.draggable-test .img{position:relative;}
+		.draggable-test .img > img{position:absolute; top:0; left:0;}
+		/* .draggable-test img{width:500px} */
+		.bar-div{position:relative; margin:50px auto 0; width:440px; height:10px; background:#eee}
+		.bar-div .bar{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:100%; height:10px; background:#888;}
+		.bar-div .circle{position:absolute; top:50%; left:0; transform:translate(0, -50%); width:25px; height:25px; background:#111; border-radius:50%;}
+		.transparent-div{position:absolute; top:0; right:0; width:200%; height:100%; z-index: 1;}
+		.zoomist-wrapper{background:#fff;}
+		.zoomist-zoomer{display:flex; top:10px; right:10px; width:50px; opacity:0; transition:opacity 0.3s ease;}
+		.zoomist-zoomer > *{width:20px; height:20px;}
+		.zoomist-zoomer > *:first-child{margin-right:10px;}
+		.zoomist-container:hover .zoomist-zoomer{opacity:1;}
+	</style>
+		
+	<script>
+		$(window).on("load", function(){
+			var imgSrc, imgNum;
+			const myZoomist = new Zoomist('#my-zoomist', {
+				// optional parameters
+				maxRatio: 4,
+				// height: '60%',
+				// if you need silder
+				// slider: true,
+				// if you need zoomer
+				zoomer: true,
+				wheelable:true,
+				// event
+				on: {
+					// ready() {
+					// 	console.log('Zoomist ready!')
+					// }
+				}
+			});
+
+			Draggable.create(".circle", {
+				type: "x",
+				bounds: $(".bar-div"),
+				inertia: true,
+				onDragEnd: function () {
+					myZoomist.reset()
+				},
+				onDragStart: function () {
+					myZoomist.destroyZoomer()
+					
+				},
+				onDrag:function(value){
+					imgNum = Math.round(((parseInt(this.endX) / parseInt(this.maxX)) * 100) * 0.61)
+					// console.log(imgNum)
+					if(imgNum == 0){
+						imgNum = 1
+					}
+					imgSrc = 62 - imgNum;
+
+					myZoomist.destroyZoomer()
+					myZoomist.zoomTo(0)
+					$(".img").attr("data-zoomist-src", "/common/images_car/" + imgSrc + ".png");
+					$(".zoomist-wrapper").find("img").attr("src", "/common/images_car/" + imgSrc + ".png");
+
+					// $(".draggable-test > img").attr("src", "/common/images_car/" + imgSrc + ".png");
+				}
+			});
+
+			// var lazyLoading = () => {
+			// 	var imgs = document.querySelectorAll('.lazy');
+
+			// 	var observerCallback = (entries, observer) => {
+			// 		entries.forEach(({ isIntersecting, intersectionRatio, target }) => {
+			// 			if (isIntersecting && intersectionRatio > 0) {
+			// 				target.src = target.dataset.src;
+			// 				target.classList.remove("lazy");
+			// 				observer.unobserve(target);
+			// 			}
+			// 		});
+			// 	};
+
+			// 	var io = new IntersectionObserver(observerCallback);
+			// 	imgs.forEach((img) => io.observe(img));
+			// };
+		})
+		
+	</script>
+	</head>
+	<body>
+    <div class="draggable-test">
+			<div class="img" id="my-zoomist" data-zoomist-src="/common/images_car/61.png"></div>
+			<!-- <img class="no-cache" src="/common/images_car/61.png" alt=""> -->
+			<div class="img-preload" style="display: none;">
+				<img class="no-cache" src="/common/images_car/61.png" alt="">
+				<img class="no-cache" src="/common/images_car/60.png" alt="">
+				<img class="no-cache" src="/common/images_car/59.png" alt="">
+				<img class="no-cache" src="/common/images_car/58.png" alt="">
+				<img class="no-cache" src="/common/images_car/57.png" alt="">
+				<img class="no-cache" src="/common/images_car/56.png" alt="">
+				<img class="no-cache" src="/common/images_car/55.png" alt="">
+				<img class="no-cache" src="/common/images_car/54.png" alt="">
+				<img class="no-cache" src="/common/images_car/53.png" alt="">
+				<img class="no-cache" src="/common/images_car/52.png" alt="">
+				<img class="no-cache" src="/common/images_car/51.png" alt="">
+				<img class="no-cache" src="/common/images_car/50.png" alt="">
+				<img class="no-cache" src="/common/images_car/49.png" alt="">
+				<img class="no-cache" src="/common/images_car/48.png" alt="">
+				<img class="no-cache" src="/common/images_car/47.png" alt="">
+				<img class="no-cache" src="/common/images_car/46.png" alt="">
+				<img class="no-cache" src="/common/images_car/45.png" alt="">
+				<img class="no-cache" src="/common/images_car/44.png" alt="">
+				<img class="no-cache" src="/common/images_car/43.png" alt="">
+				<img class="no-cache" src="/common/images_car/42.png" alt="">
+				<img class="no-cache" src="/common/images_car/41.png" alt="">
+				<img class="no-cache" src="/common/images_car/40.png" alt="">
+				<img class="no-cache" src="/common/images_car/39.png" alt="">
+				<img class="no-cache" src="/common/images_car/38.png" alt="">
+				<img class="no-cache" src="/common/images_car/37.png" alt="">
+				<img class="no-cache" src="/common/images_car/36.png" alt="">
+				<img class="no-cache" src="/common/images_car/35.png" alt="">
+				<img class="no-cache" src="/common/images_car/34.png" alt="">
+				<img class="no-cache" src="/common/images_car/33.png" alt="">
+				<img class="no-cache" src="/common/images_car/32.png" alt="">
+				<img class="no-cache" src="/common/images_car/31.png" alt="">
+				<img class="no-cache" src="/common/images_car/30.png" alt="">
+				<img class="no-cache" src="/common/images_car/29.png" alt="">
+				<img class="no-cache" src="/common/images_car/28.png" alt="">
+				<img class="no-cache" src="/common/images_car/27.png" alt="">
+				<img class="no-cache" src="/common/images_car/26.png" alt="">
+				<img class="no-cache" src="/common/images_car/25.png" alt="">
+				<img class="no-cache" src="/common/images_car/24.png" alt="">
+				<img class="no-cache" src="/common/images_car/23.png" alt="">
+				<img class="no-cache" src="/common/images_car/22.png" alt="">
+				<img class="no-cache" src="/common/images_car/21.png" alt="">
+				<img class="no-cache" src="/common/images_car/20.png" alt="">
+				<img class="no-cache" src="/common/images_car/19.png" alt="">
+				<img class="no-cache" src="/common/images_car/18.png" alt="">
+				<img class="no-cache" src="/common/images_car/17.png" alt="">
+				<img class="no-cache" src="/common/images_car/16.png" alt="">
+				<img class="no-cache" src="/common/images_car/15.png" alt="">
+				<img class="no-cache" src="/common/images_car/14.png" alt="">
+				<img class="no-cache" src="/common/images_car/13.png" alt="">
+				<img class="no-cache" src="/common/images_car/12.png" alt="">
+				<img class="no-cache" src="/common/images_car/11.png" alt="">
+				<img class="no-cache" src="/common/images_car/10.png" alt="">
+				<img class="no-cache" src="/common/images_car/9.png" alt="">
+				<img class="no-cache" src="/common/images_car/8.png" alt="">
+				<img class="no-cache" src="/common/images_car/7.png" alt="">
+				<img class="no-cache" src="/common/images_car/6.png" alt="">
+				<img class="no-cache" src="/common/images_car/5.png" alt="">
+				<img class="no-cache" src="/common/images_car/4.png" alt="">
+				<img class="no-cache" src="/common/images_car/3.png" alt="">
+				<img class="no-cache" src="/common/images_car/2.png" alt="">
+				<img class="no-cache" src="/common/images_car/1.png" alt="">
+			</div>
+			<!-- <div class="transparent-div"></div> -->
+		</div>
+		
+		<div class="bar-div">
+			<div class="bar"></div>
+			<div class="circle"></div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ko">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="cache-control" content="max-age=43200"/>
+	<title>Image Sequence Animation</title>
+	<!-- <link rel="shortcut icon" href="../common/images/favicon.ico" /> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="keywords" content="KAP"/>
+	<meta name="description" content="KAP"/>
+	<meta property="og:site_name" content="KAP" id="og-sitename-value"/>
+	<meta property="og:type" content="website" id="og-type-value"/>
+	<meta property="og:url" content="URL" id="og-url-value"/>
+	<meta property="og:title" content="NOTICE | KAP" id="og-title-value"/>
+	<meta property="og:description" content="KAP 홈페이지에 방문하신 것을 환영합니다." id="og-description-value"/>
+	<meta property="og:image" content="img URL" id="og-image-value"/>
+	<!-- <meta name="twitter:url" content="URL" id="twitter-url-value"/>
+	<meta name="twitter:title" content="Main" id="twitter-title-value"/>
+	<meta name="twitter:image" content="img URL" />
+	<meta name="twitter:description" content="KAP 홈페이지에 방문하신 것을 환영합니다." id="twitter-discription-value"/> -->
+	<link rel="stylesheet" href="../common/css/swiper.css" />
+	<link rel="stylesheet" href="../common/css/zoomist.css" />
+	<link rel="stylesheet" href="../common/css/fonts.css" />
+	<link rel="stylesheet" href="../common/css/common.css" />
+	<link rel="stylesheet" href="../common/css/main.css" />
+	<link rel="stylesheet" href="../common/css/style.css" />
+	<script type="text/javascript" src="../common/js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="../common/js/gsap.min.js"></script>
+	<script type="text/javascript" src="../common/js/ScrollTrigger.min.js"></script>
+	<script type="text/javascript" src="../common/js/zoomist.js"></script>
+	<script type="text/javascript" src="../common/js/swiper.min.js"></script>
+	<script type="text/javascript" src="../common/js/bezier-easing.min.js"></script>
+	<script type="text/javascript" src="../common/js/script.js"></script>
+	<script type="text/javascript" src="../common/js/draggable-canvas.js"></script>
+	<script type="text/javascript" src="../common/js/Draggable.min.js"></script>
+	<style>
+		body{overflow:hidden;}
+		#wrap{position:relative; width:100%; height:80vh;}
+		.draggable-test{overflow:hidden; position:relative;/*  padding:0 30px; */ width:100%; height:80vh;}
+		.draggable-test .img{width:100%;}
+		/* .draggable-test .img > img{position:absolute; top:0; left:0;} */
+		.bar-div{position:absolute; bottom:80px; left:50%; transform:translateX(-50%); width:80%; height:10px; background:#eee}
+		.bar-div .bar{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:100%; height:10px; background:#888;}
+		.bar-div .circle{position:absolute; top:50%; left:0; transform:translate(0, -50%); width:25px; height:25px; background:#111; border-radius:50%;}
+		.transparent-div{position:absolute; top:0; right:0; width:200%; height:100%; z-index: 1;}
+		.zoomist-wrapper{background:#fff;}
+		.zoomist-zoomer{display:flex; top:10px; right:10px; width:50px; opacity:0; transition:opacity 0.3s ease;}
+		.zoomist-zoomer > *{width:20px; height:20px;}
+		.zoomist-zoomer > *:first-child{margin-right:10px;}
+		.zoomist-container:hover .zoomist-zoomer{opacity:1;}
+	</style>
+	</head>
+	<body>
+    <div id="wrap">
+			<div class="draggable-test">
+				<img class="img" id="drag-img" data-seq-length="61" data-seq-path-prefix="../common/images/" src="../common/images/61.png" alt="">
+			</div>
+					
+			<div class="bar-div">
+				<div class="bar"></div>
+				<div class="circle"></div>
+			</div>
+		</div>
+
+		
+		
+		<script>
+			$(window).on("load", function(){
+				const canvas = document.getElementById('drag-img');
+				const seqPathPrefix = canvas.getAttribute('data-seq-path-prefix')
+				const seqLength = canvas.getAttribute('data-seq-length')
+				var imgSrc, imgNum;
+				const imgSeq = [];
+				let isAllImageLoaded = false;
+				var isFirst = false;
+				var isComplete = false;
+
+				const promises = []
+				for (let index = 1; index <= seqLength; index++) {
+					const img = new Image()
+					const uri = decodeURI(seqPathPrefix + index + '.png')
+					img.src = uri
+					imgSeq.push(img);
+
+					promises.push(new Promise((resolve, reject) => {
+						img.onload = () => resolve()
+						img.onerror = () => reject()
+					}))
+				}
+
+				Promise.all(promises).then(() => {
+					isAllImageLoaded = true;
+					if(isAllImageLoaded){
+						Draggable.create(".circle", {
+							type: "x",
+							bounds: $(".bar-div"),
+							inertia: true,
+							onDrag:function(value){
+								imgNum = Math.round(((parseInt(this.endX) / parseInt(this.maxX)) * 100) * (imgSeq.length * 0.01))
+								if(imgNum == 0){
+									imgNum = 1
+								}
+								imgSrc = (imgSeq.length + 1) - imgNum;
+
+								var text = imgSeq[imgSrc - 1]
+								var textSrc = text.src;
+								var textCommonSrc = textSrc.split("/common")[1]
+								var imgNode = document.querySelector(".img");
+
+								if(!isFirst){
+									isFirst = true;
+									// isComplete = true;
+									// console.log(imgNode.onload)
+									$(".img").attr("src", "../common" + textCommonSrc);
+								}
+
+								if(isFirst){
+									if(imgNode.complete){
+										isComplete = true;
+									}
+
+									if(isComplete){
+										isComplete = false;
+										$(".img").attr("src", "../common" + textCommonSrc);
+									}
+								}
+							}
+						});
+
+						
+					}
+				})
+			})
+		</script>
+	</body>
+
+</html>

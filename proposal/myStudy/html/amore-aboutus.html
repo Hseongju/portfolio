@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/common/css/swiper.css" />
+  <link rel="stylesheet" href="/common/css/zoomist.css" />
+  <link rel="stylesheet" href="/common/css/fonts.css" />
+  <link rel="stylesheet" href="/common/css/common.css" />
+  <link rel="stylesheet" href="/common/css/main.css" />
+  <link rel="stylesheet" href="/common/css/style.css" />
+  <script type="text/javascript" src="/common/js/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript" src="/common/js/gsap.min.js"></script>
+  <script type="text/javascript" src="/common/js/ScrollTrigger.min.js"></script>
+  <!-- <script type="text/javascript" src="/common/js/Draggable.min.js"></script>
+  <script type="text/javascript" src="/common/js/zoomist.js"></script>
+  <script type="text/javascript" src="/common/js/threesixty.js"></script>
+  <script type="text/javascript" src="/common/js/lenis.min.js"></script> -->
+  <script type="text/javascript" src="/common/js/lenis.min.js"></script>
+  <script type="text/javascript" src="/common/js/swiper.min.js"></script>
+  <script type="text/javascript" src="/common/js/bezier-easing.min.js"></script>
+  <!-- <script type="text/javascript" src="/common/js/script.js"></script> -->
+  <title>아모레퍼시픽</title>
+  <style>
+    html{scroll-behavior:initial; font-size:0.052vw; line-height:150%;}
+    html, body{width:100%; min-height:100%;}
+    .pagenation{display:flex; align-items: center; flex-wrap:wrap; position:fixed; top:50%; right:30rem; transform:translateY(-50%); padding:15rem 0;  width:33rem; background:rgba(255,255,255,.2); border-radius:20rem; z-index:10;}
+    .pagenation button{display:block; position:relative; width:33rem; height:30rem;}
+    .pagenation button:after{display:block; content:""; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:7rem; height:7rem; border-radius: 50%; background:#444; border:1px solid transparent; transition: all 0.3s ease;}
+    .pagenation button.on:after{width:13rem; height:13rem; background:transparent; border:1px solid #444;}
+    .pagenation button:hover:after{width:13rem; height:13rem; background:transparent; border:1px solid #444;}
+
+    .visual{overflow:hidden; position:relative; width:100%; height:100vh;}
+    .visual-div{position:relative; width:100%; height:100%}
+    .visual .bg{position:absolute; top:0; left:90rem; width:100%; height:100%; transform: scale(1.1); transition:left 1.6s ease;}
+    .visual .bg img{position:relative; left:0; width:100%; height:100%; object-fit: cover; transition:left 1s ease;}
+    .visual .txt-div{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); color:#fff; text-align: center;}
+    .visual .txt-div .tit{font-size:72rem; line-height:120%; opacity:0; transition:opacity 1.2s ease;}
+    .visual .txt-div .txt{margin-top:48rem; font-size:18rem; line-height:150%; opacity:0; transition:opacity 1.2s ease;}
+    .visual.on .bg{left:0}
+    .visual.on .txt-div .tit{opacity:1; transition-delay:0.8s}
+    .visual.on .txt-div .txt{opacity:1; transition-delay:1.3s}
+
+    .cont-sec{position:relative; z-index:1;}
+    section{position:relative; width:100%; height:100vh;}
+
+    .cont-sec section .bg{position:absolute; top:0; left:0; width:100%; height:100%;}
+    .cont-sec section:nth-child(1) .bg{background:url("../common/images/img-aboutus-amorepacific.jpg") no-repeat center center/cover; background-attachment: fixed;}
+    .cont-sec section:nth-child(2) .bg{background:url("../common/images/img-aboutus-research-innovation.jpg") no-repeat center center/cover; background-attachment: fixed;}
+    .cont-sec section:nth-child(3) .bg{background:url("../common/images/img-aboutus-visual-identity.jpg") no-repeat center center/cover; background-attachment: fixed;}
+    .cont-sec section .inner{margin:0 auto; padding:45rem 0 45rem 350rem; width:1000rem;}
+    .cont-sec section .tit-area{position:relative; width:100%; height:60vh;}
+    .cont-sec section .tit-area .title{position:absolute; top:60%; left:50%; transform:translate(-50%, -50%); width:100%; opacity:0; transition:top 1s ease, opacity 1s ease;}
+    .cont-sec section .tit-area .title:after{display:block; content:""; position:absolute; top:50%; left:0; transform:translateY(-50%); width:calc((100% - 1260rem) / 2); height:1px; background:rgba(255,255,255,0.3)}
+    .cont-sec section .tit-area .title span{display:block; position:relative; color:#fff; font-size:56rem; line-height:150%; margin:0 auto; width:1200rem;}
+    .cont-sec section .tit-area .title span:before{display:block; content:""; position:absolute; top:50%; left:-30rem; transform:translateY(-50%); width:5px; height:5px; border-radius:50%; background:rgba(255,255,255,0.3)}
+    .cont-sec section .txt-area{position:absolute; bottom:-100rem; left:0; width:100%; height:40vh; background:#fff; opacity:0; transition:bottom 1s ease, opacity 1s ease;}
+    .cont-sec section .txt-area .txt{position:relative; top:100rem; font-size:18rem; line-height:150%; opacity:0; transition:top 1s ease, opacity 1s ease;}
+    .cont-sec section .txt-area .view-more{display:inline-block; position:relative; top:100rem; margin-top:40rem; transition:top 1s ease, opacity 1s ease;}
+    .cont-sec section .txt-area .view-more span{font-size:14rem;}
+    .cont-sec section.on .tit-area .title{top:50%; opacity:1;}
+    .cont-sec section.on .txt-area{bottom:0; opacity:1; transition-delay:0.2s;}
+    .cont-sec section.on .txt-area .txt{top:0; opacity:1; transition-delay:0.3s;}
+    .cont-sec section.on .txt-area .view-more{top:0; opacity:1; transition-delay:0.4s;}
+
+    footer{height:200rem;}
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div class="pagenation">
+      <button type="button" class="on"></button>
+      <button type="button"></button>
+      <button type="button"></button>
+      <button type="button"></button>
+    </div>
+    <section class="visual">
+      <div class="visual-div">
+        <div class="bg"><img src="../common/images/img-aboutus-visual.jpg" alt=""></div>
+        <div class="txt-div">
+          <p class="tit">About Us</p>
+          <p class="txt">
+            아모레퍼시픽은 변하는 시대에 맞춰 가치관을 새롭게 정립해왔습니다.<br />
+            그리고 이를 성장을 위한 나침반으로 삼았습니다. 아모레퍼시픽은 이 세상 모든 이들이 아름답다고 믿습니다.<br />
+            모두가 자신만의 아름다움을 발견하고 실현하는 삶이 모여 더 나은 세상을 만들 수 있다고 여깁니다.
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="cont-sec">
+      <section>
+        <div class="bg"></div>
+        <div class="tit-area">
+          <p class="title"><span>Amorepacific</span></p>
+        </div>
+        <div class="txt-area">
+          <div class="inner">
+            <p class="txt">아모레퍼시픽만이 창조하는 아름다움으로 새로운 역사를 써 내려갑니다. 사람과 세상을 더 아름답게 하는 소명을 이루고자 미의 여정을 이어갑니다.</p>
+            <a href="javascript:" class="view-more"><span>자세히 보기</span></a>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="bg"></div>
+        <div class="tit-area">
+          <p class="title"><span>Research &amp; Innovation</span></p>
+        </div>
+        <div class="txt-area">
+          <div class="inner">
+            <p class="txt">최초, 최고의 제품을 전 세계에 전하기 위한 혁신적인 연구개발과 좋은 원료, 첨단기술을 토대로 세계가 주목하는 아름다움을 만들어 냅니다.</p>
+            <a href="javascript:" class="view-more"><span>자세히 보기</span></a>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="bg"></div>
+        <div class="tit-area">
+          <p class="title"><span>Visual Identity</span></p>
+        </div>
+        <div class="txt-area">
+          <div class="inner">
+            <p class="txt">기업 및 브랜드의 철학과 가치를 담아 소통하고 있습니다. 특히, 아리따 글꼴은 아름다운 문화를 사회와 공유하는 문화나눔의 일환으로써 누구에게나 무료로 배포되는 아리따운 서체입니다.</p>
+            <a href="javascript:" class="view-more"><span>자세히 보기</span></a>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer>
+      
+    </footer>
+  </div>
+</body>
+<script>
+  $(window).on("load", function(){
+
+    const lenis = new Lenis({
+      // wrapper:document.getElementById('#wrap'),
+      // content:document.getElementById('#inner-wrap'),
+      duration:1.2,
+      easing:(t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+
+    function raf(time){
+      lenis.raf(time);
+      ScrollTrigger.update();
+      requestAnimationFrame(raf);
+    
+    }
+
+    gsap.delayedCall(0.2, function() {
+      $(".visual").addClass("on");
+    });
+
+    requestAnimationFrame(raf);
+
+    // 첫 비주얼 마우스 무브 이벤트
+    $(".visual").on("mousemove", function(e){
+      $(".visual .bg img").css("left", -(Math.round(e.clientX * 0.03)))
+    });
+    
+    // 섹션 스크롤 트리거 모션
+    gsap.to($(".visual"), {
+      scrollTrigger:{
+        trigger:$(".visual-div"),
+        start:() => "top top",
+        end:"bottom bottom",
+        endTrigger:$("footer"),
+        // markers:true,
+        pin:true,
+        scrub:1,
+      }
+    });
+
+    $(".pagenation button").each(function(q){
+      $(this).on("click", function(){
+        $(".pagenation button").removeClass("on");
+        $(this).addClass("on");
+        gsap.to($("html, body"), 1, {scrollTop:$("section").eq(q).offset().top, ease:Power3.easeOut});
+      })
+    })
+
+    $(window).on("scroll", function(){
+      $("section").each(function(q){
+        if($(window).scrollTop() + ($(window).innerHeight() * 0.7) > $(this).offset().top){
+          $(".pagenation button").removeClass("on")
+          $(".pagenation button").eq(q).addClass("on")
+        }
+      })
+
+      $(".cont-sec section").each(function(){
+        if($(window).scrollTop() + ($(window).innerHeight() * 0.7) > $(this).offset().top){
+          $(this).addClass("on")
+        }
+      })
+    }).scroll()
+  });
+</script>
+</html>

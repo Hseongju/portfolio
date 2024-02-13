@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>퍼블리싱 스타일 가이드</title>
+  <link rel="stylesheet" href="/common/css/swiper.css" />
+  <link rel="stylesheet" href="/common/css/style.css" />
+  <link rel="stylesheet" href="../assets/styles/shCore.css"/>
+	<link rel="Stylesheet" href="../assets/styles/shCoreEclipse.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="/common/css/fonts.css" />
+  <link rel="stylesheet" href="/common/css/common.css" />
+  <script src="../assets/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script src="../assets/scripts/shCore.js"></script>
+	<script src="../assets/scripts/shBrushJScript.js"></script>
+	<script src="../assets/scripts/shBrushXml.js"></script>
+	<script src="../assets/scripts/shBrushCss.js"></script>
+  <script type="text/javascript" src="/common/js/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript" src="/common/js/gsap.min.js"></script>
+  <script type="text/javascript" src="/common/js/ScrollTrigger.min.js"></script>
+  <script type="text/javascript" src="/common/js/Draggable.min.js"></script>
+  <script type="text/javascript" src="/common/js/script.js"></script>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+  <script type="text/javascript" src="/common/js/swiper.min.js"></script>
+  <style>
+    .content-area {width: 1133rem; box-sizing: border-box;}
+    @media all and (max-width: 1023px) {
+      .content-area {width: 100%;}
+    }
+    .ex-box ~ .ex-box {margin-top: 20px;} 
+    .ex-box > p {margin-bottom: 10px;}
+    .exs ~ .exs {margin-top: 40px;}
+    .ex ~ .ex {margin-top: 40px;}
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <header>
+      <h1>KAP 가이드</h1>
+      <div class="btn-wrap">
+        <a href="/html/worklist.html">작업현황판  <i class="fas fa-angle-right"></i></a>
+      </div>
+    </header>
+    <div id="contents">
+      <aside>
+        <a href="/html/styleguide/guide-intro.html">기본 정책 <i class="fas fa-angle-right"></i></a>
+        <a href="/html/styleguide/guide-markup.html">마크업 규칙 <i class="fas fa-angle-right"></i></a>
+        <a href="/html/styleguide/guide-css.html">CSS 규칙 <i class="fas fa-angle-right"></i></a>
+        <a href="/html/styleguide/guide-naming.html">네이밍 규칙 <i class="fas fa-angle-right"></i></a>
+        <a href="javascript:" class="active">스타일 가이드 <i class="fas fa-angle-right"></i></a>
+        <ul class="guide-list">
+          <li><a href="/html/styleguide/guide/form.html">FORM</a></li>
+          <li><a href="/html/styleguide/guide/typography.html">TYPOGRAPHY</a></li>
+          <li><a href="/html/styleguide/guide/button.html" class="active">BUTTON</a></li>
+          <li><a href="/html/styleguide/guide/popup.html">POPUP</a></li>
+          <li><a href="/html/styleguide/guide/navigation.html">NAVIGATION</a></li>
+          <li><a href="/html/styleguide/guide/tab.html">TAB</a></li>
+          <li><a href="/html/styleguide/guide/table.html">TABLE</a></li>
+          <li><a href="/html/styleguide/guide/list.html">LIST</a></li>
+          <li><a href="/html/styleguide/guide/layout.html">LAYOUT</a></li>
+          <li><a href="/html/styleguide/guide/label.html">LABEL</a></li>
+        </ul>
+      </aside>
+      <!-- 가이드 Start -->
+      <div class="content-area">
+        <h2>탭 가이드</h2>
+        <br/>
+        <section>
+          <div class="ex-box">
+            <h3>depth</h3>
+            <div class="exs">
+              <div class="ex">
+                <div class="tab-btn-area">
+                  <div class="txt-major-tab-swiper">
+                    <div class="swiper-container">
+                      <div class="swiper-wrapper">
+                        <a class="swiper-slide txt-tab-btn active" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu1</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu2</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu3</span></p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <script type="syntaxhighlighter" class="brush: xml;">
+                <div class="tab-btn-area">
+                  <div class="txt-major-tab-swiper">
+                    <div class="swiper-container">
+                      <div class="swiper-wrapper">
+                        <a class="swiper-slide txt-tab-btn active" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu1</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu2</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu3</span></p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </script>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="ex-box">
+            <h3>1depth</h3>
+            <div class="exs">
+              <div class="ex">
+                <div class="tab-btn-area">
+                  <div class="txt-tab-swiper func-tab">
+                    <div class="swiper-container">
+                      <div class="swiper-wrapper">
+                        <a class="swiper-slide txt-tab-btn active" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu1</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu2</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu3</span></p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <script type="syntaxhighlighter" class="brush: xml;">
+                <div class="tab-btn-area">
+                  <div class="txt-tab-swiper func-tab">
+                    <div class="swiper-container">
+                      <div class="swiper-wrapper">
+                        <a class="swiper-slide txt-tab-btn active" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu1</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu2</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu3</span></p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </script>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="ex-box">
+            <h3>2depth</h3>
+            <div class="exs">
+              <div class="ex">
+                <div class="tab-btn-area">
+                  <div class="txt-major-tab-swiper">
+                    <div class="txt-depth-tab-swiper">
+                      <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                          <a class="swiper-slide txt-tab-btn active" href="javascript:">
+                            <p class="txt"><span class="menu-name">menu1</span></p>
+                          </a>
+                          <a class="swiper-slide txt-tab-btn" href="javascript:">
+                            <p class="txt"><span class="menu-name">menu2</span></p>
+                          </a>
+                          <a class="swiper-slide txt-tab-btn" href="javascript:">
+                            <p class="txt"><span class="menu-name">menu3</span></p>
+                          </a>
+                          <a class="swiper-slide txt-tab-btn" href="javascript:">
+                            <p class="txt"><span class="menu-name">menu4</span></p>
+                          </a>
+                          <a class="swiper-slide txt-tab-btn" href="javascript:">
+                            <p class="txt"><span class="menu-name">menu5</span></p>
+                          </a>
+                          <a class="swiper-slide txt-tab-btn" href="javascript:">
+                            <p class="txt"><span class="menu-name">menu6</span></p>
+                          </a>
+                          <a class="swiper-slide txt-tab-btn" href="javascript:">
+                            <p class="txt"><span class="menu-name">menu7</span></p>
+                          </a>
+                          <a class="swiper-slide txt-tab-btn" href="javascript:">
+                            <p class="txt"><span class="menu-name">menu8</span></p>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+              </div>
+              <script type="syntaxhighlighter" class="brush: xml;">
+                <div class="tab-btn-area">
+                  <div class="txt-major-tab-swiper">
+                    <div class="txt-depth-tab-swiper">
+                      <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                          <a class="swiper-slide txt-tab-btn active" href="javascript:">
+                            <p class="txt"><span class="menu-name">menu1</span></p>
+                          </a>
+                          <a class="swiper-slide txt-tab-btn" href="javascript:">
+                            <p class="txt"><span class="menu-name">menu2</span></p>
+                          </a>
+                          <a class="swiper-slide txt-tab-btn" href="javascript:">
+                            <p class="txt"><span class="menu-name">menu3</span></p>
+                          </a>
+                          <a class="swiper-slide txt-tab-btn" href="javascript:">
+                            <p class="txt"><span class="menu-name">menu4</span></p>
+                          </a>
+                          <a class="swiper-slide txt-tab-btn" href="javascript:">
+                            <p class="txt"><span class="menu-name">menu5</span></p>
+                          </a>
+                          <a class="swiper-slide txt-tab-btn" href="javascript:">
+                            <p class="txt"><span class="menu-name">menu6</span></p>
+                          </a>
+                          <a class="swiper-slide txt-tab-btn" href="javascript:">
+                            <p class="txt"><span class="menu-name">menu7</span></p>
+                          </a>
+                          <a class="swiper-slide txt-tab-btn" href="javascript:">
+                            <p class="txt"><span class="menu-name">menu8</span></p>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                </div>
+              </script>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="ex-box">
+            <h3>All tab</h3>
+            <div class="exs">
+              <div class="ex">
+                <div class="tab-btn-area">
+                  <div class="txt-major-tab-swiper">
+                    <div class="swiper-container">
+                      <div class="swiper-wrapper">
+                        <a class="swiper-slide txt-tab-btn active" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu1</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu2</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu3</span></p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="txt-tab-swiper func-tab">
+                    <div class="swiper-container">
+                      <div class="swiper-wrapper">
+                        <a class="swiper-slide txt-tab-btn active" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu1</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu2</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu3</span></p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="txt-depth-tab-swiper">
+                    <div class="swiper-container">
+                      <div class="swiper-wrapper">
+                        <a class="swiper-slide txt-tab-btn active" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu1</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu2</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu3</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu4</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu5</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu6</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu7</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu8</span></p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+              <script type="syntaxhighlighter" class="brush: xml;">
+                <div class="tab-btn-area">
+                  <div class="txt-major-tab-swiper">
+                    <div class="swiper-container">
+                      <div class="swiper-wrapper">
+                        <a class="swiper-slide txt-tab-btn active" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu1</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu2</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu3</span></p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="txt-tab-swiper func-tab">
+                    <div class="swiper-container">
+                      <div class="swiper-wrapper">
+                        <a class="swiper-slide txt-tab-btn active" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu1</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu2</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu3</span></p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="txt-depth-tab-swiper">
+                    <div class="swiper-container">
+                      <div class="swiper-wrapper">
+                        <a class="swiper-slide txt-tab-btn active" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu1</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu2</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu3</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu4</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu5</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu6</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu7</span></p>
+                        </a>
+                        <a class="swiper-slide txt-tab-btn" href="javascript:">
+                          <p class="txt"><span class="menu-name">menu8</span></p>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </script>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

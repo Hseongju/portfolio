@@ -1,0 +1,85 @@
+@charset "UTF-8";
+@import url(./reset.css);
+@import url(./fonts.css);
+
+#wrap{position:relative;}
+.stop-scroll{overflow:hidden; height:100%;}
+.inner{margin:0 auto; width:1460px;}
+
+
+/* 마스킹 비디오 영역 */
+.masking-area{overflow:hidden; position:absolute; top:0; left:0; width:100%; height:100vh; transition:top 2s ease; z-index:10; }
+/* .masking-area .mask-img{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%) scale(0.01); width:5804px; height:6702px;} */
+.masking-area .bg{position:absolute; top:0; left:0; width:100%; height:100%;}
+.masking-area .bg video{width:100%; height:100%; object-fit: cover; mask-size: 5804px 6702px; mask-position:center -490px; mask-repeat:no-repeat; mask-image: url("../images/img-mask.png"); -wekbit-mask-image: url("../images/img-mask.png"); z-index:1; transition:mask 1.5s ease;}
+.masking-area.on .bg video{mask-size: 480px 555px; mask-position:center -290px;}
+
+
+/* 상단 */
+.top-area .tit-wrap{margin-bottom:117px; padding-top:445px; text-align: center;}
+.top-area .tit-wrap .tit{position:relative; top:80px; opacity:0; transition:top 1s ease, opacity 1s ease;}
+.top-area .tit-wrap .txt{position:relative; top:80px; margin-top:50px; opacity:0; transition:top 1s ease, opacity 1s ease;}
+.top-area .product-list{display:flex; column-gap: 55px;}
+.top-area .product-list .list{position:relative; top:80px; opacity:0; transition:top 1s ease, opacity 1s ease;}
+.top-area .tit-wrap.active .tit{top:0; opacity:1;}
+.top-area .tit-wrap.active .txt{top:0; opacity:1; transition-delay:0.15s}
+.top-area .product-list.active .list{top:0; opacity:1;}
+.top-area .product-list.active .list:nth-child(2){transition-delay: 0.15s;}
+.top-area .product-list.active .list:nth-child(3){transition-delay: 0.3s;}
+
+/* 제품 */
+.product-area{position:relative; background:#fff}
+.product-area .tit-area{position:relative; width:100%; height:100vh; z-index:3;}
+.product-area .tit-area .tit-div{position:relative; width:100%; height:100vh;}
+.product-area .tit-area .tit-wrap{position:absolute; top:48%; left:50%; transform:translate(-50%, -50%); text-align: center; transition:left 0.6s ease, transform 0.6s ease;}
+.product-area .tit-area .tit-wrap .tit{position:relative; top:0; left:0; transform:scale(1); transition: top 1s ease, left 1s ease;}
+.product-area .tit-area .tit-wrap .tit span{display:block; position:relative; top:0; left:0; color:#003281; font-size:60px; line-height:74px; letter-spacing: -0.2px; font-family: "Pretendard_Bold"; transition:left 0.3s ease;}
+.product-area .tit-area .tit-wrap .txt{position:relative; top:500px; transform:scale(1); margin-top:70px; color:#000000; font-size:24px; line-height:1; letter-spacing: -0.2px; font-family: "Pretendard_ExtraBold"; transition:opacity 0.6s ease;}
+.product-area .tit-area .tit-wrap.on .tit{top:60px; left:calc((100% - 1700px) / 2)}
+.product-area .tit-area .tit-wrap.on .tit span:nth-child(1){left:-67px;}
+.product-area .tit-area .tit-wrap.on .txt{opacity:0;}
+.product-area .bg-area{position:absolute; /* margin-top:150vh; */ top:200vh; left:0; width:100%; height:100vh;}
+.product-area .bg-area .bg-wrap{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);/*  margin:0 auto; */ width:1450px; height:815px;}
+.product-area .bg-area .img{position:absolute; top:0; left:0; width:100%; height:100%; opacity:0; transition:opacity 0.6s ease;}
+.product-area .bg-area .img.active{opacity:1;}
+.product-area .bg-area .img img{width:100%; height:100%; object-fit: cover;}
+.product-area .product-txt{position:relative; padding:250vh 0 30vh 900px; margin:0 auto; width:1460px; z-index: 1;}
+.product-area .product-txt .txt-div{padding-bottom:150px; opacity:0.1; transition:opacity 0.6s ease;}
+.product-area .product-txt .txt-div.active{opacity:1}
+
+
+/* 비전 */
+.vision-area{margin-top:240px;}
+.vision-area .flex-box{display:flex; flex-wrap:wrap; justify-content: space-between;}
+.vision-area .flex-box .txt-box .tit{position:relative; top:80px; margin-bottom:120px; opacity:0; transition:top 1s ease, opacity 1s ease;}
+.vision-area .flex-box .txt-box .txt{position:relative; top:80px; opacity:0; transition:top 1s ease, opacity 1s ease;}
+.vision-area .flex-box .img-box{position:relative;}
+.vision-area .flex-box .img-box img{position:relative; top:80px; opacity:0; transition:top 1s ease, opacity 1s ease;}
+.vision-area .flex-box .img-box .txt{position:absolute; right:40px; top:20px; opacity:0; transition:top 1s ease, opacity 1s ease; z-index:1;}
+.vision-area .flex-box .img-box:nth-child(2){margin-top:255px;}
+.vision-area .flex-box .img-box:nth-child(3){margin:-43px 0 0 110px;}
+.vision-area .flex-box .txt-box:nth-child(4){margin:448px 146px 0 0;}
+.vision-area .flex-box .img-box:nth-child(5){margin:140px 0 0 450px;}
+.vision-area .flex-box .img-box.active img{top:0; opacity:1;}
+.vision-area .flex-box .img-box.active .txt{top:-30px; opacity:1; transition-delay:0.15s;}
+.vision-area .flex-box .txt-box.active .txt{top:0; opacity:1;}
+.vision-area .flex-box .txt-box.active:nth-child(1) .tit{top:0; opacity:1;}
+.vision-area .flex-box .txt-box.active:nth-child(1) .txt{transition-delay:0.15s;}
+.vision-area .flex-box .img-box.active:nth-child(2) img{transition-delay:0.3s;}
+.vision-area .flex-box .img-box.active:nth-child(2) .txt{transition-delay:0.45s;}
+
+
+/* 공지사항 */
+.notice-area{margin:200px 0;}
+.notice-area .flex-box{display:flex; align-items: center; justify-content: space-between; position:relative;  padding-top:80px;}
+.notice-area .flex-box:after{display:block; content:""; position:absolute; top:0; left:0; width:0; height:1px; background:rgba(0,0,0,0.2); transition:width 1s ease;}
+.notice-area .flex-box .left, .notice-area .flex-box .right{position:relative; top:80px; opacity:0; transition:top 1s ease, opacity 1s ease;}
+.notice-area.active .flex-box:after{width:100%;}
+.notice-area.active .flex-box .left{top:0; opacity:1;}
+.notice-area.active .flex-box .right{top:0; opacity:1; transition-delay:0.15s}
+
+
+/* footer */
+footer{position:relative;}
+footer .btn-top{position:absolute; right:80px; top:-84px;}
+footer > a{display:block; padding:160px 0 40px; width:100%; background:url("../images/bg-footer.jpg") no-repeat center center/cover}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../common/css/aos.css">
+  <link rel="stylesheet" href="../common/css/swiper.css">
+  <link rel="stylesheet" href="../common/css/fonts.css">
+  <link rel="stylesheet" href="../common/css/HEC-sub.css">
+  <script src="../common/js/jquery-1.12.4.min.js"></script>
+  <script src="/common/js/lenis.min.js"></script>
+  <script src="../common/js/swiper.min.js"></script>
+  <script src="../common/js/gsap.min.js"></script>
+  <script src="../common/js/jquery-mousewheel.js"></script>
+  <script src="../common/js/ScrollTrigger.min.js"></script>
+  <script src="../common/js/HEC-sub.js"></script>
+  <title>HD현대 - Type A Main</title>
+</head>
+<body class="stop-scroll">
+  <div id="wrap">
+    <!-- 마스킹 비디오 영역 -->
+    <div class="masking-area">
+      <div class="bg"><video src="../common/videos/suba-2-mainvi-video.mp4" autoplay muted loop></video></div>
+    </div>
+
+    <!-- 첫 상단 -->
+    <div class="top-area">
+      <div class="inner">
+        <div class="tit-wrap">
+          <div class="tit">
+            <img src="../common/images/img-top-tit.png" alt="">
+          </div>
+          <div class="txt">
+            <img src="../common/images/img-top-txt.png" alt="">
+          </div>
+        </div>
+        <div class="product-list scroll-motion">
+          <div class="list"><img src="../common/images/img-product-01.png" alt=""></div>
+          <div class="list"><img src="../common/images/img-product-02.png" alt=""></div>
+          <div class="list"><img src="../common/images/img-product-03.png" alt=""></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 제품 -->
+    <div class="product-area">
+      <div class="tit-area">
+        <div class="tit-div">
+          <div class="tit-wrap">
+            <div class="tit-box">
+              <p class="tit">
+                <span>왜 현대건설기계</span>
+                <span>제품을 선택했을까요?</span>
+              </p>
+            </div>
+            <p class="txt">효율성 &middot; 쉽고 빠른 정비성 &middot; 훌륭한 내구성</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-area">
+        <div class="bg-wrap">
+          <div class="img active"><img src="../common/images/img-product-bg-01.jpg" alt=""></div>
+          <div class="img"><img src="../common/images/img-product-bg-02.jpg" alt=""></div>
+          <div class="img"><img src="../common/images/img-product-bg-03.jpg" alt=""></div>
+          <div class="img"><img src="../common/images/img-product-bg-04.jpg" alt=""></div>
+        </div>
+      </div>
+      
+      <div class="product-txt">
+        <div class="txt-div active"><img src="../common/images/img-product-txt-01.png" alt=""></div>
+        <div class="txt-div"><img src="../common/images/img-product-txt-02.png" alt=""></div>
+        <div class="txt-div"><img src="../common/images/img-product-txt-03.png" alt=""></div>
+        <div class="txt-div"><img src="../common/images/img-product-txt-04.png" alt=""></div>
+      </div>
+    </div>
+
+    <!-- 비전 -->
+    <div class="vision-area">
+      <div class="inner">
+        <div class="flex-box">
+          <div class="txt-box scroll-motion">
+            <p class="tit"><img src="../common/images/img-vision-big-title.png" alt=""></p>
+            <p class="txt"><img src="../common/images/img-vision-txt-01.png" alt=""></p>
+          </div>
+          <div class="img-box scroll-motion">
+            <p class="txt"><img src="../common/images/img-vision-list-txt-01.png" alt=""></p>
+            <img src="../common/images/img-vision-list-01.png" alt="">
+          </div>
+          <div class="img-box scroll-motion">
+            <p class="txt"><img src="../common/images/img-vision-list-txt-02.png" alt=""></p>
+            <img src="../common/images/img-vision-list-02.png" alt="">
+          </div>
+          <div class="txt-box scroll-motion">
+            <p class="txt"><img src="../common/images/img-vision-txt-02.png" alt=""></p>
+          </div>
+          <div class="img-box scroll-motion">
+            <p class="txt"><img src="../common/images/img-vision-list-txt-03.png" alt=""></p>
+            <img src="../common/images/img-vision-list-03.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 공지사항 -->
+    <div class="notice-area scroll-motion">
+      <div class="inner">
+        <div class="flex-box">
+          <div class="left">
+            <img src="../common/images/img-notice.png" alt="">
+          </div>
+          <div class="right">
+            <img src="../common/images/img-notice-list-btn.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="btn-top"><img src="../common/images/btn-top.png" alt=""></div>
+      <a href="javascript:">
+        <div class="inner">
+          <img src="../common/images/footer.png" alt="">
+        </div>
+      </a>
+    </footer>
+  </div>
+</body>
+<script>
+  // 스크립트 순서가 마지막이여야 읽힘
+  const lenis = new Lenis({
+    duration:1.2,
+    easing:(t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  });
+
+  function raf(time){
+    lenis.raf(time);
+    ScrollTrigger.update();
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+  lenis.stop();
+  setTimeout(function(){
+    lenis.start();
+  },1700)
+</script>
+</html>
