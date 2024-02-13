@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>UI개발1팀 모듈화 프로젝트</title>
+  <link rel="stylesheet" href="../../assets/css/index.css">
+  <link rel="stylesheet" href="../../assets/css/swiper.css">
+  <link rel="stylesheet" href="../../assets/styles/shCore.css"/>
+	<link rel="Stylesheet" href="../../assets/styles/shCoreEclipse.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="../../assets/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script src="../../assets/scripts/shCore.js"></script>
+	<script src="../../assets/scripts/shBrushJScript.js"></script>
+	<script src="../../assets/scripts/shBrushXml.js"></script>
+	<script src="../../assets/scripts/shBrushCss.js"></script>
+  <script src="../../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../../assets/js/gsap.min.js"></script>
+  <script src="../../assets/js/swiper.min.js"></script>
+  <script src="../../assets/js/ScrollTrigger.min.js"></script>
+  <script src="../../assets/js/lottie-player.js"></script>
+  <script src="../../assets/js/script.js"></script>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+  <style>
+    .img-wrap {display: flex; flex-wrap: wrap;  width: 80%;}
+    .img-wrap .txt {font-size: 16px; margin: 8rem;}
+    .img-wrap .img_box {margin-top: 20rem; margin-right: 20rem;}
+    .img_resize_w {position:relative; width: 400rem; height: 400rem; overflow: hidden; border: 1px solid #000;}
+    .img_resize_w > img {position: absolute; width: 100%; height: auto; left: 50%; top: 50%; transform: translate(-50%, -50%);}
+    .img_resize_w.reverse > img {width: auto; height: 100%;}
+
+    /* css만 활용할 경우 */
+    .img_w {width: 400rem; height: 400rem; border: 1px solid #000;}
+    .img_w img {width: 100%; height: 100%; object-fit: cover;}
+  </style>
+</head>
+<body>
+  <div id="wrap" style="background:#fff;">
+    <div id="contents" style="display:block">
+      <div class="img-wrap">
+        <div class="img_box">
+          <p class="txt">이미지의 세로 사이즈가 클 경우(500 x 800)</p>
+          <div class="img_resize_w">
+            <img src="../../assets/images/img-resizng-height-long.jpg" alt="">
+          </div>
+        </div>
+        <div class="img_box">
+          <p class="txt">이미지의 가로 사이즈가 클 경우(800 x 500)</p>
+          <div class="img_resize_w">
+            <img src="../../assets/images/img-resizng-width-long.jpg" alt="">
+          </div>
+        </div>
+        <div class="img_box">
+          <p class="txt">이미지의 사이즈가 클 경우(1200 x 1200)</p>
+          <div class="img_resize_w">
+            <img src="../../assets/images/img-resizng-square.jpg" alt="">
+          </div>
+        </div>
+        <div class="img_box">
+          <p class="txt">이미지의 사이즈가 작을 경우(80 x 80)</p>
+          <div class="img_resize_w">
+            <img src="../../assets/images/img-resizng-square-small.jpg" alt="">
+          </div>
+        </div>
+        <div class="img_box">
+          <p class="txt">css만 활용할 경우(800 x 500)</p>
+          <div class="img_w">
+            <img src="../../assets/images/img-resizng-width-long.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(window).load(function(){
+      $(".img_resize_w").each(function () {
+        if ($(this).find("img").get(0).naturalWidth / $(this).find("img").get(0).naturalHeight >= $(this).width() / $(this).innerHeight()) {
+          $(this).addClass("reverse");
+        } else {
+          $(this).removeClass("reverse");
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>UI개발1팀 모듈화 프로젝트</title>
+  <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/swiper.css">
+  <link rel="stylesheet" href="../assets/styles/shCore.css"/>
+	<link rel="Stylesheet" href="../assets/styles/shCoreEclipse.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="../assets/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script src="../assets/scripts/shCore.js"></script>
+	<script src="../assets/scripts/shBrushJScript.js"></script>
+	<script src="../assets/scripts/shBrushXml.js"></script>
+	<script src="../assets/scripts/shBrushCss.js"></script>
+  <script src="../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../assets/js/gsap.min.js"></script>
+  <script src="../assets/js/swiper.min.js"></script>
+  <script src="../assets/js/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/lottie-player.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+  <style>
+    .form-text {position: relative; height: 42px; border: 1px solid #d8d8d8; border-radius: 5px; background-color: #fff;}
+    .form-text:after {content: ""; clear: both; display: block; height: 0;}
+    .form-text input {padding: 5px 20px; width: 100%; height: 100%; border-radius: 5px; outline: 0; border: 0;}
+
+    /* 전체 체크박스 */
+    .form_checkbox {position: relative;}
+    .form_checkbox input {position: absolute; top: 0; left: 0; width: 20px; height: 20px; opacity: .001;}
+    .form_checkbox input + label {position: relative;  display: inline-block; padding-left: 30px; min-height: 20px; width: auto; color: #333; font-size: 16px; background: url("/styleguide/assets/images/icon-checkbox.svg") left top 2px no-repeat; z-index: 1; cursor: pointer;}
+    .form_checkbox input:checked + label {background: url("/styleguide/assets/images/icon-checkbox-on.svg") left top 2px no-repeat;}
+    .total_checkbox + .total_checkbox{margin-top:20px;}
+    .total_checkbox .total_wrap .form_checkbox{margin-top:10px;}
+    .total_checkbox .two_d_checkbox{padding-left:30px;}
+    .total_checkbox .two_d_checkbox .form_checkbox input + label{padding-left:25px; font-size:14px; background-size:18px auto;}
+
+    /* 이미지 리사이징 */
+    .img_resizing > div p {margin: 20rem 0 8rem;}
+    .img_resize_w {position:relative; width: 400rem; height: 400rem; overflow: hidden; border: 1px solid #000;}
+    .img_resize_w > img {position: absolute; width: 100%; height: auto; left: 50%; top: 50%; transform: translate(-50%, -50%);}
+    .img_resize_w.reverse > img {width: auto; height: 100%;}
+
+    /* css만 활용할 경우 */
+    .img_w {width: 400rem; height: 400rem; border: 1px solid #000;}
+    .img_w img {width: 100%; height: 100%; object-fit: cover;}
+  </style>
+</head>
+<body>
+  <div id="wrap" style="background:#fff;">
+    <header>
+      <h1>모듈화 작업 가이드</h1>
+      <div class="btn-wrap">
+        <a href="./index.html">HOME  <i class="fas fa-angle-right"></i></a>
+      </div>
+    </header>
+    <div id="contents">
+      <aside></aside>
+      <div class="content-area">
+        <h2>Script 기능 모음</h2>
+        <section>
+          <h3>전체 체크박스</h3>
+          <!-- sample -->
+          <div class="sample">
+            <div class="checkbox_area">
+              <div class="total_checkbox">
+                <div class="form_checkbox">
+                  <input type="checkbox" id="check1" name="">
+                  <label for="check1">전체선택1</label>
+                </div>
+                <div class="total_wrap">
+                  <div class="form_checkbox">
+                    <input type="checkbox" id="check2" name="">
+                    <label for="check2">선택사항1</label>
+                  </div>
+                  <div class="form_checkbox">
+                    <input type="checkbox" id="check3" name="">
+                    <label for="check3">선택사항2</label>
+                  </div>
+                </div>
+              </div>
+              <div class="total_checkbox">
+                <div class="form_checkbox">
+                  <input type="checkbox" id="check4" name="">
+                  <label for="check4">전체선택2</label>
+                </div>
+                <div class="total_wrap">
+                  <div class="depth_checkbox">
+                    <div class="form_checkbox">
+                      <input type="checkbox" id="check5" name="">
+                      <label for="check5">선택사항3</label>
+                    </div>
+                    <div class="two_d_checkbox">
+                      <div class="form_checkbox">
+                        <input type="checkbox" id="check6" name="">
+                        <label for="check6">선택사항 3-1</label>
+                      </div>
+                      <div class="form_checkbox">
+                        <input type="checkbox" id="check7" name="">
+                        <label for="check7">선택사항 3-2</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="depth_checkbox">
+                    <div class="form_checkbox">
+                      <input type="checkbox" id="check8" name="">
+                      <label for="check8">선택사항3</label>
+                    </div>
+                    <div class="two_d_checkbox">
+                      <div class="form_checkbox">
+                        <input type="checkbox" id="check9" name="">
+                        <label for="check9">선택사항 3-1</label>
+                      </div>
+                      <div class="form_checkbox">
+                        <input type="checkbox" id="check10" name="">
+                        <label for="check10">선택사항 3-2</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- //sample -->
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <div class="checkbox_area">
+              <div class="total_checkbox">
+                <div class="form_checkbox">
+                  <input type="checkbox" id="check1" name="">
+                  <label for="check1">전체선택1</label>
+                </div>
+                <div class="total_wrap">
+                  <div class="form_checkbox">
+                    <input type="checkbox" id="check2" name="">
+                    <label for="check2">선택사항1</label>
+                  </div>
+                  <div class="form_checkbox">
+                    <input type="checkbox" id="check3" name="">
+                    <label for="check3">선택사항2</label>
+                  </div>
+                </div>
+              </div>
+              <div class="total_checkbox">
+                <div class="form_checkbox">
+                  <input type="checkbox" id="check4" name="">
+                  <label for="check4">전체선택2</label>
+                </div>
+                <div class="total_wrap">
+                  <div class="depth_checkbox">
+                    <div class="form_checkbox">
+                      <input type="checkbox" id="check5" name="">
+                      <label for="check5">선택사항3</label>
+                    </div>
+                    <div class="two_d_checkbox">
+                      <div class="form_checkbox">
+                        <input type="checkbox" id="check14" name="">
+                        <label for="check14">선택사항3-1</label>
+                      </div>
+                      <div class="form_checkbox">
+                        <input type="checkbox" id="check15" name="">
+                        <label for="check15">선택사항3-2</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            /* css */
+            .form_checkbox {position: relative;}
+            .form_checkbox input {position: absolute; top: 0; left: 0; width: 20px; height: 20px; opacity: .001;}
+            .form_checkbox input + label {position: relative;  display: inline-block; padding-left: 30px; min-height: 20px; width: auto; color: #333; font-size: 16px; background: url("/styleguide/assets/images/icon-checkbox.svg") left top 2px no-repeat; z-index: 1; cursor: pointer;}
+            .form_checkbox input:checked + label {background: url("/styleguide/assets/images/icon-checkbox-on.svg") left top 2px no-repeat;}
+            .total_checkbox + .total_checkbox{margin-top:20px;}
+            .total_checkbox .total_wrap .form_checkbox{margin-top:10px;}
+            .total_checkbox .two_d_checkbox{padding-left:30px;}
+            .total_checkbox .two_d_checkbox .form_checkbox input + label{padding-left:25px; font-size:14px; background-size:18px auto;}
+
+            /* script */
+            $(".total_checkbox").each(function(q){
+              $(this).find(".form_checkbox input").each(function(k){
+                $(this).on("click", function(){
+                  if(k == 0){
+                    if(!$(this).parents(".total_checkbox").hasClass("check")){
+                      $(this).parents(".total_checkbox").addClass("check");
+                      $(this).parents(".total_checkbox").find(".depth_checkbox").addClass("check");
+                      $(this).parents(".total_checkbox").find(".form_checkbox input").prop("checked", true);
+                    }else{
+                      $(this).parents(".total_checkbox").removeClass("check");
+                      $(this).parents(".total_checkbox").find(".depth_checkbox").removeClass("check");
+                      $(this).parents(".total_checkbox").find(".form_checkbox input").prop("checked", false);
+                    }
+                  }else{
+                    if($(this).parent(".form_checkbox").parent(".depth_checkbox").size() > 0){
+                      if(!$(this).parents(".depth_checkbox").hasClass("check")){
+                        $(this).parents(".depth_checkbox").addClass("check");
+                        $(this).parent(".form_checkbox").parent(".depth_checkbox").find(".two_d_checkbox .form_checkbox input").prop("checked", true);
+                      }else{
+                        $(this).parents(".depth_checkbox").removeClass("check");
+                        $(this).parent(".form_checkbox").parent(".depth_checkbox").find(".two_d_checkbox .form_checkbox input").prop("checked", false);
+                      }
+                    }else{
+                      if($(this).parents(".two_d_checkbox").find(".form_checkbox input").size() == $(this).parents(".two_d_checkbox").find(".form_checkbox input:checked").size()){
+                        $(this).parent(".form_checkbox").parents(".depth_checkbox").addClass("check");
+                        $(this).parent(".form_checkbox").parents(".depth_checkbox").children(".form_checkbox").find("input").prop("checked", true);
+                      }else{
+                        $(this).parent(".form_checkbox").parents(".depth_checkbox").removeClass("check");
+                        $(this).parent(".form_checkbox").parents(".depth_checkbox").children(".form_checkbox").find("input").prop("checked", false);
+                      }
+                    }
+        
+                    if($(this).parents(".total_checkbox").find(".total_wrap .form_checkbox input").size() == $(this).parents(".total_checkbox").find(".total_wrap .form_checkbox input:checked").size()){
+                      $(this).parents(".total_checkbox").addClass("check");
+                      $(this).parents(".total_checkbox").children(".form_checkbox").find("input").prop("checked", true);
+                    }else{
+                      $(this).parents(".total_checkbox").removeClass("check");
+                      $(this).parents(".total_checkbox").children(".form_checkbox").find("input").prop("checked", false);
+                    }
+                  }
+                });
+              });
+            });
+          </script>
+        </section>
+        <section>
+          <h3>앵커 스와이퍼 스티키</h3>
+          <!-- sample -->
+          <div class="sample">
+            <p class="link"><a href="./link/anchor_sticky.html">해당화면보기</a></p>
+          </div>
+          <!-- //sample -->
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <div class="visual">
+              <div class="txt_box">
+                <p><a href="../function.html">PREV</a></p>
+                <p><a href="../index.html">HOME</a></p>
+              </div>
+            </div>
+            <div class="anchor_area">
+              <div class="anchor_btn_w swiper-container">
+                <div class="swiper-wrapper">
+                  <a href="javascript:" class="swiper-slide tab_btn on">A영역</a>
+                  <a href="javascript:" class="swiper-slide tab_btn">B영역</a>
+                  <a href="javascript:" class="swiper-slide tab_btn">C영역</a>
+                  <a href="javascript:" class="swiper-slide tab_btn">D영역</a>
+                  <a href="javascript:" class="swiper-slide tab_btn">E영역</a>
+                  <a href="javascript:" class="swiper-slide tab_btn">F영역</a>
+                  <a href="javascript:" class="swiper-slide tab_btn">G영역</a>
+                </div>
+              </div>
+              <div class="anchor_con_w">
+                <div class="anchor_con">
+                  <p class="text">A영역</p>
+                </div>
+                <div class="anchor_con">
+                  <p class="text">B영역</p>
+                </div>
+                <div class="anchor_con">
+                  <p class="text">C영역</p>
+                </div>
+                <div class="anchor_con">
+                  <p class="text">D영역</p>
+                </div>
+                <div class="anchor_con">
+                  <p class="text">E영역</p>
+                </div>
+                <div class="anchor_con">
+                  <p class="text">F영역</p>
+                </div>
+                <div class="anchor_con">
+                  <p class="text">G영역</p>
+                </div>
+              </div>
+            </div>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            /* css */
+            .visual{position:relative; width:100%; height:100vh; background:#d19f55}
+            .visual .txt_box{display:flex; align-items: center; justify-content:center; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:100%; text-align: center;}
+            .visual .txt_box > p{overflow:hidden; display:flex; align-items: center; justify-content: center; position:relative; border:1px solid #000; background:#fff; width:200rem; height:65rem;}
+            .visual .txt_box > p:after{display:block; content:""; position:absolute; top:65rem; left:0; width:100%; height:100%; background:#000; transition:top 0.5s ease;}
+            .visual .txt_box > p > a{display:block; position:relative; padding-bottom:3px; width:100%; height:100%; line-height:165%; font-size:35rem; font-weight:800; color:#000; letter-spacing: -1px; transition:color 0.5s ease; z-index:1; }
+            .visual .txt_box > p:hover:after{top:0;}
+            .visual .txt_box > p:hover > a{color:#fff;}
+            .visual .txt_box > p:nth-child(2){margin-left:20rem;}
+            .anchor_area{position:relative; padding-top:60rem}
+            .anchor_area .anchor_btn_w{overflow:hidden; position:absolute; top:0; left:0; width:100%; height:60rem; background:#fff; border-bottom:1px solid #ddd;}
+            .anchor_area .anchor_btn_w.fixed{position:fixed;}
+            .anchor_area .anchor_btn_w .tab_btn{display:flex; align-items: center; justify-content: center; position:relative; padding:0 20rem; width:auto;}
+            .anchor_area .anchor_btn_w .tab_btn span{color:#000;}
+            .anchor_area .anchor_btn_w .tab_btn.on:after{display:block; content:""; position:absolute; bottom:0; left:0; width:100%; height:2px; background:#000;}
+            .anchor_area .anchor_btn_w .tab_btn.on span{font-weight:500}
+            .anchor_area .anchor_con_w .anchor_con{position:relative; width:100%; height:100vh;}
+            .anchor_area .anchor_con_w .anchor_con .text{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); font-size:50rem; font-weight:800; color:#000;}
+
+            /* script */
+            var _anchorSwipeTab;
+            $(window).on("load", function(){
+              _anchorSwipeTab = new Swiper(".anchor_btn_w.swiper-container", {
+                slidesPerView: "auto",
+              });
+
+              if($(".anchor_area").size() > 0){
+                $(".anchor_btn_w .tab_btn").each(function(q){
+                  $(this).on("click", function(){
+                    gsap.to($("html, body"), 1.5, {scrollTop:$(".anchor_con_w .anchor_con").eq(q).offset().top, ease:Power3.easeOut})
+                  });
+                });
+              }
+
+              var thisSlide;
+
+              $(window).scroll(function(){
+                var isScrollTop = $(window).scrollTop();
+
+                if($(".anchor_area").size() > 0){
+                  $(".anchor_con_w .anchor_con").each(function(q){
+                    if($(this).offset().top - $(".anchor_btn_w").outerHeight(true) < isScrollTop){
+                      $(".anchor_btn_w .tab_btn").removeClass("on");
+                      $(".anchor_btn_w .tab_btn").eq(q).addClass("on");
+                      thisSlide = q;
+                    }
+                  });
+                  
+                  _anchorSwipeTab.slideTo(thisSlide);
+
+                  if(isScrollTop >= $(".anchor_area").offset().top){
+                    $(".anchor_area .anchor_btn_w").addClass("fixed");
+                  }else{
+                    $(".anchor_area .anchor_btn_w").removeClass("fixed");
+                    $(".anchor_area .anchor_btn_w").removeAttr("style");
+                  }
+                }
+              }).scroll();
+            });
+          </script>
+        </section>
+        <section>
+          <h3>이미지 리사이징</h3>
+          <!-- sample -->
+          <div class="sample img_resizing">
+            <div>
+              <p>이미지의 세로 사이즈가 클 경우 (500 x 800)</p>
+              <div class="img_resize_w">
+                <img src="../assets/images/img-resizng-height-long.jpg" alt="">
+              </div>
+              <p>이미지의 가로 사이즈가 클 경우 (800 x 500)</p>
+              <div class="img_resize_w">
+                <img src="../assets/images/img-resizng-width-long.jpg" alt="">
+              </div>
+              <p>이미지의 사이즈가 클 경우 (1200 x 1200)</p>
+              <div class="img_resize_w">
+                <img src="../assets/images/img-resizng-square.jpg" alt="">
+              </div>
+              <p>이미지의 사이즈가 작을 경우 (80 x 80)</p>
+              <div class="img_resize_w">
+                <img src="../assets/images/img-resizng-square-small.jpg" alt="">
+              </div>
+              <p>css만 활용할 경우 (800 x 500)</p>
+              <div class="img_w">
+                <img src="../assets/images/img-resizng-width-long.jpg" alt="">
+              </div>
+            </div>
+          </div>
+          <!-- //sample -->
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <div>
+              <p>이미지의 세로 사이즈가 클 경우 (500 x 800)</p>
+              <div class="img_resize_w">
+                <img src="../assets/images/img-resizng-height-long.jpg" alt="">
+              </div>
+              <p>이미지의 가로 사이즈가 클 경우 (800 x 500)</p>
+              <div class="img_resize_w">
+                <img src="../assets/images/img-resizng-width-long.jpg" alt="">
+              </div>
+              <p>이미지의 사이즈가 클 경우 (1200 x 1200)</p>
+              <div class="img_resize_w">
+                <img src="../assets/images/img-resizng-square.jpg" alt="">
+              </div>
+              <p>이미지의 사이즈가 작을 경우 (80 x 80)</p>
+              <div class="img_resize_w">
+                <img src="../assets/images/img-resizng-square-small.jpg" alt="">
+              </div>
+              <p>css만 활용할 경우 (800 x 500)</p>
+              <div class="img_w">
+                <img src="../assets/images/img-resizng-width-long.jpg" alt="">
+              </div>
+            </div>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            .img_resize_w {position:relative; width: 400rem; height: 400rem; overflow: hidden; border: 1px solid #000;}
+            .img_resize_w > img {position: absolute; width: 100%; height: auto; left: 50%; top: 50%; transform: translate(-50%, -50%);}
+            .img_resize_w.reverse > img {width: auto; height: 100%;}
+
+            /* css만 활용할 경우 */
+            .img_w {width: 400rem; height: 400rem; border: 1px solid #000;}
+            .img_w img {width: 100%; height: 100%; object-fit: cover;}
+          </script>
+          <script type="syntaxhighlighter" class="brush: javascript;">
+            $(".img_resize_w").each(function () {
+              if ($(this).find("img").get(0).naturalWidth / $(this).find("img").get(0).naturalHeight >= $(this).width() / $(this).innerHeight()) {
+                $(this).addClass("reverse");
+              } else {
+                $(this).removeClass("reverse");
+              }
+            });
+          </script>
+        </section>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+<script>
+  $(window).on("load", function(){
+
+    // 전체 체크박스 스크립트
+    $(".total_checkbox").each(function(q){
+      $(this).find(".form_checkbox input").each(function(k){
+        $(this).on("click", function(){
+          if(k == 0){
+            if(!$(this).parents(".total_checkbox").hasClass("check")){
+              $(this).parents(".total_checkbox").addClass("check");
+              $(this).parents(".total_checkbox").find(".depth_checkbox").addClass("check");
+              $(this).parents(".total_checkbox").find(".form_checkbox input").prop("checked", true);
+            }else{
+              $(this).parents(".total_checkbox").removeClass("check");
+              $(this).parents(".total_checkbox").find(".depth_checkbox").removeClass("check");
+              $(this).parents(".total_checkbox").find(".form_checkbox input").prop("checked", false);
+            }
+          }else{
+            if($(this).parent(".form_checkbox").parent(".depth_checkbox").size() > 0){
+              if(!$(this).parents(".depth_checkbox").hasClass("check")){
+                $(this).parents(".depth_checkbox").addClass("check");
+                $(this).parent(".form_checkbox").parent(".depth_checkbox").find(".two_d_checkbox .form_checkbox input").prop("checked", true);
+              }else{
+                $(this).parents(".depth_checkbox").removeClass("check");
+                $(this).parent(".form_checkbox").parent(".depth_checkbox").find(".two_d_checkbox .form_checkbox input").prop("checked", false);
+              }
+            }else{
+              if($(this).parents(".two_d_checkbox").find(".form_checkbox input").size() == $(this).parents(".two_d_checkbox").find(".form_checkbox input:checked").size()){
+                $(this).parent(".form_checkbox").parents(".depth_checkbox").addClass("check");
+                $(this).parent(".form_checkbox").parents(".depth_checkbox").children(".form_checkbox").find("input").prop("checked", true);
+              }else{
+                $(this).parent(".form_checkbox").parents(".depth_checkbox").removeClass("check");
+                $(this).parent(".form_checkbox").parents(".depth_checkbox").children(".form_checkbox").find("input").prop("checked", false);
+              }
+            }
+
+            if($(this).parents(".total_checkbox").find(".total_wrap .form_checkbox input").size() == $(this).parents(".total_checkbox").find(".total_wrap .form_checkbox input:checked").size()){
+              $(this).parents(".total_checkbox").addClass("check");
+              $(this).parents(".total_checkbox").children(".form_checkbox").find("input").prop("checked", true);
+            }else{
+              $(this).parents(".total_checkbox").removeClass("check");
+              $(this).parents(".total_checkbox").children(".form_checkbox").find("input").prop("checked", false);
+            }
+          }
+        });
+      });
+    });
+
+    // 앵커 스와이퍼 스티키
+    var anchorSwipeTab = new Swiper(".anchor_btn_w.swiper-container", {
+      slidesPerView: "auto",
+    });
+
+    // 이미지 리사이징
+    $(".img_resize_w").each(function () {
+      if ($(this).find("img").get(0).naturalWidth / $(this).find("img").get(0).naturalHeight >= $(this).width() / $(this).innerHeight()) {
+        $(this).addClass("reverse");
+      } else {
+        $(this).removeClass("reverse");
+      }
+    });
+  });
+</script>

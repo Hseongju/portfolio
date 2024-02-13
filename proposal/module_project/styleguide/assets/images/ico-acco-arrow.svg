@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <g id="BTN_icon_Arrow" data-name="BTN / icon / Arrow" transform="translate(-1162 -1165)">
+    <g id="사각형_766" data-name="사각형 766" transform="translate(1162 1165)" fill="#2d2d2d" stroke="#2d2d2d" stroke-width="1" opacity="0">
+      <rect width="48" height="48" stroke="none"/>
+      <rect x="0.5" y="0.5" width="47" height="47" fill="none"/>
+    </g>
+    <path id="패스_5501" data-name="패스 5501" d="M69.041,21.456l8,8,8-8" transform="translate(1109.459 1164.044)" fill="none" stroke="#999" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+</svg>

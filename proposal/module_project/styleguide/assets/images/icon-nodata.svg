@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <g id="ico_검색결과_없음" data-name="ico_검색결과 없음" transform="translate(-1025 -1857.604)">
+    <path id="bg" d="M0,0H64V64H0Z" transform="translate(1025 1857.604)" fill="red" opacity="0"/>
+    <g id="ico">
+      <circle id="타원_560" data-name="타원 560" cx="26.852" cy="26.852" r="26.852" transform="translate(1028 1861.104)" fill="none" stroke="#2d2d2d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="패스_7654" data-name="패스 7654" d="M11.332,11.332,0,0" transform="translate(1074.668 1907.271)" fill="none" stroke="#2d2d2d" stroke-linecap="round" stroke-width="2"/>
+      <g id="그룹_7637" data-name="그룹 7637" transform="translate(-1)">
+        <circle id="타원_1721" data-name="타원 1721" cx="2" cy="2" r="2" transform="translate(1044 1885.604)" fill="#2d2d2d"/>
+        <circle id="타원_1722" data-name="타원 1722" cx="2" cy="2" r="2" transform="translate(1054 1885.604)" fill="#2d2d2d"/>
+        <circle id="타원_1723" data-name="타원 1723" cx="2" cy="2" r="2" transform="translate(1064 1885.604)" fill="#2d2d2d"/>
+      </g>
+    </g>
+  </g>
+</svg>

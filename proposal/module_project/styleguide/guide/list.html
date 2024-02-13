@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>UI개발1팀 모듈화 프로젝트</title>
+  <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/swiper.css">
+  <link rel="stylesheet" href="../assets/styles/shCore.css"/>
+	<link rel="Stylesheet" href="../assets/styles/shCoreEclipse.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="../assets/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script src="../assets/scripts/shCore.js"></script>
+	<script src="../assets/scripts/shBrushJScript.js"></script>
+	<script src="../assets/scripts/shBrushXml.js"></script>
+	<script src="../assets/scripts/shBrushCss.js"></script>
+  <script src="../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../assets/js/gsap.min.js"></script>
+  <script src="../assets/js/swiper.min.js"></script>
+  <script src="../assets/js/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/lottie-player.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/sub.js"></script>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+  <style>
+    .form-text {
+      position: relative;
+      height: 42px;
+      border: 1px solid #d8d8d8;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+
+    .form-text:after {
+      content: "";
+      clear: both;
+      display: block;
+      height: 0;
+    }
+
+    .form-text input {
+      padding: 5px 20px;
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      outline: 0;
+      border: 0;
+    }
+
+
+    
+    /* 리스트 */
+    .list {position: relative;}
+    .list .addon {position: absolute; top: -40rem; right: 30rem;}
+
+    .list.cardtype {display: grid; width: 100%; grid-template-columns: repeat(auto-fill, minmax(20%, auto)); row-gap: 10rem; column-gap: 0rem;}
+    .list.cardtype .unit {position: relative; width: 300rem; height: 400rem; margin: 0 30rem 30rem 0; overflow: hidden;}
+    .list.cardtype .unit::before {content: ""; display: block; position: absolute; top: 0; left: 0; width: calc(100% - 2px); height: calc(100% - 2px); border: 1px solid #ddd;}
+    .list.cardtype .unit > a {display: block; position: relative; display: flex; flex-direction: column; width: 300rem; height: 400rem;}
+    .list.cardtype .unit .img-area {position: relative; width: 100%; height: 150rem; margin-bottom: 30rem; background: url('../assets/images/img-blank1.png') no-repeat center center; background-size: cover; overflow: hidden;}
+    .list.cardtype .unit .img-area > img {width: 100%; height: 150rem; object-fit: cover;}
+    .list.cardtype .unit .label {position: absolute; top: 10rem; left: 10rem; padding: 5rem 10rem; border-radius: 15rem; background: #959941; color: #fff; font-size: 13rem; z-index: 10;}
+    .list.cardtype .unit .txt1 {position: relative; font-size: 14rem; color: #333; margin: 0 10rem;}
+    .list.cardtype .unit .txt2 {position: relative; margin: 10rem 10rem 0; font-size: 16rem; line-height: 25rem; height: 50rem; color: #000; font-weight: bold; overflow: hidden; word-break: break-all; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
+    .list.cardtype .unit .txt3 {position: absolute; bottom: 30rem; left: 10rem; font-size: 14rem; color: #666;}
+    .list.cardtype.shadow .unit {box-shadow: 0 0 0 rgba(0, 0, 0, 0.1); transition-property: box-shadow; transition-duration: 0.5s;}
+    .list.cardtype.shadow .unit:hover {box-shadow: 10rem 10rem 10rem rgba(0, 0, 0, 0.1);}
+    .list.cardtype.imgscale .unit .img-area > img {transform: scale(1); transition-property: transform; transition-duration: 0.5s;}
+    .list.cardtype.imgscale .unit:hover .img-area > img {transform: scale(1.2);}
+    .list.cardtype .unit .like {position: absolute; bottom: 30rem; right: 10rem; width: 32rem; height: 32rem; transform: rotateY(0deg); transition-duration: 0.5s; transition-property: transform;}
+    .list.cardtype .unit .like > img {position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 1; transition-duration: 0.5s; transition-property: opacity;}
+    .list.cardtype .unit .like > img:nth-child(1) {opacity: 1;}
+    .list.cardtype .unit .like > img:nth-child(2) {opacity: 0;}
+    .list.cardtype .unit .like.on {transform: rotateY(180deg);}
+    .list.cardtype .unit .like.on > img:nth-child(1) {opacity: 0;}
+    .list.cardtype .unit .like.on > img:nth-child(2) {opacity: 1;}
+
+    .list.listtype {border-top: 1px solid #000;}
+    .list.listtype .unit {position: relative; width: 100%; height: 60rem; border-bottom: 1px solid #ddd;}
+    .list.listtype .unit::before {content: ""; display: block; position: absolute; bottom: -1px; left: 0; width: 0; height: 1px; background: #ff0000; transition-property: width; transition-duration: 0.5s;}
+    .list.listtype .unit:hover::before {width: 100%;}
+    .list.listtype .unit a {display: block; position: relative; display: flex; align-items: center; width: 100%; height: 60rem;}
+    .list.listtype .unit .img-area {display: none;}
+    .list.listtype .unit .label {position: relative; font-size: max(14rem, 12px); width: 60rem; padding: 0 10rem; text-align: center;}
+    .list.listtype .unit .txt1 {position: relative; font-size: max(14rem, 12px); width: 120rem; padding: 0 10rem; text-align: center;}
+    .list.listtype .unit .txt2 {position: relative; font-size: max(14rem, 12px); width: calc(100% - 330rem); padding: 0 10rem; overflow: hidden; word-break: break-all; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;}
+    .list.listtype .unit .txt3 {position: relative; font-size: max(14rem, 12px); width: 150rem; padding: 0 10rem; text-align: center;}
+    .list.listtype .unit .like {display: none;}
+
+    @media screen and (max-width: 1023px) {
+      .list.cardtype {grid-template-columns: repeat(auto-fill, minmax(30%, auto)); row-gap: 10rem; column-gap: 10rem;}
+      .list.cardtype .unit {width: 100%; height: 250rem; margin: 0 30rem 30rem 0;}
+      .list.cardtype .unit a {width: 100%; height: 100%;}
+      .list.cardtype .unit .img-area {height: 100rem; margin-bottom: 20rem;}
+      .list.cardtype .unit .img-area > img {width: 100%; height: 100rem;}
+      .list.cardtype .unit .label {top: 7rem; left: 7rem; padding: 3rem 7rem; border-radius: 15rem; font-size: 7rem;}
+      .list.cardtype .unit .txt1 {font-size: 9rem; margin: 0 6rem;}
+      .list.cardtype .unit .txt2 {margin: 7rem 7rem 0; font-size: 10rem; line-height: 18rem; height: 36rem;}
+      .list.cardtype .unit .txt3 {bottom: 20rem; left: 7rem; font-size: 10rem;}
+
+      .list.cardtype .unit .like {bottom: 20rem; right: 7rem; width: 21rem; height: 21rem;}
+    }
+
+    @media screen and (max-width: 500px) {
+      .list .addon {right: 0;}
+
+      .list.cardtype {grid-template-columns: repeat(auto-fill, minmax(100%, auto)); row-gap: 10rem; column-gap: 0rem;}
+      .list.cardtype .unit {height: 400rem; margin: 0 30rem 30rem 0;}
+      .list.cardtype .unit .img-area {width: 100%; height: 150rem; margin-bottom: 30rem;}
+      .list.cardtype .unit .img-area > img {width: 100%; height: 150rem;}
+      .list.cardtype .unit .label {top: 10rem; left: 10rem; padding: 5rem 10rem; border-radius: 15rem; font-size: 13rem;}
+      .list.cardtype .unit .txt1 {font-size: 14rem; margin: 0 10rem;}
+      .list.cardtype .unit .txt2 {margin: 10rem 10rem 0; font-size: 16rem; line-height: 25rem; height: 50rem;}
+      .list.cardtype .unit .txt3 {bottom: 30rem; left: 10rem; font-size: 14rem;}
+      .list.cardtype .unit .like {bottom: 30rem; right: 10rem; width: 32rem; height: 32rem;}
+      
+      .list.listtype .unit .label {width: 50rem;}
+      .list.listtype .unit .txt1 {width: 100rem;}
+      .list.listtype .unit .txt2 {width: calc(100% - 250rem); overflow: hidden; word-break: break-all; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;}
+      .list.listtype .unit .txt3 {width: 100rem;}
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap" style="background:#fff;">
+    <header>
+      <h1>모듈화 작업 가이드</h1>
+      <div class="btn-wrap">
+        <a href="./index.html">HOME <i class="fas fa-angle-right"></i></a>
+      </div>
+    </header>
+    <div id="contents">
+      <aside></aside>
+      <div class="content-area">
+        <h2>리스트 스타일 가이드</h2>
+        <section>
+          <h3>리스트 스타일</h3>
+          <!-- sample -->
+          <div class="sample">
+            <div class="list listtype imgscale"><!-- listtype : 리스트타입, cardtype : 카드타입 / imgscale : 이미지크기변경, shadow : 그림자생성 -->
+              <div class="addon">
+                aaaaa
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"><img src="../assets/images/main3-img1.png" alt=""></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"><img src="../assets/images/quick-pop-close.png" alt=""></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"><img src="../assets/images/sa-maina-banner-img.jpg" alt=""></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"><img src="../assets/images/img-tower.png" alt=""></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"><img src="../assets/images/main3-img1.png" alt=""></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"><img src="../assets/images/main3-img1.png" alt=""></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+              
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"><img src="../assets/images/main3-img1.png" alt=""></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"><img src="../assets/images/main3-img1.png" alt=""></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- //sample -->
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <div class="list cardtype imgscale"><!-- listtype : 리스트타입, cardtype : 카드타입 / imgscale : 이미지크기변경, shadow : 그림자생성 -->
+              <div class="addon">
+                aaaaa
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"><img src="../assets/images/main3-img1.png" alt=""></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"><img src="../assets/images/quick-pop-close.png" alt=""></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"><img src="../assets/images/sa-maina-banner-img.jpg" alt=""></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"><img src="../assets/images/img-tower.png" alt=""></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"><img src="../assets/images/main3-img1.png" alt=""></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"><img src="../assets/images/main3-img1.png" alt=""></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+              
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"><img src="../assets/images/main3-img1.png" alt=""></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+
+              <div class="unit">
+                <a href="">
+                  <p class="label">공지</p>
+                  <p class="img-area"><img src="../assets/images/main3-img1.png" alt=""></p>
+                  <p class="txt1">이지미디어</p>
+                  <p class="txt2">텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트2텍스트</p>
+                  <p class="txt3">2023.05.23</p>
+                </a>
+                
+                <button class="like">
+                  <img src="../assets/images/icon_play_gray_32.png" alt="">
+                  <img src="../assets/images/icon_play_black_32.png" alt="">
+                </button>
+              </div>
+            </div>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            /* 리스트 */
+            .list {position: relative;}
+            .list .addon {position: absolute; top: -40rem; right: 30rem;}
+
+            .list.cardtype {display: grid; width: 100%; grid-template-columns: repeat(auto-fill, minmax(20%, auto)); row-gap: 10rem; column-gap: 0rem;}
+            .list.cardtype .unit {position: relative; width: 300rem; height: 400rem; margin: 0 30rem 30rem 0; overflow: hidden;}
+            .list.cardtype .unit::before {content: ""; display: block; position: absolute; top: 0; left: 0; width: calc(100% - 2px); height: calc(100% - 2px); border: 1px solid #ddd;}
+            .list.cardtype .unit > a {display: block; position: relative; display: flex; flex-direction: column; width: 300rem; height: 400rem;}
+            .list.cardtype .unit .img-area {position: relative; width: 100%; height: 150rem; margin-bottom: 30rem; background: url('../assets/images/img-blank1.png') no-repeat center center; background-size: cover; overflow: hidden;}
+            .list.cardtype .unit .img-area > img {width: 100%; height: 150rem; object-fit: cover;}
+            .list.cardtype .unit .label {position: absolute; top: 10rem; left: 10rem; padding: 5rem 10rem; border-radius: 15rem; background: #959941; color: #fff; font-size: 13rem; z-index: 10;}
+            .list.cardtype .unit .txt1 {position: relative; font-size: 14rem; color: #333; margin: 0 10rem;}
+            .list.cardtype .unit .txt2 {position: relative; margin: 10rem 10rem 0; font-size: 16rem; line-height: 25rem; height: 50rem; color: #000; font-weight: bold; overflow: hidden; word-break: break-all; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
+            .list.cardtype .unit .txt3 {position: absolute; bottom: 30rem; left: 10rem; font-size: 14rem; color: #666;}
+            .list.cardtype.shadow .unit {box-shadow: 0 0 0 rgba(0, 0, 0, 0.1); transition-property: box-shadow; transition-duration: 0.5s;}
+            .list.cardtype.shadow .unit:hover {box-shadow: 10rem 10rem 10rem rgba(0, 0, 0, 0.1);}
+            .list.cardtype.imgscale .unit .img-area > img {transform: scale(1); transition-property: transform; transition-duration: 0.5s;}
+            .list.cardtype.imgscale .unit:hover .img-area > img {transform: scale(1.2);}
+            .list.cardtype .unit .like {position: absolute; bottom: 30rem; right: 10rem; width: 32rem; height: 32rem; transform: rotateY(0deg); transition-duration: 0.5s; transition-property: transform;}
+            .list.cardtype .unit .like > img {position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 1; transition-duration: 0.5s; transition-property: opacity;}
+            .list.cardtype .unit .like > img:nth-child(1) {opacity: 1;}
+            .list.cardtype .unit .like > img:nth-child(2) {opacity: 0;}
+            .list.cardtype .unit .like.on {transform: rotateY(180deg);}
+            .list.cardtype .unit .like.on > img:nth-child(1) {opacity: 0;}
+            .list.cardtype .unit .like.on > img:nth-child(2) {opacity: 1;}
+
+            .list.listtype {border-top: 1px solid #000;}
+            .list.listtype .unit {position: relative; width: 100%; height: 60rem; border-bottom: 1px solid #ddd;}
+            .list.listtype .unit::before {content: ""; display: block; position: absolute; bottom: -1px; left: 0; width: 0; height: 1px; background: #ff0000; transition-property: width; transition-duration: 0.5s;}
+            .list.listtype .unit:hover::before {width: 100%;}
+            .list.listtype .unit a {display: block; position: relative; display: flex; align-items: center; width: 100%; height: 60rem;}
+            .list.listtype .unit .img-area {display: none;}
+            .list.listtype .unit .label {position: relative; font-size: max(14rem, 12px); width: 60rem; padding: 0 10rem; text-align: center;}
+            .list.listtype .unit .txt1 {position: relative; font-size: max(14rem, 12px); width: 120rem; padding: 0 10rem; text-align: center;}
+            .list.listtype .unit .txt2 {position: relative; font-size: max(14rem, 12px); width: calc(100% - 330rem); padding: 0 10rem; overflow: hidden; word-break: break-all; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;}
+            .list.listtype .unit .txt3 {position: relative; font-size: max(14rem, 12px); width: 150rem; padding: 0 10rem; text-align: center;}
+            .list.listtype .unit .like {display: none;}
+
+            @media screen and (max-width: 1023px) {
+              .list.cardtype {grid-template-columns: repeat(auto-fill, minmax(30%, auto)); row-gap: 10rem; column-gap: 10rem;}
+              .list.cardtype .unit {width: 100%; height: 250rem; margin: 0 30rem 30rem 0;}
+              .list.cardtype .unit a {width: 100%; height: 100%;}
+              .list.cardtype .unit .img-area {height: 100rem; margin-bottom: 20rem;}
+              .list.cardtype .unit .img-area > img {width: 100%; height: 100rem;}
+              .list.cardtype .unit .label {top: 7rem; left: 7rem; padding: 3rem 7rem; border-radius: 15rem; font-size: 7rem;}
+              .list.cardtype .unit .txt1 {font-size: 9rem; margin: 0 6rem;}
+              .list.cardtype .unit .txt2 {margin: 7rem 7rem 0; font-size: 10rem; line-height: 18rem; height: 36rem;}
+              .list.cardtype .unit .txt3 {bottom: 20rem; left: 7rem; font-size: 10rem;}
+
+              .list.cardtype .unit .like {bottom: 20rem; right: 7rem; width: 21rem; height: 21rem;}
+            }
+
+            @media screen and (max-width: 500px) {
+              .list .addon {right: 0;}
+
+              .list.cardtype {grid-template-columns: repeat(auto-fill, minmax(100%, auto)); row-gap: 10rem; column-gap: 0rem;}
+              .list.cardtype .unit {height: 400rem; margin: 0 30rem 30rem 0;}
+              .list.cardtype .unit .img-area {width: 100%; height: 150rem; margin-bottom: 30rem;}
+              .list.cardtype .unit .img-area > img {width: 100%; height: 150rem;}
+              .list.cardtype .unit .label {top: 10rem; left: 10rem; padding: 5rem 10rem; border-radius: 15rem; font-size: 13rem;}
+              .list.cardtype .unit .txt1 {font-size: 14rem; margin: 0 10rem;}
+              .list.cardtype .unit .txt2 {margin: 10rem 10rem 0; font-size: 16rem; line-height: 25rem; height: 50rem;}
+              .list.cardtype .unit .txt3 {bottom: 30rem; left: 10rem; font-size: 14rem;}
+              .list.cardtype .unit .like {bottom: 30rem; right: 10rem; width: 32rem; height: 32rem;}
+              
+              .list.listtype .unit .label {width: 50rem;}
+              .list.listtype .unit .txt1 {width: 100rem;}
+              .list.listtype .unit .txt2 {width: calc(100% - 250rem); overflow: hidden; word-break: break-all; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;}
+              .list.listtype .unit .txt3 {width: 100rem;}
+            }
+          </script>
+
+          <script type="syntaxhighlighter" class="brush: javascript;">
+            $(".list.cardtype .unit").each(function(index){
+              $(this).find(".like").on('click', function(){
+                if($(this).hasClass("on") == false){
+                  $(this).addClass("on");
+                }else{
+                  $(this).removeClass("on");
+                }
+              })
+            })
+          </script>
+        </section>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  $(function () {
+    $(".list.cardtype .unit").each(function(index){
+      $(this).find(".like").on('click', function(){
+        if($(this).hasClass("on") == false){
+          $(this).addClass("on");
+        }else{
+          $(this).removeClass("on");
+        }
+      })
+    })
+  });
+</script>

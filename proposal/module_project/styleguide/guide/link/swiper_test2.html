@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>UI개발1팀 모듈화 프로젝트</title>
+  <link rel="stylesheet" href="../../assets/css/index.css">
+  <link rel="stylesheet" href="../../assets/css/swiper.css">
+  <link rel="stylesheet" href="../../assets/styles/shCore.css"/>
+	<link rel="Stylesheet" href="../../assets/styles/shCoreEclipse.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="../../assets/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script src="../../assets/scripts/shCore.js"></script>
+	<script src="../../assets/scripts/shBrushJScript.js"></script>
+	<script src="../../assets/scripts/shBrushXml.js"></script>
+	<script src="../../assets/scripts/shBrushCss.js"></script>
+  <script src="../../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../../assets/js/gsap.min.js"></script>
+  <script src="../../assets/js/swiper.min.js"></script>
+  <script src="../../assets/js/ScrollTrigger.min.js"></script>
+  <script src="../../assets/js/lottie-player.js"></script>
+  <script src="../../assets/js/script.js"></script>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+
+
+  <style>
+    .kv-area {width: 100%; height: 800rem; position: relative;}
+    .kv-area .kv-div {overflow: hidden; height: 100%;}
+    .kv-area .kv-div .swiper-container {height: 100%;}
+    .kv-area .kv-div .swiper-slide {overflow: hidden; position: relative;}
+    .kv-area .kv-div .swiper-slide .bg-div {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
+    .kv-area .kv-div .swiper-slide .bg-div img {width: 100%;}
+    .kv-area .kv-div .swiper-slide .bg-div video {width: 100%;}
+    .kv-area .kv-div .swiper-slide .txt-div {position: absolute; top: 50%; transform: translateY(-50%); left: 200rem; width: calc(100% - 200rem); opacity: 1; transition: all .8s ease; color: #000;}
+    .kv-area .kv-div .swiper-slide.on .txt-div {top: 40%; opacity: 1;}
+    .kv-area .kv-div .swiper-slide .txt-div .tit {font-family: "NotoSans_Bold", sans-serif; color: #fff; font-size: 32rem;}
+    .kv-area .control-area {position: absolute; bottom: 20rem; left: 50%; transform: translateX(-50%); width: 340rem; opacity: 1; z-index: 1;}
+    .kv-area .control-area .progress-bar {position: relative; width: 300rem; height: 5rem; background: pink;}
+    .kv-area .control-area .progress-bar .bar {position: absolute; top: 0; left: 0; width: 0; height: 100%; background: #fff;}
+    .kv-area .control-area .kv-btn {position: absolute; top: 50%; transform: translateY(-50%); right: 0; width: 24rem; height: 24rem;}
+    .kv-area .control-area .kv-btn.pause {background: url("../../assets/images/swiper-stop.png") no-repeat; background-size: contain;}
+    .kv-area .control-area .kv-btn.play {background: url("../../assets/images/swiper-play.png") no-repeat; background-size: contain;}
+    
+    .swiper-button-next {right: 30rem; color: #fff;}
+    .swiper-button-prev {left: 30rem; color: #fff;}
+
+    @media all and (max-width: 1024px) {
+      .kv-area {height: 100vh;}
+      .kv-area .kv-div .swiper-slide .bg-div img {object-fit: cover; height: 100%;}
+      .kv-area .kv-div .swiper-slide .bg-div video {object-fit: cover; height: 100%;}
+      .kv-area .kv-div .swiper-slide .txt-div {left: 100rem; font-size: max(24rem, 20px);}
+    }
+
+
+  </style>
+</head>
+<body>
+  <div id="wrap">
+
+    <div class="kv-area">
+      <div class="kv-div">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="bg-div">
+                <img src="../../assets/images/sec2-card-bg1.jpg" data-swiper-parallax-x="80%">
+								<!-- <video src="../../assets/images/sequence.mp4" autoplay muted loop></video> -->
+              </div>
+              <div class="txt-div">
+								<p class="tit">혁신적인 미래 모빌리티 시장 속에서 소닉모터스가 <br>만들어가는 견고한 미래입니다.</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+							<div class="bg-div">
+								<video src="../../assets/images/sequence2.mp4" autoplay muted data-swiper-parallax-x="80%"></video>
+                <!-- <img src="../../assets/images/sec2-card-bg2.jpg" data-swiper-parallax-x="80%"> -->
+              </div>
+              <div class="txt-div">
+                <p class="tit">끊임없는 변화와 새로운 도전으로 <br>세계에서 가장 전문화된 기업으로 성장해 나갑니다.</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+							<div class="bg-div">
+								<video src="../../assets/images/sequence.mp4" autoplay muted data-swiper-parallax-x="80%"></video>
+                <!-- <img src="../../assets/images/sec2-card-bg2.jpg" data-swiper-parallax-x="80%"> -->
+              </div>
+              <div class="txt-div">
+                <p class="tit">끊임없는 변화와 새로운 도전으로 <br>세계에서 가장 전문화된 기업으로 성장해 나갑니다.</p>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="bg-div">
+                <img src="../../assets/images/sec2-card-bg3.jpg" data-swiper-parallax-x="80%">
+              </div>
+              <div class="txt-div">
+                <p class="tit">2016년 이후, 수입차 전문 서비스 중심에 서기까지 <br>소닉모터스가 걸어온 발자취를 소개합니다. </p>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
+
+      <div class="control-area">
+        <p class="progress-bar">
+          <span class="bar"></span>
+        </p>
+        <a href="javascript:" class="kv-btn pause"></ㅁ>
+      </div>
+
+    </div>
+
+    
+  </div>
+
+  <script>
+    _progressBarMotion = gsap.to($(".kv-area .progress-bar .bar"), 3, {width: "100%", ease: "none", onComplete:function(){
+      _kvSwiper.slideNext();
+    }});
+
+    _kvSwiper = new Swiper(".kv-area .kv-div .swiper-container", {
+      parallax: true,
+      speed: 500,
+      loop: true,
+      observer: true,
+      observeParents: true,
+      touchRatio: 0,
+      navigation: {
+        nextEl: $(".kv-area .swiper-button-next"),
+        prevEl: $(".kv-area .swiper-button-prev"),
+      },
+      on: {
+        init: function () {
+          var activeSlide = $(".swiper-slide-active");
+
+          if (activeSlide.find("video").length > 0) {
+            var videoElement = activeSlide.find("video")[0];
+            videoElement.play();
+            videoElement.addEventListener("loadedmetadata", function () {
+              var duration = videoElement.duration;
+              _progressBarMotion.duration(duration);
+              _progressBarMotion.restart();
+            });
+          } else {
+            var defaultDuration = 3;
+            _progressBarMotion.duration(defaultDuration);
+            _progressBarMotion.restart();
+          }
+        },
+        transitionEnd: function () {
+          var activeSlide = $(".swiper-slide-active");
+
+          if (activeSlide.find("video").length > 0) {
+            var videoElement = activeSlide.find("video")[0];
+            videoElement.play();
+            var duration = videoElement.duration;
+            _progressBarMotion.duration(duration);
+          } else {
+            var defaultDuration = 3;
+            _progressBarMotion.duration(defaultDuration);
+          }
+          _progressBarMotion.restart();
+        },
+        
+      },
+    });
+
+    $(".kv-area .control-area .kv-btn").on("click", function(){
+      var videoElement = $(".swiper-slide-active").find("video")[0];
+
+      if($(this).hasClass("pause")){
+        if ($(".swiper-slide-active").find("video").length > 0) {
+          videoElement.pause();
+        }
+        $(this).removeClass("pause");
+        $(this).addClass("play");
+        _progressBarMotion.pause();
+        
+      }else if($(this).hasClass("play")){
+        if ($(".swiper-slide-active").find("video").length > 0) {
+          videoElement.play();
+        }
+        $(this).removeClass("play");
+        $(this).addClass("pause");
+        _progressBarMotion.play();
+      }
+    });
+
+    $(".kv-area .swiper-button-next, .kv-area .swiper-button-prev").on("click", function () {
+      _progressBarMotion.pause();
+      if($(".kv-area .control-area .kv-btn").hasClass("play")){
+        $(".kv-area .control-area .kv-btn").removeClass("play");
+        $(".kv-area .control-area .kv-btn").addClass("pause");
+      }
+    });
+
+  </script>
+</body>
+</html>

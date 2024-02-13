@@ -1,0 +1,7 @@
+<svg id="Popup" xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+  <rect id="area" width="8" height="8" transform="translate(0 0)" fill="none"/>
+  <g id="X" transform="translate(0 0)">
+    <rect id="사각형_2710" data-name="사각형 2710" width="1.155" height="10.159" rx="0.577" transform="translate(0 0.816) rotate(-45)" fill="#797979"/>
+    <rect id="사각형_2711" data-name="사각형 2711" width="1.155" height="10.159" rx="0.577" transform="translate(0.816 8) rotate(-135)" fill="#797979"/>
+  </g>
+</svg>

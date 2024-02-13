@@ -1,0 +1,10 @@
+<svg id="Input_Delete" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <rect id="box" width="20" height="20" rx="10" fill="#fff"/>
+  <g id="icon_close" data-name="icon / close" transform="translate(-959.5 -3785.5)">
+    <rect id="area" width="6.992" height="6.992" transform="translate(966 3792)" fill="none"/>
+    <g id="그룹_6110" data-name="그룹 6110" transform="translate(966.01 3792)">
+      <path id="패스_14821" data-name="패스 14821" d="M.435,0A.459.459,0,0,1,.883.45L1,8.443a.427.427,0,0,1-.435.438A.459.459,0,0,1,.117,8.43L0,.437A.427.427,0,0,1,.435,0Z" transform="translate(0 0.716) rotate(-45)" fill="#797979"/>
+      <path id="패스_14822" data-name="패스 14822" d="M.57,0A.427.427,0,0,1,1,.438L.888,8.43a.459.459,0,0,1-.448.451A.427.427,0,0,1,0,8.443L.122.451A.459.459,0,0,1,.57,0Z" transform="translate(0.714 6.999) rotate(-135)" fill="#797979"/>
+    </g>
+  </g>
+</svg>

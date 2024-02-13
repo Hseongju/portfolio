@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>UI개발1팀 모듈화 프로젝트</title>
+  <link rel="stylesheet" href="../../assets/css/index.css">
+  <link rel="stylesheet" href="../../assets/css/swiper.css">
+  <link rel="stylesheet" href="../../assets/styles/shCore.css"/>
+	<link rel="Stylesheet" href="../../assets/styles/shCoreEclipse.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="../../assets/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script src="../../assets/scripts/shCore.js"></script>
+	<script src="../../assets/scripts/shBrushJScript.js"></script>
+	<script src="../../assets/scripts/shBrushXml.js"></script>
+	<script src="../../assets/scripts/shBrushCss.js"></script>
+  <script src="../../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../../assets/js/gsap.min.js"></script>
+  <script src="../../assets/js/swiper.min.js"></script>
+  <script src="../../assets/js/ScrollTrigger.min.js"></script>
+  <script src="../../assets/js/lottie-player.js"></script>
+  <script src="../../assets/js/script.js"></script>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<style>
+	.btn {padding: 0 30rem; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; height: max(40rem, 40px); font-size: max(20rem, 16px); border-radius: max(25rem, 25px); background-color: #ebf0f7; border: 1px solid #ebf0f7;}
+	.btn span {display: inline-block; font-size: max(15rem, 14px); text-align: center; color: rgba(0, 0, 0, .9);}
+	.white-txt {color: rgba(255, 255, 255, .9);}
+	h1 {font-size: max(40rem, 32px);}
+	h2 {margin-top: 30rem; font-size: max(20rem, 16px); line-height: 150%; letter-spacing: -.025em; color: #000; font-weight:500;}
+
+	/* 검색결과없음 */
+	.no-srch-area {position: relative; padding: max(100rem, 100px) 0 120rem; width: 100%;}
+	.no-srch-area:before {content: ""; position: absolute; top: 10rem; left: 50%; display: block; width: max(64rem, 64px); height: max(64rem, 64px); background: url(../assets/images/icon-nodata.svg) no-repeat; background-size: cover; transform: translateX(-50%);}
+	.no-srch-div {text-align: center;}
+	.no-srch-div .txt {color: rgba(0, 0, 0, .2);}
+	.no-srch-div .srch-value {color: rgba(0, 0, 0, .9);}
+	.no-srch-div .normal-value {color: rgba(0, 0, 0, .9);}
+	.no-srch-div .srch-value:before {content: "“"; display: inline-block;}
+	.no-srch-div .srch-value:after {content: "”"; display: inline-block;}
+
+	/* 에러페이지 */
+	.error-page {position: relative; width: 100%; height: 100vh; background: url(../../assets/images/img-sample-01.jpg) no-repeat center center/cover;}
+	.error-page .no-srch-area {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: calc(100% - 50rem);}
+	.error-page .no-srch-area:before {background: url(../../assets/images/icon-page-error.svg) no-repeat center center; background-size: max(64rem, 64px) max(64rem, 64px);}
+	.error-page .no-srch-area .btn-wrap {margin-top: 50rem; text-align: center;}
+
+	@media screen and (max-width: 500px) {
+		h1 {font-size: max(20rem, 20px);}
+		h2 {font-size: max(16rem, 16px);}
+	}
+</style>
+</head>
+<body>
+  <div id="wrap" style="background: #fff;">
+		<div class="error-page">
+
+			<div class="no-srch-area">
+				<div class="no-srch-div">
+					<h1 class="white-txt">서비스 이용에 불편을 드려 죄송합니다</h1>
+					<h2 class="white-txt">방문하려는 웹페이지의 주소가 잘못 입력되었거나, 변경 또는 삭제되어 요청하신 <br>페이지를 찾을 수 없습니다. 다시 한 번 확인 후 접속하시기 바랍니다.</h2>
+				</div>
+
+				<div class="btn-wrap">
+					<a href="javascript:" class="btn"><span>메인으로 이동</span></a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

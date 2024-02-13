@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>UI개발1팀 모듈화 프로젝트</title>
+  <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/swiper.css">
+  <link rel="stylesheet" href="../assets/styles/shCore.css"/>
+	<link rel="Stylesheet" href="../assets/styles/shCoreEclipse.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="../assets/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script src="../assets/scripts/shCore.js"></script>
+	<script src="../assets/scripts/shBrushJScript.js"></script>
+	<script src="../assets/scripts/shBrushXml.js"></script>
+	<script src="../assets/scripts/shBrushCss.js"></script>
+  <script src="../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../assets/js/gsap.min.js"></script>
+  <script src="../assets/js/swiper.min.js"></script>
+  <script src="../assets/js/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/lottie-player.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+
+<body>
+  <div id="wrap" class="form">
+    <header>
+      <h1>모듈화 작업 가이드</h1>
+      <div class="btn-wrap">
+        <a href="./index.html">HOME  <i class="fas fa-angle-right"></i></a>
+      </div>
+    </header>
+    <div id="contents">
+      <aside></aside>
+
+      <div class="content-area">
+        <h2>스타일 가이드</h2>
+        <section>
+          <h3>Header</h3>
+          <!-- sample -->
+          <div class="sample">
+            <p class="link"><a href="./link/header.html" target="_blank">해당화면보기 >></a></p>
+          </div>
+          <!-- //sample -->
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <!-- 
+              * header에 클래스 붙여서 활용
+              type1 - 전체가 펼쳐지는 gnb
+              type2 - 해당하는 two depth가 full로 펼쳐지는 gnb
+              type3 - 해당하는 two depth가 한줄로 펼쳐지는 gnb
+            -->
+            <div id="wrap" style="background:#fff;">
+              <header class="type1"><!-- type1, type2, type3 -->
+                <h1 class="logo"><a href="javascript:" title="메인으로 이동"></a></h1>
+                <nav>
+                <div class="for-bg">
+                  <div class="gnb-w">
+                    <ul class="gnb">
+                      <li>
+                        <a class="one-link" href="javascript:">one link</a>
+                        <ul class="two-depth">
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a class="one-link" href="javascript:">one link</a>
+                        <ul class="two-depth">
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a class="one-link" href="javascript:">one link</a>
+                        <ul class="two-depth">
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a class="one-link" href="javascript:">one link</a>
+                        <ul class="two-depth">
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a class="one-link" href="javascript:">one link</a>
+                        <ul class="two-depth">
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a class="one-link" href="javascript:">one link</a>
+                        <ul class="two-depth">
+                          <li><a class="two-link" href="javascript:">two link</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                  <button type="button" class="btn-close-mo" title="메뉴 닫기"></button>
+                </div>
+                  <div class="utils">
+                    <button type="button" class="btn-srch" title="검색 열기"></button>
+                    <div class="lang-area">
+                      <button type="button" class="btn-lang" title="언어 선택"></button>
+                      <div class="lang-w">
+                        <a class="lang-list on" href="javascript:">KOR</a>
+                        <a class="lang-list" href="javascript:">ENG</a>
+                        <a class="lang-list" href="javascript:">CHN </a>
+                      </div>
+                    </div>
+                  </div>
+                </nav>
+
+                <div class="srch-area">
+                  <div class="form-search">
+                    <input type="text" placeholder="검색어를 입력하세요">
+                    <div class="input-btn-w">
+                      <button type="button" class="btn-delete" title="지우기"></button>
+                      <button type="button" class="btn-search" title="검색"></button>
+                    </div>
+                  </div>
+                  <a class="btn-close-srch" href="javascript:"></a>
+                </div>
+                <button type="button" class="btn-menu-mo" title="메뉴 열기"></button>
+                <p class="inner-dimd"></p>
+              </header>
+            </div>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            /* 공통 */
+            html.scl-lock, body.scl-lock {overflow: hidden;}
+
+            header {position: fixed; left: 0; top: 0; width: 100%; height: 80rem; background-color: #fff; transition: top .4s ease, background-color .4s ease;}
+            header.hide {top: -80rem;}
+            header .logo {position: absolute; top: 50%; left: 50rem; transform: translateY(-50%); z-index: 10; width: 77rem; height: 43rem;}
+            header .logo a {display: block; height: 100%; background: url("../../assets/images/easymedia-logo.png") no-repeat center center / cover ;}
+            header .inner-dimd {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, .5); z-index: 1;}
+            header nav {position: relative; width: 100%; height: 100%; text-align: center; background-color: #fff; transition: height .4s ease, left .4s ease; z-index: 2;}
+            header nav.show {left: 0;}
+            header .for-bg {position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #fff; overflow: hidden; transition: height .4s ease;  overflow: hidden;}
+            header .for-bg.hide-bg {transition: none;}
+            header .gnb-w {display: inline-block; text-align: center;}
+            header .gnb {display: flex; height: 80rem; }
+            header .gnb a {display: block; color: #333;}
+            header .gnb > li {display: inline-block; position: relative; min-width: 100rem; height: 100%;}
+            header .gnb > li .one-link {position: relative; display: flex; justify-content: center; align-items: center; padding: 0 30rem; height: 80rem; white-space: nowrap; font-size: max(14rem, 16px);}
+            header .gnb > li .one-link:after {content: ""; display: block; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: #ccc; opacity: 0; transition: opacity .4s ease;}
+            header .gnb > li .two-depth {display: none; position: absolute; top: 80rem; width: 100%; height: auto; overflow: hidden; padding-bottom: 20rem; background-color: transparent;}  
+            header .gnb > li .two-depth > li .two-link {padding: 8rem; font-size: max(15rem, 15px); color: #999; transition: color .3s}
+            header .gnb > li .two-depth > li .two-link:hover {color: #000;}
+            header .gnb > li.on .one-link:after {opacity: 1;}
+            header .utils {display: flex; align-items: center; position: absolute; top: 50%; right: 50rem; transform: translateY(-50%); z-index: 3;}
+            header .utils .btn-srch {display: block; position: relative; width: 32rem; height: 32rem; background: url("../../assets/images/icon-gnb-search.svg") no-repeat center center / cover;}
+            header .lang-area {position: relative; margin-left: 14rem; }
+            header .lang-area .btn-lang {display: block; position: relative; width: 32rem; height: 32rem; background: url("../../assets/images/icon-gnb-language.svg") no-repeat center center / cover;}
+            header .lang-area .lang-w {display: none; position: absolute; top: 40rem; left: 50%; transform: translateX(-50%); padding: 8rem; border: 1px solid #333; background-color: #fff; border-radius: 8rem;}
+            header .lang-area .lang-w .lang-list {font-size: max(16rem, 14px); color: #999;}
+            header .lang-area .lang-w .lang-list.on {color: #333;}
+            header .lang-area.active .lang-w {display: block;}
+            header .btn-menu-mo {display: none; position: absolute; top: 50%; right: 50rem; transform: translateY(-50%); width: 32rem; height: 32rem; background: url("../../assets/images/icon-gnb-allmenu-black.svg") no-repeat center center / cover; z-index: 3;}
+            header .srch-area {display: none; position: absolute; top: -240rem; width: 100%; height: 240rem; background-color: #aaa; transition: top .4s ease; z-index: 11;}
+            header .srch-area .form-search {position: relative; top: 50%; transform: translateY(-50%); margin: 0 auto; width: 500rem;}
+            header .srch-area .form-search input {padding-left: 20rem; padding-right: 85rem; width: 100%; height: 48rem; font-size: max(16rem, 14px); color: #000; line-height: 48rem; border: none; border-radius: 24rem; background: #f7f7f7;}
+            header .srch-area .input-btn-w {display: flex; align-items: center; position: absolute; right: 24rem; top: 50%; transform: translateY(-50%);}
+            header .srch-area .btn-search {width: 24rem; height: 24rem; background: url("../../assets/images/icon-gnb-search.svg") no-repeat center center/cover; z-index: 1;}
+            header .srch-area .btn-delete {margin-right: 10rem; width: 20rem; height: 20rem; background: url("../../assets/images/icon-gnb-input-delete.svg") no-repeat center center;}
+            header .srch-area .btn-close-srch {display: block; position: absolute; top: 20rem; right: 50rem; width: 24rem; height: 24rem; background: url("../../assets/images/icon-gnb-close.svg") no-repeat center center / cover;}
+            header .srch-area.show {top: 0rem;}
+
+            /* Type2 */
+            header.type2 .gnb > li {position: static;}
+            header.type2 .gnb > li .two-depth {grid-template-columns: repeat(6, 1fr); row-gap: 10rem; left: 50%; transform: translateX(-50%); padding: 30rem 0; width: calc(100% - 100rem);}
+            header.type2 .gnb > li .two-depth > li {margin-right: 20rem; text-align: left;}
+            header.type2 .gnb > li .two-depth.show {display: grid;}
+
+            /* Type3 */
+            header.type3 .for-bg {overflow: visible;}
+            header.type3 .gnb > li .two-depth {left: 50%; transform: translateX(-50%); padding: 14rem 0; width: 120%; background: #fff; border: 1px solid #aaa;}
+            header.type3 .gnb > li .one-link:after {display: none;}
+            header.type3 .gnb > li.on {z-index: 1;}
+
+            @media screen and (max-width: 1024px) {
+              html {font-size: .130vw;}
+              header {height: 60rem;}
+              header .logo {left: 30rem; width: 50rem; height: 28rem;}
+              header .utils {display: none;}
+              header .btn-menu-mo {display: block; right: 30rem; width: 24rem; height: 24rem;}
+              header nav {position: fixed; left: 100%; top: 0; width: 100%; height: 100%; background-color: #fff; z-index: 10;}
+              header nav:before {display: none;}
+              header .for-bg {overflow-y: auto;}
+              header nav .btn-close-mo {display: block; position: absolute; top: 22rem; right: 30rem; width: 20rem; height: 20rem; background: url("../../assets/images/icon-gnb-close.svg") no-repeat center center / cover;}
+              header nav.show .utils {display: flex; top: 20rem; right: 62rem; transform: none;}
+              header .utils .btn-srch {width: 24rem; height: 24rem;}
+              header .srch-area {z-index: 11;}
+              header .srch-area .btn-close-srch {right: 30rem;}
+              header .lang-area {position: relative; margin-left: 8rem; }
+              header .lang-area .btn-lang {width: 24rem; height: 24rem;}
+              header .lang-area .lang-w {top: 40rem;}
+              header .for-bg {padding-top: 80rem; }
+              header .gnb-w {display: block; overflow-y: auto;}
+              header .gnb {display: block; height: auto;}
+              header .gnb > li {padding: 0 30rem; min-width: unset; width: 100%; text-align: left;}
+              header .gnb > li .one-link {justify-content: flex-start; padding: 12rem 0; height: auto;}
+              header .gnb > li .one-link:after {right: 0; top: 50%; bottom: auto; left: auto; transform: translateY(-50%) rotate(0deg); width: 17rem; height: 14rem; background: url("../../assets/images/icon-gnb-arrow-open-mo.svg") no-repeat center center/cover; opacity: 1; transition: transform .4s ease;}
+              header .gnb > li .two-depth {position: static;}
+              header .gnb > li .two-depth > li {padding: 0 20rem; text-align: left;}
+              header .gnb > li .two-depth > li .two-link {padding: 8rem 0;}
+              header .gnb > li.on .one-link:after {transform: translateY(-50%) rotate(180deg);}
+
+              /* Type2 */
+              header.type2 .gnb > li .two-depth {position: static; transform: none; padding: 0 0 20rem; width: 100%;}
+              header.type2 .gnb > li .two-depth > li {margin-right: 2rem; min-width: unset;}
+              header.type2 .gnb > li .two-depth > li:last-child {margin-right: 0;}
+              header.type2 .gnb > li.on .two-depth {display: none;}
+
+              /* Type3 */
+              header.type3 .gnb > li .two-depth {left: auto; transform: none; width: 100%; background-color: transparent; border: 0;}
+              header.type3 .gnb > li .one-link:after {display: block;}
+            }
+
+            @media (max-width: 600px){
+              html {font-size: .256vw;}
+              header .srch-area .form-search {width: calc(100% - 60rem);}
+            }
+          </script>
+          <script type="syntaxhighlighter" class="brush: xml;">
+            var _thisScroll = 0;      
+            var _isScrollTop;          
+            var _headerHeightArr = []; 
+            var _headerMaxHeight = 0;   
+            var _headerOneDepHeight = 0;
+            var _mGnbAccordion;
+
+            $(window).load(function(){
+              // ----- 공통 ----- //
+              $(window).resize(function () {
+                if (window.innerWidth > 1024) { // pc
+                  _mGnbAccordion = -1;
+                  getMaxTwoDepHeight();
+                  $("header .gnb > li").removeClass("on");
+                  $("header .for-bg").css({height: $("header").innerHeight()});
+                  $("header .gnb > li .two-depth").removeAttr("style");
+                  $("header .inner-dimd").css({ zIndex: 1 });
+                  $("body").removeClass("scl-lock");
+
+                  if ($("header nav").hasClass("show")) {
+                    $("header nav").removeClass("show");
+                    $("header nav .gnb > li .one-link").blur();
+                  }
+                } else { // mob
+                  $("header .for-bg").css({height: window.innerHeight }).addClass("hide-bg");
+                  if(!$("header .srch-area").hasClass("show")){
+                    $("header .inner-dimd").stop(true, true).fadeOut(400);
+                  }
+                  _mGnbAccordion = -1;
+                }
+              });
+
+              $(window).on("scroll", function () {
+                _isScrollTop = $(window).scrollTop();
+                if (_isScrollTop > _thisScroll) { // down
+                  if (_isScrollTop > 0) {
+                    if ($("header").length > 0) {
+                      if ($(window).scrollTop() > 100) {
+                        if (!$("header").hasClass("hover")) {
+                          $("header").addClass("hide");
+                        }
+                      }
+                    }
+                  }
+                }
+                if (_isScrollTop < _thisScroll) { // up
+                  $("header").removeClass("hide");
+                }
+                _thisScroll = _isScrollTop;
+              }); $(window).scroll();
+
+              var gnbNum = -1;
+              $("header nav .gnb > li").each(function (q) {
+                $(this).on("mouseenter focusin", function () {
+                  if (window.innerWidth > 1024) {
+                    if (gnbNum != $(this).index()) {
+                      $("header nav .two-depth > li").removeClass("on");
+                    }
+                    $(this).siblings().removeClass("on");
+                    $(this).addClass("on");
+                    gnbNum = $(this).index();
+                  }
+                });
+              });
+
+              $("header nav .two-depth > li").each(function (q) {
+                $(this).mouseenter(function () {
+                  if (window.innerWidth > 1024) {
+                    $(this).siblings().removeClass("on");
+                    $(this).addClass("on");
+                  }
+                });
+              });
+
+              $("header nav .gnb").on("mouseleave", function () {
+                if (window.innerWidth > 1024) {
+                  $("header nav .gnb > li").removeClass("on");
+                  $("header nav .gnb > li .two-depth > li").removeClass("on");
+                }
+              });
+
+              // 모바일 gnb 아코디언
+              _mGnbAccordion = -1;
+              $("header .gnb > li .one-link").on("click", function () {
+                if (window.innerWidth <= 1024) {
+                  if (_mGnbAccordion != $(this).parents("li").index()) {
+                    $(this).parents("li").siblings().removeClass("on").find(".two-depth").stop(true, true).slideUp(300);
+                    $(this).parents("li").addClass("on").find(".two-depth").stop(true, true).slideDown(300);
+                    _mGnbAccordion = $(this).parents("li").index();
+                  } else {
+                    $(this).parents("li").removeClass("on").find(".two-depth").stop(true, true).slideUp(300);
+                    _mGnbAccordion = -1;
+                  }
+                }
+              });
+
+              // 모바일 전체메뉴 열기
+              $("header .btn-menu-mo").on("click", function () {
+                $("header .inner-dimd").stop(true, true).fadeIn(400);
+                $("body").addClass("scl-lock");
+                $("header nav").addClass("show");
+                $("header .gnb-w").css({ height: "100%" });
+
+                //모바일 전체메뉴 클릭시 현재 페이지 메뉴 오픈
+                $(".gnb-w .cur-menu").each(function () {
+                  if (!$(this).hasClass("on")) {
+                    $(this).find("a:first-child").first().click();
+                  }
+                });
+              });
+
+              // 모바일 전체메뉴 닫기
+              $("header nav .btn-close-mo").on("click", function () {
+                $("header .inner-dimd").stop(true, true).fadeOut(400);
+                $("body").removeClass("scl-lock");
+                $("header nav").removeClass("show");
+              });
+
+              // 검색 버튼 클릭 시
+              $("header .btn-srch").on("click", function () {
+                $("header .inner-dimd").addClass("active").stop(true, true).fadeIn(400);
+                $("body").addClass("scl-lock");
+                $("header .btn-srch").addClass("active").attr("title", "검색 닫기");
+                $("header .srch-area").show(0).addClass("show");
+                if (window.innerWidth <= 1024) {
+                  $("header .inner-dimd").css({ zIndex: 10 });
+                }
+              });
+
+              // 딤드 클릭 시
+              $("header .inner-dimd").on("click", function () {
+                $("header .inner-dimd").removeClass("active").stop(true, true).fadeOut(400);
+                $("body").removeClass("scl-lock");
+                $("header .btn-srch").removeClass("active").attr("title", "검색 열기");
+                $("header .srch-area").removeClass("show").delay(400).hide(0);
+                if (window.innerWidth <= 1024) {
+                  $("header .inner-dimd").css({ zIndex: 1 });
+                }
+              });
+
+              // 검색영역 닫기 버튼 클릭 시
+              $(".btn-close-srch").on("click", function () {
+                $("header .btn-srch").removeClass("active").attr("title", "검색 열기");
+                $("header .srch-area").removeClass("show").delay(400).hide(0);
+                $("header .inner-dimd").removeClass("active").stop(true, true).fadeOut(400);
+                $("body").removeClass("scl-lock");
+                if (window.innerWidth <= 1024) {
+                  $("header .inner-dimd").css({ zIndex: 1 });
+                }
+              });
+              
+              // 언어선택 버튼 클릭 시
+              $("header .btn-lang").on("click", function () {
+                if (!$(this).parents(".lang-area").hasClass("active")) {
+                  $(this).parents(".lang-area").addClass("active");
+                } else {
+                  $(this).parents(".lang-area").removeClass("active");
+                }
+              });
+
+              // 언어선택 영역 활성화된 상태에서 언어선택 영역 제외한 부분 클릭 시 
+              $('body').click(function (e) {
+                if (!$(e.target).parents().hasClass("lang-area")) {
+                  $("header .lang-area").removeClass("active");
+                }
+              });
+              // ----- 공통 ----- //
+              
+              // ----- Type1 - 전체가 펼쳐지는 gnb ----- //
+              $(document).on("mouseenter focusin", "header.type1 .gnb", function(){
+                _headerOneDepHeight = $("header .gnb").innerHeight();
+                if (window.innerWidth > 1024) {
+                  getMaxTwoDepHeight();
+                  $("header.type1").addClass("hover");
+                  $("header.type1 nav .two-depth").css("display", "block");
+                  $("header.type1 .for-bg").css({height: _headerMaxHeight + _headerOneDepHeight}).removeClass("hide-bg");
+                  $("header.type1 .inner-dimd").stop(true, true).fadeIn(400);
+                }
+              });
+
+              $(document).on("mouseleave", "header.type1 nav", function(){
+                if (window.innerWidth > 1024) {
+                  $("header.type1").removeClass("hover");
+                  $("header.type1 nav .two-depth").css("display", "none");
+                  $("header.type1 .for-bg").css("height", $("header.type1 .gnb > li .one-link").innerHeight());
+                  if(!$("header.type1 .srch-area").hasClass("show")){
+                    $("header.type1 .inner-dimd").stop(true, true).fadeOut(400);
+                  }
+                }
+              });
+              // ----- Type1 ----- //
+            
+
+              // ----- Type2 - 해당하는 two depth가 full로 펼쳐지는 gnb ----- //
+              $(document).on("mouseenter focusin", "header.type2 .gnb > li", function () {
+                if (window.innerWidth > 1024) {
+                  _headerOneDepHeight = $("header .gnb").innerHeight();
+                  $("header.type2").addClass("hover");
+                  $("header.type2 .gnb > li .two-depth").removeClass("show");
+                  $(this).find(".two-depth").addClass("show");
+                  $("header.type2 .for-bg").css({ height: $(this).find(".two-depth").innerHeight() + _headerOneDepHeight }).removeClass("hide-bg");
+                  $("header.type2 .inner-dimd").stop(true, true).fadeIn(400);
+                }
+              });
+
+              $(document).on("mouseleave", "header.type2 nav", function () {
+                if (window.innerWidth > 1024) {
+                  $("header.type2").removeClass("hover");
+                  $("header.type2 .gnb > li .two-depth").removeClass("show");
+                  $("header.type2 .for-bg").css("height", $("header.type2 .gnb > li .one-link").innerHeight());
+                  if (!$("header.type2 .srch-area").hasClass("show")) {
+                    $("header.type2 .inner-dimd").stop(true, true).fadeOut(400);
+                  }
+                }
+              });
+              // ----- Type2 ----- //
+
+              // ----- Type3 - 해당하는 two depth가 한줄로 펼쳐지는 gnb ----- //
+              $(document).on("mouseenter focusin", "header.type3 .gnb > li", function () {
+                if (window.innerWidth > 1024) {
+                  $("header.type3").addClass("hover");
+                  $(this).find(".two-depth").stop(true, false).slideDown(400);
+                } else {
+                  $(this).find(".two-depth").css({height: "auto"})
+                }
+              });
+
+              $(document).on("mouseleave", "header.type3 .gnb > li", function () {
+                if (window.innerWidth > 1024) {
+                  $("header.type3").removeClass("hover");
+                  $(this).find(".two-depth").stop(true, false).slideUp(400);
+                } else {
+                  $(this).find(".two-depth").css({ height: "auto" })
+                }
+              });
+              // ----- Type3 ----- //
+            });
+            
+            // 가장 긴 two-depth 길이 구하는 함수
+            function getMaxTwoDepHeight(){
+              $("header .gnb > li").each(function(q){
+                _headerHeightArr[q] = $("header .gnb > li").eq(q).find(".two-depth").innerHeight();
+                _headerMaxHeight = Math.max.apply(Math, _headerHeightArr);
+              });
+            }
+          </script>
+        </section>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

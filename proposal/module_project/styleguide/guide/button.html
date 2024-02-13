@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>UI개발1팀 모듈화 프로젝트</title>
+  <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/swiper.css">
+  <link rel="stylesheet" href="../assets/styles/shCore.css"/>
+	<link rel="Stylesheet" href="../assets/styles/shCoreEclipse.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="../assets/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script src="../assets/scripts/shCore.js"></script>
+	<script src="../assets/scripts/shBrushJScript.js"></script>
+	<script src="../assets/scripts/shBrushXml.js"></script>
+	<script src="../assets/scripts/shBrushCss.js"></script>
+  <script src="../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../assets/js/gsap.min.js"></script>
+  <script src="../assets/js/swiper.min.js"></script>
+  <script src="../assets/js/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/lottie-player.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+  <style>
+    .content-area section .example {border: 1px solid #ddd; background: #F9F9F9; padding: 40px;}
+    .content-area section .example li + li {margin-top: 30px;} 
+    .content-area section .example h4 {font-weight: 500; margin-bottom: 10px;}
+    .content-area section .example a + h4 {margin-top: 30px;}
+    .primary-btn {display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; min-width: 142rem; min-height: 64rem; padding: 5rem 20rem; border: 0; color: #fff; background: #961E1E; }
+    .border-btn {display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; min-width: 142rem; min-height: 64rem; padding: 5rem 20rem; border: 1px solid #961E1E; color: #961E1E; background: #fff;}
+
+
+    /* 다운로드 버튼 */
+    .download-btn {display: inline-flex; align-items: center; box-sizing: border-box; min-width: 230rem; min-height: 54rem; padding: 5rem 60rem 5rem 20rem; border-radius: 50rem; border: 1px solid #961E1E; color: #961E1E; background: url("../assets/images/ico-download.png") no-repeat 90% center #fff;}
+    
+    /* 더보기 */
+    .more-btn {min-width: 140rem; height: 54rem; border: 1px solid #961E1E; color: #961E1E; border-radius: 50rem; display: inline-flex; background: #fff; align-items: center; justify-content: center; box-sizing: border-box; padding: 5rem;}
+    .more-btn em {font-style: normal;}
+    
+
+
+    /* .paging {border: 1rem solid red;} */
+    .paging a {display: inline-flex; align-items: center; justify-content: center; width: 28rem; height: 28rem; border: 1px solid #ddd; background: #fff; font-size: 14rem; transition: all .3s;}
+    .paging a:hover {background: #eee;}
+
+
+
+
+
+
+
+    /* 호버효과 */
+    .btn-area {width: 100%; height: 100%; display: flex;}
+    .btn-area a {display: inline-flex; padding: 10rem 25rem; border-radius: 5rem; transition: all .3s ease; color: #fff; align-items: center; justify-content: center; font-size: 14rem; position: relative; width: 130rem; height: 40rem; }
+    .btn-area a + a {margin-left: 25rem;}
+    
+    .btn-area a.ex1 {background: rgb(0,172,238); background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%); width: 130rem; height: 40rem; padding: 0; border: none;}
+    .btn-area a.ex1 span {position: relative; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; text-align: center;}
+    .btn-area a.ex1::before, .btn-area a.ex1::after {content: ""; position: absolute; display: block; right: 0; top: 0; background: rgba(2,126,251,1); transition: all .3s ease;}
+    .btn-area a.ex1::before {height: 0%; width: 2px;}
+    .btn-area a.ex1::after {width: 0%; height: 2px;}
+    .btn-area a.ex1 span::before, .btn-area a.ex1 span::after {content: ""; position: absolute; display: block; left: 0; bottom: 0; background: rgba(2,126,251,1); transition: all .3s ease;}
+    .btn-area a.ex1 span::before {width: 2px; height: 0%;}
+    .btn-area a.ex1 span::after {width: 0%; height: 2px;}
+    .btn-area a.ex1:hover {background: #fff;}
+    .btn-area a.ex1:hover::before {height: 100%;}
+    .btn-area a.ex1:hover::after {width: 100%;}
+    .btn-area a.ex1:hover span {color: rgba(2,126,251,1);}
+    .btn-area a.ex1:hover span::before {height: 100%;}
+    .btn-area a.ex1:hover span::after {width: 100%;}
+
+    .btn-area a.ex2 {padding: 0; background: rgb(255,27,0); background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);}
+    .btn-area a.ex2:hover {color: #f0094a; background: transparent; box-shadow:none;}
+    .btn-area a.ex2::before, .btn-area a.ex2::after{content:""; position: absolute; top: 0; right: 0; height: 2px; width: 0; background: #f0094a; box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #0003, 4px 4px 5px 0px #0002; transition: all .3s ease;}
+    .btn-area a.ex2::after{right: inherit; top: inherit; left: 0; bottom: 0;}
+    .btn-area a.ex2:hover::before, .btn-area a.ex2:hover::after{ width:100%;transition: all .6s ease;}
+
+    .btn-area a.ex3 {position: relative; box-shadow: none; perspective: 230rem;}
+    .btn-area a.ex3 span {background: rgb(0,172,238); background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%); display: flex; align-items: center; justify-content: center; position: absolute; width: 130rem; height: 40rem; box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1); border-radius: 5px; margin: 0; text-align: center; box-sizing: border-box; transition: all .3s ease;}
+    .btn-area a.ex3 span:nth-of-type(1) {box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001; transform: rotateX(90deg); transform-origin: 50% 50% -20px;}
+    .btn-area a.ex3 span:nth-of-type(2) {transform: rotateX(0deg); transform-origin: 50% 50% -20px;} 
+    .btn-area a.ex3:hover span:nth-of-type(1) {box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1); transform: rotateX(0deg);}
+    .btn-area a.ex3:hover span:nth-of-type(2) {box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1); color: transparent; transform: rotateX(-90deg);}
+
+    .btn-area a.ex4 {background-color: #89d8d3; background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%); z-index: 1;}
+    .btn-area a.ex4::after { content: ""; position: absolute; width: 100%; height: 0; bottom: 0; left: 0; z-index: -1; border-radius: 5px; background-color: #4dccc6; background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%); box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001; transition: all .3s ease;}
+    .btn-area a.ex4:hover {color: #fff;}
+    .btn-area a.ex4:hover::after {top: 0; height: 100%;}
+    .btn-area a.ex4:active {top: 2px;}
+
+    .btn-area a.ex5 {background: rgb(255,151,0); z-index: 1;}
+    .btn-area a.ex5::after {content: "";position: absolute; width: 100%; height: 0; top: 0; left: 0; z-index: -1; border-radius: 5px; background-color: #eaf818; background-image: linear-gradient(315deg, #eaf818 0%, #f6fc9c 74%); box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5) 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1); transition: all 0.3s ease;}
+    .btn-area a.ex5:hover {color: #000;}
+    .btn-area a.ex5:hover::after {top: auto; bottom: 0; height: 100%;}
+    .btn-area a.ex5:active {top: 2px;}
+
+    .btn-area a.ex6 {background: #b621fe; z-index: 1;}
+    .btn-area a.ex6::after {content: ""; position: absolute; width: 0; height: 100%; top: 0; right: 0; z-index: -1; background-color: #663dff; border-radius: 5px; box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1),  4px 4px 5px 0px rgba(0,0,0,.1); transition: all .3s ease;}
+    .btn-area a.ex6:hover {color: #fff;}
+    .btn-area a.ex6:hover::after {left: 0; width: 100%;}
+    .btn-area a.ex6:active {top: 2px;}
+
+    .btn-area a.ex7 {color: #000; box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1); z-index: 1;}
+    .btn-area a.ex7::after {content: ""; position: absolute; width: 0; height: 100%; top: 0; left: 0; direction: rtl; z-index: -1; box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001; transition: all .3s ease;}
+    .btn-area a.ex7:hover {color: #000;}
+    .btn-area a.ex7:hover::after {left: auto; right: 0; width: 100%;}
+    .btn-area a.ex7:active {top: 2px;}
+
+
+
+    /* 툴팁 */
+    .tool-wrap {position: relative; z-index: 10;}
+    .tool-wrap .tool-tip {display: flex; width: 24rem; height: 24rem; border: 1px solid #000; color: #961E1E; background: #fff; border-radius: 50rem; align-items: center; justify-content: center; font-size: 12rem; }
+    .tool-wrap .tool-tip-pop {border: 1px solid #000; width: 500rem; height: fit-content; font-size: 12rem; background: #fff; position: absolute; top: 30rem; left: 7rem; padding: 5rem 30rem 5rem 10rem; transition: all .3s; opacity: 0; display: none;}
+    .tool-wrap.on .tool-tip-pop {opacity: 1; top: 35rem;}
+    .tool-wrap .tool-tip-pop::after {content: ""; position: absolute; top: -8rem; left: 0; width: 9rem; height: 11rem; background: url("../assets/images/icon-tooltip-arrow.svg") no-repeat center bottom; z-index: 1;}
+    .tool-wrap .tool-tip-pop > a {position: absolute; right: 10rem; top: 10rem; width: 8rem; height: 8rem; background: url("../assets/images/btn-close-tooltip.svg") center center no-repeat;}
+		
+    @media all and (max-width: 500px) {
+      .tool-wrap .tool-tip-pop {width: 100%;}
+    }
+
+
+  </style>
+</head>
+<body>
+  <div id="wrap" style="background:#fff;">
+    <header>
+      <h1>모듈화 작업 가이드</h1>
+      <div class="btn-wrap">
+        <a href="./index.html">HOME  <i class="fas fa-angle-right"></i></a>
+      </div>
+    </header>
+    <div id="contents">
+      <aside></aside>
+      <div class="content-area">
+        <h2>버튼 스타일 가이드</h2>
+
+
+
+        <section>
+          <h3>Basic Button</h3>
+          <!-- sample -->
+          <div class="example">
+            <h4>기본형</h4>
+            <a class="primary-btn" href="javascript:">
+              <span>버튼명</span>
+            </a>
+
+            <h4>보더형</h4>
+            <a class="border-btn" href="javascript:">
+              <span>버튼명</span>
+            </a>
+          </div>
+          <!-- //sample -->
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            /* 기본형 */
+            <div>
+              <a class="primary-btn" href="javascript:">
+                <span>버튼명</span>
+              </a>
+            </div>
+            
+            /* 보더형 */
+            <div>
+              <a class="border-btn" href="javascript:">
+                <span>버튼명</span>
+              </a>
+            </div>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            /* 기본형 */
+            .primary-btn {display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; min-width: 142rem; min-height: 64rem; padding: 20rem; border: 0; color: #fff; background: #961E1E; }
+            
+            /* 보더형 */
+            .border-btn {display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; min-width: 142rem; min-height: 64rem; padding: 20rem; border: 1px solid #961E1E; color: #961E1E; background: #fff; }
+          </script>
+        </section>
+
+        <section>
+          <h3>다운로드 버튼</h3>
+          <div class="example">
+            <div class="btn-wrap">
+              <a href="javascript:" class="download-btn" download=""><span>회사소개서 다운로드</span></a>
+            </div>
+
+          </div>
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <a href="javascript:" class="download-btn" download=""><span>회사소개서 다운로드</span></a>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            .download-btn {display: inline-flex; align-items: center; box-sizing: border-box; min-width: 230rem; min-height: 54rem; padding: 5px 60px 5px 20px; border-radius: 50px; border: 1px solid #961E1E; color: #961E1E; background: url("../assets/images/ico-download.png") no-repeat 90% center #fff;}
+          </script>
+        </section>
+
+        <section>
+          <h3>더보기 버튼</h3>
+          <div class="example">
+            
+            <div class="btn-wrap">
+              <a href="javascript:" class="more-btn">
+                <span>더보기 (<em class="currunt">1</em>/<em class="total">10</em>)</span>
+              </a>
+            </div>
+          </div>
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <a href="javascript:" class="more-btn">
+              <span>더보기 (<em class="currunt">1</em>/<em class="total">10</em>)</span>
+            </a>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            .more-btn {min-width: 140rem; height: 54rem; border: 1px solid #961E1E; color: #961E1E; border-radius: 50rem; display: inline-flex; background: #fff; align-items: center; justify-content: center; box-sizing: border-box; padding: 5rem;}
+            .more-btn em {font-style: normal;}
+          </script>
+        </section>
+
+        <section>
+          <h3>페이징 버튼</h3>
+          <!-- sample -->
+          <div class="example">
+            <div class="paging">
+              <a href="javascript:" class="btn-page first" title="처음으로 이동"><span><<</span></a>
+              <a href="javascript:" class="btn-page prev" title="이전페이지로 이동"><span><</span></a>
+              <a href="javascript:" class="num active"><span>1</span></a>
+              <a href="javascript:" class="num"><span>2</span></a>
+              <a href="javascript:" class="num"><span>3</span></a>
+              <a href="javascript:" class="num"><span>4</span></a>
+              <a href="javascript:" class="num"><span>5</span></a>
+              <a href="javascript:" class="num"><span>6</span></a>
+              <a href="javascript:" class="num"><span>7</span></a>
+              <a href="javascript:" class="num"><span>8</span></a>
+              <a href="javascript:" class="num"><span>9</span></a>
+              <a href="javascript:" class="num"><span>10</span></a>
+              <a href="javascript:" class="btn-page next" title="다음페이지로 이동"><span>></span></a>
+              <a href="javascript:" class="btn-page last" title="마지막으로 이동"><span>>></span></a>
+            </div>
+          </div>
+
+          <!-- //sample -->
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <div class="paging">
+              <a href="javascript:" class="btn-page first" title="처음으로 이동"><span><<</span></a>
+              <a href="javascript:" class="btn-page prev" title="이전페이지로 이동"><span><</span></a>
+              <a href="javascript:" class="num active"><span>1</span></a>
+              <a href="javascript:" class="num"><span>2</span></a>
+              <a href="javascript:" class="num"><span>3</span></a>
+              <a href="javascript:" class="num"><span>4</span></a>
+              <a href="javascript:" class="num"><span>5</span></a>
+              <a href="javascript:" class="num"><span>6</span></a>
+              <a href="javascript:" class="num"><span>7</span></a>
+              <a href="javascript:" class="num"><span>8</span></a>
+              <a href="javascript:" class="num"><span>9</span></a>
+              <a href="javascript:" class="num"><span>10</span></a>
+              <a href="javascript:" class="btn-page next" title="다음페이지로 이동"><span>></span></a>
+              <a href="javascript:" class="btn-page last" title="마지막으로 이동"><span>>></span></a>
+            </div>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            .paging a {display: inline-flex; align-items: center; justify-content: center; width: 28rem; height: 28rem; border: 1px solid #ddd; background: #fff; font-size: 14rem; transition: all .3s;}
+            .paging a:hover {background: #eee;}
+          </script>
+
+        </section>
+
+        <section>
+          <h3>TOP 버튼</h3>
+          <!-- sample -->
+          <div class="example">
+            <a href="javascript:" class="gototop"><img src="../assets/images/btn-gotop.png" alt="최상단으로 이동"></a>
+          </div>
+
+          <!-- //sample -->
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <a href="javascript:" class="gototop"><img src="../assets/images/btn-gotop.png" alt="최상단으로 이동"></a>
+          </script>
+          <!-- <script type="syntaxhighlighter" class="brush: css;">
+            .share-btn{display:block; width:24px; height:24px; background:url("../images/icon-view-share.svg") no-repeat center center;}
+          </script> -->
+          <script type="syntaxhighlighter" class="brush: js;">
+            $(".gototop").on('click', function(){
+              $("#cBody").attr("tabIndex", 0).focus();
+              gsap.to("body, html", {duration: 1, scrollTop: 0, ease: Cubic.easeOut, onComplete:function(){
+                $("#cBody").attr("tabIndex", "").focus();
+              }});
+            });
+          </script>
+
+        </section>
+
+        <section>
+          <h3>호버효과</h3>
+          <!-- sample -->
+          <div class="example">
+
+            <div class="btn-area">
+              <a href="javascript:" class="hover-btn ex1"><span>Read More</span></a>
+              <a href="javascript:" class="hover-btn ex2"><span>Read More</span></a>
+              <a href="javascript:" class="hover-btn ex3"><span>Click!</span><span>Read More</span></a>
+              <a href="javascript:" class="hover-btn ex4"><span>Read More</span></a>
+              <a href="javascript:" class="hover-btn ex5"><span>Read More</span></a>
+              <a href="javascript:" class="hover-btn ex6"><span>Read More</span></a>
+              <a href="javascript:" class="hover-btn ex7"><span>Read More</span></a>
+            </div>
+
+          </div>
+
+          <!-- //sample -->
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <div class="btn-area">
+              <a href="javascript:" class="hover-btn ex1"><span>Read More</span></a>
+              <a href="javascript:" class="hover-btn ex2"><span>Read More</span></a>
+              <a href="javascript:" class="hover-btn ex3"><span>Click!</span><span>Read More</span></a>
+              <a href="javascript:" class="hover-btn ex4"><span>Read More</span></a>
+              <a href="javascript:" class="hover-btn ex5"><span>Read More</span></a>
+              <a href="javascript:" class="hover-btn ex6"><span>Read More</span></a>
+              <a href="javascript:" class="hover-btn ex7"><span>Read More</span></a>
+            </div>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            .btn-area {width: 100%; height: 100%; display: flex;}
+            .btn-area a {display: inline-flex; padding: 10px 25px; border-radius: 5px; transition: all .3s ease; color: #fff; align-items: center; justify-content: center; font-size: 14px; position: relative; width: 130px; height: 40px; }
+            .btn-area a + a {margin-left: 25px;}
+            
+            .btn-area a.ex1 {background: rgb(0,172,238); background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%); width: 130px; height: 40px; padding: 0; border: none;}
+            .btn-area a.ex1 span {position: relative; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; text-align: center;}
+            .btn-area a.ex1::before, .btn-area a.ex1::after {content: ""; position: absolute; display: block; right: 0; top: 0; background: rgba(2,126,251,1); transition: all .3s ease;}
+            .btn-area a.ex1::before {height: 0%; width: 2px;}
+            .btn-area a.ex1::after {width: 0%; height: 2px;}
+            .btn-area a.ex1 span::before, .btn-area a.ex1 span::after {content: ""; position: absolute; display: block; left: 0; bottom: 0; background: rgba(2,126,251,1); transition: all .3s ease;}
+            .btn-area a.ex1 span::before {width: 2px; height: 0%;}
+            .btn-area a.ex1 span::after {width: 0%; height: 2px;}
+            .btn-area a.ex1:hover {background: #fff;}
+            .btn-area a.ex1:hover::before {height: 100%;}
+            .btn-area a.ex1:hover::after {width: 100%;}
+            .btn-area a.ex1:hover span {color: rgba(2,126,251,1);}
+            .btn-area a.ex1:hover span::before {height: 100%;}
+            .btn-area a.ex1:hover span::after {width: 100%;}
+        
+            .btn-area a.ex2 {padding: 0; background: rgb(255,27,0); background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);}
+            .btn-area a.ex2:hover {color: #f0094a; background: transparent; box-shadow:none;}
+            .btn-area a.ex2::before, .btn-area a.ex2::after{content:""; position: absolute; top: 0; right: 0; height: 2px; width: 0; background: #f0094a; box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #0003, 4px 4px 5px 0px #0002; transition: all .3s ease;}
+            .btn-area a.ex2::after{right: inherit; top: inherit; left: 0; bottom: 0;}
+            .btn-area a.ex2:hover::before, .btn-area a.ex2:hover::after{ width:100%;transition: all .6s ease;}
+        
+            .btn-area a.ex3 {position: relative; box-shadow: none; perspective: 230px;}
+            .btn-area a.ex3 span {background: rgb(0,172,238); background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%); display: flex; align-items: center; justify-content: center; position: absolute; width: 130px; height: 40px; box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1); border-radius: 5px; margin: 0; text-align: center; box-sizing: border-box; transition: all .3s ease;}
+            .btn-area a.ex3 span:nth-of-type(1) {box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001; transform: rotateX(90deg); transform-origin: 50% 50% -20px;}
+            .btn-area a.ex3 span:nth-of-type(2) {transform: rotateX(0deg); transform-origin: 50% 50% -20px;} 
+            .btn-area a.ex3:hover span:nth-of-type(1) {box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1); transform: rotateX(0deg);}
+            .btn-area a.ex3:hover span:nth-of-type(2) {box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1); color: transparent; transform: rotateX(-90deg);}
+        
+            .btn-area a.ex4 {background-color: #89d8d3; background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%); z-index: 1;}
+            .btn-area a.ex4::after { content: ""; position: absolute; width: 100%; height: 0; bottom: 0; left: 0; z-index: -1; border-radius: 5px; background-color: #4dccc6; background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%); box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001; transition: all .3s ease;}
+            .btn-area a.ex4:hover {color: #fff;}
+            .btn-area a.ex4:hover::after {top: 0; height: 100%;}
+            .btn-area a.ex4:active {top: 2px;}
+        
+            .btn-area a.ex5 {background: rgb(255,151,0); z-index: 1;}
+            .btn-area a.ex5::after {content: "";position: absolute; width: 100%; height: 0; top: 0; left: 0; z-index: -1; border-radius: 5px; background-color: #eaf818; background-image: linear-gradient(315deg, #eaf818 0%, #f6fc9c 74%); box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5) 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1); transition: all 0.3s ease;}
+            .btn-area a.ex5:hover {color: #000;}
+            .btn-area a.ex5:hover::after {top: auto; bottom: 0; height: 100%;}
+            .btn-area a.ex5:active {top: 2px;}
+        
+            .btn-area a.ex6 {background: #b621fe; z-index: 1;}
+            .btn-area a.ex6::after {content: ""; position: absolute; width: 0; height: 100%; top: 0; right: 0; z-index: -1; background-color: #663dff; border-radius: 5px; box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1),  4px 4px 5px 0px rgba(0,0,0,.1); transition: all .3s ease;}
+            .btn-area a.ex6:hover {color: #fff;}
+            .btn-area a.ex6:hover::after {left: 0; width: 100%;}
+            .btn-area a.ex6:active {top: 2px;}
+        
+            .btn-area a.ex7 {color: #000; box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1); z-index: 1;}
+            .btn-area a.ex7::after {content: ""; position: absolute; width: 0; height: 100%; top: 0; left: 0; direction: rtl; z-index: -1; box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9, 7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001; transition: all .3s ease;}
+            .btn-area a.ex7:hover {color: #000;}
+            .btn-area a.ex7:hover::after {left: auto; right: 0; width: 100%;}
+            .btn-area a.ex7:active {top: 2px;}
+          </script>
+
+        </section>
+
+        <section>
+          <h3>툴팁</h3>
+          <!-- sample -->
+          <div class="example">
+            
+            <div class="tool-wrap">
+              <a href="javascript:" title="툴팁 열기" class="tool-tip">?</a>
+              <div class="tool-tip-pop">
+                <p>strong 요소와 em 요소는 각각 중첩해서 사용함으로써 중요성이나 강조의 상대적인 정도를 증가시킬 수도 있습니다.strong 요소와 em 요소는 각각 중첩해서 사용함으로써 중요성이나 강조의 상대적인 정도를 증가시킬 수도 있습니다.strong 요소와 em 요소는 각각 중첩해서 사용함으로써 중요성이나 강조의 상대적인 정도를 증가시킬 수도 있습니다.strong 요소와 em 요소는 각각 중첩해서 사용함으로써 중요성이나 강조의 상대적인 정도를 증가시킬 수도 있습니다.strong 요소와 em 요소는 각각 중첩해서 사용함으로써 중요성이나 강조의 상대적인 정도를 증가시킬 수도 있습니다.strong 요소와 em 요소는 각각 중첩해서 사용함으로써 중요성이나 강조의 상대적인 정도를 증가시킬 수도 있습니다.strong 요소와 em 요소는 각각 중첩해서 사용함으로써 중요성이나 강조의 상대적인 정도를 증가시킬 수도 있습니다.strong 요소와 em 요소는 각각 중첩해서 사용함으로써 중요성이나 강조의 상대적인 정도를 증가시킬 수도 있습니다.</p>
+                <a href="javascript:" title="툴팁 닫기"></a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- //sample -->
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <div class="tool-wrap">
+              <a href="javascript:" title="툴팁 열기" class="tool-tip">?</a>
+              <div class="tool-tip-pop">
+                <p>strong 요소와 em 요소는 각각 중첩해서 사용함으로써 중요성이나 강조의 상대적인 정도를 증가시킬 수도 있습니다.</p>
+                <a href="javascript:" title="툴팁 닫기"></a>
+              </div>
+            </div>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            .tool-wrap {position: relative; z-index: 10;}
+            .tool-wrap .tool-tip {display: flex; width: 24rem; height: 24rem; border: 1px solid #000; color: #961E1E; background: #fff; border-radius: 50rem; align-items: center; justify-content: center; font-size: 12rem; }
+            .tool-wrap .tool-tip-pop {border: 1px solid #000; width: 500rem; height: fit-content; font-size: 12rem; background: #fff; position: absolute; top: 30rem; left: 7rem; padding: 5rem 30rem 5rem 10rem; transition: all .3s; opacity: 0; display: none;}
+            .tool-wrap.on .tool-tip-pop {opacity: 1; top: 35rem;}
+            .tool-wrap .tool-tip-pop::after {content: ""; position: absolute; top: -8rem; left: 0; width: 9rem; height: 11rem; background: url("../assets/images/icon-tooltip-arrow.svg") no-repeat center bottom; z-index: 1;}
+            .tool-wrap .tool-tip-pop > a {position: absolute; right: 10rem; top: 10rem; width: 8rem; height: 8rem; background: url("../assets/images/btn-close-tooltip.svg") center center no-repeat;}
+            
+            @media all and (max-width: 500px) {
+              .tool-wrap .tool-tip-pop {width: 100%;}
+            }
+          </script>
+          <script type="syntaxhighlighter" class="brush: js;">
+            $(".tool-wrap .tool-tip").on('click', function(){
+              $(".tool-wrap").find(".tool-tip-pop").css("display", "block");
+              setTimeout(function() {
+                $(".tool-wrap").addClass("on");
+              }, 10);
+            });
+            $(".tool-wrap .tool-tip-pop > a").on('click', function(){
+              $(".tool-wrap").removeClass("on");
+              setTimeout(function() {
+                $(".tool-wrap").find(".tool-tip-pop").css("display", "block");
+              }, 500);
+            });
+          </script>
+
+        </section>
+
+        
+      </div>
+    </div>
+
+    <script>
+      $(function () {
+
+        $(".gototop").on('click', function(){
+          $("#cBody").attr("tabIndex", 0).focus();
+          gsap.to("body, html", {duration: 1, scrollTop: 0, ease: Cubic.easeOut, onComplete:function(){
+            $("#cBody").attr("tabIndex", "").focus();
+          }});
+        });
+
+
+        //툴팁
+        $(".tool-wrap .tool-tip").on('click', function(){
+          $(".tool-wrap").find(".tool-tip-pop").css("display", "block");
+          setTimeout(function() {
+            $(".tool-wrap").addClass("on");
+          }, 10);
+        });
+        $(".tool-wrap .tool-tip-pop > a").on('click', function(){
+          $(".tool-wrap").removeClass("on");
+          setTimeout(function() {
+            $(".tool-wrap").find(".tool-tip-pop").css("display", "block");
+          }, 500);
+        });
+
+
+        
+      });
+    </script>
+  </div>
+</body>
+</html>
+z`

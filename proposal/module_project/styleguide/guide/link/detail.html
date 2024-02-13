@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>UI개발1팀 모듈화 프로젝트</title>
+  <link rel="stylesheet" href="../../assets/css/index.css">
+  <link rel="stylesheet" href="../../assets/css/swiper.css">
+  <link rel="stylesheet" href="../../assets/styles/shCore.css"/>
+	<link rel="Stylesheet" href="../../assets/styles/shCoreEclipse.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="../../assets/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script src="../../assets/scripts/shCore.js"></script>
+	<script src="../../assets/scripts/shBrushJScript.js"></script>
+	<script src="../../assets/scripts/shBrushXml.js"></script>
+	<script src="../../assets/scripts/shBrushCss.js"></script>
+  <script src="../../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../../assets/js/gsap.min.js"></script>
+  <script src="../../assets/js/swiper.min.js"></script>
+  <script src="../../assets/js/ScrollTrigger.min.js"></script>
+  <script src="../../assets/js/lottie-player.js"></script>
+  <script src="../../assets/js/script.js"></script>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<style>
+	.inner {width: 1200rem; margin: 0 auto; padding-bottom: 200rem;}
+	.btn {display: inline-flex; align-items: center; justify-content: center; padding: 16rem 10rem 17rem; min-width: 160px; min-height: 60px; text-align: center; border-radius: 8px; background-color: transparent; border: 1px solid rgba(0, 0, 0, .14); transition: all .4s ease;}
+	.btn span {display: inline-block; font-size: max(15rem, 15px); text-align: center; color: rgba(0, 0, 0, .9);}
+	
+	/* 상세 */
+	.type-div {display: flex; align-items: center; font-size: max(16rem, 14px); line-height: 140%; letter-spacing: -.025em; font-weight: 500; color: rgba(0, 0, 0, .5); overflow: hidden;}
+	.type-div .type {float: left; position: relative; padding-right: 8rem; margin-right: 8rem; word-break: break-all;}
+	.type-div .type:after {display: block; content: ""; position: absolute; right: 0; top: 50%; width: 1px; height: 16rem; background: #dfd9d5; transform: translateY(-50%);}
+	.type-div .type:last-child {margin-right: 0; padding-right: 0;}
+	.type-div .type:last-child:after {display: none;}
+
+	.view-con-w {padding-top: 60rem;}
+	.view-con-w .view-con .top-area {position: relative; padding-bottom: 40rem; border-bottom: 1px solid #e3e1de;}
+	.view-con-w .view-con .top-area .share-area {position: absolute; top: 0; right: 0;}
+	.view-con-w .view-con .top-area .share-area .share-btn {display: block; width: max(24rem, 24px); height: max(24rem, 24px); background: url("../../assets/images/icon-view-share.svg") no-repeat; background-size: cover;}
+	.view-con-w .view-con .top-area .title {margin-top: 10rem; font-size: max(32rem, 24px); line-height: 140%; letter-spacing: -.025em; color: #000; font-weight: bold;}
+	.view-con-w .view-con .content {padding: 80rem 68rem 100rem; border-bottom: 1px solid rgba(0, 0, 0, .24);}
+	.view-con-w .view-con .content table {width: 100% !important;}
+	.view-con-w .view-con .content img {max-width: 100% !important;}
+	.view-con-w .view-con .content .img-box {overflow: hidden; margin-bottom: 40rem;}
+	.view-con-w .view-con .content .img-box img {max-width: 100%; border-radius: 12px;}
+	.view-con-w .view-con .content .txt-box .txt {font-size: max(16rem, 16px); line-height: 140%; letter-spacing: -.025em; color: rgba(0, 0, 0, .8);}
+	.view-con-w .view-con .file-area {margin-top: 48rem; display: flex; flex-wrap: wrap;}
+	.view-con-w .view-con .file-area .file-name {margin: 0 20rem 20rem 0; padding: 20rem; min-height: 48rem; font-size: max(16rem, 14px); display: flex; justify-content: space-between; align-items: center; border-radius: 2px; box-sizing: border-box; background: #F5F7FA;}
+	.view-con-w .view-con .file-area .file-name span {position: relative; padding-left: max(28rem, 24px); color: #4D4D4D; text-overflow: ellipsis; line-height: 140%; letter-spacing: -.025em; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; word-break: break-all; overflow-y: hidden;}
+	.view-con-w .view-con .file-area .file-name span::before {content: "";  position: absolute; top: 2px; left: 0; width: max(16rem, 16px); height: max(16rem, 16px); display: inline-block; background: url(../../assets/images/icon-download.svg) no-repeat; background-size: cover;}
+	.view-con-w .view-con	.btn-area {margin-top: 100rem; text-align: center;}
+
+	@media screen and (max-width: 1024px) {
+		.inner {width: calc(100% - 80rem);}
+
+		/* 상세 */
+		.type-div {padding-right: 34rem; width: 100%; font-size: max(14rem, 12px);}
+		.type-div .type {padding-right: max(8rem, 8px); margin-right: max(8rem, 8px);}
+		.type-div .type:after {height: max(12rem, 10px);}
+
+		.view-con-w .view-con .top-area {padding-bottom: 24rem;}
+		.view-con-w .view-con .top-area .title {margin-top: 16rem;}
+		.view-con-w .view-con .content {padding: 32rem 0 40rem;}
+		.view-con-w .view-con .content .img-box img {border-radius: 8px;}
+		.view-con-w .view-con .file-area .file-name {margin: 0 30rem 30rem 0;}
+		.view-con-w .view-con .btn-area {margin-top: 48rem;}
+	}
+</style>
+</head>
+<body>
+  <div id="wrap" style="background: #fff;">
+		<div class="inner">
+			<div class="view-con-w">
+				<div class="view-con">
+					<div class="top-area">
+						<div class="type-div">
+							<p class="type">공지사항</p>
+							<p class="type">지점명</p>
+							<p class="type">YYYY.MM.DD</p>
+						</div>
+						<div class="share-area">
+							<a href="javascript:" class="share-btn" title="공유하기"></a>
+						</div>
+						<p class="title">[평촌점] 문화센터 공휴일 휴관안내</p>
+					</div>
+
+					<div class="content">
+						<div class="img-box">
+							<img src="../../assets/images/img-sample.jpg" alt="">
+						</div>
+
+						<div class="txt-box">
+							<p class="txt">
+								문화센터 공휴일 휴관안내<br /><br />
+								문화센터는 법정공휴일인 10.9(일), 10.10(월) 휴관입니다. <br />
+								휴관기간동안은 데스크 접수 및 취소, 전화안내, 온라인 문의 답변 등의 업무가 불가합니다.<br />
+								강좌의 취소는 공휴일 전날 데스크운영 시간까지 가능하며 이후 취소는 1:1 게시판에 남겨주시면 정상 업무 이후부터 순차적으로 처리됩니다.<br />
+								(환불금액: 게시판에 요청 남겨주신 날짜 기준)<br /><br />
+								문화센터 휴관 시 문의사항은<br />
+								[문화센터 홈페이지▶MY문화센터▶1:1게시판]<br />
+								이용을 부탁드리며 개관 이후 순차적으로 처리 후 안내 드리겠습니다.<br /><br />
+								이용에 참고하시어 불편함이 없으시길 바랍니다.<br /><br />
+								※ 평촌점 회원 대상으로 휴관안내 메세지를 전송하였으나 마케팅 미동의 회원님께서는 휴점 안내 및 강좌 관련 안내 문자를 수신하실 수 없으니 수신동의를 위해서는 롯데문화센터 홈페이지 로그인>마이페이지>회원정보변경> 문화센터 마케팅 수신동의[강좌정보 등] SMS 수신으로 변경 바랍니다.<br /><br />
+								즐거운 명절 보내세요.<br /><br />
+								감사합니다.
+							</p>
+						</div>
+					</div>
+
+					<div class="file-area">
+						<a href="javascript:" class="file-name">
+							<span>파일명.png</span>
+						</a>
+						<a href="javascript:" class="file-name">
+							<span>파일명.png</span>
+						</a>
+						<a href="javascript:" class="file-name">
+							<span>파일명.png</span>
+						</a>
+					</div>
+
+					<div class="btn-area">
+						<a class="btn" href="javascript:">
+							<span>목록으로</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

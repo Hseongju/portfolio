@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>UI개발1팀 모듈화 프로젝트</title>
+  <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/swiper.css">
+  <link rel="stylesheet" href="../assets/styles/shCore.css"/>
+	<link rel="Stylesheet" href="../assets/styles/shCoreEclipse.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="../assets/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script src="../assets/scripts/shCore.js"></script>
+	<script src="../assets/scripts/shBrushJScript.js"></script>
+	<script src="../assets/scripts/shBrushXml.js"></script>
+	<script src="../assets/scripts/shBrushCss.js"></script>
+  <script src="../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../assets/js/gsap.min.js"></script>
+  <script src="../assets/js/swiper.min.js"></script>
+  <script src="../assets/js/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/lottie-player.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+</head>
+
+<body>
+  <div id="wrap" class="form">
+    <header>
+      <h1>모듈화 작업 가이드</h1>
+      <div class="btn-wrap">
+        <a href="./index.html">HOME  <i class="fas fa-angle-right"></i></a>
+      </div>
+    </header>
+    <div id="contents">
+      <aside></aside>
+
+      <div class="content-area">
+        <h2>스타일 가이드</h2>
+        <section>
+          <h3>Flow Text Motion</h3>
+          <!-- sample -->
+          <div class="sample">
+            <p class="link"><a href="./link/flow_txt.html" target="_blank">해당화면보기 >></a></p>
+          </div>
+          <!-- //sample -->
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <div class="parents_box">
+              <div class="flow_area">
+                <div class="flow_list"><p class="txt">Test Text</p></div>
+              </div>
+            </div>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            .parents_box {position: relative; width: 100vw; height: 100px; overflow: hidden;}
+            .flow_area {position: absolute; left: 0; display: flex; height: 100px;}
+            .flow_area .flow_list {padding-right: 100px;} /* 사이 간격은 padding 값으로 조절 */
+            .flow_area .flow_list .txt {font-weight: bold; font-size: 100px; white-space: nowrap;}
+
+            $(window).load(function(){
+              let fontWidthSum = $(".flow_area .flow_list").outerWidth(true);
+        
+              while(fontWidthSum < window.innerWidth + $(".flow_area .flow_list").eq(0).outerWidth(true)){
+                const repeatObject = document.querySelector(".flow_area .flow_list");
+                const newNode = repeatObject.cloneNode(true);
+                repeatObject.after(newNode);
+                fontWidthSum = fontWidthSum + $(".flow_area .flow_list").eq(-1).outerWidth(true);
+              };
+          
+              setInterval(function() {
+                if(parseInt($(".flow_area").css("left").split("p")[0]) < -$(".flow_area .flow_list").eq(0).outerWidth(true)) {
+                  $(".flow_area").css("left", 0);
+                }
+                $(".flow_area").css("left", parseInt($(".flow_area").css("left").split("p")[0]) - 2);
+              }, 8);
+            });
+          </script>
+        </section>
+
+
+        <section>
+          <h3>햄버거 메뉴</h3>
+          <!-- sample -->
+          <div class="sample">
+            <p class="link"><a href="./link/hamberger.html" target="_blank">해당화면보기 >></a></p>
+          </div>
+          <!-- //sample -->
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <a class="menu-trigger" href="javascript:">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            타입별로 활용하면 됨
+          </script>
+        </section>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

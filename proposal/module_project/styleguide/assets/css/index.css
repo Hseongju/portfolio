@@ -1,0 +1,112 @@
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap");
+* {margin: 0; padding: 0; box-sizing: border-box;}
+html {width: 100%; height: 100%; font-size:0.052vw}
+body {position: relative; font-family: "Noto Sans KR", "맑은 고딕", "Malgun Gothic", sans-serif; font-weight: 400; font-size: 16px; color: #666; letter-spacing: -.6px; height: 100%; word-break: keep-all; -webkit-text-size-adjust: 100%; -moz-text-size-adjust: 100%; -ms-text-size-adjust: 100%; line-height: 1; -webkit-overflow-scrolling: touch;}
+body, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p, form, fieldset, table, tr, th, td {margin: 0; padding: 0;}
+ul, ol, li {list-style: none;}
+img, fieldset {border: none; vertical-align: top;}
+legend, caption {position: absolute; top: -9999px; left: -9999px; z-index: -1;}
+textarea, button {vertical-align: middle;}
+input, select {vertical-align: middle; background: #fff; /*border: 1px solid #e1e1e1;*/ font-family: "Noto Sans KR", "맑은 고딕", "Malgun Gothic", sans-serif; font-weight: 400; color: #888; letter-spacing: -.6px; border-radius: 0; font-size: 16px;}
+input {padding: 3px 20px;}
+option {padding: 10px;}
+input[type="radio"], input[type="checkbox"] {border: 0; padding: 0; /* height: auto; */ -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;}
+input[type="password"] {height: 40px; border: 1px solid #e1e1e1; color: #999; background: #fff; -webkit-appearance: none; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;}
+input[type="text"] {/*width: 278px;*/ /* background: #fff; */ -webkit-appearance: none; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;}
+select {padding: 5px; height: 40px; /*border: 1px solid #e1e1e1; background: #fff;*/}
+textarea {padding: 10px; vertical-align: middle; background: #fff; border: 1px solid #e1e1e1; font-family: "Noto Sans KR", "맑은 고딕", "Malgun Gothic", sans-serif; font-weight: 400; color: #555; font-size: 16px; letter-spacing: -.6px; -webkit-appearance: none; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; border-radius: 0;}
+a {text-decoration: none; color: #555;}
+a:hover, a:focus, a:active {text-decoration: none;}
+table {border-collapse: collapse; width: 100%;}
+button {background: none; border: none; padding: 0; margin: 0; cursor: pointer; overflow: visible; white-space: nowrap; font-size: 16px; font-family: "Noto Sans KR", "맑은 고딕", "Malgun Gothic", sans-serif; font-weight: 400;}
+button:active {outline: none;}
+button::-moz-focus-inner {padding: 0; border: 0;}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {display: block;}
+strong, b {font-family: "Noto Sans KR"; font-weight: 700;}
+th {font-family: "Noto Sans KR"; font-weight: 500;}
+:root {
+  --brandColor: rgb(109, 45, 109);
+}
+#wrap{width:100%;}
+
+header {display: flex !important; justify-content: space-between; align-items: center; position: fixed; left: auto; top: auto; padding: 0 20rem; width: 100%; height: 80rem; background-color: rgb(109, 45, 109); transition: none; z-index: 100;}
+header h1 {position: static; left: auto; top: auto; width: auto; height: auto; color: #fff; font-size: max(24rem, 18px);}
+header .btn-wrap {position: relative;}
+header .btn-wrap a {color: #fff; font-size: max(16rem, 14px);}
+#contents {display: flex; width:100%}
+#contents aside {position: fixed; left: 0; top: 80rem; padding: 30rem 20rem; width: max(200rem, 150px);}
+#contents aside a {display: block; padding: 10rem 0; color: #333; font-size: max(16rem, 14px);}
+#contents aside a i {display: none; padding-left: 3px; transition: all .2s ease;}
+/* #contents aside a.active {color: var(--brandColor);} */
+#contents aside a.active i {display: inline-block;}
+#contents aside a:hover i {padding-left: 6px;}
+#contents aside .guide-list {margin-left: 10px;}
+#contents aside .guide-list a {position: relative; display: inline-block; padding: 5px 0 5px 10px; font-size: 14px;}
+#contents aside .guide-list a::before {content: "-"; position: absolute; top: 3px; left: 0;}
+#contents aside .guide-list a.active::after {display:block; content:""; position:absolute; top:10px; left:10px; transform:skew(-15deg); width:calc(100% - 10px); height:50%; background:#e03abc; opacity:0.1;}
+.content-area {padding: 110rem 30rem 30rem max(200rem, 150px); width:100%; line-height: 1.5;}
+.content-area section + section {margin-top: 40px;}
+.content-area h2 {margin-top:50px; padding-bottom: 15px; font-size: 22px; color:#000;}
+.content-area h2:first-child {margin-top:0;}
+.content-area h3 {position: relative; padding-left: 10px; padding-bottom: 10px; font-size: 18px;}
+.content-area h3::before {content: ""; display: block; position: absolute; top: 6px; left: 0; width: 3px; height: 18px; background-color: var(--brandColor);}
+.table-type1 {border-top: 1px solid #333; border-bottom: 1px solid #333;}
+.table-type1 thead {border-bottom: 1px solid #333;}
+.table-type1 tr {border-bottom: 1px solid #ddd;}
+.table-type1 th {padding: 7px 0; font-size: 13px; background-color: #f8f8f8;}
+.table-type1 td {padding: 7px 10px; font-size: 13px; border-right: 1px solid #ddd;}
+.table-type1 td:last-child {border-right: 0;}
+.table-type2 {border-top: 1px solid #333; border-bottom: 1px solid #333; text-align: left;}
+.table-type2 tr {border-bottom: 1px solid #ddd;}
+.table-type2 th {padding: 7px 10px; font-size: 13px; background-color: #f8f8f8;}
+.table-type2 td {padding: 7px 10px; font-size: 13px;}
+.table-type2 tr:last-child th, .table-type2 tr:last-child td {border-bottom: 0;}
+ul.list li {position: relative; margin-bottom: 4px; font-size: 14px;}
+ul.list li {position: relative; padding-left: 14px; margin-bottom: 4px; font-size: 14px;}
+ul.list li::before {content: "-"; display: inline-block; position: absolute; top: 0; left: 0;}
+ul.list.no-dash li::before {content: "";}
+
+.accordion_list.scroll_motion {transform: translateY(80px); opacity: 0; transition: all 1s ease;}
+.accordion_list.active {transform: translateY(0); opacity: 1;}
+.accordion_list .list_wrap .list {background-color: #f7f7f7; border-radius: 14px;}
+.accordion_list .list_wrap .list .tit {position: relative; padding: 44px 40px; display: flex; align-items: center; width: 100%; height: 100%; transition: padding 0.5s ease;}
+.accordion_list .list_wrap .list .tit:before {content: ""; position: absolute; left: 40px; bottom: 0; width: calc(100% - 80px); height: 1px; opacity: 0; background-color: rgba(0, 0, 0, 0.05); transition: opacity 0.3s ease;}
+.accordion_list .list_wrap .list .tit:after {content: ""; position: absolute; right: 40px; width: 14px; height: 14px; background: url(/common/images/btn-acco-arrow-down-black.png) no-repeat 50% 50%; transform: rotate(180deg); transition: transform 0.4s ease;}
+.accordion_list .list_wrap .list .tit span {padding-right: 20px;}
+/* .accordion_list .list_wrap .list.on {height: auto;} */
+.accordion_list .list_wrap .list.on .tit {padding: 44px 40px 36px;}
+.accordion_list .list_wrap .list.on .tit:before {opacity: 1;}
+.accordion_list .list_wrap .list.on .tit:after {transform: rotate(0);}
+.accordion_list .list_wrap .list .hide_con {display: none; padding: 40px;}
+.accordion_list .list_wrap .list .hide_con .inner_div {display: flex; justify-content: space-between;}
+.accordion_list .list_wrap .list .hide_con .inner_div > div {width: calc((100% / 2) - 15px);}
+.accordion_list .list_wrap .list .hide_con .sub_inner + .sub_inner {margin-top: 48px;}
+.accordion_list .list_wrap .list .hide_con .sub_tit {margin-bottom: 16px;}
+.accordion_list .list_wrap .list .hide_con .con_txt {line-height: 40px;}
+.accordion_list .list_wrap .list .hide_con .con_txt .num {margin-right: 40px; display: inline-block; width: 57px;}
+
+
+
+@media screen and (max-width: 1023px) {
+  html{font-size:.130vw}
+
+  header {height:60rem;}
+  #contents aside {position: fixed; left: 0; top: 60rem; padding: 10rem 20rem 0; width: 100%; z-index:100; background:#fff; border-bottom:1px solid rgb(109, 45, 109);}
+  #contents aside a {padding:5rem 0 10rem 0;}
+  #contents aside .guide-list {overflow-x:auto; overflow-y:hidden; display:flex; margin:0; padding-bottom:10rem;}
+  #contents aside .guide-list li{margin-right:20rem;}
+  #contents aside .guide-list a {padding: 0; font-size: 14px;}
+  #contents aside .guide-list a::before{display:none;}
+  #contents aside .guide-list a.active::after{top:0; left:0; height:100%; width:100%;}
+  .content-area {padding: 150rem 30rem 30rem;}
+}
+
+@media screen and (max-width: 500px) {
+  html{font-size:.256vw}
+
+  header{padding:0 10rem;}
+  #contents aside{padding:0 10rem;}
+  .content-area{padding:140rem 10rem 20rem}
+}

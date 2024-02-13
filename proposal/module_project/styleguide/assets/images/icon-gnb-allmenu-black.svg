@@ -1,0 +1,8 @@
+<svg id="Menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect id="Touch_Area" data-name="Touch Area" width="24" height="24" fill="#f0f" opacity="0"/>
+  <g id="icon" transform="translate(-1790 -38)">
+    <path id="패스_15519" data-name="패스 15519" d="M1,0H19a1,1,0,0,1,0,2H1A1,1,0,0,1,1,0Z" transform="translate(1792 43)" fill="#1f1b1c"/>
+    <path id="패스_15520" data-name="패스 15520" d="M1,0H19a1,1,0,0,1,0,2H1A1,1,0,0,1,1,0Z" transform="translate(1792 49)" fill="#1f1b1c"/>
+    <path id="패스_15521" data-name="패스 15521" d="M1,0H19a1,1,0,0,1,0,2H1A1,1,0,0,1,1,0Z" transform="translate(1792 55)" fill="#1f1b1c"/>
+  </g>
+</svg>

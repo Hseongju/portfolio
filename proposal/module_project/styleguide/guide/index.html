@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>UI개발1팀 모듈화 프로젝트</title>
+  <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/swiper.css">
+  <link rel="stylesheet" href="../assets/styles/shCore.css"/>
+	<link rel="Stylesheet" href="../assets/styles/shCoreEclipse.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="../assets/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script src="../assets/scripts/shCore.js"></script>
+	<script src="../assets/scripts/shBrushJScript.js"></script>
+	<script src="../assets/scripts/shBrushXml.js"></script>
+	<script src="../assets/scripts/shBrushCss.js"></script>
+  <script src="../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../assets/js/gsap.min.js"></script>
+  <script src="../assets/js/swiper.min.js"></script>
+  <script src="../assets/js/ScrollTrigger.min.js"></script>
+  <script src="../../styleguide/assets/js/lottie-player.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+  <style>
+    #wrap{overflow:hidden; position:relative; width:100%; color:#222;}
+    .stop_scroll{overflow:hidden; height:100%; min-height:100%; touch-action: none;}
+    .welcome_area{position:fixed; top:0; left:0; width:100%; height:100vh; background:#fff; z-index:5;}
+    .welcome_area .skip{position:absolute; bottom:40rem; right:40rem; width:80rem; height:80rem; font-weight:600; color:#000;}
+    .module_content {position: relative; min-height: 100vh;}
+    /* .module_content .inner {margin: 0 auto; padding: 120vh 0 240px; width: 1460rem;} */
+    .module_content .inner {position:relative; margin: 0 auto; padding: 180vh 0 240px; width: 1460rem; z-index:1; }
+    .module_content .tit_area {position: relative; z-index: 2; padding: 240rem 0 100rem; text-align: center; background: #fff;}
+    .module_content .tit_area .tit {position: relative; top: 80rem; opacity: 0; font-size:120rem; font-weight: 800; letter-spacing: -4px; transition: top 1s ease, opacity 1s ease;}
+    .module_content .tit_area .tit span {position:relative}
+    .module_content .tit_area .tit span:after{display:block; content:""; position:absolute; bottom:0; left:0; transform:skew(-25deg); width:0; height:50%; background:#1e9aff; opacity:0.1; transition:width 0.4s ease; z-index:-1;}
+    .module_content .tit_area .made {position: relative; top: 80rem; margin-top: 200rem; opacity: 0; font-size:16rem; font-weight: 600; transition: top 1s ease, opacity 1s ease;}
+    .module_content .tit_area .made span{position:relative; font-size:20rem;}
+    .module_content .tit_area .made span:after{display:block; content:""; position:absolute; bottom:0; left:0; transform:skew(-25deg); width:0; height:50%; background:#1e9aff; opacity:0.1; transition:width 0.4s ease; z-index:-1;}
+    .module_content .tit_area.active .tit {top: 0; opacity: 1; transition-delay: .1s;}
+    .module_content .tit_area.active .tit span:after {width:100%; transition-delay:0.5s}
+    .module_content .tit_area.active .made {top: 0; opacity: 1; transition-delay: .2s;}
+    .module_content .tit_area.active .made span:after {width:100%; transition-delay:0.6s}
+    .module_content .img_area {position: absolute; top: 0; left: 0; width: 100%; height: 100vh; z-index: 1;}
+    .module_content .img_area .img_wrap {position: absolute; top: 0; left: 0; width: 100%; height: 100vh; transform: scale(1.3); transition: transform 1s;}
+    .module_content .img_area .img_wrap.active {transform: scale(1);}
+    .module_content .img_area img {width: 100%; height: 100%; object-fit: cover;}
+    .module_content .list_area {display:flex; flex-wrap:wrap; padding-left: calc(50% + 40rem);}
+    .module_content .list_area .list{position:relative; top:80rem; margin-right:80rem; width:calc((100% - 80rem) / 2); height:400rem; opacity:0; transition:top 1s ease, opacity 1s ease;}
+    .module_content .list_area .list:nth-child(2n){margin:80rem 0 0; transition-delay:0.15s}
+    .module_content .list_area .list.active{top:0; opacity:1;}
+    .module_content .list_area .list > a{display:flex; align-items: center; justify-content: center; position:relative; height:100%; border:2px solid #eee; border-radius:10px; transition:box-shadow 0.4s ease;}
+    .module_content .list_area .list > a:after{display:block; content:""; position:absolute; bottom:20rem; right:40rem; width:40rem; height:40rem; background:url("/styleguide/assets/images/icon-go-to-site-arrow.svg") no-repeat center center; opacity:0; transition:right 0.3s ease, opacity 0.3s ease;}
+    .module_content .list_area .list > a .title{font-size:25rem; font-weight:800; color:#222;}
+    .module_content .list_area .list > a .title span{position:relative}
+    .module_content .list_area .list > a .title span:after{display:block; content:""; position:absolute; bottom:0; left:0; transform:skew(-25deg); width:0; height:50%; background:#1e9aff; opacity:0.1; transition:width 0.4s ease; z-index:-1;}
+    .module_content .list_area .list:hover > a{box-shadow : 0 10px 10px 5px rgba(0,0,0,0.05);}
+    .module_content .list_area .list:hover > a:after{right:20rem; opacity:1;}
+    .module_content .list_area .list:hover> a .title span:after{width:100%;}
+
+    footer{padding:50rem 0; border-top:1px solid #eee;}
+    footer .inner{margin:0 auto; width:1460rem;}
+    footer .inner .copyright{color:#222; font-weight:500; text-align: center; font-size:18rem;}
+
+    @media screen and (max-width: 1023px) {
+      html{font-size:.130vw}
+      .welcome_area .skip{bottom:20rem; right:20rem; width:35rem; height:35rem;}
+      .module_content .tit_area{padding:120rem 0 80rem;}
+      .module_content .tit_area .tit{font-size:72rem;}
+      .module_content .tit_area .made{margin-top:120rem;}
+      .module_content .img_area{position:relative; height:390rem;}
+      .module_content .img_area .img_wrap{position:relative; height:100%;}
+      .module_content .inner{padding:0; margin: 140rem auto; width: calc(100% - 80rem);}
+      .module_content .list_area{padding-left:0;}
+      .module_content .list_area .list{margin-right:40rem; width:calc((100% - 40rem) / 2)}
+      .module_content .list_area .list> a .title span:after{width:100%;}
+
+      footer .inner{width:calc(100% - 80rem);}
+    }
+
+    @media screen and (max-width: 599px) {
+      html{font-size:.256vw}
+      .welcome_area .skip{width:30rem; height:30rem;}
+      .module_content .tit_area{overflow:hidden; padding:60rem 0 40rem;}
+      .module_content .tit_area .tit{font-size:52rem; letter-spacing: -2px;}
+      .module_content .inner{margin:70rem auto; width: calc(100% - 40rem);}
+      .module_content .list_area .list{margin:20rem 0 0 0; width:100%; height:200rem;}
+      .module_content .list_area .list:first-child{margin:0;}
+      .module_content .list_area .list:nth-child(2n){margin:20rem 0 0 0;}
+
+      footer .inner{width:calc(100% - 40rem);}
+      footer .inner .copyright{font-size:14rem;}
+    }
+  </style>
+</head>
+<body class="stop_scroll">
+  <div id="wrap">
+    <div class="welcome_area">
+      <lottie-player class="lottie" autoplay loop src="../../styleguide/assets/js/welcome.json" style="position:absolute; top:50%; left:50%; z-index:1; transform:translate(-50%, -50%) scale(0.5);"></lottie-player>
+      <a href="javascript:" class="skip">
+        <lottie-player class="lottie" autoplay loop src="../../styleguide/assets/js/skip-arrow.json"></lottie-player>
+      </a>
+    </div>
+    <div class="module_content">
+      <div class="tit_area">
+        <p class="tit"><span>MODULE PROJECT</span></p>
+        <p class="made">Made by <span>UI develop 1 Team</span></p>
+      </div>
+      <div class="img_area">
+        <div class="img_wrap scroll_motion"><img src="../../styleguide/assets/images/img-project.jpg" alt=""></div>
+      </div>
+      <div class="inner">
+        <div class="list_area">
+          <div class="list scroll_motion">
+            <a href="./accordion.html">
+              <p class="title"><span>ACCORDION</span></p>
+            </a>
+          </div>
+          <div class="list scroll_motion">
+            <a href="./button.html">
+              <p class="title"><span>BUTTON</span></p>
+            </a>
+          </div>
+          <div class="list scroll_motion">
+            <a href="./form.html">
+              <p class="title"><span>FORM</span></p>
+            </a>
+          </div>
+          <div class="list scroll_motion">
+            <a href="./function.html">
+              <p class="title"><span>FUNCTION</span></p>
+            </a>
+          </div>
+          <div class="list scroll_motion">
+            <a href="./list.html">
+              <p class="title"><span>LIST</span></p>
+            </a>
+          </div>
+          <div class="list scroll_motion">
+            <a href="./popup.html">
+              <p class="title"><span>POPUP</span></p>
+            </a>
+          </div>
+          <div class="list scroll_motion">
+            <a href="./typography.html">
+              <p class="title"><span>TYPOGRAPHY</span></p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="inner">
+      <p class="copyright">Copyright &copy; UI DEVELOP 1 TEAM. All Rights Reserved</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+<script>
+  $(window).load(function(){
+    $(".welcome_area .skip").on("click", function(){
+      $(".welcome_area").fadeOut(300, function(){
+        $("body").removeClass("stop_scroll")
+        $(".tit_area, .img_wrap").addClass("active")
+      });
+    });
+
+    setTimeout(function(){
+      $(".welcome_area").fadeOut(300, function(){
+        $("body").removeClass("stop_scroll")
+        $(".tit_area, .img_wrap").addClass("active")
+      });
+    },8000);
+
+    if($(".module_content").size() > 0){
+      ScrollTrigger.matchMedia({
+        "(min-width: 1024px)": function() {
+          gsap.to($(".module_content .img_area"), {
+            scrollTrigger: {
+              trigger: $(".module_content .img_area"),
+              start: "top top",
+              endTrigger: $(".module_content").find(".inner"),
+              end:"bottom bottom",
+              pin: true,
+              // markers:true,
+              scrub: true,
+              onLeave: function(self){
+                gsap.set($(".module_content .img_area"), {width:100 - (self.progress.toFixed(3) * 60) + "%", ease: Power2.easeOut});
+              },
+              onEnterBack: function(self){
+                gsap.set($(".module_content .img_area"), {width:100 - (self.progress.toFixed(3) * 60) + "%", ease: Power2.easeOut});
+              }
+            },
+          });
+          
+          gsap.to($(".module_content .img_area"), {
+            scrollTrigger: {
+              trigger: $(".module_content .img_area .img_wrap"),
+              // start: "top+=100% top",
+              start: "top+=90% top",
+              // end:"+=85%",
+              end:"+=75%",
+              scrub: true,
+              // markers: true,
+              onUpdate: function(self){
+                if(window.innerWidth >= 1024) {
+                  gsap.to($(".module_content .img_area"), 0.5, {width:100 - (self.progress.toFixed(3) * 60) + "%", ease: Power2.easeOut});
+                }
+              },
+            },
+          });
+        },
+      })
+
+      $(".list_area .scroll_motion").each(function (q) {
+        gsap.to($(this).parents(".list_area"), {
+          scrollTrigger: {
+            trigger: $(this),
+            start: "top 75%",
+            end: "bottom top",
+            scrub: 1,
+            // markers: true,
+            toggleClass: {
+              targets: $(this),
+              className: "active"
+            },
+          },
+        });
+      });
+    }
+  })
+</script>

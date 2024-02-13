@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>UI개발1팀 모듈화 프로젝트</title>
+  <link rel="stylesheet" href="../../assets/css/index.css">
+  <link rel="stylesheet" href="../../assets/css/swiper.css">
+  <link rel="stylesheet" href="../../assets/styles/shCore.css"/>
+	<link rel="Stylesheet" href="../../assets/styles/shCoreEclipse.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="../../assets/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script src="../../assets/scripts/shCore.js"></script>
+	<script src="../../assets/scripts/shBrushJScript.js"></script>
+	<script src="../../assets/scripts/shBrushXml.js"></script>
+	<script src="../../assets/scripts/shBrushCss.js"></script>
+  <script src="../../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../../assets/js/gsap.min.js"></script>
+  <script src="../../assets/js/swiper.min.js"></script>
+  <script src="../../assets/js/ScrollTrigger.min.js"></script>
+  <script src="../../assets/js/lottie-player.js"></script>
+  <script src="../../assets/js/script.js"></script>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+
+
+  <style>
+    .form-text {position: relative; height: 42px; border: 1px solid #d8d8d8; border-radius: 5px; background-color: #fff;}
+    .form-text:after {content: ""; clear: both; display: block; height: 0;}
+    .form-text input {padding: 5px 20px; width: 100%; height: 100%; border-radius: 5px; outline: 0; border: 0;}
+
+    /* 앵커 스와이퍼 스티키 */
+    .visual{position:relative; width:100%; height:100vh; background:#d19f55}
+    .visual .txt_box{display:flex; align-items: center; justify-content:center; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:100%; text-align: center;}
+    .visual .txt_box > p{overflow:hidden; display:flex; align-items: center; justify-content: center; position:relative; border:1px solid #000; background:#fff; width:200rem; height:65rem;}
+    .visual .txt_box > p:after{display:block; content:""; position:absolute; top:65rem; left:0; width:100%; height:100%; background:#000; transition:top 0.5s ease;}
+    .visual .txt_box > p > a{display:block; position:relative; padding-bottom:3px; width:100%; height:100%; line-height:165%; font-size:35rem; font-weight:800; color:#000; letter-spacing: -1px; transition:color 0.5s ease; z-index:1; }
+    .visual .txt_box > p:hover:after{top:0;}
+    .visual .txt_box > p:hover > a{color:#fff;}
+    .visual .txt_box > p:nth-child(2){margin-left:20rem;}
+    .anchor_area{position:relative; padding-top:60rem}
+    .anchor_area .anchor_btn_w{overflow:hidden; position:absolute; top:0; left:0; width:100%; height:60rem; background:#fff; border-bottom:1px solid #ddd;}
+    .anchor_area .anchor_btn_w.fixed{position:fixed;}
+    .anchor_area .anchor_btn_w .tab_btn{display:flex; align-items: center; justify-content: center; position:relative; padding:0 20rem; width:auto;}
+    .anchor_area .anchor_btn_w .tab_btn span{color:#000;}
+    .anchor_area .anchor_btn_w .tab_btn.on:after{display:block; content:""; position:absolute; bottom:0; left:0; width:100%; height:2px; background:#000;}
+    .anchor_area .anchor_btn_w .tab_btn.on span{font-weight:500}
+    .anchor_area .anchor_con_w .anchor_con{position:relative; width:100%; height:100vh;}
+    .anchor_area .anchor_con_w .anchor_con .text{position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); font-size:50rem; font-weight:800; color:#000;}
+
+    @media screen and (max-width: 599px) {
+      .visual .txt_box{flex-wrap: wrap;}
+      .visual .txt_box > p{width:calc(100% - 40rem)}
+      .visual .txt_box > p:nth-child(2){margin:20rem 0 0 0;}
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap" style="background:#fff;">
+    <div id="contents" style="display:block">
+      <div class="visual">
+        <div class="txt_box">
+          <p><a href="../function.html">PREV</a></p>
+          <p><a href="../index.html">HOME</a></p>
+        </div>
+      </div>
+      <div class="anchor_area">
+        <div class="anchor_btn_w swiper-container">
+          <div class="swiper-wrapper">
+            <a href="javascript:" class="swiper-slide tab_btn on"><span>A영역</span></a>
+            <a href="javascript:" class="swiper-slide tab_btn"><span>B영역</span></a>
+            <a href="javascript:" class="swiper-slide tab_btn"><span>C영역</span></a>
+            <a href="javascript:" class="swiper-slide tab_btn"><span>D영역</span></a>
+            <a href="javascript:" class="swiper-slide tab_btn"><span>E영역</span></a>
+            <a href="javascript:" class="swiper-slide tab_btn"><span>F영역</span></a>
+            <a href="javascript:" class="swiper-slide tab_btn"><span>G영역</span></a>
+          </div>
+        </div>
+        <div class="anchor_con_w">
+          <div class="anchor_con" style="background:rgb(255, 194, 194)">
+            <p class="text">A영역</p>
+          </div>
+          <div class="anchor_con" style="background:rgb(255, 217, 185)">
+            <p class="text">B영역</p>
+          </div>
+          <div class="anchor_con" style="background:rgb(255, 254, 185)">
+            <p class="text">C영역</p>
+          </div>
+          <div class="anchor_con" style="background:rgb(191, 255, 185)">
+            <p class="text">D영역</p>
+          </div>
+          <div class="anchor_con" style="background:rgb(185, 241, 255)">
+            <p class="text">E영역</p>
+          </div>
+          <div class="anchor_con" style="background:rgb(185, 195, 255)">
+            <p class="text">F영역</p>
+          </div>
+          <div class="anchor_con" style="background:rgb(223, 185, 255)">
+            <p class="text">G영역</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+<script>
+  var _anchorSwipeTab;
+  $(window).on("load", function(){
+    _anchorSwipeTab = new Swiper(".anchor_btn_w.swiper-container", {
+      slidesPerView: "auto",
+    });
+
+    if($(".anchor_area").size() > 0){
+      $(".anchor_btn_w .tab_btn").each(function(q){
+        $(this).on("click", function(){
+          gsap.to($("html, body"), 1.5, {scrollTop:$(".anchor_con_w .anchor_con").eq(q).offset().top, ease:Power3.easeOut})
+        });
+      });
+    }
+
+    var thisSlide;
+
+    $(window).scroll(function(){
+      var isScrollTop = $(window).scrollTop();
+
+      if($(".anchor_area").size() > 0){
+        $(".anchor_con_w .anchor_con").each(function(q){
+          if($(this).offset().top - $(".anchor_btn_w").outerHeight(true) < isScrollTop){
+            $(".anchor_btn_w .tab_btn").removeClass("on");
+            $(".anchor_btn_w .tab_btn").eq(q).addClass("on");
+            thisSlide = q;
+          }
+        });
+        
+        _anchorSwipeTab.slideTo(thisSlide);
+
+        if(isScrollTop >= $(".anchor_area").offset().top){
+          $(".anchor_area .anchor_btn_w").addClass("fixed");
+        }else{
+          $(".anchor_area .anchor_btn_w").removeClass("fixed");
+          $(".anchor_area .anchor_btn_w").removeAttr("style");
+        }
+      }
+    }).scroll();
+  });
+</script>

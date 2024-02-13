@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>UI개발1팀 모듈화 프로젝트</title>
+  <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/swiper.css">
+  <link rel="stylesheet" href="../assets/styles/shCore.css"/>
+	<link rel="Stylesheet" href="../assets/styles/shCoreEclipse.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="../assets/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script src="../assets/scripts/shCore.js"></script>
+	<script src="../assets/scripts/shBrushJScript.js"></script>
+	<script src="../assets/scripts/shBrushXml.js"></script>
+	<script src="../assets/scripts/shBrushCss.js"></script>
+  <script src="../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../assets/js/gsap.min.js"></script>
+  <script src="../assets/js/swiper.min.js"></script>
+  <script src="../assets/js/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/lottie-player.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+  <style>
+    select {font-size: 18px; color: #888; appearance: none; -webkit-appearance: none; -moz-appearance: none; -o-appearance: none; vertical-align: top;}
+    select::-ms-expand {display: none;}
+    select:focus, select:active {outline: none;}
+    select:disabled {color: #999; background-color: #e9e9e9; opacity: 1;}
+
+    /* ------------------------------------------------------------------- Form(폼) - Start ------------------------------------------------------------------- */
+    /* form - input */
+    .form-input {position: relative; width: 100%;}
+    .form-input input {font-weight: 400; width: 100%; height: max(48rem, 48px); padding: 0 20rem; font-size: max(14rem, 14px); color: #1f1b1c; border: 1px solid #e0e0e0; border-radius: 4px;}
+    .form-input input::placeholder{font-size:max(14rem, 14px);}
+    .form-input input:focus {color: #1f1b1c; border: 1px solid #004D45; background-color: rgba(23, 175, 152, 0.06);}
+    .form-input input:disabled {color: #999; -webkit-text-fill-color: #999; background-color: #f5f5f5; border: 1px solid #e0e0e0; opacity: 1;}
+    .form-input input:read-only {color: #999; -webkit-text-fill-color: #999; background-color: #f5f5f5; border: 1px solid #e0e0e0; opacity: 1;}
+    .form-input input[type="number"]::-webkit-outer-spin-button, .form-input input[type="number"]::-webkit-inner-spin-button {-webkit-appearance: none; margin: 0;}
+    .form-input.has-erase-btn input{padding-right:50px;}
+
+    /* 공통 */
+    .has-error-msg {width: 100%;}
+    .input-btn-wrap {position: absolute; right: 20rem; top: 50%; margin-top: -10rem;}
+    .input-btn-wrap > button + button {margin-left: 16rem;}
+    .input-btn-wrap .btn-erase {display: none; width: max(20rem, 20px); height: max(20rem, 20px); background: url("../assets/images/btn-input-erase.svg") center center/max(20rem, 20px) no-repeat;}
+    .input-btn-wrap .btn-pw-view {display: none; width: max(20rem, 20px); height: 20rem; background: url("../assets/images/icon-view.svg") center center no-repeat;}
+    .input-btn-wrap .btn-search {position: relative; top: -2rem; width: max(20rem, 20px); height: max(20rem, 20px); background: url("../assets/images/icon-popup-search.svg") no-repeat right center;}
+
+    /* form - select */
+    .form-select {position: relative; display: inline-block; width: 100%; vertical-align: top;}
+    .form-select .form-select-arr {position: relative;}
+    .form-select .form-select-arr select {position: relative; padding: 0 40rem 0 20rem; width: 100%; height: max(48rem, 48px); color: #999; font-size: max(14rem, 14px); background-color: transparent; border: 1px solid #e0e0e0; border-radius: 4px; z-index: 1;}
+    .form-select .form-select-arr select option {width: 100%; color: #1f1b1c;}
+    .form-select .form-select-arr:after {content: ""; display: block; position: absolute; right: 16rem; top: 50%; margin-top: -10rem; transform: rotate(0); width: 20rem; height: 20rem; background: url("../assets/images/icon-default-select-arrow.svg") center center/max(13rem, 13px) no-repeat; transition: transform .3s ease; z-index: 0;}
+    .form-select .form-select-arr.disabled {background-color: #f5f5f5;}
+    .form-select-text .form-select-arr {position: relative; display: inline-block;}
+    .form-select-text .form-select-arr select {padding-right: 20rem; font-weight: 500; font-size: max(14rem, 14px); color: #797979; border: 0;} /* 텍스트형 */
+    .form-select-text .form-select-arr:after {content: ''; display: block; position: absolute; right: 0; top: 50%; margin-top: -10rem; width: 20rem; height: 20rem; background: url("../assets/images/icon-text-select-arrow.svg") center center/max(20rem, 20px) no-repeat;}
+    .form-select.active .form-select-arr:after {transform: rotate(180deg);}
+    .form-select.selected select {color: #1f1b1c;}
+    .form-select select:disabled {border: 1px solid #E0E0E0;}
+
+
+    /* form - input - checkbox */
+    .form-checkbox {position: relative;}
+    .form-checkbox input {position: absolute; top: 0; left: 0; width: max(20rem, 20px); height: max(20rem, 20px); opacity: .001;}
+    .form-checkbox input + label {position: relative; display: inline-block; padding-left: max(28rem, 28px); min-height: max(20rem, 20px); width:auto; color: #1F1B1C; font-size: max(14rem, 14px); background: url("../assets/images/icon-checkbox.svg") left top/max(19rem, 20px) no-repeat; z-index: 1;}
+    .form-checkbox input:checked + label {background: url("../assets/images/icon-checkbox-on.svg") left top no-repeat;}
+    .form-checkbox input:disabled + label {background: url("../assets/images/icon-checkbox-disabled.svg") left top no-repeat;}
+    .form-checkbox input:disabled:checked + label {background: url("../assets/images/icon-checkbox-checked-disabled.svg") left top no-repeat;}
+    .form-checkbox .tool-icon{padding:0; width:max(20rem, 20px); height:max(20rem, 20px); vertical-align: middle;}
+    .form-checkbox.white-ver input + label {background: url("../assets/images/icon-checkbox-white.svg") left top no-repeat;}
+    .form-checkbox.white-ver input:checked + label {background: url("../assets/images/icon-checkbox-on.svg") left top no-repeat;}
+
+    .form-checkbox.no-txt {height: max(20rem, 20px);}
+    .form-checkbox.no-txt input + label {padding-left: max(20rem, 20px); background-position: left top;}
+
+    /* form - input - raido */
+    .form-radio {position: relative;}
+    .form-radio input {position: absolute; top: 0; left: 0; width: max(20rem, 20px); height: max(20rem, 20px); opacity: .001;}
+    .form-radio input + label {display: inline-block; padding-left: max(28rem, 28px); min-height: max(20rem, 20px); color: #1F1B1C; font-size: max(14rem, 14px); background: url("../assets/images/icon-radio.svg") left top/max(20rem, 20px) no-repeat;}
+    .form-radio input:checked + label {background: url("../assets/images/icon-radio-on.svg") left top no-repeat;}
+    .form-radio input:disabled + label {background: url("../assets/images/icon-radio-disabled.svg") left top no-repeat;}
+    .form-radio input:disabled:checked + label {background: url("../assets/images/icon-radio-checked-disabled.svg") left top no-repeat;}
+    .form-radio.no-txt input + label {padding-left: max(20rem, 20px); background-position: left top;}
+
+    /* form - input - textarea */
+    .form-textarea {width: 100%;}
+    .form-textarea textarea {padding: 20rem; height: 120rem; font-size: max(14rem, 14px); color: #1f1b1c; border-radius: 4rem;}
+
+
+    /* form - search */
+    .form_search {position: relative; display: inline-block; width:100%;}
+    .form_search input {width: 100%; height: 4rem; padding-left: 16px; padding-right: 80px; font-size: 1rem; color: #222; line-height: 42px; border: 1px solid #D9D9D9; border-radius: 4px;}
+    .form_search input:focus {color: #222; border: 1px solid #555; background-color: #F5F7FA;}
+    .form_search.w300 {width: 300px;}
+
+    /* form - select, input */
+    .form_sel_input .form_select{margin-right:8px; width:35%}
+    .form_sel_input .form_input{width:65%}
+
+    /* form - error */
+    .invalid-feedback {display: none; margin-top: 8px; color: #FA4156; font-size: max(12rem, 12px);}
+    .error .invalid-feedback {display: block;}
+
+    /* table */
+    table {border-collapse: collapse; border-spacing: 0; word-break: break-all;}
+    .form-table {width: 100%;}
+    .form-table table {width: 100%; text-align: center; table-layout: fixed;}
+    .form-table table > thead {border-top: 1px solid #c9c9c9;}
+    .form-table table > thead > tr > th {padding: 21px 10px; color: #000; font-weight: 500; font-size: 16px; line-height: 23px; background-color: #fafafa; vertical-align: middle;}
+    .form-table table > thead > tr + tr {border-top: 1px solid #eee}
+    .form-table table > tbody {border-top: 1px solid #eee;}
+    .form-table table > tbody > tr {border-bottom: 1px solid #eee;} 
+    .form-table table > tbody > tr > td {padding: 21px 20px; font-weight: 400; color: #5e5e5e; font-size: 16px; line-height: 22px; background-color: #fff; vertical-align: middle;} 
+    .form-table table > colgroup {position: relative; width: 100%;}
+    .form-table table.vertical > tbody > tr > th {padding: 20px 30px; text-align: left; font-weight: 500; color: #000; background-color: #fafafa; vertical-align: middle; border-right: 1px solid #eee;} 
+    .form-table table.vertical > tbody > tr > td {padding: 20px 30px; text-align: left; vertical-align: middle;} 
+    .form-table table.vertical > tbody > tr:last-child {border-bottom: none;} 
+    .form-table table.vertical > tbody {border-top: 1px solid #c9c9c9; border-bottom: 1px solid #eee;}
+
+    /* table 왼쪽 고정 */
+    .scroll-table-w {position: relative; left: 0; width: 100%;}
+    .scroll-table-w .scroll-table {position: relative; overflow-x: auto;}
+    .scroll-table-w .scroll-table thead .fixed-cell {position: sticky; left: 0; top: 0; border-top: 1px solid #c9c9c9;}
+    .scroll-table-w .scroll-table tbody th:first-child {position: sticky; left: 0; top: 0; background-color: #fff; border-bottom: 1px solid #eee;}
+    .scroll-table-w .scroll-table tbody td {min-width: 120px;}
+    .scroll-table-w .scroll-table table.vertical tbody th:first-child {background-color: #fafafa;}
+
+    /* .scroll-table-w {position: relative;}
+    .scroll-table.single {overflow-x: auto;}
+    .scroll-table .table-left {position: absolute; top: 0; left: 0; z-index: 1; width: 110px;}
+    .scroll-table .table-left .form-table {position: sticky; left: 0;}
+    .scroll-table .table-left table tr > th {padding: 20px;}
+    .scroll-table .table-left table tr > td {padding: 20px;}
+    .scroll-table .table-right {position: relative; overflow-y: hidden; overflow-x: auto; padding-bottom: 20px;}
+    .scroll-table .table-right::-webkit-scrollbar {height: 2px; background: #e0e0e0;}
+    .scroll-table .table-right::-webkit-scrollbar-thumb {-webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0); box-shadow: inset 0 0 0 rgba(0, 0, 0, 0); background-color: #E37500;}
+    .scroll-table .white-space table tr > th {padding: 20px;}
+    .scroll-table .white-space table tr > td {padding: 20px;}
+    .scroll-table .table-right .white-space table tr > th, .scroll-table .table-right .white-space table tr > td {white-space: nowrap;}
+    .scroll-table .table-right .white-space table tr > th:first-child, .scroll-table .table-right .white-space table tr > td:first-child {white-space: normal;}
+    .scroll-table .table-right .white-space table tr > th:first-child:after, .scroll-table .table-right .white-space table tr > td:first-child:after {content: ''; display: block; min-width: 70px;} */
+
+    /* table 가로 스크롤 안내 */
+    .scroll-table-w .scroll-bg {position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #1D81A5; opacity: 0.8; z-index: 1; transition: all .5s ease; visibility: visible;}
+    .scroll-table-w .scroll-bg.hide {opacity: 0; visibility: hidden;}
+    .scroll-table-w .scroll-bg .info-box {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; text-align: center;}
+    .scroll-table-w .scroll-bg .info-box .txt {margin-top: 16rem; color: #fff; font-size: max(14rem, 14px);}
+    /* ------------------------------------------------------------------- Form(폼) - End ------------------------------------------------------------------- */
+  </style>
+</head>
+
+<body>
+  <div id="wrap" class="form">
+    <header>
+      <h1>모듈화 작업 가이드</h1>
+      <div class="btn-wrap">
+        <a href="./index.html">HOME  <i class="fas fa-angle-right"></i></a>
+      </div>
+    </header>
+    <div id="contents">
+      <aside></aside>
+
+      <div class="content-area">
+        <h2>스타일 가이드</h2>
+        <section>
+          <h3>Input</h3>
+          <!-- sample -->
+          <div style="width: max(400rem, 70vw);">
+            <div class="form-input">
+              <input type="text" placeholder="입력전 가이드">
+            </div>
+
+            <div class="form-input has-erase-btn" style="margin-top: 20px;">
+              <input type="text" placeholder="입력삭제 버튼">
+              <div class="input-btn-wrap">
+                <button type="button" class="btn-erase" title="지우기"></button>
+              </div>
+            </div>
+
+            <div class="form-input completed" style="margin-top: 20px;">
+              <input type="text" value="텍스트 입력완료">
+            </div>
+
+            <div class="has-error-msg error" style="margin-top: 20px;">
+              <div class="form-input error">
+                <input type="text" value="" placeholder="텍스트 입력 오류">
+              </div>
+              <div class="invalid-feedback">정확한 정보를 입력해 주세요</div>
+            </div>
+
+            <div class="form-input" style="margin-top: 20px;">
+              <input type="text" value="텍스트 수정불가" disabled>
+            </div>
+
+            <div class="form-input has-view-btn" style="margin-top: 20px;">
+              <input type="password" placeholder="비밀번호 보기/감추기 버튼">
+              <div class="input-btn-wrap">
+                <button type="button" class="btn-pw-view" title="비밀번호 보기"></button>
+              </div>
+            </div>
+          </div>          
+          <!-- //sample -->
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <div class="form-input">
+              <input type="text" placeholder="입력전 가이드">
+            </div>
+
+            <div class="form-input has-erase-btn">
+              <input type="text" placeholder="입력삭제 버튼">
+              <div class="input-btn-wrap">
+                <button type="button" class="btn-erase" title="지우기"></button>
+              </div>
+            </div>
+
+            <div class="form-input completed">
+              <input type="text" value="텍스트 입력완료">
+            </div>
+
+            <div class="has-error-msg error">
+              <div class="form-input error">
+                <input type="text" value="" placeholder="텍스트 입력 오류">
+              </div>
+              <div class="invalid-feedback">정확한 정보를 입력해 주세요</div>
+            </div>
+
+            <div class="form-input">
+              <input type="text" value="텍스트 수정불가" disabled>
+            </div>
+
+            <div class="form-input has-view-btn">
+              <input type="password" placeholder="비밀번호 보기/감추기 버튼">
+              <div class="input-btn-wrap">
+                <button type="button" class="btn-pw-view" title="비밀번호 보기"></button>
+              </div>
+            </div>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            select {font-size: 18px; color: #888; appearance: none; -webkit-appearance: none; -moz-appearance: none; -o-appearance: none; vertical-align: top;}
+            select::-ms-expand {display: none;}
+            select:focus, select:active {outline: none;}
+            select:disabled {color: #999; background-color: #e9e9e9; opacity: 1;}
+
+            /* ------------------------------------------------------------------- Form(폼) - Start ------------------------------------------------------------------- */
+            /* form - input */
+          .form-input {position: relative; width: 100%;}
+          .form-input input {font-weight: 400; width: 100%; height: max(48rem, 48px); padding: 0 20rem; font-size: max(14rem, 14px); color: #1f1b1c; border: 1px solid #e0e0e0; border-radius: 4px;}
+          .form-input input::placeholder{font-size:max(14rem, 14px);}
+          .form-input input:focus {color: #1f1b1c; border: 1px solid #004D45; background-color: rgba(23, 175, 152, 0.06);}
+          .form-input input:disabled {color: #999; -webkit-text-fill-color: #999; background-color: #f5f5f5; border: 1px solid #e0e0e0; opacity: 1;}
+          .form-input input:read-only {color: #999; -webkit-text-fill-color: #999; background-color: #f5f5f5; border: 1px solid #e0e0e0; opacity: 1;}
+          .form-input input[type="number"]::-webkit-outer-spin-button, .form-input input[type="number"]::-webkit-inner-spin-button {-webkit-appearance: none; margin: 0;}
+          .form-input.has-erase-btn input{padding-right:50px;}
+
+          /* 공통 */
+          .has-error-msg {width: 100%;}
+          .input-btn-wrap {position: absolute; right: 20rem; top: 50%; margin-top: -10rem;}
+          .input-btn-wrap > button + button {margin-left: 16rem;}
+          .input-btn-wrap .btn-erase {display: none; width: max(20rem, 20px); height: max(20rem, 20px); background: url("../assets/images/btn-input-erase.svg") center center/max(20rem, 20px) no-repeat;}
+          .input-btn-wrap .btn-pw-view {display: none; width: max(20rem, 20px); height: 20rem; background: url("../assets/images/icon-view.svg") center center no-repeat;}
+          .input-btn-wrap .btn-search {position: relative; top: -2rem; width: max(20rem, 20px); height: max(20rem, 20px); background: url("../assets/images/icon-popup-search.svg") no-repeat right center;}
+
+
+          // input 지우기 버튼 노출/미노출
+          $(".has-erase-btn input").on("keyup", function() {
+            if(!$(this).is('[readonly]')){
+              if($(this).val() !== "") {
+                $(this).siblings(".input-btn-wrap").find(".btn-erase").css("display","block");
+              } else {
+                $(this).siblings(".input-btn-wrap").find(".btn-erase").css("display","none");
+                //$(this).siblings(".btn_delete").hide();
+              }
+            }
+          });
+          </script>
+        </section>
+
+        <section>
+          <h3>Select</h3>
+          <!-- sample -->
+          <div style="width: max(400rem, 70vw);">
+            <div class="form-select">
+              <div class="form-select-arr">
+                <select name="" id="">
+                  <option value="0">기본 select</option>
+                  <option value="1">option1</option>
+                  <option value="2">option2</option>
+                  <option value="3">option3</option>
+                </select>              
+              </div>
+            </div>
+
+            <div class="form-select" style="margin-top: 20px;">
+              <div class="form-select-arr disabled">
+                <select name="" id="" disabled>
+                  <option value="0">Disabled Select</option>
+                  <option value="1">option1</option>
+                  <option value="2">option2</option>
+                  <option value="3">option3</option>
+                </select>              
+              </div>
+            </div>
+
+            <div class="has-error-msg error" style="margin-top: 20px;">
+              <div class="form-select">
+                <div class="form-select-arr">
+                  <select name="" id="">
+                    <option value="">Error Select</option>
+                    <option value="1">option1</option>
+                    <option value="2">option2</option>
+                    <option value="3">option3</option>
+                  </select>
+                </div>
+              </div>
+              <div class="invalid-feedback">정확한 정보를 선택해 주세요</div>
+            </div>
+
+            <div class="form-select-text" style="margin-top: 20px;">
+              <div class="form-select-arr">
+                <select name="" id="">
+                  <option value="0">텍스트형 셀렉트박스</option>
+                  <option value="1">option1</option>
+                  <option value="2">option2</option>
+                  <option value="3">option3</option>
+                </select>              
+              </div>
+            </div>
+          </div>          
+          <!-- //sample -->
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <div class="form-select">
+              <div class="form-select-arr">
+                <select name="" id="">
+                  <option value="0">기본 select</option>
+                  <option value="1">option1</option>
+                  <option value="2">option2</option>
+                  <option value="3">option3</option>
+                </select>              
+              </div>
+            </div>
+
+            <div class="form-select">
+              <div class="form-select-arr">
+                <select name="" id="" disabled>
+                  <option value="0">Disabled Select</option>
+                  <option value="1">option1</option>
+                  <option value="2">option2</option>
+                  <option value="3">option3</option>
+                </select>              
+              </div>
+            </div>
+
+            <div class="has-error-msg error">
+              <div class="form-select">
+                <div class="form-select-arr">
+                  <select name="" id="">
+                    <option value="">Error Select</option>
+                    <option value="1">option1</option>
+                    <option value="2">option2</option>
+                    <option value="3">option3</option>
+                  </select>
+                </div>
+              </div>
+              <div class="invalid-feedback">정확한 정보를 선택해 주세요</div>
+            </div>
+
+            <div class="form-select-text">
+              <div class="form-select-arr">
+                <select name="" id="">
+                  <option value="0">텍스트형 셀렉트박스</option>
+                  <option value="1">option1</option>
+                  <option value="2">option2</option>
+                  <option value="3">option3</option>
+                </select>              
+              </div>
+            </div>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            /* form - select */
+            .form-select {position: relative; display: inline-block; width: 100%; vertical-align: top;}
+            .form-select .form-select-arr {position: relative;}
+            .form-select .form-select-arr select {position: relative; padding: 0 40rem 0 20rem; width: 100%; height: max(48rem, 48px); color: #999; font-size: max(14rem, 14px); background-color: transparent; border: 1px solid #e0e0e0; border-radius: 4px; z-index: 1;}
+            .form-select .form-select-arr select option {width: 100%; color: #1f1b1c;}
+            .form-select .form-select-arr:after {content: ""; display: block; position: absolute; right: 16rem; top: 50%; margin-top: -10rem; transform: rotate(0); width: 20rem; height: 20rem; background: url("../assets/images/icon-default-select-arrow.svg") center center/max(20rem, 20px) no-repeat; transition: transform .3s ease; z-index: 0;}
+            .form-select .form-select-arr.disabled {background-color: #f5f5f5;}
+            .form-select-text .form-select-arr {position: relative; display: inline-block;}
+            .form-select-text .form-select-arr select {padding-right: 20rem; font-weight: 500; font-size: max(14rem, 14px); color: #797979; border: 0;} /* 텍스트형 */
+            .form-select-text .form-select-arr:after {content: ''; display: block; position: absolute; right: 0; top: 50%; margin-top: -10rem; width: 20rem; height: 20rem; background: url("../assets/images/icon-text-select-arrow.svg") center center/max(20rem, 20px) no-repeat;}
+            .form-select.active .form-select-arr:after {transform: rotate(180deg);}
+            .form-select.selected select {color: #1f1b1c;}
+            .form-select select:disabled {border: 1px solid #E0E0E0;}
+            
+            // select box 값 선택 후 색 변경
+            $(document).on("change", ".form-select select", function () {
+              $(this).parents(".form-select").removeClass("active");
+              if($(this).parents(".form-select").hasClass("selected") && !$(this).parents(".form-select").hasClass("not-first")){
+                $(this).parents(".form-select").addClass("existing-has-class");
+              };
+
+              if(!$(this).parents(".form-select").hasClass("not-first")){
+                $(this).parents(".form-select").addClass("not-first");
+              };
+              
+              if(!$(this).parents(".form-select").hasClass("existing-has-class")){
+                if ($(this).find("option:selected").index() != 0) {
+                  $(this).parents(".form-select").addClass("selected");
+                }else{
+                  $(this).parents(".form-select").removeClass("selected");
+                }
+              }
+            });
+
+
+            $(document).on("focus", ".form-select select", function () {
+              $(this).parents(".form-select").addClass("active");
+            });
+
+
+            $(document).on("mouseup", ".form-select select", function () {
+              console.log("mouseup");
+              var open = $(this).data("isopen");
+
+              if(open) {
+                $(this).parents(".form-select").removeClass("active");
+              } else {
+                $(this).parents(".form-select").addClass("active");
+              }
+              $(this).data("isopen", !open);
+            });
+
+            $(document).on("blur", ".form-select select", function () {
+              $(this).data('isopen', false);
+              $(this).parents(".form-select").removeClass("active");
+            });
+          </script>
+        </section>
+
+        <section>
+          <h3>CheckBox / Radio</h3>
+          <!-- sample -->
+          <div class="flex-box">
+            <div class="form-checkbox" style="margin-right: 20px;">
+              <input type="checkbox" id="check1" name="" checked>
+              <label for="check1">선택</label>
+            </div>
+
+            <div class="form-checkbox" style="margin-right: 20px;">
+              <input type="checkbox" id="check2" name="">
+              <label for="check2">비선택</label>
+            </div>
+
+            <div class="form-checkbox" style="margin-right: 20px;">
+              <input type="checkbox" id="check3" name="" disabled>
+              <label for="check3">비활성</label>
+            </div>
+
+            <div class="form-checkbox" style="margin-right: 20px;">
+              <input type="checkbox" id="check4" name="" disabled checked>
+              <label for="check4">비활성 + 체크</label>
+            </div>
+
+            <div class="form-checkbox no-txt" style="margin-right: 20px;">
+              <input type="checkbox" id="check5" name="">
+              <label for="check5"></label>
+            </div>
+            텍스트없을경우
+          </div>
+
+          <div class="flex-box" style="margin-top: 20px;">
+            <div class="form-radio" style="margin-right: 20px;">
+              <input type="radio" id="radio1" name="radioSample" checked>
+              <label for="radio1">선택</label>
+            </div>
+
+            <div class="form-radio" style="margin-right: 20px;">
+              <input type="radio" id="radio2" name="radioSample">
+              <label for="radio2">비선택</label>
+            </div>
+
+            <div class="form-radio" style="margin-right: 20px;">
+              <input type="radio" id="radio3" name="radioSample" disabled>
+              <label for="radio3">비활성</label>
+            </div>
+
+            <div class="form-radio" style="margin-right: 20px;">
+              <input type="radio" id="radio4" name="radioSample" disabled checked>
+              <label for="radio4">비활성 + 체크</label>
+            </div>
+
+            <div class="form-radio no-txt" style="margin-right: 20px;">
+              <input type="radio" id="radio5" name="radioSample">
+              <label for="radio5"></label>
+            </div>
+            텍스트없을경우
+          </div>
+          <!-- //sample -->
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <div class="flex-box">
+              <div class="form-checkbox">
+                <input type="checkbox" id="check1" name="" checked>
+                <label for="check1">선택</label>
+              </div>
+  
+              <div class="form-checkbox">
+                <input type="checkbox" id="check2" name="">
+                <label for="check2">비선택</label>
+              </div>
+  
+              <div class="form-checkbox">
+                <input type="checkbox" id="check3" name="" disabled>
+                <label for="check3">비활성</label>
+              </div>
+  
+              <div class="form-checkbox">
+                <input type="checkbox" id="check4" name="" disabled checked>
+                <label for="check4">비활성 + 체크</label>
+              </div>
+  
+              <div class="form-checkbox no-txt">
+                <input type="checkbox" id="check5" name="">
+                <label for="check5"></label>
+              </div>
+              텍스트없을경우
+            </div>
+  
+            <div class="flex-box">
+              <div class="form-radio">
+                <input type="radio" id="radio1" name="radioSample" checked>
+                <label for="radio1">선택</label>
+              </div>
+  
+              <div class="form-radio">
+                <input type="radio" id="radio2" name="radioSample">
+                <label for="radio2">비선택</label>
+              </div>
+  
+              <div class="form-radio">
+                <input type="radio" id="radio3" name="radioSample" disabled>
+                <label for="radio3">비활성</label>
+              </div>
+  
+              <div class="form-radio">
+                <input type="radio" id="radio4" name="radioSample" disabled checked>
+                <label for="radio4">비활성 + 체크</label>
+              </div>
+  
+              <div class="form-radio no-txt">
+                <input type="radio" id="radio5" name="radioSample">
+                <label for="radio5"></label>
+              </div>
+              텍스트없을경우
+            </div>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            /* form - input - checkbox */
+            .form-checkbox {position: relative;}
+            .form-checkbox input {position: absolute; top: 0; left: 0; width: max(20rem, 20px); height: max(20rem, 20px); opacity: .001;}
+            .form-checkbox input + label {position: relative; display: inline-block; padding-left: max(28rem, 28px); min-height: max(20rem, 20px); width:auto; color: #1F1B1C; font-size: max(14rem, 14px); background: url("../assets/images/icon-checkbox.svg") left top/max(19rem, 20px) no-repeat; z-index: 1;}
+            .form-checkbox input:checked + label {background: url("../assets/images/icon-checkbox-on.svg") left top no-repeat;}
+            .form-checkbox input:disabled + label {background: url("../assets/images/icon-checkbox-disabled.svg") left top no-repeat;}
+            .form-checkbox input:disabled:checked + label {background: url("../assets/images/icon-checkbox-checked-disabled.svg") left top no-repeat;}
+            .form-checkbox .tool-icon{padding:0; width:max(20rem, 20px); height:max(20rem, 20px); vertical-align: middle;}
+            .form-checkbox.white-ver input + label {background: url("../assets/images/icon-checkbox-white.svg") left top no-repeat;}
+            .form-checkbox.white-ver input:checked + label {background: url("../assets/images/icon-checkbox-on.svg") left top no-repeat;}
+
+            .form-checkbox.no-txt {height: max(20rem, 20px);}
+            .form-checkbox.no-txt input + label {padding-left: max(20rem, 20px); background-position: left top;}
+
+            /* form - input - raido */
+            .form-radio {position: relative;}
+            .form-radio input {position: absolute; top: 0; left: 0; width: max(20rem, 20px); height: max(20rem, 20px); opacity: .001;}
+            .form-radio input + label {display: inline-block; padding-left: max(28rem, 28px); min-height: max(20rem, 20px); color: #1F1B1C; font-size: max(14rem, 14px); background: url("../assets/images/icon-radio.svg") left top/max(20rem, 20px) no-repeat;}
+            .form-radio input:checked + label {background: url("../assets/images/icon-radio-on.svg") left top no-repeat;}
+            .form-radio input:disabled + label {background: url("../assets/images/icon-radio-disabled.svg") left top no-repeat;}
+            .form-radio input:disabled:checked + label {background: url("../assets/images/icon-radio-checked-disabled.svg") left top no-repeat;}
+            .form-radio.no-txt input + label {padding-left: max(20rem, 20px); background-position: left top;}
+          </script>
+        </section>
+
+        <section>
+          <h3>Table</h3>
+          <div>
+            <div class="form-table">
+              <table>
+                <caption>구분, 구분1, 구분2, 구분3의 정보를 제공하는 테이블 표</caption>
+                <colgroup>
+                  <col style="width:25%;">
+                  <col style="width:25%;">
+                  <col style="width:25%;">
+                  <col style="width:25%;">
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th scope="col">구분</th>
+                    <th scope="col">구분1</th>
+                    <th scope="col">구분2</th>
+                    <th scope="col">구분3</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row">내용</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">내용</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">내용</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">내용</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">내용</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <p style="margin: 10px 0; font-weight: 500;">세로형 테이블</p>
+            <div class="form-table">
+              <table class="vertical">
+                <caption></caption>
+                <colgroup>
+                  <col style="width:110px;">
+                  <col style="width:auto;">
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <th scope="row">제목</th>
+                    <td>내용</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">제목</th>
+                    <td>내용</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">제목</th>
+                    <td>내용</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <p style="margin: 10px 0; font-weight: 500;">왼쪽 고정 테이블</p>
+            <div class="scroll-table-w">
+              <div class="scroll-table">
+                <div class="form-table">
+                  <table class="vertical">
+                    <caption></caption>
+                    <colgroup>
+                      <col width="110px;">
+                      <col width="100px;">
+                      <col width="100px;">
+                      <col width="100px;">
+                    </colgroup>
+                    <tbody>
+                      <tr>
+                        <th scope="row">제목</th>
+                        <td>내용</td>
+                        <td>내용</td>
+                        <td>내용</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">제목</th>
+                        <td>내용</td>
+                        <td>내용</td>
+                        <td>내용</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">제목</th>
+                        <td>내용</td>
+                        <td>내용</td>
+                        <td>내용</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p style="margin: 10px 0; font-weight: 500;">테이블 가로 스크롤 안내</p>
+            <div class="scroll-table-w">
+              <div class="scroll-table">
+                <div class="form-table">
+                  <table>
+                    <caption>종목코드, 종목명, 수량(주), 평가금액(원), 비중(%), 1주 수익률의 정보를 제공하는 구성종목 테이블 표</caption>
+                    <colgroup>
+                      <col width="120px">
+                      <col width="120px">
+                      <col width="120px">
+                      <col width="120px">
+                      <col width="120px">
+                    </colgroup>
+                    <thead>
+                      <tr>
+                        <th scope="col">종목코드</th>
+                        <th scope="col">종목명</th>
+                        <th scope="col">수량(주)</th>
+                        <th scope="col">평가금액(원)</th>
+                        <th scope="col">비중(%)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>-</td>
+                        <td>CSI300</td>
+                        <td>1,615</td>
+                        <td>18,620,950</td>
+                        <td>16.23</td>
+                      </tr>
+                      <tr>
+                        <td>-</td>
+                        <td>CSI300</td>
+                        <td>1,615</td>
+                        <td>18,620,950</td>
+                        <td>16.23</td>
+                      </tr>
+                      <tr>
+                        <td>-</td>
+                        <td>CSI300</td>
+                        <td>1,615</td>
+                        <td>18,620,950</td>
+                        <td>16.23</td>
+                      </tr>
+                      <tr>
+                        <td>-</td>
+                        <td>CSI300</td>
+                        <td>1,615</td>
+                        <td>18,620,950</td>
+                        <td>16.23</td>
+                      </tr>
+                      <tr>
+                        <td>-</td>
+                        <td>CSI300</td>
+                        <td>1,615</td>
+                        <td>18,620,950</td>
+                        <td>16.23</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="scroll-bg">
+                <div class="info-box">
+                  <p class="img"><img src="../assets/images/icon-table-scroll.svg" alt=""></p>
+                  <p class="txt">가로로 스와이프 하여 내용을 확인해주세요.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <div class="form-table">
+              <table>
+                <caption>구분, 구분1, 구분2, 구분3의 정보를 제공하는 테이블 표</caption>
+                <colgroup>
+                  <col style="width:25%;">
+                  <col style="width:25%;">
+                  <col style="width:25%;">
+                  <col style="width:25%;">
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th scope="col">구분</th>
+                    <th scope="col">구분1</th>
+                    <th scope="col">구분2</th>
+                    <th scope="col">구분3</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row">내용</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">내용</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">내용</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">내용</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                  </tr>
+                  <tr>
+                    <td scope="row">내용</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                    <td>내용입니다</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            세로형 테이블
+            <div class="form-table">
+              <table class="vertical">
+                <caption></caption>
+                <colgroup>
+                  <col style="width:110px;">
+                  <col style="width:auto;">
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <th scope="row">제목</th>
+                    <td>내용</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">제목</th>
+                    <td>내용</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">제목</th>
+                    <td>내용</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            왼쪽 고정 테이블
+            <div class="scroll-table-w">
+              <div class="scroll-table">
+                <div class="form-table">
+                  <table class="vertical">
+                    <caption></caption>
+                    <colgroup>
+                      <col width="110px;">
+                      <col width="100px;">
+                      <col width="100px;">
+                      <col width="100px;">
+                    </colgroup>
+                    <tbody>
+                      <tr>
+                        <th scope="row">제목</th>
+                        <td>내용</td>
+                        <td>내용</td>
+                        <td>내용</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">제목</th>
+                        <td>내용</td>
+                        <td>내용</td>
+                        <td>내용</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">제목</th>
+                        <td>내용</td>
+                        <td>내용</td>
+                        <td>내용</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            테이블 가로 스크롤 안내
+            <div class="scroll-table-w">
+              <div class="scroll-table">
+                <div class="form-table">
+                  <table>
+                    <caption>종목코드, 종목명, 수량(주), 평가금액(원), 비중(%), 1주 수익률의 정보를 제공하는 구성종목 테이블 표</caption>
+                    <colgroup>
+                      <col width="120px">
+                      <col width="120px">
+                      <col width="120px">
+                      <col width="120px">
+                      <col width="120px">
+                    </colgroup>
+                    <thead>
+                      <tr>
+                        <th scope="col">종목코드</th>
+                        <th scope="col">종목명</th>
+                        <th scope="col">수량(주)</th>
+                        <th scope="col">평가금액(원)</th>
+                        <th scope="col">비중(%)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>-</td>
+                        <td>CSI300</td>
+                        <td>1,615</td>
+                        <td>18,620,950</td>
+                        <td>16.23</td>
+                      </tr>
+                      <tr>
+                        <td>-</td>
+                        <td>CSI300</td>
+                        <td>1,615</td>
+                        <td>18,620,950</td>
+                        <td>16.23</td>
+                      </tr>
+                      <tr>
+                        <td>-</td>
+                        <td>CSI300</td>
+                        <td>1,615</td>
+                        <td>18,620,950</td>
+                        <td>16.23</td>
+                      </tr>
+                      <tr>
+                        <td>-</td>
+                        <td>CSI300</td>
+                        <td>1,615</td>
+                        <td>18,620,950</td>
+                        <td>16.23</td>
+                      </tr>
+                      <tr>
+                        <td>-</td>
+                        <td>CSI300</td>
+                        <td>1,615</td>
+                        <td>18,620,950</td>
+                        <td>16.23</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="scroll-bg">
+                <div class="info-box">
+                  <p class="img"><img src="../assets/images/icon-table-scroll.svg" alt=""></p>
+                  <p class="txt">가로로 스와이프 하여 내용을 확인해주세요.</p>
+                </div>
+              </div>
+            </div>
+
+            // 테이블 가로 스크롤 안내
+            $(".scroll-table-w").each(function(){
+              var startX, endX;
+
+              $(this).on('touchstart',function(e){ startX = e.originalEvent.changedTouches[0].screenX;});
+              $(this).on('touchend',function(e){
+                endX=e.originalEvent.changedTouches[0].screenX;
+                if(startX > endX) { $(this).find(".scroll-bg").addClass("hide");}
+              });
+            });
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            /* table */
+            table {border-collapse: collapse; border-spacing: 0; word-break: break-all;}
+            .form-table {width: 100%;}
+            .form-table table {width: 100%; text-align: center; table-layout: fixed;}
+            .form-table table > thead {border-top: 1px solid #c9c9c9;}
+            .form-table table > thead > tr > th {padding: 21px 10px; color: #000; font-weight: 500; font-size: 16px; line-height: 23px; background-color: #fafafa; vertical-align: middle;}
+            .form-table table > thead > tr + tr {border-top: 1px solid #eee}
+            .form-table table > tbody {border-top: 1px solid #eee;}
+            .form-table table > tbody > tr {border-bottom: 1px solid #eee;} 
+            .form-table table > tbody > tr > td {padding: 21px 20px; font-weight: 400; color: #5e5e5e; font-size: 16px; line-height: 22px; background-color: #fff; vertical-align: middle;} 
+            .form-table table > colgroup {position: relative; width: 100%;}
+            .form-table table.vertical > tbody > tr > th {padding: 20px 30px; text-align: left; font-weight: 500; color: #000; background-color: #fafafa; vertical-align: middle; border-right: 1px solid #eee;} 
+            .form-table table.vertical > tbody > tr > td {padding: 20px 30px; text-align: left; vertical-align: middle;} 
+            .form-table table.vertical > tbody > tr:last-child {border-bottom: none;} 
+            .form-table table.vertical > tbody {border-top: 1px solid #c9c9c9; border-bottom: 1px solid #eee;}
+        
+            /* table 왼쪽 고정 */
+            .scroll-table-w {position: relative; left: 0; width: 100%;}
+            .scroll-table-w .scroll-table {position: relative; overflow-x: auto;}
+            .scroll-table-w .scroll-table thead .fixed-cell {position: sticky; left: 0; top: 0; border-top: 1px solid #c9c9c9;}
+            .scroll-table-w .scroll-table tbody th:first-child {position: sticky; left: 0; top: 0; background-color: #fff; border-bottom: 1px solid #eee;}
+            .scroll-table-w .scroll-table tbody td {min-width: 120px;}
+            .scroll-table-w .scroll-table table.vertical tbody th:first-child {background-color: #fafafa;}
+        
+            /* table 가로 스크롤 안내 */
+            .scroll-table-w .scroll-bg {position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #1D81A5; opacity: 0.8; z-index: 1; transition: all .5s ease; visibility: visible;}
+            .scroll-table-w .scroll-bg.hide {opacity: 0; visibility: hidden;}
+            .scroll-table-w .scroll-bg .info-box {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; text-align: center;}
+            .scroll-table-w .scroll-bg .info-box .txt {margin-top: 16rem; color: #fff; font-size: max(14rem, 14px);}
+          </script>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // input 지우기 버튼 노출/미노출
+    $(".has-erase-btn input").on("keyup", function() {
+      if(!$(this).is('[readonly]')){
+        if($(this).val() !== "") {
+          $(this).siblings(".input-btn-wrap").find(".btn-erase").css("display","block");
+        } else {
+          $(this).siblings(".input-btn-wrap").find(".btn-erase").css("display","none");
+          //$(this).siblings(".btn_delete").hide();
+        }
+      }
+    });
+
+    // input 지우기 버튼 클릭 시
+    $(document).on("click", ".input-btn-wrap .btn-erase", function(){
+      $(this).hide();
+      $(this).parents(".input-btn-wrap").siblings("input").val("").focus();
+    });
+
+    // input password 보기/감추기 버튼 노출/미노출
+    $(".has-view-btn input").on("keyup", function() {
+      if(!$(this).is('[readonly]')){
+        if($(this).val() !== "") {
+          $(this).siblings(".input-btn-wrap").find(".btn-pw-view").css("display","block");
+        } else {
+          $(this).siblings(".input-btn-wrap").find(".btn-pw-view").css("display","none");
+          //$(this).siblings(".btn_delete").hide();
+        }
+      }
+    });
+
+    // input password 보기/감추기 버튼 클릭 시
+    $(document).on("click", ".input-btn-wrap .btn-pw-view", function(){
+      $(this).toggleClass("active");
+
+      if($(this).hasClass("active")){
+        $(this).parents(".input-btn-wrap").siblings("input").attr('type',"text");
+      }else{
+        $(this).parents(".input-btn-wrap").siblings("input").attr('type',"password");
+      }
+    });
+
+    // input password foucs out
+    $(".form-input.has-view-btn input").focusout(function () {
+      //$(this).parents(".form-input").find("").removeClass("focused");
+      console.log("here");
+      $(this).parents(".form-input").find("input").attr('type',"password");
+    });
+
+    // select box 값 선택 후 색 변경
+    $(document).on("change", ".form-select select", function () {
+      $(this).parents(".form-select").removeClass("active");
+      if($(this).parents(".form-select").hasClass("selected") && !$(this).parents(".form-select").hasClass("not-first")){
+        $(this).parents(".form-select").addClass("existing-has-class");
+      };
+
+      if(!$(this).parents(".form-select").hasClass("not-first")){
+        $(this).parents(".form-select").addClass("not-first");
+      };
+      
+      if(!$(this).parents(".form-select").hasClass("existing-has-class")){
+        if ($(this).find("option:selected").index() != 0) {
+          $(this).parents(".form-select").addClass("selected");
+        }else{
+          $(this).parents(".form-select").removeClass("selected");
+        }
+      }
+    });
+
+
+    $(document).on("focus", ".form-select select", function () {
+      $(this).parents(".form-select").addClass("active");
+    });
+
+
+    $(document).on("mouseup", ".form-select select", function () {
+      console.log("mouseup");
+      var open = $(this).data("isopen");
+
+      if(open) {
+        $(this).parents(".form-select").removeClass("active");
+      } else {
+        $(this).parents(".form-select").addClass("active");
+      }
+      $(this).data("isopen", !open);
+    });
+
+    $(document).on("blur", ".form-select select", function () {
+      $(this).data('isopen', false);
+      $(this).parents(".form-select").removeClass("active");
+    });
+
+    // 테이블 가로 스크롤 안내
+    $(".scroll-table-w").each(function(){
+      var startX, endX;
+
+      $(this).on('touchstart',function(e){ startX = e.originalEvent.changedTouches[0].screenX;});
+      $(this).on('touchend',function(e){
+        endX=e.originalEvent.changedTouches[0].screenX;
+        if(startX > endX) { $(this).find(".scroll-bg").addClass("hide");}
+      });
+    });
+  </script>
+</body>
+
+</html>

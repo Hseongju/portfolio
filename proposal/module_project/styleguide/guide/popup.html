@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>UI개발1팀 모듈화 프로젝트</title>
+  <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/swiper.css">
+  <link rel="stylesheet" href="../assets/styles/shCore.css"/>
+	<link rel="Stylesheet" href="../assets/styles/shCoreEclipse.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="../assets/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script src="../assets/scripts/shCore.js"></script>
+	<script src="../assets/scripts/shBrushJScript.js"></script>
+	<script src="../assets/scripts/shBrushXml.js"></script>
+	<script src="../assets/scripts/shBrushCss.js"></script>
+  <script src="../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../assets/js/gsap.min.js"></script>
+  <script src="../assets/js/swiper.min.js"></script>
+  <script src="../assets/js/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/lottie-player.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+  <style>
+    body.stop-scroll {overflow: hidden; height: 100%; min-height: 100%; touch-action: none;}
+    #wrap.stop-scroll {overflow: hidden; height: 100%;}
+
+    .form-text {position: relative; height: 42rem; border: 1px solid #d8d8d8; border-radius: 5px; background-color: #fff;}
+    .form-text:after {content: ""; clear: both; display: block; height: 0;}
+    .form-text input {padding: 5rem 20rem; width: 100%; height: 100%; border-radius: 5px; outline: 0; border: 0;}
+    .layer-popup .pop-wrap .form-search input {border: 1px solid #b4b4b4;}
+    .btn {padding: 20rem 30rem; display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; width: 100%; height: 100%; /* height: max(40rem, 40px); */ font-size: max(20rem, 16px); font-family: "Noto Sans KR", sans-serif;}
+    .primary-btn {color: #fff; background: #1D81A5;}
+    .border-btn {border: 1px solid #F6F6F6; color: #000; background: #F6F6F6;}
+    .txt-div .tit {margin-bottom: 20px; font-size: max(18rem, 14px); line-height: 150%; letter-spacing: -.025em; color: #222; font-weight:500;}
+    .txt-div .txt {font-size: max(18rem, 14px); line-height: 150%; letter-spacing: -.025em; color: #555; font-weight:400;}
+    .txt-div .txt + .txt {margin-top: 16px;}
+
+    /* 레이어팝업 - 공통 */
+    .layer-popup {display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, .7); z-index: 100;}
+    .layer-popup .pop-wrap {position: absolute; left: 50%; top: 50%; transform:translate(-50%, -50%); width: 790rem; height: auto; max-height: 70vh; background-color: #fff; border-radius: 20px; overflow: hidden;}
+    .layer-popup .pop-wrap .pop-head {position: relative; padding: 40rem 40rem 30rem;}
+    .layer-popup .pop-wrap .pop-head:after{display:block; content:""; position:absolute; bottom:0; left: 40rem; width:calc(100% - 80px); width:-webkit-calc(100% - 80px); height: 1px; background:rgba(0,0,0,0.05);}
+    .layer-popup .pop-wrap .pop-head .title {font-size: max(24rem, 20px); line-height: 140%; letter-spacing: -.025em; color: #000; font-weight:bold;}
+
+    .layer-popup .pop-wrap .pop-cont {height: 100%; border-radius: 0 0 20px 20px;}
+    .layer-popup .pop-wrap .pop-cont .for-padding {padding: 0 12rem 48rem 40rem; height: 100%;}
+    .layer-popup .pop-wrap .pop-cont .for-padding .scroll-area {position: relative; padding: 30rem 20rem 0 0; height: 100%; overflow-y: auto;}
+    .layer-popup .pop-wrap .pop-cont .for-padding .scroll-area .expand-box .desc {font-size: max(18rem, 16px); line-height: 150%; letter-spacing: -.025em; color: #555; font-weight:400;}
+    .layer-popup .pop-wrap .pop-cont .for-padding .scroll-area .btn-area {margin-top: 20rem;}
+    .layer-popup .pop-wrap .btn-close {position: absolute; right: 40rem; top: 42rem; width: max(24rem, 24px); height: max(24rem, 24px); background: url(../assets/images/icon-btn-close.svg) no-repeat center center/cover;}
+		
+    /* 레이어팝업 - 스크롤 */
+    .layer-popup .pop-wrap .pop-cont .for-padding .scroll-area::-webkit-scrollbar {width: 4px;}
+    .layer-popup .pop-wrap .pop-cont .for-padding .scroll-area::-webkit-scrollbar-thumb {border-radius: 3px; -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0); box-shadow: inset 0 0 0 rgba(0, 0, 0, 0); background-color: #c7c7c7;}
+		
+		/* 레이어팝업 - 하단버튼 고정 */
+    /* .layer-popup .pop-wrap.bottom_btn_pop .pop-cont .for-padding {height: calc(100% - max(40rem, 40px)); height: -webkit-calc(100% - max(40rem, 40px));} */
+    .layer-popup .pop-wrap .fixed-btn-area {display: -webkit-box; display: -ms-flexbox; display: flex; justify-content: space-between;}
+		.layer-popup .pop-wrap .fixed-btn-area .left, .fixed-btn-area .right {width: 100%;}
+    
+    /* full 팝업 */
+    .layer-popup .pop-wrap.full {top: auto; left: auto; bottom: auto; width: 100%; height: 100%; max-height: none; border-radius: 0; transition: none; transform: none;}
+    .layer-popup .pop-wrap.full .pop-head {padding: 15rem 60rem; text-align: center;}
+    .layer-popup .pop-wrap.full .pop-cont .for-padding {padding: 20rem 6rem 10rem 20rem;}
+    .layer-popup .pop-wrap.full .btn-close {right: 20rem; top: 20rem;}
+
+    /* overlap 팝업 */
+    .layer-popup.overlap {display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: transparent; z-index: 101;}
+    .dimd {display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, .7); z-index: 100;}
+
+    @media screen and (max-width:1024px) {
+      .btn {padding: max(20rem, 20px); width: 100%; font-size: max(16rem, 15px);}
+
+      /* 레이어팝업 - 공통 */
+      .layer-popup .pop-wrap {width: -webkit-calc(100% - 60rem); border-radius: 10px;}
+      .layer-popup .pop-wrap .pop-head {padding: 20rem 20rem 10rem;}
+      .layer-popup .pop-wrap .pop-head:after {left: 20rem; width: calc(100% - 40px); width: -webkit-calc(100% - 40px);}
+      .layer-popup .pop-wrap .pop-head .title {font-size: max(20rem, 16px);}
+
+      .layer-popup .pop-wrap .pop-cont .for-padding {padding: 0 6rem 24rem 20rem;}
+      .layer-popup .pop-wrap .pop-cont .for-padding .scroll-area {padding: 20rem 14rem 0 0;}
+      .layer-popup .pop-wrap .pop-cont .for-padding .scroll-area .expand-box .desc {font-size: max(16rem, 14px);}
+      .layer-popup .pop-wrap .btn-close {right: 20rem; top: 20rem;}
+
+			/* full 팝업 */
+      .layer-popup .pop-wrap.full {top: auto; left: auto; bottom: auto; width: 100%; height: 100%; max-height: none; border-radius: 0; transition: none; transform: none;}
+      .layer-popup .pop-wrap.full .pop-head {padding: 15rem 60rem; text-align: center;}
+      .layer-popup .pop-wrap.full .pop-cont .for-padding {padding: 20rem 6rem 10rem 20rem;}
+
+      /* slide 팝업 */
+      .layer-popup .pop-wrap.slide {top: auto; left: 0; bottom: 0; width: 100%; border-radius: 10px 10px 0 0; transform: translate(0, 100%);}
+    }
+		@media screen and (max-width:500px) {
+			.layer-popup .pop-wrap {width: 320rem;}
+      .layer-popup .pop-wrap .pop-cont .for-padding .scroll-area .expand-box .desc {font-size: max(14rem, 12px);}
+      .layer-popup .pop-wrap .btn-close {width: max(20rem, 20px); height: max(20rem, 20px);}
+		}
+  </style>
+</head>
+<body>
+  <div id="wrap" style="background:#fff;">
+    <header>
+      <h1>모듈화 작업 가이드</h1>
+      <div class="btn-wrap">
+        <a href="./index.html">HOME  <i class="fas fa-angle-right"></i></a>
+      </div>
+    </header>
+    <div id="contents">
+      <aside></aside>
+
+      <div class="content-area">
+        <h2>팝업 가이드</h2>
+
+				<div style="margin: 20px 0; padding: 20px; display: inline-block; font-size: 14px; border: 2px solid #666;">
+					<p style="margin-bottom: 2px;">* 웹 접근성을 위한 필수입력 인자값 (레이어팝업 전체 공통)</p>
+					<p style="margin-bottom: 2px; font-weight: 500;">호출 방법 : openPopupFn($(this), '#popName')</p>
+					<p>
+						1. 팝업을 닫을 때 포커스가 다시 이벤트를 발생시킨 엘리먼트로 돌아와야 되기 때문에 돌아올 엘리멘트를 입력<br>
+						2. 팝업DIV에는 고유한 이름을 작성하여 그 이름(id 또는 class)을 문자열로 호출
+					</p>
+
+          <hr style="margin: 10px 0;">
+          <p>- 하단버튼 고정인 경우 :: pop-wrap에 bottom_btn_pop 클래스 추가</p>
+          <p>- full 팝업 :: pop-wrap에 full 클래스 추가</p>
+          <p>- 하단에서 위로 올라오는 팝업 :: pop-wrap에 slide 클래스 추가</p>
+          <p>- 중첩 팝업 :: dimd 별도 / layer-popup에 overlap 클래스 추가</p>
+				</div>
+
+        
+        <section>
+          <h3>center 팝업(기본)</h3>
+					<div>
+            <div>
+              <!-- sample -->
+              <a href="javascript:" onclick="openPopupFn($(this), '#centerPopup')">중앙 팝업 열기</a>
+              <div class="layer-popup" id="centerPopup">
+                <div class="pop-wrap">
+                  <div class="pop-head">
+                    <p class="title">제보자보호</p>
+                  </div>
+                  <div class="pop-cont">
+                    <div class="for-padding">
+                      <div class="scroll-area">
+                        <div class="expand-box">
+                          <p class="desc">조사자는 제보자의 신원 및 제보내용에 대해서 철저히 비밀을 유지할 의무가 있으며, 조사과정에서 일부 정보의 공개가 필요할 경우라도 제보자의 동의를 받은 이후에만 해당 정보를 공개할 수 있다.<br><br>
+                            피제보자를 포함한 그 어떤 구성원도 제보자를 파악하기 위한 행위를 해서는 안 되며, 이를 위반한 것이 확인되는 경우 징계규정에 따라 징계 조치한다.<br><br>
+                            제보자가 내부 구성원일 경우 제보자에 대한 인사상 불이익, 근무조건 차별, 구성원들의 따돌림 등 보복을 위한 그 어떤 불이익 행위도 금지되며, 제보자가 외부 관계자일 경우 거래관계상 불이익 등의 보복 조치를 금지한다.<br><br>
+                            제보의 사실관계 조사과정에서 비윤리행위의 조사에 적극 협조한 구성원 및 이해관계자에 대해서도 제보자와 동일한 보호조치를 취한다.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a class="btn-close" href="javascript:" title="닫기">
+                    <span class="blind"></span>
+                  </a>
+                </div>
+              </div>
+              <!-- //sample -->
+            </div>
+            <div>
+              <!-- sample -->
+              <a href="javascript:" onclick="openPopupFn($(this), '#centerPopup1')">버튼(1개) 팝업 열기</a>
+              <div class="layer-popup" id="centerPopup1">
+                <div class="pop-wrap">
+                  <div class="pop-head">
+                    <p class="title">개인정보 수집 및 이용약관 동의</p>
+                  </div>
+                  <div class="pop-cont">
+                    <div class="for-padding">
+                      <div class="scroll-area">
+                        <div class="expand-box">
+                          <div class="txt-div">
+                            <p class="tit">제2조 개인정보 수집항목 및 이용목적</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          </div>
+                        </div>
+                        <div class="btn-area">
+                          <a class="primary-btn btn close" href="javascript:">
+                            <span>동의</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a class="btn-close" href="javascript:" title="닫기">
+                    <span class="blind"></span>
+                  </a>
+                </div>
+              </div>
+              <!-- //sample -->
+            </div>
+            <div>
+              <!-- sample -->
+              <a href="javascript:" onclick="openPopupFn($(this), '#centerPopup2')">하단버튼고정(1개) 팝업 열기</a>
+              <div class="layer-popup" id="centerPopup2">
+                <div class="pop-wrap">
+                  <div class="pop-head">
+                    <p class="title">개인정보 수집 및 이용약관 동의</p>
+                  </div>
+                  <div class="pop-cont">
+                    <div class="for-padding">
+                      <div class="scroll-area">
+                        <div class="expand-box">
+                          <div class="txt-div">
+                            <p class="tit">제2조 개인정보 수집항목 및 이용목적</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="fixed-btn-area">
+                    <div class="left">
+                      <a class="primary-btn btn close" href="javascript:">
+                        <span>동의</span>
+                      </a>
+                    </div>
+                  </div>
+                  <a class="btn-close" href="javascript:" title="닫기">
+                    <span class="blind"></span>
+                  </a>
+                </div>
+              </div>
+              <!-- //sample -->
+            </div>
+            <div>
+              <!-- sample -->
+              <a href="javascript:" onclick="openPopupFn($(this), '#centerPopup3')">하단버튼고정(2개) 팝업 열기</a>
+              <div class="layer-popup" id="centerPopup3">
+                <div class="pop-wrap">
+                  <div class="pop-head">
+                    <p class="title">개인정보 수집 및 이용약관 동의</p>
+                  </div>
+                  <div class="pop-cont">
+                    <div class="for-padding">
+                      <div class="scroll-area">
+                        <div class="expand-box">
+                          <div class="txt-div">
+                            <p class="tit">제2조 개인정보 수집항목 및 이용목적</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                            <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="fixed-btn-area">
+                    <div class="left">
+                      <a class="border-btn btn close" href="javascript:">
+                        <span>취소</span>
+                      </a>
+                    </div>
+                    <div class="right">
+                      <a class="primary-btn btn close" href="javascript:">
+                        <span>동의</span>
+                      </a>
+                    </div>
+                  </div>
+                  <a class="btn-close" href="javascript:" title="닫기">
+                    <span class="blind"></span>
+                  </a>
+                </div>
+              </div>
+              <!-- //sample -->
+            </div>
+					</div>
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <!-- sample -->
+            <a href="javascript:" onclick="openPopupFn($(this), '#centerPopup')">중앙 팝업 열기</a>
+            <div class="layer-popup" id="centerPopup">
+              <div class="pop-wrap">
+                <div class="pop-head">
+                  <p class="title">제보자보호</p>
+                </div>
+                <div class="pop-cont">
+                  <div class="for-padding">
+                    <div class="scroll-area">
+                      <div class="expand-box">
+                        <p class="desc">조사자는 제보자의 신원 및 제보내용에 대해서 철저히 비밀을 유지할 의무가 있으며, 조사과정에서 일부 정보의 공개가 필요할 경우라도 제보자의 동의를 받은 이후에만 해당 정보를 공개할 수 있다.<br><br>
+                          피제보자를 포함한 그 어떤 구성원도 제보자를 파악하기 위한 행위를 해서는 안 되며, 이를 위반한 것이 확인되는 경우 징계규정에 따라 징계 조치한다.<br><br>
+                          제보자가 내부 구성원일 경우 제보자에 대한 인사상 불이익, 근무조건 차별, 구성원들의 따돌림 등 보복을 위한 그 어떤 불이익 행위도 금지되며, 제보자가 외부 관계자일 경우 거래관계상 불이익 등의 보복 조치를 금지한다.<br><br>
+                          제보의 사실관계 조사과정에서 비윤리행위의 조사에 적극 협조한 구성원 및 이해관계자에 대해서도 제보자와 동일한 보호조치를 취한다.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a class="btn-close" href="javascript:" title="닫기">
+                  <span class="blind"></span>
+                </a>
+              </div>
+            </div>
+            <!-- //sample -->
+            
+            <!-- sample -->
+            <a href="javascript:" onclick="openPopupFn($(this), '#centerPopup1')">버튼(1개) 팝업 열기</a>
+            <div class="layer-popup" id="centerPopup1">
+              <div class="pop-wrap">
+                <div class="pop-head">
+                  <p class="title">개인정보 수집 및 이용약관 동의</p>
+                </div>
+                <div class="pop-cont">
+                  <div class="for-padding">
+                    <div class="scroll-area">
+                      <div class="expand-box">
+                        <div class="txt-div">
+                          <p class="tit">제2조 개인정보 수집항목 및 이용목적</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                        </div>
+                      </div>
+                      <div class="btn-area">
+                        <a class="primary-btn btn close" href="javascript:">
+                          <span>동의</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a class="btn-close" href="javascript:" title="닫기">
+                  <span class="blind"></span>
+                </a>
+              </div>
+            <!-- //sample -->
+
+            <!-- sample -->
+            <a href="javascript:" onclick="openPopupFn($(this), '#centerPopup2')">하단버튼고정(1개) 팝업 열기</a>
+            <div class="layer-popup" id="centerPopup2">
+              <div class="pop-wrap">
+                <div class="pop-head">
+                  <p class="title">개인정보 수집 및 이용약관 동의</p>
+                </div>
+                <div class="pop-cont">
+                  <div class="for-padding">
+                    <div class="scroll-area">
+                      <div class="expand-box">
+                        <div class="txt-div">
+                          <p class="tit">제2조 개인정보 수집항목 및 이용목적</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fixed-btn-area">
+                  <div class="left">
+                    <a class="primary-btn btn close" href="javascript:">
+                      <span>동의</span>
+                    </a>
+                  </div>
+                </div>
+                <a class="btn-close" href="javascript:" title="닫기">
+                  <span class="blind"></span>
+                </a>
+              </div>
+            </div>
+            <!-- //sample -->
+
+            <!-- sample -->
+            <a href="javascript:" onclick="openPopupFn($(this), '#centerPopup3')">하단버튼고정(2개) 팝업 열기</a>
+            <div class="layer-popup" id="centerPopup3">
+              <div class="pop-wrap">
+                <div class="pop-head">
+                  <p class="title">개인정보 수집 및 이용약관 동의</p>
+                </div>
+                <div class="pop-cont">
+                  <div class="for-padding">
+                    <div class="scroll-area">
+                      <div class="expand-box">
+                        <div class="txt-div">
+                          <p class="tit">제2조 개인정보 수집항목 및 이용목적</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fixed-btn-area">
+                  <div class="left">
+                    <a class="border-btn btn close" href="javascript:">
+                      <span>취소</span>
+                    </a>
+                  </div>
+                  <div class="right">
+                    <a class="primary-btn btn close" href="javascript:">
+                      <span>동의</span>
+                    </a>
+                  </div>
+                </div>
+                <a class="btn-close" href="javascript:" title="닫기">
+                  <span class="blind"></span>
+                </a>
+              </div>
+            </div>
+            <!-- //sample -->
+
+            var conH;
+            function popupResize() {
+              // 하단버튼 높이값 재조정
+              if($(".layer-popup:visible").find(".fixed-btn-area").size() > 0) {
+                $(".layer-popup:visible").find(".pop-cont").height(conH);
+                $(".layer-popup:visible").find(".pop-cont").height($(".layer-popup:visible").find(".pop-wrap").height() - $(".layer-popup:visible").find(".pop-head").innerHeight() - $(".layer-popup:visible").find(".fixed-btn-area").height());
+                $(".layer-popup:visible").find(".for-padding").css("height","100%");
+              } else {
+                $(".layer-popup:visible").find(".pop-cont").css("height", "auto");
+                $(".layer-popup:visible").find(".pop-cont").height($(".layer-popup:visible").find(".pop-wrap").height() - $(".layer-popup:visible").find(".pop-head").innerHeight());
+              }
+            }
+            
+            function openPopupFn(comebackEl, popName) {
+              var TYPE = $(popName) || $("#popName");
+              var COMEBACKEL = comebackEl || $(".btn");
+              var CONTS = TYPE.find(".pop-cont");
+              
+              $("body").addClass("stop-scroll");
+
+              if(popName == "" || popName == undefined) {
+                $(".layer-popup").fadeIn(300);
+              } else {
+                $(".layer-popup" + popName + "").fadeIn(300);
+              }
+
+              TYPE.attr("tabindex", 0).show().focus();
+
+              if(!TYPE.find(".fixed-btn-area").length > 0) {
+                CONTS.innerHeight(TYPE.find(".pop-wrap").height() -TYPE.find(".pop-head").innerHeight()); // 공통 팝업 높이값
+              } else {
+                CONTS.height(TYPE.find(".pop-wrap").height() - TYPE.find(".pop-head").innerHeight() - TYPE.find(".fixed-btn-area").innerHeight());
+                CONTS.find(".for-padding").css("height", "100%");
+                conH = $(popName).find(".pop-cont").height();
+              }
+
+              // 공통팝업 닫기
+              TYPE.find(".close, .btn-close").on("click", function() {        
+                $("body").removeClass("stop-scroll");
+
+                $(this).parents(".layer-popup").scrollTop(0);
+                $(this).parents(".layer-popup").stop(true, true).fadeOut(300, function() {
+                  $(this).parents(".layer-popup").find(".pop-cont").removeAttr("style");
+                  $(this).parents(".layer-popup").find(".for-padding").removeAttr("style");
+                });
+
+                comebackEl.attr("tabindex", 0).show().focus();
+              });
+            }
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            /* 레이어팝업 - 공통 */
+            .layer-popup {display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, .7); z-index: 100;}
+            .layer-popup .pop-wrap {position: absolute; left: 50%; top: 50%; transform:translate(-50%, -50%); width: 790rem; height: auto; max-height: 70vh; background-color: #fff; border-radius: 20px; overflow: hidden;}
+            .layer-popup .pop-wrap .pop-head {position: relative; padding: 40rem 40rem 30rem;}
+            .layer-popup .pop-wrap .pop-head:after{display:block; content:""; position:absolute; bottom:0; left: 40rem; width:calc(100% - 80px); width:-webkit-calc(100% - 80px); height: 1px; background:rgba(0,0,0,0.05);}
+            .layer-popup .pop-wrap .pop-head .title {font-size: max(24rem, 20px); line-height: 140%; letter-spacing: -.025em; color: #000; font-weight:bold;}
+            .layer-popup .pop-wrap .pop-cont {height: 100%; border-radius: 0 0 20px 20px;}
+            .layer-popup .pop-wrap .pop-cont .for-padding {padding: 0 12rem 48rem 40rem; height: 100%;}
+            .layer-popup .pop-wrap .pop-cont .for-padding .scroll-area {position: relative; padding: 30rem 20rem 0 0; height: 100%; overflow-y: auto;}
+            .layer-popup .pop-wrap .pop-cont .for-padding .scroll-area .expand-box .desc {font-size: max(18rem, 16px); line-height: 150%; letter-spacing: -.025em; color: #555; font-weight:400;}
+            .layer-popup .pop-wrap .pop-cont .for-padding .scroll-area .btn-area {margin-top: 20rem;}
+            .layer-popup .pop-wrap .btn-close {position: absolute; right: 40rem; top: 42rem; width: max(24rem, 24px); height: max(24rem, 24px); background: url(../assets/images/icon-btn-close.svg) no-repeat center center/cover;}
+            
+            /* 레이어팝업 - 스크롤 */
+            .layer-popup .pop-wrap .pop-cont .for-padding .scroll-area::-webkit-scrollbar {width: 4px;}
+            .layer-popup .pop-wrap .pop-cont .for-padding .scroll-area::-webkit-scrollbar-thumb {border-radius: 3px; -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0); box-shadow: inset 0 0 0 rgba(0, 0, 0, 0); background-color: #c7c7c7;}
+            
+            /* 레이어팝업 - 하단버튼 고정 */
+            /* .layer-popup .pop-wrap.bottom_btn_pop .pop-cont .for-padding {height: calc(100% - max(40rem, 40px)); height: -webkit-calc(100% - max(40rem, 40px));} */
+            .layer-popup .pop-wrap .fixed-btn-area {display: -webkit-box; display: -ms-flexbox; display: flex; justify-content: space-between;}
+            .layer-popup .pop-wrap .fixed-btn-area .left, .fixed-btn-area .right {width: 100%;}
+            
+            @media screen and (max-width:1024px) {
+              /* 레이어팝업 - 공통 */
+              .layer-popup .pop-wrap {width: -webkit-calc(100% - 60rem); border-radius: 10px;}
+              .layer-popup .pop-wrap .pop-head {padding: 20rem 20rem 10rem;}
+              .layer-popup .pop-wrap .pop-head:after {left: 20rem; width: calc(100% - 40px); width: -webkit-calc(100% - 40px);}
+              .layer-popup .pop-wrap .pop-head .title {font-size: max(20rem, 16px);}
+              .layer-popup .pop-wrap .pop-cont .for-padding {padding: 0 6rem 24rem 20rem;}
+              .layer-popup .pop-wrap .pop-cont .for-padding .scroll-area {padding: 20rem 14rem 0 0;}
+              .layer-popup .pop-wrap .pop-cont .for-padding .scroll-area .expand-box .desc {font-size: max(16rem, 14px);}
+              .layer-popup .pop-wrap .btn-close {right: 20rem; top: 20rem;}
+            }
+            @media screen and (max-width:500px) {
+              .layer-popup .pop-wrap {width: 320rem;}
+              .layer-popup .pop-wrap .pop-cont .for-padding .scroll-area .expand-box .desc {font-size: max(14rem, 12px);}
+              .layer-popup .pop-wrap .btn-close {width: max(20rem, 20px); height: max(20rem, 20px);}
+            }
+          </script>
+        </section>
+
+				<section>
+          <h3>모바일 full 팝업 - .pop-wrap에 full 클래스 추가</h3>
+					<div>
+						<!-- sample -->
+            <a href="javascript:" onclick="openPopupFn($(this), '#fullPopup')">full 팝업 열기</a>
+						<div class="layer-popup" id="fullPopup">
+							<div class="pop-wrap full">
+                <div class="pop-head">
+                  <p class="title">제보자보호</p>
+                </div>
+                <div class="pop-cont">
+                  <div class="for-padding">
+                    <div class="scroll-area">
+                      <div class="expand-box">
+                        <p class="desc">조사자는 제보자의 신원 및 제보내용에 대해서 철저히 비밀을 유지할 의무가 있으며, 조사과정에서 일부 정보의 공개가 필요할 경우라도 제보자의 동의를 받은 이후에만 해당 정보를 공개할 수 있다.<br><br>
+                          피제보자를 포함한 그 어떤 구성원도 제보자를 파악하기 위한 행위를 해서는 안 되며, 이를 위반한 것이 확인되는 경우 징계규정에 따라 징계 조치한다.<br><br>
+                          제보자가 내부 구성원일 경우 제보자에 대한 인사상 불이익, 근무조건 차별, 구성원들의 따돌림 등 보복을 위한 그 어떤 불이익 행위도 금지되며, 제보자가 외부 관계자일 경우 거래관계상 불이익 등의 보복 조치를 금지한다.<br><br>
+                          제보의 사실관계 조사과정에서 비윤리행위의 조사에 적극 협조한 구성원 및 이해관계자에 대해서도 제보자와 동일한 보호조치를 취한다.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a class="btn-close" href="javascript:" title="닫기">
+                  <span class="blind"></span>
+                </a>
+              </div>
+						</div>
+						<!-- //sample -->
+					</div>
+          <div>
+            <!-- sample -->
+            <a href="javascript:" onclick="openPopupFn($(this), '#fullPopup1')">버튼(1개) 팝업 열기</a>
+            <div class="layer-popup" id="fullPopup1">
+              <div class="pop-wrap full">
+                <div class="pop-head">
+                  <p class="title">개인정보 수집 및 이용약관 동의</p>
+                </div>
+                <div class="pop-cont">
+                  <div class="for-padding">
+                    <div class="scroll-area">
+                      <div class="expand-box">
+                        <div class="txt-div">
+                          <p class="tit">제2조 개인정보 수집항목 및 이용목적</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                        </div>
+                      </div>
+                      <div class="btn-area">
+                        <a class="primary-btn btn close" href="javascript:">
+                          <span>동의</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a class="btn-close" href="javascript:" title="닫기">
+                  <span class="blind"></span>
+                </a>
+              </div>
+            </div>
+            <!-- //sample -->
+          </div>
+					<div>
+						<!-- sample -->
+						<a href="javascript:" onclick="openPopupFn($(this), '#fullPopup2')">하단버튼고정(1개) 팝업 열기</a>
+						<div class="layer-popup" id="fullPopup2">
+							<div class="pop-wrap full bottom_btn_pop">
+                <div class="pop-head">
+                  <p class="title">개인정보 수집 및 이용약관 동의</p>
+                </div>
+                <div class="pop-cont">
+                  <div class="for-padding">
+                    <div class="scroll-area">
+                      <div class="expand-box">
+                        <div class="txt-div">
+                          <p class="tit">제2조 개인정보 수집항목 및 이용목적</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fixed-btn-area">
+                  <div class="left">
+                    <a class="primary-btn btn close" href="javascript:">
+                      <span>동의</span>
+                    </a>
+                  </div>
+                </div>
+                <a class="btn-close" href="javascript:" title="닫기">
+                  <span class="blind"></span>
+                </a>
+              </div>
+						</div>
+						<!-- //sample -->
+					</div>
+					<div>
+						<!-- sample -->
+						<a href="javascript:" onclick="openPopupFn($(this), '#fullPopup3')">하단버튼고정(2개) 팝업 열기</a>
+						<div class="layer-popup" id="fullPopup3">
+							<div class="pop-wrap full bottom_btn_pop">
+								<div class="pop-head">
+									<p class="title">팝업 타이틀</p>
+								</div>
+								<div class="pop-cont">
+									<div class="for-padding">
+										<div class="scroll-area">
+											<div class="expand-box">
+												<p>
+													입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+                <div class="fixed-btn-area">
+                  <div class="left">
+                    <a class="border-btn btn close" href="javascript:">
+                      <span>아니요</span>
+                    </a>
+                  </div>
+                  <div class="right">
+                    <a class="primary-btn btn close" href="javascript:">
+                      <span>네</span>
+                    </a>
+                  </div>
+                </div>
+                <a class="btn-close" href="javascript:" title="닫기">
+									<span class="blind"></span>
+								</a>
+							</div>
+						</div>
+						<!-- //sample -->
+					</div>
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <!-- sample -->
+            <a href="javascript:" onclick="openPopupFn($(this), '#fullPopup')">full 팝업 열기</a>
+            <div class="layer-popup" id="fullPopup">
+              <div class="pop-wrap full">
+                <div class="pop-head">
+                  <p class="title">제보자보호</p>
+                </div>
+                <div class="pop-cont">
+                  <div class="for-padding">
+                    <div class="scroll-area">
+                      <div class="expand-box">
+                        <p class="desc">조사자는 제보자의 신원 및 제보내용에 대해서 철저히 비밀을 유지할 의무가 있으며, 조사과정에서 일부 정보의 공개가 필요할 경우라도 제보자의 동의를 받은 이후에만 해당 정보를 공개할 수 있다.<br><br>
+                          피제보자를 포함한 그 어떤 구성원도 제보자를 파악하기 위한 행위를 해서는 안 되며, 이를 위반한 것이 확인되는 경우 징계규정에 따라 징계 조치한다.<br><br>
+                          제보자가 내부 구성원일 경우 제보자에 대한 인사상 불이익, 근무조건 차별, 구성원들의 따돌림 등 보복을 위한 그 어떤 불이익 행위도 금지되며, 제보자가 외부 관계자일 경우 거래관계상 불이익 등의 보복 조치를 금지한다.<br><br>
+                          제보의 사실관계 조사과정에서 비윤리행위의 조사에 적극 협조한 구성원 및 이해관계자에 대해서도 제보자와 동일한 보호조치를 취한다.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a class="btn-close" href="javascript:" title="닫기">
+                  <span class="blind"></span>
+                </a>
+              </div>
+            </div>
+            <!-- //sample -->
+
+            <!-- sample -->
+            <a href="javascript:" onclick="openPopupFn($(this), '#fullPopup1')">버튼(1개) 팝업 열기</a>
+            <div class="layer-popup" id="fullPopup1">
+              <div class="pop-wrap full">
+                <div class="pop-head">
+                  <p class="title">개인정보 수집 및 이용약관 동의</p>
+                </div>
+                <div class="pop-cont">
+                  <div class="for-padding">
+                    <div class="scroll-area">
+                      <div class="expand-box">
+                        <div class="txt-div">
+                          <p class="tit">제2조 개인정보 수집항목 및 이용목적</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                        </div>
+                      </div>
+                      <div class="btn-area">
+                        <a class="primary-btn btn close" href="javascript:">
+                          <span>동의</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a class="btn-close" href="javascript:" title="닫기">
+                  <span class="blind"></span>
+                </a>
+              </div>
+            </div>
+            <!-- //sample -->
+
+            <!-- sample -->
+            <a href="javascript:" onclick="openPopupFn($(this), '#fullPopup2')">하단버튼고정(1개) 팝업 열기</a>
+            <div class="layer-popup" id="fullPopup2">
+              <div class="pop-wrap full bottom_btn_pop">
+                <div class="pop-head">
+                  <p class="title">개인정보 수집 및 이용약관 동의</p>
+                </div>
+                <div class="pop-cont">
+                  <div class="for-padding">
+                    <div class="scroll-area">
+                      <div class="expand-box">
+                        <div class="txt-div">
+                          <p class="tit">제2조 개인정보 수집항목 및 이용목적</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fixed-btn-area">
+                  <div class="left">
+                    <a class="primary-btn btn close" href="javascript:">
+                      <span>동의</span>
+                    </a>
+                  </div>
+                </div>
+                <a class="btn-close" href="javascript:" title="닫기">
+                  <span class="blind"></span>
+                </a>
+              </div>
+            </div>
+            <!-- //sample -->
+
+            <!-- sample -->
+            <a href="javascript:" onclick="openPopupFn($(this), '#fullPopup3')">하단버튼고정(2개) 팝업 열기</a>
+            <div class="layer-popup" id="fullPopup3">
+              <div class="pop-wrap full bottom_btn_pop">
+                <div class="pop-head">
+                  <p class="title">팝업 타이틀</p>
+                </div>
+                <div class="pop-cont">
+                  <div class="for-padding">
+                    <div class="scroll-area">
+                      <div class="expand-box">
+                        <p>
+                          입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fixed-btn-area">
+                  <div class="left">
+                    <a class="border-btn btn close" href="javascript:">
+                      <span>아니요</span>
+                    </a>
+                  </div>
+                  <div class="right">
+                    <a class="primary-btn btn close" href="javascript:">
+                      <span>네</span>
+                    </a>
+                  </div>
+                </div>
+                <a class="btn-close" href="javascript:" title="닫기">
+                  <span class="blind"></span>
+                </a>
+              </div>
+            </div>
+            <!-- //sample -->
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            /* full 팝업 */
+            .layer-popup .pop-wrap.full {top: auto; left: auto; bottom: auto; width: 100%; height: 100%; max-height: none; border-radius: 0; transition: none; transform: none;}
+            .layer-popup .pop-wrap.full .pop-head {padding: 15rem 60rem; text-align: center;}
+            .layer-popup .pop-wrap.full .pop-cont .for-padding {padding: 20rem 6rem 10rem 20rem;}
+            .layer-popup .pop-wrap.full .btn-close {right: 20rem; top: 20rem;}
+
+            @media screen and (max-width:1024px) {
+              /* full 팝업 */
+              .layer-popup .pop-wrap.full {top: auto; left: auto; bottom: auto; width: 100%; height: 100%; max-height: none; border-radius: 0; transition: none; transform: none;}
+              .layer-popup .pop-wrap.full .pop-head {padding: 15rem 60rem; text-align: center;}
+              .layer-popup .pop-wrap.full .pop-cont .for-padding {padding: 20rem 6rem 10rem 20rem;}
+            }
+          </script>
+				</section>
+
+        <section>
+          <h3>하단에서 위로 올라오는 팝업 - .pop-wrap에 slide 클래스 추가</h3>
+          <div>
+            <!-- sample -->
+            <a href="javascript:" onclick="openPopupFn($(this), '#slidePopup')">슬라이드 팝업 열기</a>
+						<div class="layer-popup" id="slidePopup">
+							<div class="pop-wrap slide bottom_btn_pop">
+								<div class="pop-head">
+									<p class="title">팝업 타이틀</p>
+								</div>
+								<div class="pop-cont">
+									<div class="for-padding">
+										<div class="scroll-area">
+											<div class="expand-box">
+												<p class="desc">
+													입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+                <div class="fixed-btn-area">
+                  <div class="left">
+                    <a class="primary-btn btn close" href="javascript:">
+                      <span>네</span>
+                    </a>
+                  </div>
+                </div>
+                <a class="btn-close" href="javascript:" title="닫기">
+									<span class="blind"></span>
+								</a>
+							</div>
+						</div>
+            <!-- //sample -->
+          </div>
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <!-- sample -->
+            <a href="javascript:" onclick="openPopupFn($(this), '#slidePopup')">슬라이드 팝업 열기</a>
+            <div class="layer-popup" id="slidePopup">
+              <div class="pop-wrap slide bottom_btn_pop">
+                <div class="pop-head">
+                  <p class="title">팝업 타이틀</p>
+                </div>
+                <div class="pop-cont">
+                  <div class="for-padding">
+                    <div class="scroll-area">
+                      <div class="expand-box">
+                        <p class="desc">
+                          입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?입력하신 정보가 모두 초기화 됩니다. <br>예약 내용을 다시 선택하시겠습니까?
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fixed-btn-area">
+                  <div class="left">
+                    <a class="primary-btn btn close" href="javascript:">
+                      <span>네</span>
+                    </a>
+                  </div>
+                </div>
+                <a class="btn-close" href="javascript:" title="닫기">
+                  <span class="blind"></span>
+                </a>
+              </div>
+            </div>
+            <!-- //sample -->
+
+            var conH;
+            function popupResize() {
+              // 하단버튼 높이값 재조정
+              if($(".layer-popup:visible").find(".fixed-btn-area").size() > 0) {
+                $(".layer-popup:visible").find(".pop-cont").height(conH);
+                $(".layer-popup:visible").find(".pop-cont").height($(".layer-popup:visible").find(".pop-wrap").height() - $(".layer-popup:visible").find(".pop-head").innerHeight() - $(".layer-popup:visible").find(".fixed-btn-area").height());
+                $(".layer-popup:visible").find(".for-padding").css("height","100%");
+              } else {
+                $(".layer-popup:visible").find(".pop-cont").css("height", "auto");
+                $(".layer-popup:visible").find(".pop-cont").height($(".layer-popup:visible").find(".pop-wrap").height() - $(".layer-popup:visible").find(".pop-head").innerHeight());
+              }
+
+              // slide 팝업
+              if($(".layer-popup:visible").find(".pop-wrap.slide").size() > 0) {
+                if(window.innerWidth > 1024) {
+                  $(".layer-popup:visible").find(".pop-wrap.slide").removeAttr("style");
+                } else {
+                  gsap.to($(".layer-popup:visible").find(".pop-wrap.slide"), {y: 0});
+                }
+              }
+            }
+            
+            function openPopupFn(comebackEl, popName) {
+              var TYPE = $(popName) || $("#popName");
+              var COMEBACKEL = comebackEl || $(".btn");
+              var CONTS = TYPE.find(".pop-cont");
+              
+              $("body").addClass("stop-scroll");
+
+              if(popName == "" || popName == undefined) {
+                $(".layer-popup").fadeIn(300);
+              } else {
+                $(".layer-popup" + popName + "").fadeIn(300);
+              }
+
+              TYPE.attr("tabindex", 0).show().focus();
+
+              if(!TYPE.find(".fixed-btn-area").length > 0) {
+                CONTS.innerHeight(TYPE.find(".pop-wrap").height() -TYPE.find(".pop-head").innerHeight()); // 공통 팝업 높이값
+              } else {
+                CONTS.height(TYPE.find(".pop-wrap").height() - TYPE.find(".pop-head").innerHeight() - TYPE.find(".fixed-btn-area").innerHeight());
+                CONTS.find(".for-padding").css("height", "100%");
+                conH = $(popName).find(".pop-cont").height();
+              }
+
+              // slide 팝업
+              if(window.innerWidth <= 1024) {
+                if(TYPE.find(".pop-wrap").hasClass("slide")) { gsap.to(".layer-popup .pop-wrap.slide", {y: 0});}
+              }
+
+              // 공통팝업 닫기
+              TYPE.find(".close, .btn-close").on("click", function() {        
+                $("body").removeClass("stop-scroll");
+
+                if(window.innerWidth <= 1024) {
+                  if(TYPE.find(".pop-wrap").hasClass("slide")) {
+                    gsap.to(".layer-popup .pop-wrap.slide", {y: "100%"});
+                  }
+                }
+                
+                $(this).parents(".layer-popup").scrollTop(0);
+                $(this).parents(".layer-popup").stop(true, true).fadeOut(300, function() {
+                  $(this).parents(".layer-popup").find(".pop-cont").removeAttr("style");
+                  $(this).parents(".layer-popup").find(".for-padding").removeAttr("style");
+                });
+
+                comebackEl.attr("tabindex", 0).show().focus();
+              });
+            }
+
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            @media screen and (max-width:1024px) {
+              /* slide 팝업 */
+              .layer-popup .pop-wrap.slide {top: auto; left: 0; bottom: 0; width: 100%; border-radius: 10px 10px 0 0; transform: translate(0, 100%);}
+            }
+          </script>
+        </section>
+
+        <section>
+          <h3>중첩 팝업 - dimd 별도 / .layer-popup에 overlap 클래스 추가</h3>
+					<div>
+            <!-- sample -->
+            <a href="javascript:" onclick="openPopupFn($(this), '#otherPopup')">dimd 별도 팝업 열기</a>
+            <div class="layer-popup overlap" id="otherPopup">
+              <div class="pop-wrap bottom_btn_pop">
+                <div class="pop-head">
+                  <p class="title">개인정보 수집 및 이용약관 동의</p>
+                </div>
+                <div class="pop-cont">
+                  <div class="for-padding">
+                    <div class="scroll-area">
+                      <div class="expand-box">
+                        <div class="txt-div">
+                          <p class="tit">제2조 개인정보 수집항목 및 이용목적</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fixed-btn-area">
+                  <div class="left">
+                    <a class="primary-btn btn close" href="javascript:">
+                      <span>동의</span>
+                    </a>
+                  </div>
+                </div>
+                <a class="btn-close" href="javascript:" title="닫기">
+                  <span class="blind"></span>
+                </a>
+              </div>
+            </div>
+            <div class="dimd"></div>
+            <!-- //sample -->
+          </div>
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <!-- sample -->
+            <a href="javascript:" onclick="openPopupFn($(this), '#otherPopup')">dimd 별도 팝업 열기</a>
+            <div class="layer-popup overlap" id="otherPopup">
+              <div class="pop-wrap bottom_btn_pop">
+                <div class="pop-head">
+                  <p class="title">개인정보 수집 및 이용약관 동의</p>
+                </div>
+                <div class="pop-cont">
+                  <div class="for-padding">
+                    <div class="scroll-area">
+                      <div class="expand-box">
+                        <div class="txt-div">
+                          <p class="tit">제2조 개인정보 수집항목 및 이용목적</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                          <p class="txt">H-Biz는 회원가입, 로그인 절차 후 콘텐츠에 자유롭게 접근할 수 있습니다. H-Biz의 서비스를 이용하시는 경우 다음의 정보를 고객의 동의를 받아 수집할 수 있으며 선택항목을 입력하시지 않았다 하여 서비스 이용에 제한은 없습니다.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fixed-btn-area">
+                  <div class="left">
+                    <a class="primary-btn btn close" href="javascript:">
+                      <span>동의</span>
+                    </a>
+                  </div>
+                </div>
+                <a class="btn-close" href="javascript:" title="닫기">
+                  <span class="blind"></span>
+                </a>
+              </div>
+            </div>
+            <div class="dimd"></div>
+            <!-- //sample -->
+
+            var conH;
+            function popupResize() {
+              // 하단버튼 높이값 재조정
+              if($(".layer-popup:visible").find(".fixed-btn-area").size() > 0) {
+                $(".layer-popup:visible").find(".pop-cont").height(conH);
+                $(".layer-popup:visible").find(".pop-cont").height($(".layer-popup:visible").find(".pop-wrap").height() - $(".layer-popup:visible").find(".pop-head").innerHeight() - $(".layer-popup:visible").find(".fixed-btn-area").height());
+                $(".layer-popup:visible").find(".for-padding").css("height","100%");
+              } else {
+                $(".layer-popup:visible").find(".pop-cont").css("height", "auto");
+                $(".layer-popup:visible").find(".pop-cont").height($(".layer-popup:visible").find(".pop-wrap").height() - $(".layer-popup:visible").find(".pop-head").innerHeight());
+              }
+            }
+            
+            function openPopupFn(comebackEl, popName) {
+              var TYPE = $(popName) || $("#popName");
+              var COMEBACKEL = comebackEl || $(".btn");
+              var CONTS = TYPE.find(".pop-cont");
+              
+              $("body").addClass("stop-scroll");
+
+              if(popName == "" || popName == undefined) {
+                $(".layer-popup").fadeIn(300);
+              } else {
+                $(".layer-popup" + popName + "").fadeIn(300);
+              }
+
+              TYPE.attr("tabindex", 0).show().focus();
+
+              if(!TYPE.find(".fixed-btn-area").length > 0) {
+                CONTS.innerHeight(TYPE.find(".pop-wrap").height() -TYPE.find(".pop-head").innerHeight()); // 공통 팝업 높이값
+              } else {
+                CONTS.height(TYPE.find(".pop-wrap").height() - TYPE.find(".pop-head").innerHeight() - TYPE.find(".fixed-btn-area").innerHeight());
+                CONTS.find(".for-padding").css("height", "100%");
+                conH = $(popName).find(".pop-cont").height();
+              }
+              
+              if(TYPE.hasClass("overlap")) {$(".dimd").fadeIn(300);} // overlap 팝업
+
+              // 공통팝업 닫기
+              TYPE.find(".close, .btn-close").on("click", function() {        
+                $("body").removeClass("stop-scroll");
+
+                if($(this).parents(".layer-popup").hasClass("overlap")) {$(".dimd").fadeOut(300);} // overlap 팝업
+                
+                $(this).parents(".layer-popup").scrollTop(0);
+                $(this).parents(".layer-popup").stop(true, true).fadeOut(300, function() {
+                  $(this).parents(".layer-popup").find(".pop-cont").removeAttr("style");
+                  $(this).parents(".layer-popup").find(".for-padding").removeAttr("style");
+                });
+
+                comebackEl.attr("tabindex", 0).show().focus();
+              });
+            }
+
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            /* overlap 팝업 */
+            .layer-popup.overlap {display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: transparent; z-index: 101;}
+            .dimd {display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, .7); z-index: 100;}
+          </script>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(window).on("load", function() {
+      resizeFn();
+    });
+
+    function resizeFn() {
+      $(window).resize(function() {
+        popupResize();
+      }).resize();
+    }
+
+    var conH;
+		function popupResize() {
+			// 하단버튼 높이값 재조정
+			if($(".layer-popup:visible").find(".fixed-btn-area").size() > 0) {
+        $(".layer-popup:visible").find(".pop-cont").height(conH);
+        $(".layer-popup:visible").find(".pop-cont").height($(".layer-popup:visible").find(".pop-wrap").height() - $(".layer-popup:visible").find(".pop-head").innerHeight() - $(".layer-popup:visible").find(".fixed-btn-area").height());
+        $(".layer-popup:visible").find(".for-padding").css("height","100%");
+			} else {
+        $(".layer-popup:visible").find(".pop-cont").css("height", "auto");
+        $(".layer-popup:visible").find(".pop-cont").height($(".layer-popup:visible").find(".pop-wrap").height() - $(".layer-popup:visible").find(".pop-head").innerHeight());
+      }
+
+      // slide 팝업
+      if($(".layer-popup:visible").find(".pop-wrap.slide").size() > 0) {
+        if(window.innerWidth > 1024) {
+          $(".layer-popup:visible").find(".pop-wrap.slide").removeAttr("style");
+        } else {
+          gsap.to($(".layer-popup:visible").find(".pop-wrap.slide"), {y: 0});
+        }
+      }
+		}
+		
+		function openPopupFn(comebackEl, popName) {
+			var TYPE = $(popName) || $("#popName");
+      var COMEBACKEL = comebackEl || $(".btn");
+      var CONTS = TYPE.find(".pop-cont");
+			
+			$("body").addClass("stop-scroll");
+
+			if(popName == "" || popName == undefined) {
+				$(".layer-popup").fadeIn(300);
+			} else {
+        $(".layer-popup" + popName + "").fadeIn(300);
+			}
+
+			TYPE.attr("tabindex", 0).show().focus();
+
+			if(!TYPE.find(".fixed-btn-area").length > 0) {
+				CONTS.innerHeight(TYPE.find(".pop-wrap").height() -TYPE.find(".pop-head").innerHeight()); // 공통 팝업 높이값
+			} else {
+				CONTS.height(TYPE.find(".pop-wrap").height() - TYPE.find(".pop-head").innerHeight() - TYPE.find(".fixed-btn-area").innerHeight());
+        CONTS.find(".for-padding").css("height", "100%");
+        conH = $(popName).find(".pop-cont").height();
+			}
+
+      // slide 팝업
+      if(window.innerWidth <= 1024) {
+        if(TYPE.find(".pop-wrap").hasClass("slide")) { gsap.to(".layer-popup .pop-wrap.slide", {y: 0});}
+      }
+
+      if(TYPE.hasClass("overlap")) {$(".dimd").fadeIn(300);}
+
+			// 공통팝업 닫기
+			TYPE.find(".close, .btn-close").on("click", function() {        
+        $("body").removeClass("stop-scroll");
+
+        if($(this).parents(".layer-popup").hasClass("overlap")) {$(".dimd").fadeOut(300);}
+
+        if(window.innerWidth <= 1024) {
+          if(TYPE.find(".pop-wrap").hasClass("slide")) {
+            gsap.to(".layer-popup .pop-wrap.slide", {y: "100%"});
+          }
+        }
+        
+				$(this).parents(".layer-popup").scrollTop(0);
+				$(this).parents(".layer-popup").stop(true, true).fadeOut(300, function() {
+          $(this).parents(".layer-popup").find(".pop-cont").removeAttr("style");
+          $(this).parents(".layer-popup").find(".for-padding").removeAttr("style");
+        });
+
+				comebackEl.attr("tabindex", 0).show().focus();
+			});
+		}
+	</script>
+</body>
+</html>

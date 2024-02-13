@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>UI개발1팀 모듈화 프로젝트</title>
+  <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/swiper.css">
+  <link rel="stylesheet" href="../assets/styles/shCore.css"/>
+	<link rel="Stylesheet" href="../assets/styles/shCoreEclipse.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="../assets/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script src="../assets/scripts/shCore.js"></script>
+	<script src="../assets/scripts/shBrushJScript.js"></script>
+	<script src="../assets/scripts/shBrushXml.js"></script>
+	<script src="../assets/scripts/shBrushCss.js"></script>
+  <script src="../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../assets/js/gsap.min.js"></script>
+  <script src="../assets/js/swiper.min.js"></script>
+  <script src="../assets/js/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/lottie-player.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+  <style>
+    .content-area section .example {border: 1px solid #ddd; background: #F9F9F9; padding: 40rem; overflow: hidden;}
+    .content-area section .example li + li {margin-top: 30rem;} 
+    .content-area section .example h4 {font-weight: 500; margin-bottom: 10rem;}
+    .content-area section .example a + h4 {margin-top: 30rem;}
+    
+
+		.scrl-area {padding: 15rem; overflow-x: auto; width: 300rem; border: 1px solid red; box-sizing: border-box;}
+		.scrl-area .scrl {display: flex; width: fit-content; padding-right: 20rem;}
+		.scrl-area .scrl.top > p {display: block; width: 20rem !important; height: 50rem; background: blue; opacity: .5;}
+		.scrl-area .scrl + .scrl {margin-top: 8rem;}
+		.scrl-area .scrl a {color: #000; font-size: 15rem; line-height: 19rem; display: inline-flex; align-items: center; height: 32rem; font-weight: 500; background: pink; border-radius: 50rem; padding: 0 10rem; width: auto;}
+		.scrl-area .scrl a + a {margin-left: 4rem;}
+
+
+		.inner {width: 90%; height: 100%; border: 3px solid red;}
+		.inner .cards .swiper-slide {width: 800rem; height: 100rem; background: pink; display: flex; align-items: center; justify-content: center; margin-right: 10px;}
+		.inner .cards .swiper-slide:last-of-type {margin-right: 0;}
+
+
+		.wrap {width: 705rem; height: 400rem; overflow: hidden; border: 3px solid red; position: relative;}
+		.wrap .txt_area {position: absolute; bottom: 20rem; left: 20rem; z-index: 2; color: #fff; width: 100%; background: rgb(255, 255, 255, .5); font-size: 24rem; font-weight: 500;}
+		.wrap .img_area {position: absolute; width: 100%; height: 100%;}
+		.wrap .img_area img {width: 100%;}
+
+	
+  </style>
+</head>
+<body>
+  <div id="wrap" style="background:#fff;">
+    <header>
+      <h1>모듈화 작업 가이드</h1>
+      <div class="btn-wrap">
+        <a href="./index.html">HOME  <i class="fas fa-angle-right"></i></a>
+      </div>
+    </header>
+    <div id="contents">
+      <aside></aside>
+      <div class="content-area">
+        <h2>스와이퍼</h2>
+
+				<section>
+          <h3>프로그레스바 + pause/play</h3>
+          <!-- sample -->
+          <div class="example">
+
+						<a href="../guide/link/swiper_test.html" target="_blank" style="text-decoration: underline;">해당화면보기 >></a>
+         
+					</div>
+
+
+						<script type="syntaxhighlighter" class="brush: xml;">
+							<div class="kv-area">
+								<div class="kv-div">
+									<div class="swiper-container">
+										<div class="swiper-wrapper">
+											<div class="swiper-slide">
+												<div class="bg-div">
+													<img src="../../assets/images/sec2-card-bg1.jpg" data-swiper-parallax-x="80%">
+												</div>
+												<div class="txt-div">
+													<p class="tit">혁신적인 미래 모빌리티 시장 속에서 소닉모터스가 <br>만들어가는 견고한 미래입니다.</p>
+												</div>
+											</div>
+											<div class="swiper-slide">
+												<div class="bg-div">
+													<img src="../../assets/images/sec2-card-bg2.jpg" data-swiper-parallax-x="80%">
+												</div>
+												<div class="txt-div">
+													<p class="tit">끊임없는 변화와 새로운 도전으로 <br>세계에서 가장 전문화된 기업으로 성장해 나갑니다.</p>
+												</div>
+											</div>
+											<div class="swiper-slide">
+												<div class="bg-div">
+													<img src="../../assets/images/sec2-card-bg3.jpg" data-swiper-parallax-x="80%">
+												</div>
+												<div class="txt-div">
+													<p class="tit">2016년 이후, 수입차 전문 서비스 중심에 서기까지 <br>소닉모터스가 걸어온 발자취를 소개합니다. </p>
+												</div>
+											</div>
+										</div>
+										<div class="swiper-button-next"></div>
+										<div class="swiper-button-prev"></div>
+									</div>
+								</div>
+								<div class="control-area">
+									<p class="progress-bar">
+										<span class="bar"></span>
+									</p>
+									<a href="javascript:" class="kv-btn pause"></ㅁ>
+								</div>
+							</div>
+						</script>
+						<script type="syntaxhighlighter" class="brush: css;">
+							.kv-area {width: 100%; height: 800rem; position: relative;}
+							.kv-area .kv-div {overflow: hidden; height: 100%;}
+							.kv-area .kv-div .swiper-container {height: 100%;}
+							.kv-area .kv-div .swiper-slide {overflow: hidden; position: relative;}
+							.kv-area .kv-div .swiper-slide .bg-div {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
+							.kv-area .kv-div .swiper-slide .bg-div img {width: 100%;}
+							.kv-area .kv-div .swiper-slide .bg {width: 100%; height: 100%;}
+							.kv-area .kv-div .swiper-slide .bg video {width: 100%; height: 100%; object-fit: cover;}
+							.kv-area .kv-div .swiper-slide .bg img {width: 100%; height: 100%; object-fit: cover;}
+							.kv-area .kv-div .swiper-slide .txt-div {position: absolute; top: 50%; transform: translateY(-50%); left: 200rem; width: calc(100% - 200rem); opacity: 1; transition: all .8s ease; color: #000;}
+							.kv-area .kv-div .swiper-slide.on .txt-div {top: 40%; opacity: 1;}
+							.kv-area .kv-div .swiper-slide .txt-div .tit {font-family: "NotoSans_Bold", sans-serif; color: #fff; font-size: 32rem;}
+							.kv-area .control-area {position: absolute; bottom: 20rem; left: 50%; transform: translateX(-50%); width: 340rem; opacity: 1; z-index: 1;}
+							.kv-area .control-area .progress-bar {position: relative; width: 300rem; height: 5rem; background: pink;}
+							.kv-area .control-area .progress-bar .bar {position: absolute; top: 0; left: 0; width: 0; height: 100%; background: #fff;}
+							.kv-area .control-area .kv-btn {position: absolute; top: 50%; transform: translateY(-50%); right: 0; width: 24rem; height: 24rem;}
+							.kv-area .control-area .kv-btn.pause {background: url("../../assets/images/swiper-stop.png") no-repeat;}
+							.kv-area .control-area .kv-btn.play {background: url("../../assets/images/swiper-play.png") no-repeat;}
+							
+							.swiper-button-next {right: 30rem; color: #fff;}
+							.swiper-button-prev {left: 30rem; color: #fff;}
+						</script>
+						<script type="syntaxhighlighter" class="brush: js;">
+							_progressBarMotion = gsap.to($(".kv-area .progress-bar .bar"), 3, {width: "100%", ease: "none", onComplete:function(){
+								_kvSwiper.slideNext();
+							}});
+					
+							_kvSwiper = new Swiper(".kv-area .kv-div .swiper-container", {
+								parallax: true,
+								speed: 900,
+								loop: true,
+								observer: true,
+								observeParents: true,
+								navigation: {
+									nextEl: $(".kv-area .swiper-button-next"),
+									prevEl: $(".kv-area .swiper-button-prev"),
+								},
+								on: {
+									slideChange: function () {
+										_progressBarMotion.restart();
+									},
+								}
+							});
+					
+							$(".kv-area .kv-btn").on("click", function(){
+								if($(this).hasClass("pause")){
+									$(this).removeClass("pause");
+									$(this).addClass("play");
+									_progressBarMotion.pause();
+									
+								}else if($(this).hasClass("play")){
+									$(this).removeClass("play");
+									$(this).addClass("pause");
+									_progressBarMotion.play();
+								}
+							});
+					
+							$(".kv-area .swiper-button-next, .kv-area .swiper-button-prev").on("click", function () {
+								_progressBarMotion.restart();
+							});
+						</script>
+
+
+          <!-- //sample -->
+
+        </section>
+
+				<section>
+          <h3>프로그레스바 + pause/play 영상</h3>
+          <!-- sample -->
+          <div class="example">
+
+						<a href="../guide/link/swiper_test2.html" target="_blank" style="text-decoration: underline;">해당화면보기 >></a>
+
+          </div>
+						<script type="syntaxhighlighter" class="brush: xml;">
+							<div class="kv-area">
+								<div class="kv-div">
+									<div class="swiper-container">
+										<div class="swiper-wrapper">
+											<div class="swiper-slide">
+												<div class="bg-div">
+													<img src="../../assets/images/sec2-card-bg1.jpg" data-swiper-parallax-x="80%">
+													<!-- <video src="../../assets/images/sequence.mp4" autoplay muted loop></video> -->
+												</div>
+												<div class="txt-div">
+													<p class="tit">혁신적인 미래 모빌리티 시장 속에서 소닉모터스가 <br>만들어가는 견고한 미래입니다.</p>
+												</div>
+											</div>
+											<div class="swiper-slide">
+												<div class="bg-div">
+													<video src="../../assets/images/sequence2.mp4" autoplay muted data-swiper-parallax-x="80%"></video>
+													<!-- <img src="../../assets/images/sec2-card-bg2.jpg" data-swiper-parallax-x="80%"> -->
+												</div>
+												<div class="txt-div">
+													<p class="tit">끊임없는 변화와 새로운 도전으로 <br>세계에서 가장 전문화된 기업으로 성장해 나갑니다.</p>
+												</div>
+											</div>
+											<div class="swiper-slide">
+												<div class="bg-div">
+													<video src="../../assets/images/sequence.mp4" autoplay muted data-swiper-parallax-x="80%"></video>
+													<!-- <img src="../../assets/images/sec2-card-bg2.jpg" data-swiper-parallax-x="80%"> -->
+												</div>
+												<div class="txt-div">
+													<p class="tit">끊임없는 변화와 새로운 도전으로 <br>세계에서 가장 전문화된 기업으로 성장해 나갑니다.</p>
+												</div>
+											</div>
+											<div class="swiper-slide">
+												<div class="bg-div">
+													<img src="../../assets/images/sec2-card-bg3.jpg" data-swiper-parallax-x="80%">
+												</div>
+												<div class="txt-div">
+													<p class="tit">2016년 이후, 수입차 전문 서비스 중심에 서기까지 <br>소닉모터스가 걸어온 발자취를 소개합니다. </p>
+												</div>
+											</div>
+										</div>
+										<div class="swiper-button-next"></div>
+										<div class="swiper-button-prev"></div>
+									</div>
+								</div>
+								<div class="control-area">
+									<p class="progress-bar">
+										<span class="bar"></span>
+									</p>
+									<a href="javascript:" class="kv-btn pause"></ㅁ>
+								</div>
+							</div>
+						</script>
+						<script type="syntaxhighlighter" class="brush: css;">
+							.kv-area {width: 100%; height: 800rem; position: relative;}
+							.kv-area .kv-div {overflow: hidden; height: 100%;}
+							.kv-area .kv-div .swiper-container {height: 100%;}
+							.kv-area .kv-div .swiper-slide {overflow: hidden; position: relative;}
+							.kv-area .kv-div .swiper-slide .bg-div {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
+							.kv-area .kv-div .swiper-slide .bg-div img {width: 100%;}
+							.kv-area .kv-div .swiper-slide .bg-div video {width: 100%;}
+							.kv-area .kv-div .swiper-slide .txt-div {position: absolute; top: 50%; transform: translateY(-50%); left: 200rem; width: calc(100% - 200rem); opacity: 1; transition: all .8s ease; color: #000;}
+							.kv-area .kv-div .swiper-slide.on .txt-div {top: 40%; opacity: 1;}
+							.kv-area .kv-div .swiper-slide .txt-div .tit {font-family: "NotoSans_Bold", sans-serif; color: #fff; font-size: 32rem;}
+							.kv-area .control-area {position: absolute; bottom: 20rem; left: 50%; transform: translateX(-50%); width: 340rem; opacity: 1; z-index: 1;}
+							.kv-area .control-area .progress-bar {position: relative; width: 300rem; height: 5rem; background: pink;}
+							.kv-area .control-area .progress-bar .bar {position: absolute; top: 0; left: 0; width: 0; height: 100%; background: #fff;}
+							.kv-area .control-area .kv-btn {position: absolute; top: 50%; transform: translateY(-50%); right: 0; width: 24rem; height: 24rem;}
+							.kv-area .control-area .kv-btn.pause {background: url("../../assets/images/swiper-stop.png") no-repeat; background-size: contain;}
+							.kv-area .control-area .kv-btn.play {background: url("../../assets/images/swiper-play.png") no-repeat; background-size: contain;}
+							
+							.swiper-button-next {right: 30rem; color: #fff;}
+							.swiper-button-prev {left: 30rem; color: #fff;}
+
+							@media all and (max-width: 1024px) {
+								.kv-area {height: 100vh;}
+								.kv-area .kv-div .swiper-slide .bg-div img {object-fit: cover; height: 100%;}
+								.kv-area .kv-div .swiper-slide .bg-div video {object-fit: cover; height: 100%;}
+								.kv-area .kv-div .swiper-slide .txt-div {left: 100rem; font-size: max(24rem, 20px);}
+							}
+						</script>
+						<script type="syntaxhighlighter" class="brush: js;">
+							_progressBarMotion = gsap.to($(".kv-area .progress-bar .bar"), 3, {width: "100%", ease: "none", onComplete:function(){
+								_kvSwiper.slideNext();
+							}});
+					
+							_kvSwiper = new Swiper(".kv-area .kv-div .swiper-container", {
+								parallax: true,
+								speed: 500,
+								loop: true,
+								observer: true,
+								observeParents: true,
+								touchRatio: 0,
+								navigation: {
+									nextEl: $(".kv-area .swiper-button-next"),
+									prevEl: $(".kv-area .swiper-button-prev"),
+								},
+								on: {
+									init: function () {
+										var activeSlide = $(".swiper-slide-active");
+					
+										if (activeSlide.find("video").length > 0) {
+											var videoElement = activeSlide.find("video")[0];
+											videoElement.play();
+											videoElement.addEventListener("loadedmetadata", function () {
+												var duration = videoElement.duration;
+												_progressBarMotion.duration(duration);
+												_progressBarMotion.restart();
+											});
+										} else {
+											var defaultDuration = 3;
+											_progressBarMotion.duration(defaultDuration);
+											_progressBarMotion.restart();
+										}
+									},
+									transitionEnd: function () {
+										var activeSlide = $(".swiper-slide-active");
+					
+										if (activeSlide.find("video").length > 0) {
+											var videoElement = activeSlide.find("video")[0];
+											videoElement.play();
+											var duration = videoElement.duration;
+											_progressBarMotion.duration(duration);
+										} else {
+											var defaultDuration = 3;
+											_progressBarMotion.duration(defaultDuration);
+										}
+										_progressBarMotion.restart();
+									},
+									
+								},
+							});
+					
+							$(".kv-area .control-area .kv-btn").on("click", function(){
+								var videoElement = $(".swiper-slide-active").find("video")[0];
+					
+								if($(this).hasClass("pause")){
+									if ($(".swiper-slide-active").find("video").length > 0) {
+										videoElement.pause();
+									}
+									$(this).removeClass("pause");
+									$(this).addClass("play");
+									_progressBarMotion.pause();
+									
+								}else if($(this).hasClass("play")){
+									if ($(".swiper-slide-active").find("video").length > 0) {
+										videoElement.play();
+									}
+									$(this).removeClass("play");
+									$(this).addClass("pause");
+									_progressBarMotion.play();
+								}
+							});
+					
+							$(".kv-area .swiper-button-next, .kv-area .swiper-button-prev").on("click", function () {
+								_progressBarMotion.pause();
+								if($(".kv-area .control-area .kv-btn").hasClass("play")){
+									$(".kv-area .control-area .kv-btn").removeClass("play");
+									$(".kv-area .control-area .kv-btn").addClass("pause");
+								}
+							});
+						</script>
+
+
+          <!-- //sample -->
+
+        </section>
+
+        <section>
+          <h3>위 아래 속도감 다른 스와이퍼</h3>
+          <!-- sample -->
+          <div class="example">
+
+						<div class="scrl-area">
+							<div class="for-overflow">
+								<div class="scrl top">
+									<a href="javascript:">
+										<span>월분배</span>
+									</a>
+									<a href="javascript:">
+										<span>2차전지</span>
+									</a>
+									<a href="javascript:">
+										<span>전기차</span>
+									</a>
+									<a href="javascript:">
+										<span>사이버보안/클라우드</span>
+									</a><a href="javascript:">
+										<span>메타버스메타버스</span>
+									</a>
+								</div>
+								<div class="scrl bot">
+									<a href="javascript:">
+										<span>반도체</span>
+									</a>
+									<a href="javascript:">
+										<span>바이오</span>
+									</a>
+									<a href="javascript:">
+										<span>클린에너지</span>
+									</a>
+									<a href="javascript:">
+										<span>테크</span>
+									</a>
+									<a href="javascript:">
+										<span>배당주</span>
+									</a>
+								</div>
+							</div>
+						</div>
+
+
+
+          </div>
+          <!-- //sample -->
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+						<div class="scrl-area">
+							<div class="for-overflow">
+								<div class="scrl top">
+									<a href="javascript:">
+										<span>월분배</span>
+									</a>
+									<a href="javascript:">
+										<span>2차전지</span>
+									</a>
+									<a href="javascript:">
+										<span>전기차</span>
+									</a>
+									<a href="javascript:">
+										<span>사이버보안/클라우드</span>
+									</a><a href="javascript:">
+										<span>메타버스메타버스</span>
+									</a>
+								</div>
+								<div class="scrl bot">
+									<a href="javascript:">
+										<span>반도체</span>
+									</a>
+									<a href="javascript:">
+										<span>바이오</span>
+									</a>
+									<a href="javascript:">
+										<span>클린에너지</span>
+									</a>
+									<a href="javascript:">
+										<span>테크</span>
+									</a>
+									<a href="javascript:">
+										<span>배당주</span>
+									</a>
+								</div>
+							</div>
+						</div>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+						.scrl-area {padding: 15rem; overflow-x: auto; width: 300rem; border: 1rem solid red;}
+						.scrl-area .scrl {display: flex; width: fit-content; padding-right: 20rem;}
+						.scrl-area .scrl.top > p {display: block; width: 20rem !important; height: 50rem; background: blue; opacity: .5;}
+						.scrl-area .scrl + .scrl {margin-top: 8rem;}
+						.scrl-area .scrl a {color: #000; font-size: 15rem; line-height: 19rem; display: inline-flex; align-items: center; height: 32rem; font-weight: 500; background: pink; border-radius: 50rem; padding: 0 10rem; width: auto;}
+						.scrl-area .scrl a + a {margin-left: 4rem;}
+          </script>
+					<script type="syntaxhighlighter" class="brush: js;">
+						var scrlArea = $(".scrl-area");
+						var scrlTop = $(".scrl-area .scrl.top");
+						var scrlBot = $(".scrl-area .scrl.bot");
+						var xAmount = Math.abs(scrlTop.innerWidth() - scrlBot.innerWidth());
+						var windowWidth = $(window).width();
+
+						scrlArea.on("scroll", function() {
+							var scrlWidth = scrlArea[0].scrollWidth - scrlArea[0].clientWidth;
+							var scrlPosition = scrlArea.scrollLeft();
+							var translation = -(scrlPosition / scrlWidth) * xAmount;
+							var targetElement = scrlTop.innerWidth() > scrlBot.innerWidth() ? scrlTop : scrlBot;
+							targetElement.css("transform", "translateX(" + translation + "rem)");
+						});
+          </script>
+        </section>
+
+        <section>
+          <h3>inner 넘어가는 카드 스와이퍼</h3>
+          <!-- sample -->
+          <div class="example">
+
+						<div class="inner">
+							<div class="cards swiper">
+								<div class="swiper-wrapper">
+									<a href="javascript:" class="swiper-slide">slide1</a>
+									<a href="javascript:" class="swiper-slide">slide2</a>
+									<a href="javascript:" class="swiper-slide">slide3</a>
+									<a href="javascript:" class="swiper-slide">slide4</a>
+								</div>
+							</div>
+						</div>
+          </div>
+          <!-- //sample -->
+
+          <script type="syntaxhighlighter" class="brush: xml;">
+						<div class="inner">
+							<div class="cards swiper">
+								<div class="swiper-wrapper">
+									<a href="javascript:" class="swiper-slide">slide1</a>
+									<a href="javascript:" class="swiper-slide">slide2</a>
+									<a href="javascript:" class="swiper-slide">slide3</a>
+									<a href="javascript:" class="swiper-slide">slide4</a>
+								</div>
+							</div>
+						</div>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+						.inner {width: 90%; height: 100%; border: 3px solid red;}
+						.inner .cards .swiper-slide {width: 800rem; height: 100rem; background: pink; display: flex; align-items: center; justify-content: center; margin-right: 10px;}
+						.inner .cards .swiper-slide:last-of-type {margin-right: 0;}
+          </script>
+					<script type="syntaxhighlighter" class="brush: js;">
+						var cardSwiper = new Swiper(".cards.swiper", {
+							slidesPerView: "auto",
+						});
+          </script>
+        </section>
+
+
+        
+
+      </div>
+    </div>
+
+    <script>
+      $(function () {
+				
+
+
+				var scrlArea = $(".scrl-area");
+				var scrlTop = $(".scrl-area .scrl.top");
+				var scrlBot = $(".scrl-area .scrl.bot");
+				var xAmount = Math.abs(scrlTop.innerWidth() - scrlBot.innerWidth());
+				var windowWidth = $(window).width();
+
+				scrlArea.on("scroll", function() {
+					var scrlWidth = scrlArea[0].scrollWidth - scrlArea[0].clientWidth;
+					var scrlPosition = scrlArea.scrollLeft();
+					var translation = -(scrlPosition / scrlWidth) * xAmount;
+					var targetElement = scrlTop.innerWidth() > scrlBot.innerWidth() ? scrlTop : scrlBot;
+					targetElement.css("transform", "translateX(" + translation + "rem)");
+				});
+
+
+
+
+
+				var cardSwiper = new Swiper(".cards.swiper", {
+					slidesPerView: "auto",
+				});
+
+
+
+
+
+						
+      });
+    </script>
+  </div>
+</body>
+</html>

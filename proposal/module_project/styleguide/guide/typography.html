@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>UI개발1팀 모듈화 프로젝트</title>
+  <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/swiper.css">
+  <link rel="stylesheet" href="../assets/styles/shCore.css"/>
+	<link rel="Stylesheet" href="../assets/styles/shCoreEclipse.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="../assets/scripts/XRegExp.js"></script> <!-- XRegExp is bundled with the final shCore.js during build -->
+	<script src="../assets/scripts/shCore.js"></script>
+	<script src="../assets/scripts/shBrushJScript.js"></script>
+	<script src="../assets/scripts/shBrushXml.js"></script>
+	<script src="../assets/scripts/shBrushCss.js"></script>
+  <script src="../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../assets/js/gsap.min.js"></script>
+  <script src="../assets/js/swiper.min.js"></script>
+  <script src="../assets/js/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/lottie-player.js"></script>
+  <script src="../assets/js/script.js"></script>
+  <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+  <style>
+    .form-text {position: relative; height: 42px; border: 1px solid #d8d8d8; border-radius: 5px; background-color: #fff;}
+    .form-text:after {content: ""; clear: both; display: block; height: 0;}
+    .form-text input {padding: 5px 20px; width: 100%; height: 100%; border-radius: 5px; outline: 0; border: 0;}
+
+    .font_list + .font_list{margin-top:20px;}
+    .font{padding-right:40px; background: url(../assets/images/icon-file-download.svg) no-repeat right center; opacity:0.7; transition:opacity 0.4s ease;}
+    .font:hover{opacity:1}
+    .font span{position:relative; font-size:20px; color:#000; font-weight:500;}
+    .font span:after{display:block; content:""; position:absolute; bottom:0; width:0; height:1px; background:#000; transition:width 0.4s ease;}
+    .font:hover span:after{width:100%;}
+
+    .description{display:inline-block; position:relative; margin-top:10px; color:#000; font-size:max(18rem, 14px); font-weight:500}
+    .description:after{display:block; content:""; position:absolute; top:0; left:0; transform: skew(-15deg); width:100%; height:100%; background: #e03abc; opacity:0.1}
+
+    .f_big_t1 {font-size: 120rem; line-height: 120%; letter-spacing: -.025em; color: #000; font-weight:bold;}
+    .f_big_t2 {font-size: 100rem; line-height: 120%; letter-spacing: -.025em; color: #000; font-weight:bold;}
+    .f_t1 {font-size: 72rem; line-height: 120%; letter-spacing: -.025em; color: #000; font-weight:bold;}
+    .f_t2 {font-size: 56rem; line-height: 120%; letter-spacing: -.025em; color: #000; font-weight:bold;}
+    .f_st {font-size: max(20rem, 16px); line-height: 140%; letter-spacing: -.025em; color: #000; font-weight:bold;}
+    .f_body1 {font-size: max(18rem, 14px); line-height: 150%; letter-spacing: -.025em; color: #000; font-weight:500;}
+    .f_body2 {font-size: max(18rem, 14px); line-height: 150%; letter-spacing: -.025em; color: #000; font-weight:400;}
+    .f_caption {font-size: max(14rem, 12px); line-height: 140%; letter-spacing: -.025em; color: #000;}
+
+    @media screen and (max-width: 1023px) {
+      .f_big_t1{font-size:52rem}
+      .f_big_t2{font-size:48rem}
+      .f_t1{font-size:44rem}
+      .f_t2{font-size:36rem}
+      
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap" style="background:#fff;">
+    <header>
+      <h1>모듈화 작업 가이드</h1>
+      <div class="btn-wrap">
+        <a href="./index.html">HOME  <i class="fas fa-angle-right"></i></a>
+      </div>
+    </header>
+    <div id="contents">
+      <aside></aside>
+      <div class="content-area">
+        <h2>폰트 다운로드(폰트 ZIP파일 + font.css)</h2>
+        <section>
+          <p class="font_list">
+            <a href="../assets/fonts/Pretendard.zip" download class="font"><span>1. Pretendard Font Download</span></a>
+          </p>
+          <p class="font_list">
+            <a href="../assets/fonts/NotoSans.zip" download class="font"><span>2. NotoSans Font Download</span></a>
+          </p>
+          <p class="font_list">
+            <a href="../assets/fonts/GeneralSans.zip" download class="font"><span>3. GeneralSans Font Download</span></a>
+          </p>
+          <p class="font_list">
+            <a href="../assets/fonts/SpoqaHanSansNeo.zip" download class="font"><span>4. SpoqaHanSansNeo Font Download</span></a>
+          </p>
+          <p class="font_list">
+            <a href="../assets/fonts/Manrope.zip" download class="font"><span>5. Manrope Font Download</span></a>
+          </p>
+          <p class="font_list">
+            <a href="../assets/fonts/NanumSquareNeo.zip" download class="font"><span>6. NanumSquareNeo Font Download</span></a>
+          </p>
+        </section>
+        <h2>폰트 스타일 가이드</h2>
+        <section>
+          <!-- sample -->
+          <div class="sample">
+            <p class="f_big_t1">대타이틀1 (font-size:120rem)</p>
+            <p class="description">-> font-size 100rem이상인 경우 f_big_t1 ~ t2..로 쓰여짐</p>
+          </div>
+          <!-- //sample -->
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <p class="f_big_t1">대타이틀1</p>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            .f_big_t1 {font-size: 120rem; line-height: 120%; letter-spacing: -.025em; color: #000;}
+          </script>
+        </section>
+
+        <section>
+          <!-- sample -->
+          <div class="sample">
+            <p class="f_big_t2">대타이틀2 (font-size:100rem)</p>
+          </div>
+          <!-- //sample -->
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <p class="f_big_t2">대타이틀2 (font-size:100rem)</p>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            .f_big_t2 {font-size: 100rem; line-height: 120%; letter-spacing: -.025em; color: #000;}
+          </script>
+        </section>
+
+        <section>
+          <!-- sample -->
+          <div class="sample">
+            <p class="f_t1">Title1 (font-size:72rem)</p>
+            <p class="description">-> title로 쓰이는 class는 f_t1 ~ t2..로 쓰여짐</p>
+          </div>
+          <!-- //sample -->
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <p class="f_t1">Title1 (font-size:72rem)</p>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            .f_t1 {font-size: 72rem; line-height: 120%; letter-spacing: -.025em; color: #000;}
+          </script>
+        </section>
+
+        <section>
+          <!-- sample -->
+          <div class="sample">
+            <p class="f_t2">Title2 (font-size:56rem)</p>
+          </div>
+          <!-- //sample -->
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <p class="f_t2">Title2 (font-size:56rem)</p>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            .f_t2 {font-size: 56rem; line-height: 120%; letter-spacing: -.025em; color: #000;}
+          </script>
+        </section>
+
+        <section>
+          <!-- sample -->
+          <div class="sample">
+            <p class="f_st">Subtitle (font-size:20rem)</p>
+            <p class="description">-> 서브타이틀의 경우 subtitle의 약자를 class name으로 사용</p>
+          </div>
+          <!-- //sample -->
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <p class="f_st">Subtitle (font-size:20rem)</p>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            .f_st {font-size: min(20rem, 16px); line-height: 140%; letter-spacing: -.025em; color: #000;}
+          </script>
+        </section>
+
+        <section>
+          <!-- sample -->
+          <div class="sample">
+            <p class="f_body1">Body 텍스트1 (font-size:18rem)</p>
+            <p class="description">-> 내용적으로 쓰이는 class는 f_body1 ~ body2..로 쓰여짐</p>
+          </div>
+          <!-- //sample -->
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <p class="f_body1">Body 텍스트1 (font-size:18rem)</p>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            .f_body1 {font-size: max(18rem, 14px); line-height: 150%; letter-spacing: -.025em; color: #000;}
+          </script>
+        </section>
+
+        <section>
+          <!-- sample -->
+          <div class="sample">
+            <p class="f_body2">Body 텍스트2 (font-size:18rem)</p>
+          </div>
+          <!-- //sample -->
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <p class="f_body2">Body 텍스트2(font-size:18rem)</p>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            .f_body2 {font-size: max(18rem, 14px); line-height: 150%; letter-spacing: -.025em; color: #000;}
+          </script>
+        </section>
+
+        <section>
+          <!-- sample -->
+          <div class="sample">
+            <p class="f_caption">Caption 텍스트 (font-size:14rem)</p>
+            <p class="description">-> 부가 텍스트인 경우 Caption을 class name으로 사용</p>
+          </div>
+          <!-- //sample -->
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <p class="f_caption">Caption 텍스트 (font-size:14rem)</p>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            .f_caption {font-size: max(14rem, 12px); line-height: 140%; letter-spacing: -.025em; color: #000; font-family: "Pretendard_Regular";}
+          </script>
+        </section>
+        
+        
+        <!-- 구분선 -->
+        <hr style="margin: 50px 0;">
+
+        <!-- <section>
+          <div class="sample">
+            <p class="pop_section_tit_b">팝업 서브 콘텐츠 섹션 타이틀 (font-size:18px)</p>
+          </div>
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <p class="pop_section_tit_b">팝업 서브 콘텐츠 섹션 타이틀</p>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            .pop_section_tit_b {font-family: "spoqa_bold", sans-serif; color: #333; font-size: 18px;}
+          </script>
+        </section>
+
+        <section>
+          <div class="sample">
+            <p class="content_txt_r_dark">팝업 본문 텍스트 (font-size:16px)</p>
+          </div>
+          <script type="syntaxhighlighter" class="brush: xml;">
+            <p class="content_txt_r_dark">팝업 본문 텍스트</p>
+          </script>
+          <script type="syntaxhighlighter" class="brush: css;">
+            .content_txt_r_dark {font-family: "spoqa_regular", sans-serif; color: #333; font-size: 16px;}
+          </script>
+        </section> -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>
