@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./common/css/aos.css">
+  <link rel="stylesheet" href="./common/css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="./common/css/fonts.css">
+  <link rel="stylesheet" href="./common/css/style-mainA.css">
+  <script src="./common/js/jquery-1.12.4.min.js"></script>
+  <script src="./common/js/swiper-bundle.min.js"></script>
+  <script src="./common/js/gsap.min.js"></script>
+  <script src="./common/js/ScrollTrigger.min.js"></script>
+  <script src="./common/js/aos.js"></script>
+  <script src="./common/js/ScrollToPlugin.min.js"></script>
+  <script src="./common/js/mainA.js"></script>
+  <title>HD현대로보틱스 - Type A Main</title>
+</head>
+<body>
+  <div id="wrap">
+    <!-- header -->
+    <header class="white">
+      <div class="inner">
+        <!-- <h1 class="logo"></h1> -->
+        <a href="../../index.html"><h1 class="logo"></h1></a>
+        <nav></nav>
+        <div class="util"></div>
+      </div>
+      <div class="gnb-con">
+        <div class="inner">
+          <img src="./common/images/img-gnb-con.png" alt="">
+        </div>
+        <p class="img"><img src="./common/images/img-gnb-right.png" alt=""></p>
+      </div>
+    </header>
+
+    <section class="video-area">
+      <div class="video-con">
+        <video id="video1" src="./common/videos/main-scroll-video-01.mp4" muted playsinline autoplay></video>
+        <video id="video2" src="./common/videos/main-scroll-video-02.mp4" muted playsinline></video>
+        <video id="video3" src="./common/videos/main-scroll-video-03.mp4" muted playsinline></video>
+      </div>
+      <div class="visual-wrap">
+        <div class="left-visual-area">
+          <div class="fixed-area">
+            <div class="title">
+              <p><span>LEADING</span></p>
+              <p><span>THE FUTURE</span></p>
+            </div>
+            <div class="txt">
+              <p><span>WITH SMART</span></p>
+              <p><span>ROBOTIC SOLUTIONS</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="right-visual-area">
+          <div class="bg">
+            <video src="./common/videos/main-right-visual-video.mp4" muted playsinline loop></video>
+          </div>
+          <div class="title">
+            <p><span>BETTER LIFE <span>WITH</span></span></p>
+            <p><span>HYUNDAI ROBOTICS</span></p>
+          </div>
+          <div class="txt">
+            <p><span>끊임없는 연구개발과 혁신적인 제품을 통해 로봇산업의 미래를 선도하며</span></p>
+            <p><span>로봇과 함께 보다 풍요로운 삶을 만들어 갑니다.</span></p>
+          </div>
+        </div>
+        <div class="pagenation">
+          <a href="javascript:" class="circle">
+            <!-- <p class="top"><span></span></p>
+            <p class="bot"><span></span></p> -->
+            <canvas id="canvas" width="60" height="60"></canvase>
+          </a>
+          <a href="javascript:" class="circle">
+            <p class="left-top"><span></span></p>
+            <p class="right-top"><span></span></p>
+            <p class="right-bot"><span></span></p>
+            <p class="left-bot"><span></span></p>
+          </a>
+        </div>
+      </div>
+      <div class="product-area">
+        <div class="inner">
+          <div class="fixed-area">
+            <div class="title">
+              <p><span>PRODUCT</span></p>
+            </div>
+            <div class="txt">
+              <p><span>국내시장 점유율 1위로서 산업용 로봇을 활용한 물류 자동화 설비 등 </span></p>
+              <p><span>혁신적인 최첨단 로봇 산업을 이끌어갑니다.</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="product-list-area">
+          <div class="list-inner">
+            <div class="list-move">
+              <div class="inner">
+                <div class="list-con">
+                  <div class="list"><img src="./common/images/img-product-list-01.png" alt=""></div>
+                  <div class="list"><img src="./common/images/img-product-list-02.png" alt=""></div>
+                  <div class="list"><img src="./common/images/img-product-list-03.png" alt=""></div>
+                  <div class="list"><img src="./common/images/img-product-list-04.png" alt=""></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="solution-area scroll-motion1">
+        <div class="inner">
+          <div class="title">
+            <p><span>TOTAL</span></p>
+            <p><span>SOLUTION</span></p>
+          </div>
+          <div class="txt">
+            <p><span>로봇 기술을 활용하여 공급부터 유지보수까지</span></p>
+            <p><span>고객에 필요한 통합솔루션을 제공합니다.</span></p>
+          </div>
+          <div class="step-area">
+            <div class="step-inner">
+              <div class="step-tit">
+                <div class="bar-div"><p class="bar"></p></div>
+                <div class="step on">
+                  <p class="num">01</p>
+                  <p class="tit">공급</p>
+                </div>
+                <div class="step">
+                  <p class="num">02</p>
+                  <p class="tit">설치</p>
+                </div>
+                <div class="step">
+                  <p class="num">03</p>
+                  <p class="tit">운영</p>
+                </div>
+                <div class="step">
+                  <p class="num">04</p>
+                  <p class="tit">유지보수</p>
+                </div>
+              </div>
+              <div class="step-con">
+                <div class="step on">
+                  <p class="tit">공급</p>
+                  <p class="txt">최첨단 기술을 적용한 산업용 로봇과 서비스 로봇을 제작하고, <br />제조업부터 물류 및 운송, 의료, 식품 및 음료 등 <br />다양한 산업 분야에 제공합니다.</p>
+                </div>
+                <div class="step">
+                  <p class="tit">설치</p>
+                  <p class="txt">설치 환경에 대한 조사부터 설치 공사까지 전문인력을 통해 이루어지며, <br />맵핑/라벨링, 테스트까지 생산성을 향상시키고 <br />효율을 극대화할 수 있도록 도와드립니다.</p>
+                </div>
+                <div class="step">
+                  <p class="tit">운영</p>
+                  <p class="txt">로봇의 동작과 역할, 적용된 기능들에 대해 학습할 수 있도록 교육을 지원하며, <br />이를 통해 로봇을 운영하는데 필요한 조작 지식과 <br />기술을 습득하실 수 있습니다.</p>
+                </div>
+                <div class="step">
+                  <p class="tit">유지보수</p>
+                  <p class="txt">분기별로 전문인력의 유선 점검과 출장  정기점검이 이루어지며, <br />고장 수리 등으로 인한  로봇 이용이 중단되지 않도록 <br />대체 장비 제공 등의 조치를 취해드립니다.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-area">
+      <div class="info-inner">
+        <div class="info-square">
+          <div class="info-list">
+            <div class="bg">
+              <video src="./common/videos/main-smart-factory-video.mp4" muted playsinline loop></video>
+            </div>
+            <div class="txt-wrap">
+              <p class="sub-tit"><span>SMART FACTORY</span></p>
+              <p class="tit"><span>H!Factory</span></p>
+              <div class="txt">
+                <p><span>현대 스마트팩토리 통합플랫폼은 공장 내 모든 생산장비를 연결하여</span></p>
+                <p><span>데이터를 취합, 분석, 관리하고 현장 생산설비의 스마트화, 사물인터넷 기반의</span></p>
+                <p><span>전사적 연결 및 데이터 기반의 분석을 통한 자율제어를 지원합니다.</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="info-list">
+            <div class="bg">
+              <video src="./common/videos/marin-service-robot-video.mp4" muted playsinline loop></video>
+            </div>
+            <div class="txt-wrap">
+              <p class="sub-tit"><span>Service Robot</span></p>
+              <p class="tit"><span>Enhancing Lifestyle</span></p>
+              <div class="txt">
+                <p><span>산업현장의 자동화 설비를 이끌어온 기술과 산업현장을 제어하는 AI 기술을</span></p>
+                <p><span>생활 속 로봇에 적용하여 고객에게 최적의 솔루션을 제공합니다.</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <!-- WHY HDHyundai robotics -->
+    <section class="why-hd-area">
+      <div class="inner">
+        <div class="txt-div scroll-motion">
+          <p class="big-tit"><span>WHY</span></p>
+          <p class="sub-tit">
+            <span>HD</span>
+            <span>HYUNDAI</span>
+            <span>ROBORICS</span>
+          </p>
+          <p class="txt">
+            HD현대로보틱스는 <span>국내 최대의 로봇 메이커</span>로, 로봇과 공장자동화, 엔지니어링, 설치/시운전, A/S 등 <br />다양한 분야에서 사업을 수행하며, 첨단 로봇 기술을 활용한 <span>토탈 로봇솔루션</span>을 제공합니다.<br />
+            1984년에 시작된 로봇 사업은 국내외 자동차 제조 공장에 산업용 로봇을 공급하며 글로벌 경쟁력을 키웠고,<br />
+            <span>6만여대 이상의 산업용 로봇 생산</span>으로 세계 일류의 로봇 종합기업으로 성장했습니다.<br />
+            HD현대로보틱스는 끊임없는 연구개발과 혁신을 통해 고객과 함께 성장하며 로봇산업의 선두주자로 나아갈 것입니다.
+          </p>
+        </div>
+        <div class="icon-list scroll-motion">
+          <p class="icon"><img src="./common/images/img-why-hd-list-01.png" alt=""></p>
+          <p class="icon"><img src="./common/images/img-why-hd-list-02.png" alt=""></p>
+          <p class="icon"><img src="./common/images/img-why-hd-list-03.png" alt=""></p>
+          <p class="icon"><img src="./common/images/img-why-hd-list-04.png" alt=""></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESG -->
+    <section class="esg-area scroll-motion">
+      <div class="inner">
+        <p class="tit"><span>ESG</span></p>
+        <div class="txt-con">
+          <p class="sub-tit">사람과 로봇이 함께 만드는 <br />풍요로운 삶</p>
+          <p class="txt">HD현대로보틱스는 사람과 로봇이 함께 만드는 풍요로운 삶을 목표로 <br />전사 환경경영 체계 구축부터 안전한 작업 환경 마련, 로봇의 사회적 가치 발굴과 <br />준법·윤리경영의 고도화 등 다양한 ESG 전략 과제를 추진합니다.</p>
+          <div class="icon-list">
+            <p class="icon"><img src="./common/images/icon-esg-01.png" alt=""></p>
+            <p class="icon"><img src="./common/images/icon-esg-02.png" alt=""></p>
+            <p class="icon"><img src="./common/images/icon-esg-03.png" alt=""></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Media -->
+    <section class="media-area">
+      <div class="inner">
+        <div class="tit-wrap scroll-motion">
+          <p class="tit"><span>Media</span></p>
+          <p class="txt"><span>HD현대로보틱스의 다양한 분야의 최신 소식을 확인해보세요</span></p>
+        </div>
+        <div class="media-list scroll-motion">
+          <a href="javascript:" class="list long">
+            <p class="img"><img src="./common/images/img-media-list-01.png" alt=""></p>
+            <div class="top-area">
+              <p class="txt">채용</p>
+              <p class="date">2024.01.12</p>
+            </div>
+            <p class="tit">2024 상반기<br />경력사원 및 사무지원직 모집</p>
+            <p class="arrow"><img src="./common/images/icon-media-view-more.svg" alt=""></p>
+          </a>
+          <a href="javascript:" class="list no-img">
+            <p class="img"><img src="./common/images/img-media-list-no-img.png" alt=""></p>
+            <div class="top-area">
+              <p class="txt">새소식</p>
+              <p class="date">2024.01.19</p>
+            </div>
+            <p class="tit">대구공공시설관리공단-<br />현대로보틱스, 방역로봇 운영<br />협약 체결</p>
+          </a>
+          <a href="javascript:" class="list">
+            <p class="img"><img src="./common/images/img-media-list-02.png" alt=""></p>
+            <div class="top-area">
+              <p class="txt">새소식</p>
+              <p class="date">2024.01.17</p>
+            </div>
+            <p class="tit">HD현대로보틱스, <br />대구국제기계산업대전 참가</p>
+          </a>
+          <a href="javascript:" class="list long">
+            <p class="img"><img src="./common/images/img-media-list-03.png" alt=""></p>
+            <div class="top-area">
+              <p class="txt">새소식</p>
+              <p class="date">2024.01.08</p>
+            </div>
+            <p class="tit">HD현대로보틱스, <br />모바일서비스로봇 신규 모델 <br />‘러기지 로봇’ 출시</p>
+          </a>
+          <a href="javascript:" class="list no-img">
+            <p class="img"><img src="./common/images/img-media-list-no-img.png" alt=""></p>
+            <div class="top-area">
+              <p class="txt">새소식</p>
+              <p class="date">2023.12.08</p>
+            </div>
+            <p class="tit">HD현대로보틱스, 유럽 최대 <br />통신사와 ‘서비스로봇 공동 개발’ <br />사업 협력</p>
+          </a>
+          <a href="javascript:" class="list">
+            <p class="img"><img src="./common/images/img-media-list-04.png" alt=""></p>
+            <div class="top-area">
+              <p class="txt">새소식</p>
+              <p class="date">2023.12.01</p>
+            </div>
+            <p class="tit">현대L&amp;S, 국제물류산업대전에서 <br />스마트 물류 선보여</p>
+          </a>
+          <a href="javascript:" class="list">
+            <p class="img"><img src="./common/images/img-media-list-05.png" alt=""></p>
+            <div class="top-area">
+              <p class="txt">새소식</p>
+              <p class="date">2023.11.24</p>
+            </div>
+            <p class="tit">HD현대로보틱스, 방역로봇 D1 <br />미국 ‘IDEA’ 본상 수상</p>
+          </a>
+        </div>
+        <p class="view-more scroll-motion">
+          <a href="javascript:"><img src="./common/images/btn-media-view-more.png" alt=""></a>
+        </p>
+      </div>
+    </section>
+    
+    <!-- 문의 -->
+    <section class="inquiry-area">
+      <a href="javascript:" class="inquiry">
+        <p class="tit">고객 문의</p>
+        <p class="txt">제품과 서비스 관련<br />궁금하신 사항을 문의주세요.</p>
+      </a>
+      <a href="javascript:" class="inquiry">
+        <p class="tit">대리점 안내</p>
+        <p class="txt">현재 고객님과 가까운 대리점을 <br />안내해 드립니다.</p>
+      </a>
+      <a href="javascript:" class="inquiry">
+        <p class="tit">사업/제휴 문의</p>
+        <p class="txt">우수한 기술력과 아이디어를 갖춘 기업의 <br />제휴문의를 기다립니다.</p>
+      </a>
+      <a href="javascript:" class="inquiry">
+        <p class="tit">다운로드</p>
+        <p class="txt">응용 제어기술, 브로슈어, 카탈로그 등 <br />상세 정보를 제공합니다.</p>
+      </a>
+    </section>
+    
+    <!-- footer -->
+    <footer>
+      <a href="./sub1.html">
+        <div class="top-area">
+          <p class="inner"><img src="./common/images/footer-top.png" alt=""></p>
+        </div>
+        <p class="bot-area"><img src="./common/images/footer-bottom.png" alt=""></p>
+      </a>
+    </footer>
+
+    <!-- fixed 퀵메뉴 -->
+    <div class="quick-area">
+      <div class="quick-menu on">
+        <a href="javascript:" class="quick-btn"></a>
+        <div class="quick-con"><img src="./common/images/img-quick-menu.png" alt=""></div>
+      </div>
+      <div class="quick-menu">
+        <a href="javascript:" class="quick-btn"></a>
+        <div class="quick-con">
+          <div class="quick-inner">
+            <div class="tit-wrap">
+              <p class="tit">HD현대로보틱스 <br />AI 고객센터</p>
+              <a href="javascript:" class="prev-btn"><img src="./common/images/icon-chat-bot-prev.svg" alt=""></a>
+            </div>
+            <div class="menu-wrap">
+              <div class="type-menu">
+                <div class="robot">
+                  <p class="tit">HD현대로보틱스<br />로봇구성</p>
+                  <p class="img"><img src="./common/images/img-chat-bot-menu-robot.png" alt=""></p>
+                  <div class="menu">
+                    <a href="javascript:"><span>기본구성</span></a>
+                    <a href="javascript:"><span>선택사양</span></a>
+                    <a href="javascript:"><span>사용성</span></a>
+                    <a href="javascript:"><span>인증</span></a>
+                  </div>
+                </div>
+                <a href="javascript:" class="service"><span>서비스 문의하기</span></a>
+              </div>
+              <div class="chatting-wrap">
+                <p class="date">2024.02.28 10:45 AM</p>
+                <div class="robot talk-wrap">
+                  <div class="talk">안녕하세요, <br />HD현대로보틱스 서비스 <br />문의를 찾아주셔서 감사합니다.</div>
+                  <div class="talk">원하시는 상담 유형을 <br />선택해 주시기 바랍니다.</div>
+                </div>
+                <a href="javascript:" class="talk-wrap click-wrap">
+                  <p class="choice">대리점안내</p>
+                  <p class="choice">교육안내</p>
+                  <p class="choice">A/S안내</p>
+                  <p class="choice">구매안내</p>
+                  <p class="choice">인증안내</p>
+                  <p class="choice click">사업/제휴문의</p>
+                </a>
+                <div class="robot talk-wrap">
+                  <div class="talk">어떤 사업 라인에 관심이<br />있으신가요?</div>
+                </div>
+                <a href="javascript:" class="talk-wrap click-wrap">
+                  <p class="choice click">산업용로봇</p>
+                  <p class="choice">FRD로봇</p>
+                  <p class="choice">제어기/부가설비</p>
+                  <p class="choice">서비스로봇</p>
+                </a>
+                <div class="robot talk-wrap">
+                  <div class="talk">어떤 응용분야에 관심이<br />있으신가요?</div>
+                </div>
+                <a href="javascript:" class="talk-wrap click-wrap">
+                  <p class="choice">Handling</p>
+                  <p class="choice click">Assembly</p>
+                  <p class="choice">Sealing</p>
+                  <p class="choice">Arc Welding</p>
+                  <p class="choice">Palletizing</p>
+                  <p class="choice">Painting</p>
+                </a>
+                <div class="robot talk-wrap">
+                  <div class="talk">자세한 정보를 보고싶은<br />로봇 제품을 선택해주세요</div>
+                </div>
+                <a href="javascript:" class="talk-wrap click-wrap">
+                  <p class="choice">HH4</p>
+                  <p class="choice">HH4L</p>
+                  <p class="choice click">HH7</p>
+                  <p class="choice">HH8</p>
+                  <p class="choice">HA006B</p>
+                  <p class="choice">HA006L</p>
+                </a>
+                <div class="robot talk-wrap">
+                  <div class="talk">알겠습니다!<br />아래 내용을 작성해주세요.</div>
+                </div>
+                <div class="talk-wrap">
+                  <img src="./common/images/img-chat-input.png" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dimd"></div>
+
+    <script type="text/javascript">
+      var canvas = document.getElementById("canvas");
+      var context = canvas.getContext("2d");
+      context.beginPath();
+      context.arc(150, 100, 50, 0, 2 * Math.PI);
+      context.stroke();
+    </script>
+  </div>
+</body>
+</html>

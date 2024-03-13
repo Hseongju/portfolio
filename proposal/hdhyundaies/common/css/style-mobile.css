@@ -1,0 +1,20 @@
+@import url(./reset.css);
+#mobileWrap {position: relative; overflow: hidden; top: 50%; left: 50%; width: 384px; height: 772px; font-family: 'noto_bold', '맑은 고딕', 'Malgun Gothic', sans-serif; border-radius: 50px; transform: translate(-50%, -50%);}
+#mobileWrap .content {z-index: 9999; overflow: hidden; position: absolute; width: 384px; height: 772px; background:#fff; border: 7px solid black; box-sizing: border-box; border-radius:50px;}
+#mobileWrap .content > .scroll{display:block; overflow-x:hidden; overflow-y:auto; position:relative; /*margin-left:-2px;*/ /*width:382px;*/ height:100%;}
+#mobileWrap .content > .scroll::-webkit-scrollbar {display: none;}
+#mobileWrap .content .scrollDiv {display: block;}
+
+header {z-index: 10; position: absolute; top: 0; left: 0; width: 100%;}
+/* header.up{background: rgba(0,0,0,0.1);} */
+footer a {display: block; width: 100%; background-color: #f4f4f4;}
+
+
+.visual{position: relative;}
+.visual .lottie{position: absolute; top: 0; left: 137px; z-index: 1; width: 120px;}
+.visual .elements{position: absolute; top: 180px; left: -50px; z-index: 1; opacity: 0;}
+.visual .video{position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
+.visual .video::after {content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7);}
+.visual .video video{position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;}
+
+.footer{padding-top: 100px;}
