@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./common/css/aos.css">
+  <link rel="stylesheet" href="./common/css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="./common/css/fonts.css">
+  <link rel="stylesheet" href="./common/css/style-mainA.css">
+  <script src="./common/js/jquery-1.12.4.min.js"></script>
+  <script src="./common/js/swiper-bundle.min.js"></script>
+  <script src="./common/js/gsap.min.js"></script>
+  <script src="./common/js/ScrollTrigger.min.js"></script>
+  <script src="./common/js/aos.js"></script>
+  <script src="./common/js/ScrollToPlugin.min.js"></script>
+  <script src="./common/js/mainA.js"></script>
+  <title>현대제철 - Type A Main</title>
+</head>
+<body>
+  <!-- header -->
+  <header>
+    <div class="inner">
+      <a href="javascript:" class="logo"><img src="./common/images/main-header-logo.svg" alt=""></a>
+      <div class="right">
+        <nav>
+          <div class="depth-div">
+            <a href="javascript:" class="one-depth"><span>탄소중립</span></a>
+            <div class="two-depth-div">
+              <a href="javascript:" class="two-depth"><span>탄소중립 로드맵</span></a>
+              <a href="javascript:" class="two-depth"><span>전기고로복합<br />프로세스</span></a>
+              <a href="javascript:" class="two-depth"><span>하이큐브</span></a>
+              <a href="javascript:" class="two-depth"><span>하이에코스틸</span></a>
+            </div>
+          </div>
+          <div class="depth-div">
+            <a href="javascript:" class="one-depth"><span>현대제철</span></a>
+            <div class="two-depth-div">
+              <a href="javascript:" class="two-depth"><span>기업개요</span></a>
+              <a href="javascript:" class="two-depth"><span>비전 2025</span></a>
+              <a href="javascript:" class="two-depth"><span>경영이념</span></a>
+              <a href="javascript:" class="two-depth"><span>CI/BI</span></a>
+              <a href="javascript:" class="two-depth"><span>글로벌 네트워크</span></a>
+              <a href="javascript:" class="two-depth"><span>스포츠단 소개</span></a>
+              <a href="javascript:" class="two-depth history-btn"><span>역사관</span></a>
+            </div>
+          </div>
+          <div class="depth-div">
+            <a href="javascript:" class="one-depth"><span>사업과 제품</span></a>
+            <div class="two-depth-div">
+              <a href="javascript:" class="two-depth"><span>사업 및 공정 소개</span></a>
+              <a href="javascript:" class="two-depth"><span>기술 소개</span></a>
+              <a href="javascript:" class="two-depth"><span>브랜드 소개</span></a>
+              <a href="javascript:" class="two-depth"><span>제품 소개</span></a>
+              <a href="javascript:" class="two-depth"><span>세계 일류 상품</span></a>
+              <a href="javascript:" class="two-depth"><span>제품 브로슈어</span></a>
+            </div>
+          </div>
+          <div class="depth-div">
+            <a href="javascript:" class="one-depth"><span>ESG</span></a>
+            <div class="two-depth-div">
+              <a href="javascript:" class="two-depth"><span>ESG개요</span></a>
+              <a href="javascript:" class="two-depth"><span>지속가능경영</span></a>
+              <a href="javascript:" class="two-depth"><span>윤리/준법경영</span></a>
+              <a href="javascript:" class="two-depth"><span>안전경영</span></a>
+              <a href="javascript:" class="two-depth"><span>환경경영</span></a>
+              <a href="javascript:" class="two-depth"><span>상생경영</span></a>
+              <a href="javascript:" class="two-depth"><span>나눔경영</span></a>
+            </div>
+          </div>
+          <div class="depth-div">
+            <a href="javascript:" class="one-depth"><span>투자정보</span></a>
+            <div class="two-depth-div">
+              <a href="javascript:" class="two-depth"><span>공시</span></a>
+              <a href="javascript:" class="two-depth"><span>전자공고</span></a>
+              <a href="javascript:" class="two-depth"><span>주식 및 주주정보</span></a>
+              <a href="javascript:" class="two-depth"><span>지배구조</span></a>
+              <a href="javascript:" class="two-depth"><span>재무정보</span></a>
+              <a href="javascript:" class="two-depth"><span>IR 자료실</span></a>
+              <a href="javascript:" class="two-depth"><span>IR FAQ</span></a>
+            </div>
+          </div>
+          <div class="depth-div">
+            <a href="javascript:" class="one-depth"><span>아카이브</span></a>
+            <div class="two-depth-div">
+              <a href="javascript:" class="two-depth"><span>브로슈어/자료실</span></a>
+              <a href="javascript:" class="two-depth"><span>보고서</span></a>
+              <a href="javascript:" class="two-depth"><span>이니셔티브</span></a>
+              <a href="javascript:" class="two-depth"><span>인증/수상</span></a>
+            </div>
+          </div>
+          <div class="depth-div">
+            <a href="javascript:" class="one-depth media-btn"><span>미디어룸</span></a>
+          </div>
+        </nav>
+        <a href="javascript:" class="lang"><span>ENG</span></a>
+        <div class="bg"></div>
+      </div>
+    </div>
+  </header>
+
+  <div id="wrap">
+    <!-- quick menu -->
+    <div class="quick-menu">
+      <a href="javascript:" class="alarm"></a>
+      <a href="javascript:" class="cart"></a>
+      <a href="javascript:" class="clock"></a>
+      <a href="javascript:" class="message"></a>
+    </div>
+
+    <!-- visual -->
+    <div class="visual-area">
+      <div class="visual-bg">
+        <video src="./common/videos/main-visual.mp4" autoplay loop muted playsinline></video>
+      </div>
+      <div class="txt-wrap scroll-motion">
+        <p class="medium-txt"><span>좋은 철을 만드는 기본,</span></p>
+        <p class="medium-txt"><span>현대제철의</span></p>
+        <p class="medium-txt"><span><span class="blue-txt">철학</span>에서 만나다</span></p>
+      </div>
+    </div>
+
+    <!-- 좋은 철은 어떻게 만들어질까요? -->
+    <div class="made-iron-area">
+      <div class="made-iron-wrap">
+        <div class="title-wrap scroll-motion">
+          <p class="large-txt">
+            <span>좋은 철은</span>
+            <span class="white-txt">좋은 철은</span>
+          </p>
+          <p class="large-txt">
+            <span>어떻게</span>
+            <span class="white-txt">어떻게</span>
+          </p>
+          <p class="large-txt">
+            <span>만들어 질까요?</span>
+            <span class="white-txt">만들어 질까요?</span>
+          </p>
+        </div>
+        <div class="iron-con-area">
+          <div class="bg-img"><img src="./common/images/main-bg-made-iron.jpg" alt=""></div>
+          <div class="iron-con-wrap">
+            <div class="title-div">
+              <p class="medium-txt"><span>좋은 철은 전기로에서</span></p>
+              <p class="medium-txt"><span>태어납니다</span></p>
+            </div>
+            <div class="iron-con-div">
+              <div class="iron-div-w">
+                <div class="iron-div custom-mouse">
+                  <p class="txt">폐차, 건축물 등을 통해 <br />거둬들인 고철은 철스크랩으로 <br />수거돼 전기로의 원료가 됩니다 <Br />이렇게 철은 다시 태어납니다</p>
+                  <p class="tit">미래를 선도하는 <br />현대제철 사업</p>
+                </div>
+              </div>
+              <div class="iron-div-w">
+                <div class="iron-div custom-mouse">
+                  <p class="txt">좋은 철은 어떠한 환경에서도 <br />적응하고 안전과 <br />강도를 지켜냅니다</p>
+                  <p class="tit">현대제철 <br />70년 발자취</p>
+                </div>
+              </div>
+              <div class="iron-div-w">
+                <div class="iron-div custom-mouse">
+                  <p class="txt">현대제철은 철을 통해 <br />더 큰 가치를 만들고, <br />새로운 산업 생태계를 만듭니다</p>
+                  <p class="tit">철, 그 이상의 가치 창조 <br />비전 2025</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 철이 우리 환경에 미치는 영향은 무엇일까요? -->
+    <div class="envir-iron-area">
+      <div class="title-wrap scroll-motion">
+        <p class="large-txt">
+          <span>철이 우리 환경에</span>
+          <span class="white-txt">철이 우리 환경에</span>
+        </p>
+        <p class="large-txt">
+          <span>미치는 영향은</span>
+          <span class="white-txt">미치는 영향은</span>
+        </p>
+        <p class="large-txt">
+          <span>무엇일까요?</span>
+          <span class="white-txt">무엇일까요?</span>
+        </p>
+      </div>
+      <div class="line-move-area">
+        <div class="line-move">
+          <div class="line"><img src="./common/images/main-icon-move-line.png" alt=""></div>
+        </div>
+      </div>
+      <div class="txt-wrap scroll-motion">
+        <p class="medium-txt"><span>좋은 철은 탄소배출을</span></p>
+        <p class="medium-txt"><span>줄일 수 있습니다</span></p>
+      </div>
+      <div class="img-wrap scroll-motion">
+        <div class="img custom-mouse">
+          <img src="./common/images/main-img-good-steel-01.jpg" alt="">
+          <p class="txt">
+            안전을 심은 철<br />
+            프리미엄 강재<br />
+            <span class="blue-txt">H-CORE</span>
+          </p>
+        </div>
+        <div class="img custom-mouse">
+          <img src="./common/images/main-img-good-steel-02.jpg" alt="">
+          <p class="txt">
+            맞춤형<br />
+            자동차 소재 솔루션<br />
+            <span class="blue-txt">H-SOLUTION</span>
+          </p>
+        </div>
+        <div class="img custom-mouse">
+          <img src="./common/images/main-img-good-steel-03.jpg" alt="">
+          <p class="txt">
+            철로 그리는<br />
+            새로운 미래<br />
+            <span class="blue-txt">HyECOsteel</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 좋은 철이 그리는 미래는 어떤것인가요? -->
+    <div class="future-iron-area">
+      <div class="title-wrap scroll-motion">
+        <p class="large-txt">
+          <span>좋은 철이</span>
+          <span class="white-txt">좋은 철이</span>
+        </p>
+        <p class="large-txt">
+          <span>그리는 미래는</span>
+          <span class="white-txt">그리는 미래는</span>
+        </p>
+        <p class="large-txt">
+          <span>어떤것인가요?</span>
+          <span class="white-txt">어떤것인가요?</span>
+        </p>
+      </div>
+      <div class="txt-wrap scroll-motion">
+        <p class="medium-txt"><span>지구에 발생하는</span></p>
+        <p class="medium-txt"><span>온실가스를 줄이기 위해</span></p>
+        <p class="medium-txt"><span><span class="blue-txt">2050</span> 까지 탄소비용을 제로화 하는</span></p>
+        <p class="medium-txt"><span>전략을 추진하여 다음 세대를 위한</span></p>
+        <p class="medium-txt"><span>건강한 터를 다집니다</span></p>
+        <p class="view-btn"><span>탄소중립 로드맵 보기</span></p>
+        <span class="year">2050</span>
+      </div>
+    </div>
+
+    <!-- ESG -->
+    <div class="esg-area">
+      <div class="txt-fixed-con">
+        <div class="txt-wrap scroll-motion">
+          <p class="medium-txt"><span>우리는 지속가능한 방법으로 행동합니다</span></p>
+          <p class="medium-txt"><span>지역사회에 공헌할 수 있는 활동들을</span></p>
+          <p class="medium-txt"><span>확대해 진행하고, 다양성을 강화하며, </span></p>
+          <p class="medium-txt"><span>각 부문에서 노력을 기울이고 있습니다</span></p>
+          <p class="view-btn"><span>ESG 개요 보기</span></p>
+        </div>
+      </div>
+      <div class="img-fixed-con">
+        <div class="img-wrap">
+          <div class="img"><img src="./common/images/main-img-esg-01.jpg" alt=""></div>
+          <div class="img"><img src="./common/images/main-img-esg-02.jpg" alt=""></div>
+          <div class="img"><img src="./common/images/main-img-esg-03.jpg" alt=""></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 새로운 미래를 위한 현대제철의 좋은 철 이야기 -->
+    <div class="story-area">
+      <div class="title-wrap scroll-motion">
+        <p class="large-txt">
+          <span>새로운 미래를 위한</span>
+          <span class="white-txt">새로운 미래를 위한</span>
+        </p>
+        <p class="large-txt">
+          <span>현대제철의</span>
+          <span class="white-txt">현대제철의</span>
+        </p>
+        <p class="large-txt">
+          <span>좋은 철 이야기</span>
+          <span class="white-txt">좋은 철 이야기</span>
+        </p>
+      </div>
+      <div class="story-wrap">
+        <div class="fixed-bg">
+          <video src="./common/videos/main-steel.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="top-wrap scroll-motion">
+          <div class="list-div">
+            <a href="javascript:" class="list custom-mouse">
+              <p class="img"><video src="./common/videos/main-story.mp4" autoplay muted loop playsinline></video></p>
+              <div class="txt-div">
+                <p class="category">YouTube</p>
+                <p class="tit">철의 순환으로 작품을<br />만들다</p>
+              </div>
+            </a>
+          </div>
+          <div class="list-div">
+            <a href="javascript:" class="list custom-mouse">
+              <p class="img"><img src="./common/images/main-img-story-01.jpg" alt=""></p>
+              <div class="txt-div">
+                <p class="category">쇠부리토크</p>
+                <p class="tit">상처 위에 핀 아름다운 꽃 진안</p>
+              </div>
+            </a>
+          </div>
+          <div class="list-div">
+            <a href="javascript:" class="list custom-mouse">
+              <p class="img"><img src="./common/images/main-img-story-02.jpg" alt=""></p>
+              <div class="txt-div">
+                <p class="category">푸른 연금술사</p>
+                <p class="tit">철재의 시작과 본질을 묻다</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="bottom-wrap">
+          <div class="list-div scroll-motion">
+            <a href="javascript:" class="list custom-mouse">
+              <img src="./common/images/main-img-story-03.jpg" alt="">
+              <div class="txt-div">
+                <p class="tit">
+                  좋은철에 대한<br />
+                  당신의 생각을<br />
+                  들려주세요
+                </p>
+                <p class="blue-txt">캠페인</p>
+              </div>
+            </a>
+          </div>
+          <div class="list-div scroll-motion">
+            <a href="javascript:" class="list custom-mouse">
+              <img src="./common/images/main-img-story-04.jpg" alt="">
+              <div class="txt-div">
+                <p class="tit">
+                  투명하고 건전한<br />
+                  지배구조를<br />
+                  구축합니다
+                </p>
+                <p class="blue-txt">투자정보</p>
+              </div>
+            </a>
+          </div>
+          <div class="list-div scroll-motion">
+            <a href="javascript:" class="list custom-mouse">
+              <img src="./common/images/main-img-story-05.jpg" alt="">
+              <div class="txt-div">
+                <p class="tit">
+                  현대제철과 함께<br />
+                  이상의 가치를 창조할<br />
+                  당신을 기다립니다
+                </p>
+                <p class="blue-txt">인재채용</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="engineer-txt scroll-motion">
+          <p class="txt">
+            Engineering<br />
+            the Future<br />
+            beyond Steel
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 기업 개요 -->
+    <div class="overview-area">
+      <div class="inner">
+        <div class="txt-div">
+          <p class="txt">100년 제철소를 향해 나아가는<br />무한한가능성</p>
+          <p class="tit">기업 개요</p>
+        </div>
+        <a class="go-btn" href="javascript:">
+          <svg>
+            <circle class="svg-circle" id="top-svg-circle" cx="60" cy="60" r="58" stroke="#d9d9d9" stroke-width="4" fill="none"></circle>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer>
+    <a href="./mobile.html">
+      <div class="inner"><img src="./common/images/main-img-footer.png" alt=""></div>
+    </a>
+  </footer>
+
+  <div class="media-popup">
+    <div class="scroll-area">
+      <p class="title"><img src="./common/images/main-media-room-popup-title.png" alt=""></p>
+      <div class="content">
+        <p class="img"><img src="./common/images/main-media-room-popup-content-01.png" alt=""></p>
+        <p class="img"><img src="./common/images/main-media-room-popup-content-02.png" alt=""></p>
+        <p class="img"><img src="./common/images/main-media-room-popup-content-03.png" alt=""></p>
+        <p class="img"><img src="./common/images/main-media-room-popup-content-04.png" alt=""></p>
+        <p class="img"><img src="./common/images/main-media-room-popup-content-05.png" alt=""></p>
+        <p class="img"><img src="./common/images/main-media-room-popup-content-06.png" alt=""></p>
+        <p class="img"><img src="./common/images/main-media-room-popup-content-07.png" alt=""></p>
+        <p class="img"><img src="./common/images/main-media-room-popup-content-08.png" alt=""></p>
+        <p class="img"><img src="./common/images/main-media-room-popup-content-09.png" alt=""></p>
+        <p class="img"><img src="./common/images/main-media-room-popup-content-10.png" alt=""></p>
+      </div>
+    </div>
+    <a href="javascript:" class="close-btn"><img src="./common/images/main-media-room-popup-close.svg" alt=""></a>
+  </div>
+</body>
+</html>
