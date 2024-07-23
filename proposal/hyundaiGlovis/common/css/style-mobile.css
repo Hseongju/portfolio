@@ -1,0 +1,15 @@
+@import url(./reset.css);
+#mobileWrap {position: relative; overflow: hidden; top: 50%; left: 50%; width: 404px; height: 858px; font-family: 'noto_bold', '맑은 고딕', 'Malgun Gothic', sans-serif; border-radius: 40px; transform: translate(-50%, -50%);}
+#mobileWrap .content {z-index: 9999; overflow: hidden; position: absolute; width: 404px; height: 858px; background:#fff; border: 7px solid black; box-sizing: border-box; border-radius:40px;}
+#mobileWrap .content > .scroll{display:block; overflow-x:hidden; overflow-y:auto; position:relative; height:100%;}
+#mobileWrap .content > .scroll::-webkit-scrollbar {display: none;}
+#mobileWrap .content .scrollDiv {display: block;}
+#mobileWrap .content .scrollDiv div img{width: 100%;}
+
+.inner {padding: 0 20px;}
+header {position: absolute; z-index: 1; top: 0; left: 0; right: 0;}
+.sec4, .sec5 {padding-top: 120px;}
+.sec4 ul, .sec5 ul {margin-top: 40px; display: flex; flex-direction: column; gap: 16px;}
+.sec4 .tit {padding-left: 20px;}
+footer {margin-top: 80px;}
+.sticky {position: absolute; width: 48px; bottom: 25px; right: 20px; z-index: 1;}

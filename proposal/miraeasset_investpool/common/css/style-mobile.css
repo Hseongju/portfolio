@@ -1,0 +1,12 @@
+@import url(./reset.css);
+#mobileWrap {position: relative; overflow: hidden; top: 50%; left: 50%; width: 384px; height: 826px; font-family: 'noto_bold', '맑은 고딕', 'Malgun Gothic', sans-serif; border-radius: 50px; transform: translate(-50%, -50%);}
+#mobileWrap .content {z-index: 9999; overflow: hidden; position: absolute; width: 384px; height: 826px; background:#fff; border: 7px solid black; box-sizing: border-box; border-radius:50px;}
+#mobileWrap .content > .scroll{display:block; overflow-x:hidden; overflow-y:auto; position:relative; height:100%;}
+#mobileWrap .content > .scroll::-webkit-scrollbar {display: none;}
+#mobileWrap .content .scrollDiv {display: block;}
+#mobileWrap .content .scrollDiv div img{width: 100%;}
+
+header {position: fixed; width: 370px; padding-top: 7px; z-index: 10; mix-blend-mode: difference;}
+header img {width: 100%; height: 100%;}
+
+.quick-area {position: fixed; bottom: 31px; right: 23px;  z-index: 10;}
