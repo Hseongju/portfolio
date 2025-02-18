@@ -1,0 +1,151 @@
+@charset "UTF-8";
+@import url(./reset.css);
+@import url(./fonts.css);
+
+#wrap {position: relative;}
+.stop-scroll {overflow: hidden; height: 100%;}
+.inner {margin: 0 auto; width: 1800px;}
+
+/* Header */
+header {position: fixed; top: 0; left: 0; padding-top: 40px; width: 100%; height: 181px; z-index: 99; transition: top 1s ease;}
+header .inner {text-align: center;}
+header.up-scroll {top: -181px;}
+
+/* Intro */
+.intro-area {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 100;}
+.intro-area .txt {display: flex; align-items: center; position: absolute; top: 50%; left: 0; transform: translateY(-50%); width: 100%;}
+.intro-area .txt .img {position: relative; left: -80px; padding: 0 42px 0 60px; opacity: 0; transition: left 1s ease, opacity 1s ease;}
+.intro-area .txt .line {width: 0; height: 4px; background: #000; transition: width 2s ease;}
+.intro-area.on .txt .img {left: 0; opacity: 1;}
+.intro-area.on .txt .line {width: 100%; transition-delay: .5s;}
+
+/* Visual */
+.visual-area {position: relative; height: 400vh;}
+.visual-area .txt-wrap {position: absolute; top: 0; left: 0; width: 100%; height: 100vh; z-index: 3;}
+.visual-area .txt-wrap .txt-div {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 397px;}
+.visual-area .txt-wrap .txt-div .tit {position: relative; top: 80px; font-family: "Pretendard_Bold"; font-size: 72px; color: #1a1a1a; letter-spacing: -1.5px; line-height: 120%; opacity: 0; transition: top 1s ease, opacity 1s ease;}
+.visual-area .txt-wrap .txt-div .txt {position: relative; top: 80px; margin-top: 60px; font-family: "Pretendard_Medium"; font-size: 16px; color: #1a1a1a; letter-spacing: -1.5px; line-height: 150%; opacity: 0; transition: top 1s ease, opacity 1s ease;}
+.visual-area .bottom-txt {display: flex; align-items: flex-end; justify-content: center; position: absolute; top: 0; left: 0; padding-bottom: 40px; width: 100%; height: 100vh; z-index: 1;}
+.visual-area .bottom-txt .img {position: relative; top: 80px; opacity: 0; transition: top 1s ease, opacity 1s ease;}
+.visual-area .bottom-txt .img.hide {opacity: 0 !important;}
+.visual-area .bg-wrap {position: relative; top: 0; left: 0; width: 100%; height: 300vh; z-index: 2;}
+.visual-area .bg-wrap .bg {position: absolute; top: 75vh; left: 50%; transform: translateX(-50%); width: 414px; height: 516px; z-index: 2;}
+.visual-area .bg-wrap .bg video {position: relative; top: 80px; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: top 1s ease, opacity 1s ease;}
+.visual-area.active .txt-wrap .txt-div .tit {top: 0; opacity: 1; transition-delay: .15s;}
+.visual-area.active .txt-wrap .txt-div .txt {top: 0; opacity: 1; transition-delay: .3s;}
+.visual-area.active .bottom-txt .img {top: 0; opacity: 1; transition-delay: .45s;}
+.visual-area.active .bg-wrap .bg video {top: 0; opacity: 1; transition-delay: .45s;}
+
+/* GLOBAL TOP-TIER */
+.global-area {padding: 120px 0 0;}
+.global-area .tit {position: relative; top: 80px; text-align: center; opacity: 0; transition: top 1s ease, opacity 1s ease;}
+.global-area.active .tit {top: 0; opacity: 1;}
+.global-area .list-wrap {display: flex; justify-content: space-between; position: relative; margin: 200px auto 0; padding-bottom: 240px; width: 1800px;}
+.global-area .list-wrap > div:not(.bg) {position: relative; top: 80px; opacity: 0; transition: top 1s ease, opacity 1s ease;}
+.global-area .list-wrap .bg {overflow: hidden; position: absolute; top: 0; left: 50%; transform: translate(-50%, 0); width: 336px; height: 480px; border-radius: 20px;}
+.global-area.active .list-wrap > div:not(.bg) {top: 0; opacity: 1;}
+.global-area.active .list-wrap > div:not(.bg):nth-child(1) {transition-delay: .15s;}
+.global-area.active .list-wrap > div:not(.bg):nth-child(3) {transition-delay: .3s;}
+.global-area .global-con-wrap {position: relative; padding-top: calc(100vh + 400px);}
+.global-area .fixed-bg {position: absolute; top: 0; left: 0; width: 100%; height: 100vh;}
+.global-area .fixed-bg .bg {overflow: hidden; position: absolute; top: -1070px; left: 50%; transform: translate(-50%, 0); width: 336px; height: 480px; border-radius: 20px;}
+.global-area .fixed-bg .bg:after {display: block; content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; opacity: 0; transition: opacity 1s ease; z-index: 2;}
+.global-area .fixed-bg .bg.dimd:after {opacity: .7;}
+.global-area .fixed-bg .bg img {position: relative; top: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: top 1s ease, opacity 1s ease; border-radius: 20px;}
+.global-area.active .fixed-bg .bg img {top: 0; opacity: 1; transition-delay: .5s;}
+.global-area.active .fixed-bg .bg img:nth-child(2) {position: absolute; top: 0; left: 0; opacity: 0; z-index: 1; transition: opacity .8s ease;}
+.global-area .fixed-bg .bg img.on {border-radius: 0;}
+.global-area.active .fixed-bg .bg img:nth-child(2).show {opacity: 1;}
+.global-area .global-con {display: flex; justify-content: space-between; position: relative; margin: 0 auto; width: 1820px; height: 2526px; z-index: 1;}
+.global-area .global-con .left {position: relative; height: 1886px;}
+.global-area .global-con .txt {position: sticky; top: 50%; transform: translateY(-50%); height: 186px;}
+.global-area .global-con .txt img {position: relative; top: 80px; padding-top: 80px; opacity: 0; transition: top 1s ease, opacity 1s ease;}
+.global-area .global-con .txt.active img {top: 0; opacity: 1;}
+.global-area .global-con .right {display: flex; flex-direction: column; row-gap: 180px; padding: 440px 320px 200px 0;}
+.global-area .global-con .right .img {position: relative; top: 80px; opacity: 0; transition: top 1s ease, opacity 1s ease;}
+.global-area .global-con .right .img.active {top: 0; opacity: 1;}
+.global-area .global-con .dimd {position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100vw; height: 100vh; background: #000; opacity: 0; transition: opacity 1s ease;}
+.global-area .global-con .dimd.on {opacity: .7;}
+
+/* ESG */
+.esg-area {position: relative; z-index: 2; height: 800vh;}
+.esg-area.white {background: #fff;}
+.esg-area .img-list {display: flex; position: absolute; top: 0; right: 0; width: 100%; height: 100vh;}
+.esg-area .img-list .img {position: relative; width: 25%; height: 100%;}
+.esg-area .img-list .img:nth-child(1) {top: 200px; z-index: 4;}
+.esg-area .img-list .img:nth-child(2) {top: 400px; z-index: 3;}
+.esg-area .img-list .img:nth-child(3) {top: 600px; z-index: 2;}
+.esg-area .img-list .img:nth-child(4) {top: 800px; z-index: 1;}
+.esg-area .img-list .img img {width: 100%; height: 100%; object-fit: cover;}
+.esg-area .con-list {position: relative; margin: 0 auto; padding: 120px 0 150px; width: 1760px; height: 100vh; opacity: 0; transition: opacity .4s ease;}
+.esg-area .con-list .tit {position: relative; top: 80px; opacity: 0; transition: top 1s ease, opacity 1s ease;}
+.esg-area .con-list .txt-wrap {position: absolute; bottom: 70px; right: calc(25% + 164px); width: 400px; opacity: 0; transition: bottom 1s ease, opacity 1s ease;}
+.esg-area .con-list .txt-wrap .txt-div {position: relative; height: 122px;}
+.esg-area .con-list .txt-wrap .txt-div .img {position: absolute; top: 0; left: 0; opacity: 1; transition: opacity 1s ease;}
+.esg-area .con-list .txt-wrap .txt-div .img:nth-child(1) {z-index: 4;}
+.esg-area .con-list .txt-wrap .txt-div .img:nth-child(2) {z-index: 3;}
+.esg-area .con-list .txt-wrap .txt-div .img:nth-child(3) {z-index: 2;}
+.esg-area .con-list .txt-wrap .txt-div .img:nth-child(4) {z-index: 1;}
+.esg-area .con-list .txt-wrap .btn {margin-top: 56px;}
+.esg-area .con-list.on {opacity: 1;}
+.esg-area .con-list.on .tit {top: 0; opacity: 1; transition-delay: .2s;}
+.esg-area .con-list.on .txt-wrap {bottom: 150px; opacity: 1; transition-delay: .35s;}
+.esg-area:has(.con-list.on) .img-list .img:nth-child(1) {z-index: 1;}
+.esg-area:has(.con-list.on) .img-list .img:nth-child(2) {z-index: 2;}
+.esg-area:has(.con-list.on) .img-list .img:nth-child(3) {z-index: 3;}
+.esg-area:has(.con-list.on) .img-list .img:nth-child(4) {z-index: 4;}
+
+/* 지역사회 */
+.society-area {position: relative; margin-top: -100vh; width: 100%; height: calc(200vh + 600px);}
+.society-area .bg {position: absolute; bottom: 0; width: 100%; height: 100vh; background: url("../images/bg-society.jpg") no-repeat center center/cover; background-attachment: fixed;}
+.society-area .list-area {display: flex; align-items: center; position: relative; padding: 120px 0 150px; min-height: 100vh; margin-bottom: 600px; z-index: 1; background: #000;}
+.society-area .list-area .tit {position: relative; top: 80px; opacity: 0; transition: top 1s ease, opacity 1s ease;}
+.society-area .list-area .list-wrap {display: flex; column-gap: 40px; margin-top: 160px;}
+.society-area .list-area .list-wrap .img {position: relative; top: 80px; opacity: 0; transition: top 1s ease, opacity 1s ease;}
+.society-area .list-area .list-wrap .img:nth-child(2n-1) {margin-top: 105px;}
+.society-area .list-area.active .tit {top: 0; opacity: 1;}
+.society-area .list-area.active .list-wrap .img {top: 0; opacity: 1;}
+.society-area .list-area.active .list-wrap .img:nth-child(1) {transition-delay: .15s;}
+.society-area .list-area.active .list-wrap .img:nth-child(2) {transition-delay: .3s;}
+.society-area .list-area.active .list-wrap .img:nth-child(3) {transition-delay: .45s;}
+.society-area .list-area.active .list-wrap .img:nth-child(4) {transition-delay: .6s;}
+
+/* KT&G Story */
+.story-area {position: relative; padding: 120px 0 160px; background: #fff; z-index: 2;}
+.story-area .tit-area .txt {position: relative; top: 80px; opacity: 0; transition: top 1s ease, opacity 1s ease;}
+.story-area .tit-area .txt:nth-child(2) {margin-top: 40px;}
+.story-area .tit-area .txt:nth-child(3) {margin-top: 50px;}
+.story-area .tit-area.active .txt {top: 0; opacity: 1;}
+.story-area .tit-area.active .txt:nth-child(2) {transition-delay: .15s;}
+.story-area .tit-area.active .txt:nth-child(3) {transition-delay: .3s;}
+.story-area .list-area {margin-top: 80px;}
+.story-area .list-area .list-wrap {display: flex; column-gap: 40px;}
+.story-area .list-area .list-wrap + .list-wrap {margin-top: 160px;}
+.story-area .list-area .list {position: relative; top: 80px; opacity: 0; transition: top 1s ease, opacity 1s ease;}
+.story-area .list-area .list-wrap:nth-child(2) .list:nth-child(2) {margin-top: -280px;}
+.story-area .list-area .list-wrap:nth-child(2) .list:nth-child(3) {margin-top: -380px;}
+.story-area .list-area .list-wrap.active .list {top: 0; opacity: 1;}
+.story-area .list-area .list-wrap.active .list:nth-child(4n-2) {transition-delay: .15s;}
+.story-area .list-area .list-wrap.active .list:nth-child(4n-1) {transition-delay: .3s;}
+.story-area .list-area .list-wrap.active .list:nth-child(4n) {transition-delay: .45s;}
+
+/* Korea Tomorrow & Global */
+.korea-fixed-bg {display: flex; align-items: flex-end; position: relative; width: 100%; height: 1800px;}
+.korea-fixed-bg .bg {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%; background: url("../images/bg-korea-global.jpg") no-repeat center center/cover;}
+.korea-fixed-bg .txt-fixed {display: flex; align-items: flex-end; position: absolute; top: 0; left: 0; width: 100%; height: 100vh; max-height: 1800px;}
+.korea-fixed-bg .txt {display: flex; align-items: flex-end; justify-content: center; z-index: 1; width: 100%; height: 100vh;}
+.korea-fixed-bg .txt img {height: auto;}
+
+/* Field */
+.field-area {position: relative; padding: 120px 0; z-index: 2;}
+.field-area .field-wrap {display: flex; column-gap: 20px; justify-content: center;}
+.field-area .field-wrap .field {position: relative; top: 80px; opacity: 0; transition: top 1s ease, opacity 1s ease;}
+.field-area.active .field {top: 0; opacity: 1;}
+.field-area.active .field:nth-child(2) {transition-delay: .15s;}
+.field-area.active .field:nth-child(3) {transition-delay: .3s;}
+
+/* Footer */
+footer {position: relative;}
+footer > a {display: block;}
+footer .top-area {padding: 120px 0 116px; border-top: 1px solid #ccc; background: #fff;}
+footer .bottom-area {background: #1a1a1a;}
